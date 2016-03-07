@@ -1,0 +1,405 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,ngerman,naustrian,DIV=12,BCOR=1cm]{scrbook}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{makeidx}
+\makeindex
+\usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={Diplomarbeit Titel},
+ pdfauthor={Wer auch immer},
+ pdfsubject={Diplomarbeit},
+ pdfkeywords={dies, das}}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newcommand{\strong}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%%%%%%%%%%%%
+% Latex-Vorspann
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{blindtext}
+
+%% geht nicht mit jeder Latex Variante, gibt aber ein schöneres Layout
+\usepackage{microtype}
+
+%% Aufzählungen nicht so weit einrücken
+\usepackage{enumitem}
+%\setitemize{leftmargin=*}
+
+%\usepackage{caladea}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{xspace}
+
+%% für pandoc
+%% maximale Breite der Bilder
+\usepackage{graphicx}
+\setkeys{Gin}{width=0.90\linewidth,keepaspectratio}
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%um Schusterjungen und Hurenkinder vermeiden zu können
+\usepackage{needspace}
+
+%Farbpaket
+\usepackage{xcolor}
+
+%Für Bilddarstellung
+\usepackage{subfigure}
+\usepackage{float}
+%\usepackage{subcaption}
+
+%Einheitendarstellung
+\usepackage{siunitx}
+\sisetup{
+  locale = DE ,
+  per-mode = symbol
+}
+
+%%%%%%%%%%% GLOSSAR teil 1/2 - muss getestet werden
+\usepackage[toc,acronym]{glossaries}
+\makeglossaries
+\input{Glossar}
+
+\makeatother
+
+\usepackage{listings}
+\addto\captionsnaustrian{\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}}
+\addto\captionsngerman{\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
+
+\begin{document}
+%%%%%%
+% Weitere Einstellungen siehe Latex-Vorspann
+
+\sloppy % weniger Meldungen
+
+\voffset5mm % etwas nach unten%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% falls man die erste Zeile der Absätze nicht einrücken will
+% dann sollte man aber etwas mehr Abstand zwischen den Absätzen erlauben
+% Alternative \usepackage{parskip}
+%%\setlength{\parindent}{0pt}
+%%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+% Auch Fußnoten bündig ausrichten
+\deffootnote[]{1em}{1em}{\textsuperscript{\thefootnotemark\ }}
+% Listen etwas wenige einrücken, erfordert enumitem
+\setitemize{leftmargin=*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Kopf und Fußzeilen -- links und rechts verschieden
+\newcommand{\kopfseitenummer}{{\bfseries \thepage}}
+\newcommand{\kopfkapl}{{\bfseries\leftmark}}
+\newcommand{\kopfkapr}{{\bfseries\rightmark}}
+\newcommand{\kopfbild}{\includegraphics[width=25mm]{Bilder/HTL3RLogoRGB}}
+\newcommand{\kopfHTL}{Höhere Technische Bundeslehranstalt Wien 3, \\Rennweg 	Abteilung für Informationstechnologie}
+\renewcommand{\chaptermark}[1]%
+  {\thispagestyle{fancy}\markboth{\thechapter.\ #1}{}}%\thispagestyle{fancy}
+
+%\lhead[\fancyplain{\kopfbild}{\kopfbild}]% li aussen
+%      {\fancyplain{\kopfHTL}{\kopfHTL}}% re innen
+%\rhead[\kopfHTL]% li innen
+%      {\kopfbild}% re aussen
+
+%% mit kapitelautor kann man den Autor festlegen oder auf leer setzen - steht dann in der Fußzeile.
+\newcommand{\kapitelautor}{}
+
+%%%
+% Alternative: am Rand (Marginale)
+%\setlength{\marginparsep}{-5mm}
+%\mbox{}\marginpar{\raggedleft\hspace{0pt}Autor: Hans Huber}
+
+%% kopf links: [linke] und {rechte} Seite
+\lhead[\kopfbild]{\kopfkapl}
+\rhead[\kopfkapr]{\kopfbild}
+\chead{}
+
+\lfoot[\kopfseitenummer]{\kapitelautor}
+\cfoot[]{}
+\rfoot[\kapitelautor]{\kopfseitenummer}
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand{\headrulewidth}{0.2pt}
+
+%%
+% einfaches "siehe ..." - das Ziel muss man markieren
+\newcommand{\kap}[1]{Kapitel~\ref{#1}, Seite~\pageref{#1}}
+\newcommand{\siehe}[1]{siehe \kap{#1}}
+
+%% http://ieg.ifs.tuwien.ac.at/~aigner/download/tuwien.sty
+%Div. Abkürzungen (in Anlehnung an Jochen Köpper, jkthesis):
+%\RequirePackage{xspace}
+\newcommand{\bzw}{bzw.\@\xspace}
+\newcommand{\bzgl}{bzgl.\@\xspace}
+\newcommand{\ca}{ca.\@\xspace}
+\newcommand{\dah}{d.\thinspace{}h.\@\xspace}
+\newcommand{\Dah}{D.\thinspace{}h.\@\xspace}
+\newcommand{\ds}{d.\thinspace{}s.\@\xspace}
+\newcommand{\evtl}{evtl.\@\xspace}
+\newcommand{\ua}{u.\thinspace{}a.\@\xspace}
+\newcommand{\Ua}{U.\thinspace{}a.\@\xspace}
+\newcommand{\usw}{usw.\@\xspace}
+\newcommand{\va}{v.\thinspace{}a.\@\xspace}
+\newcommand{\vgl}{vgl.\@\xspace}
+\newcommand{\zB}{z.\thinspace{}B.\@\xspace}
+\newcommand{\ZB}{Zum Beispiel\xspace}
+
+%%%%%Programmlisting%%%%%%%%
+% das braucht man nur einmal
+% das kann auch ganz oben stehen
+\lstset{basicstyle = \ttfamily\footnotesize,
+	keywordstyle = \color{blue},
+	stringstyle = \color{orange},
+	commentstyle = \color{lightgray},
+	numbers = left,
+	numberstyle = \tiny,
+	stepnumber = 2,
+	numbersep = 5pt,
+	showspaces = false,
+	frame = single,
+  otherkeywords={bit},
+	escapechar = $
+}
+%lstset{language=...} vor jedem Listing
+
+
+% einmal oder immer was anderes
+%vor jedem Listing: ********	\lstset{language=C}
+
+
+%%%%%Anfang Titelseite
+\pagenumbering{roman}
+\title{Diplomarbeit}
+\begin{titlepage}
+\begin{minipage}[b]{1\columnwidth}
+\parbox[b]{50mm}{\includegraphics[width=45mm]{Bilder/HTL3RLogoRGB}}
+\hfill
+\parbox[b]{130mm}{\footnotesize \textsc{Höhere Technische Bundeslehranstalt} Wien 3, Rennweg\\
+IT \& Mechatronik\\
+\\
+HTL Rennweg :: Rennweg 89b\\
+A-1030 Wien :: Tel +43 1 24215-10 :: Fax DW 18
+}\\
+\mbox{}
+\end{minipage}
+
+\vspace{1cm}
+
+
+\begin{center}
+\textbf{\LARGE{}Diplomarbeit}{\large{}}\\
+{\large{}\vspace{15mm}
+ }\textbf{\large{}}\\
+\textbf{\large{}Hovering Steward}\\
+ \vspace{15mm}
+ ausgeführt an der\\
+ Höheren Abteilung für Informationstechnologie/Ausbildungsschwerpunkt\\
+ der Höheren Technischen Lehranstalt Wien 3 Rennweg\\
+ \vspace{1cm}
+ im Schuljahr 2015/2016\\
+ \vspace{1cm}
+ durch\\
+ \vspace{0.5cm}
+\textbf{\large{}Christina Bornberg}\\
+\textbf{\large{}Katharina Joksch}\\
+\textbf{\large{}Markus Kaiser}\\
+\textbf{\large{}Alexander Punz}\\
+\textbf{\large{}Lucas Ullrich}\\
+
+\par\end{center}{\large \par}
+
+\begin{center}
+\vspace{20mm}
+\normalsize unter der Anleitung von\\
+\vspace{0.5cm}
+Mag. Andreas Fink\\
+DI Herbert Fleck
+\par\end{center}
+
+\begin{center}
+\vspace{5mm}
+Wien, \today
+\par\end{center}
+
+\end{titlepage}%%%%%%%%%%%%%%%%%%%%% Ende Titelseite %%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter*{Kurzfassung}
+
+% Auf Seiten mit einem neuen Kapitel ist keine Kopfzeile -- kann man sich aber wünschen
+\thispagestyle{fancy}
+
+Darum geht es.
+
+\blindtext[1]
+
+
+\chapter*{Abstract}
+
+% mit Kopfzeile
+\thispagestyle{fancy}
+
+Thats why -- the translated text ,,Kurzfassung`` (this should be
+an exact translation).
+
+\blindtext[1]
+
+
+\chapter*{Ehrenwörtliche Erklärung}
+
+% mit Kopfzeile
+\thispagestyle{fancy}
+
+Ich versichere,
+\begin{itemize}
+\item dass ich meinen Anteil an dieser Diplomarbeit selbstständig verfasst
+habe,
+\item dass ich keine anderen als die angegebenen Quellen und Hilfsmittel
+benutzt habe
+\item und mich auch sonst keiner unerlaubten Hilfe bzw. Hilfsmittel bedient
+habe.
+\end{itemize}
+\bigskip{}
+Wien, am \today
+
+\vspace{2cm}
+Markus Kaiser
+
+\vspace{2cm}
+Lucas Ullrich
+
+\vspace{2cm}
+Christina Bornberg
+
+\vspace{2cm}
+Katharina Joksch
+
+\vspace{2cm}
+Alexander Punz
+
+\chapter*{Präambel}
+
+\thispagestyle{fancy}
+
+Die Inhalte dieser Diplomarbeit entsprechen den Qualitätsnormen für
+,,Ingenieurprojekte`` gemäß §\,29 der Verordnung des Bundesministers
+für Unterricht und kulturelle Angelegenheiten über die Reife- und
+Diplomprüfung in den berufsbildenden höheren Schulen, BGBl. Nr. 847/1992,
+in der Fassung der Verordnungen BGBl. Nr. 269/1993, Nr. 467/1996 und
+BGBl. II Nr. 123/97.
+
+\vspace{10mm}
+
+
+\noindent Liste der betreuenden Lehrer:
+
+Mag. Andreas Fink
+
+DI Herbert Fleck
+
+DI August Hörandl
+
+DI Fran Temper
+
+MMag. Florian Weiss
+
+\vspace{10mm}
+
+
+\noindent Liste der Kooperationspartner:%falls vorhanden
+
+GRZ IT Center GmbH
+
+OFI Technologie \& Innovation GmbH
+
+DI Dr. Michael Pyerin
+
+EVO-tech GmbH
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Verzeichnisse -- machen wir mit fancy headern
+\renewcommand*{\chapterpagestyle}{fancy}
+\cleardoublepage{}
+\tableofcontents{}
+\cleardoublepage{}
+\listoftables
+\cleardoublepage{}
+\listoffigures
+\cleardoublepage{}
+
+%hier geht es los mit dem Text - auf einer rechten Seite
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\thispagestyle{fancy}
+
+
+% wer hat diese Kapitel geschrieben oder leer
+%\renewcommand{\kapitelautor}{Autor: Hans Huber}
+
+\thispagestyle{fancy}
+%%%%%%%%%%%%%%%%Inhalt der Diplomarbeit ab hier mit \include{}%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Bilder werden meist am besten mit [H] anstelle von [tbh] angezeigtb
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% wer hat diese Kapitel geschrieben oder leer, immer am Anfang jedes Dokuments nach \chapter
+%\renewcommand{\kapitelautor}{}
+
+\include{Allgemeines}
+
+\include{Marketing}
+
+\include{Digitale_Speisekarte}
+
+\include{Elektronik}
+
+\include{Sensoren_Aktoren}
+
+\include{Firmware}
+
+\include{Kommunikation_Applikation_und_Hexacopter}
+
+\include{Mechanik}
+
+\include{Testphase_Erfahrungen_Ergebnisse}
+
+\renewcommand{\kapitelautor}{}
+\appendix
+
+\chapter{Anhang 1\label{chap:Anhang-1}}
+
+\printindex{}
+
+\bibliographystyle{plaindin}
+\bibliography{diplom}
+
+
+%%%%%%%%%%%%% GLOSSAR teil 2/2 - muss getestet werden
+\printglossary[type=\acronymtype]
+\printglossaries
+
+
+\end{document}

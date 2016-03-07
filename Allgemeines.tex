@@ -1,0 +1,348 @@
+\chapter{Einleitung}
+\renewcommand{\kapitelautor}{Autor: Markus Kaiser}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Projektidee}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ausgangssituation}
+  Im den folgenden Absätzen wird beschrieben, wie die Idee von Hovering Steward, dem autonom fliegenden Kellner
+  entstanden ist, und womit sich die ersten Recherchen zu Begin des Projektes beschäftigt, beziehungsweise
+  welche Ergebnisse diese herausgebracht haben.
+
+  \subsection{Ideenfindung}
+  Ihren Anfang fand die Idee im Projektmanagement Unterricht. Die Teams mussten ein fiktives Projekt erfinden, um auf Basis dieses
+  Projektmanagementpläne zu erstellen. Es entstand "Fluorescent Bakery", eine Bäckerei, die fluoreszierende Cupcakes verkauft.
+  Der technische Teil ergab sich später, bei dem Gedanken diese Idee für die Diplomarbeit weiterzuverwenden. Der Ansatz hierfür war,
+  einen nicht menschlichen Kellner zu erschaffen, der mithilife künstlicher Intelligenz die Aufgaben einer Bedienung in einem Restaurant übernimmt.
+  Einen Kellner auf Rädern erschien zu simpel, daher wurde die Entscheidung getroffen, die 3. Dimension mit einzubeziehen und ihn fliegen zu lassen.
+  So entstand "Hovering Steward - der autonom fliegende Kellner", ein dreidimensionales Tracking-System, welches eine Drohne in einem Raum die Aufgaben eines Kellners durchführen lässt.
+  Das Projekt erhielt später noch eine weitere Komponente, nämlich eine digitale Speisekarte, um das System in einem Restaurant vollständig zu automatisieren.
+
+  \subsection{Was es schon gibt}
+
+  \textbf{Themenrestaurants}
+  \begin{itemize}
+    \item Disaster Café\\
+    Das Themenrestaurant Disaster Café in Spanien bietet Gästen die Erfahrung, ihr Essen bei einem Erdbeben
+    der Stärke 7.8 zu sich zu nehmen.
+
+    \item Das stille Örtchen - Modern Toilet\\
+    Eingerichtet wie eine Toilette, können Gäste des Modern Toilet in Japan ihre Speisen in einem gewohnten Umfeld genießen.
+
+    \item Affen-Kellner\\
+    Die kleine Taverne in Japan besitzt zwei kleine Affen, die Tätigkeiten wie das Servieren von Getränken oder Handtüchern
+    für den Inhaber übernehmen. Sie verstehen sogar, welche Getränke ein Gast bestellt.
+
+    \item The Royal Dragon\\
+    Neben Rollschuh fahrenden Kellnern verfügt das weltweit größte Restaurant für Meeresfrüchte eine
+    Art Seilbahn, mithilfe welcher ein Kellner "fliegend" das Essen serviert.
+
+    \item Dinner in the Sky\\
+    Bei Dinner in the Sky werden dee Gäste samt Tisch und kleiner Küche von einem Kran 50 Meter
+    in die Luft gezogen, wo dann gespeist wird.
+
+    \item Dinner in the Dark\\
+    In diesem Themenrestaurant verbringen die Gäste ihren Aufenthalt im Dunkeln. Einzig und allein die
+    Kellner können mittels Nachtsichtbrille etwas sehen.
+  \end{itemize}
+
+  \textbf{Multicopter in der Gastronomie}
+  \begin{itemize}
+      \item{Infinium-Serve}\\
+      Das Unternehmen Infinium-Robotics hat ein System entwickelt, welches Gästen eines Restaurants
+      das Essen mittels Hexacopter serviert.
+
+      \item{iTray}\\
+      iTray, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
+      Die Drohnen werden über ein Remote-Wi-Fi-System gesteuert.
+
+  \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Team und Aufgabenverteilung}
+  \textbf{Markus Kaiser}\\
+  \textbf{Projektleitung und Marketing}\\
+  Markus Kaiser leitete das Team Hovering Steward und war somit für das Projektmanagement und
+  die organisatorischen Aspekte verantwortlich. Neben dieser Hauptrolle zählte außerdem das Marketing
+  zu seinen Aufgabenbereichen, was speziell die Entwicklung des Blogs anbelangte. Durch seine Kenntnisse
+  in der Webentwicklung stellte er mit dem Blog eine wichtige Schnittstelle zur Außenwelt her.
+
+  \textbf{Lucas Ullrich}\\
+  \textbf{Sensorik & Firmware}\\
+  Lucas Ullrich war neben seiner Position als Projektleiter Stellvertreter für die Sensorik an unserer Drohne und
+  für die Programmierung der Firmware zuständig. Er unterstützte unseren Projektleiter bei terminlichen Angelegenheiten
+  und konnte durch seine Kenntnisse mit der Programmiersprache C eine solide Basis für die Firmware des Microcontrollers schaffen.
+  Außerdem
+
+  \textbf{Christina Bornberg}\\
+  \textbf{Firmware}\\
+  Christina Bornberg fungierte als Firmware Entwicklerin des Teams. Durch ihre Interesse an der Programmierung von Drohnen
+  und bereits gesammelten Erfahrung mit der Programmierung von C konnte sie gemeinsam mit Lucas Ullrich die LOgik hinter
+  dem automatisierten Flug der Drohne realisieren.
+
+  \textbf{Katharina Joksch}\\
+  \textbf{Webentwicklung}\\
+  Der Aufgabenbereich von Katharina Joksch war die Webentwicklung, genauer gesagt die Programmierung der digitalen Speisekarte.
+  Neben der Planung der Datenbank und der sinnvollen Verwendung hilfreicher Frameworks entwickelte sie außerdem eine Java Applikation,
+  die die Kommunikation zwischen der Speisekarte und der Drohne regelte.
+
+  \textbf{Alexander Punz}\\
+  \textbf{Hardware & Mechanik}\\
+  Alexander Punz war sowohl für die Hardware als auch für die Mechanik verantwortlich. Seine Aufgaben waren sowohl die Konzeption
+  und Produktion des Rotorschutzes, der einen sicheren Flug der Drohne ermöglichte, als auch die Herstellung diverser Halterungen,
+  die für Sensorik, Transport und Flugtests verausgesetzt waren.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Betreuer}
+  \textbf{Mag. Andreas Fink}\\
+  Mag. Andreas Fink stand dem Projektteam als Hauptbetreuer der Abteilung für Informationstechnologie zur Seite.
+  Seine objektive Sichtweise auf das Projekt, hat dem Team sehr geholfen den Fokus auf die Ziele zu legen und
+  das Projekt in die Richtung zu entwickeln.
+  Zusätzlich dazu betreute er individuell Markus Kaiser bei den Aspekten Projektleitung und Marketing.
+
+  \textbf{DI Herbert Fleck}\\
+  DI Herbert Fleck war Hauptbetreuer der Mechatronik Abteilung unseres Teams. Er koordinierte den Prozess der Diplomarbeit
+  gemeinsam mit Mag. Andreas Fink. Das Teeam schätzte außerdem sehr das Konstruktive Feedback bei Präsentationen.
+  Er betreute nebenbei Lucas Ullrich mit Fachwissen aus dem Bereich der Elektronik.
+
+  \textbf{DI August Hörandl}\\
+  DI August Hörandl fungierte als Individualbetreuer von Christina Bornberg. Duch seine Fähigkeiten und
+  Erfahungen als Programmierer sowohl mit der Sprache C, als auch Java war das Entwickeln der Firmware,
+  aber auch der Java-Applikation für die WLAN-Kommunikation wesentlich einfacher. Außerdem war
+  DI August Hörandl unser Ansprechpartner wenn es Unklarheiten bei LaTeX gab.
+
+  \textbf{MMag. Florian Weiss}\\
+  MMag. Florian Weiss betreute Katharina Joksch bei der Entwicklung der digitalen Speisekarte. Sein umfangreiches
+  Know-How im Bereich der Webentwicklung, dem Umgang mit diversen Frameworks und Bibliotheken half Katharina
+  dabei ein Grundgerüst für die Entwicklung aufzubauen.
+
+  \textbf{DI Franz Temper}\\
+  DI Franz Temper unterstützte Alexander Punz bei der Enticklung der Konstuktionen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Partner / Sponsoren}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Danksagung}
+
+\chapter{Projektmanagement}
+\renewcommand{\kapitelautor}{Autor: Markus Kaiser}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ziele}
+
+  \subsection{Muss-Ziele}
+  \textbf{RE-M 01 Blog}\\
+  Die Diplomarbeitswebsite fungiert in erster Linie als selbst programmierter Blog, um Interessenten
+  jederzeit die Möglichkeit zu bieten, sich über den Status des Projektes zu informieren. Jedes Teammitglied
+  kann individuelle Blog- oder Entwicklertagebucheinträge verfassen.
+
+  \textbf{RE-M 02 Facebookauftritt}\\
+  Eine Facebookseite names "Hovering Steward" ist erstellt. Sie informiert Interessenten über das
+  Projekt und den Blog. Sponsoren sind genannt und das Diplomarbeitsteam ist vorgestellt.
+
+  \textbf{RE-M 03 Sponsoren und Finanzen}\\
+  Um die Kosten des Projektes zu decken, sind diverse Unternehmen, die möglicherweise Interesse an dem
+  Projekt haben, per e-Mail oder telefonisch kontaktiert, und um eine Partnerschaft gefragt worden.
+  Für kooperative Firmen sind diverse webetechnische Gegenmaßnahmen geplant worden, um das Sponsoring
+  zu decken.
+
+  \textbf{RE-M 04 Abrufbarkeit auf Tablets}\\
+  Die digitale Speisekarte steht für Gäste auf Tablets zur Verfügung. Damit der Gast bestellen kann,
+  ruft der User die Anwendung auf. Das Tablet benötigt zum Abruf der App mindestens einen der Browser
+  Safari 7, Firefox 30 oder Internet Explorer 11.
+
+  \textbf{RE-M 05 Speiseinformationen}\\
+  Damit die Speisekarte der anerkannten Norm entspricht, enthält sie Informationen über die Inhaltsstoffe
+  beziehungsweise Allergikerinformationen. Auf dem Screen der Speiseinformationen befindet sich ein
+  Bestellbutton.
+
+  \textbf{RE-M 06 Datenverwaltung}\\
+  Die Daten der Speisekarte ruft die Webapp über eine Datenbank ab. Die Schnittstellen stehen für eine
+  HTML und JSON Ausgabe zur Verfügung.
+
+  \textbf{RE-M 07 Bestellfunktion}\\
+  Durch den Klick auf den "Bestellbutton", der sich auf dem Speiseinformationsscreen befindet, wird eine
+  Speise bestellt. Die Bestellung erscheint im Adminbereich der Applikation, auf einem anderen Gerät mit mindestens einem der Betriebssysteme
+  OS X Yosemite oder Windows 8, und auf dem zusätzlich mindestens einer der Browser Safari 7, Firefox 30,
+  Google Chrome oder Internet Explorer 11 installiert ist.
+
+  \textbf{RE-M 08 Adminbereich}\\
+  Nachdem eine Speise bestellt worden ist, erscheint ein neuer Bestelleintrag mit Bezeichnung der Speise
+  und Tischinformation in einer Liste auf einem PC oder Laptop.
+
+  \textbf{RE-M 09 Responsive Layout}\\
+  Das Layout der Speisekarte passt sich automatisch an die Größe des Geräts, von welchem es aufgerufen wird, an.
+
+  \textbf{RE-M 10 Testen der Konzeptstudien}\\
+  Um festzustellen ob sich die erarbeiteten Konzepte auch in der Praxis bewähren und somit einen Einsatz zu
+  teuren Kameratrackingsystemen schaffen zu können, sind diese umgesetzt. Als Sensoren sind eine Kamera
+  sowie Ultraschallsensoren verwendet. Um weitere Positionen zu markieren arbeitet der Multicopter mit
+  Farbcodes und/oder Infrarotsendern.
+
+  \textbf{RE-M 11 Konzeptstudie: Sensorik}\\
+  Um ohne manuelle Einfüsse fliegen zu können und sein Ziel zu finden braucht der Multicopter eine Reihe
+  von Sensoren. Diese dienen zur Positions-bzw. zur Objekterfassung.
+
+  \textbf{RE-M 12 Konzeptstudie: Tischplan}\\
+  Um eine vorgegebene Route fliegen zu können muss der Multicopter einen Routenpan vorgegeben bekommen.
+  In diesem sind die einzelnen Markierungspunkte enthalten, welche der Multicopter auf seinem Weg zum
+  Tisch überfliegt.
+
+  \textbf{RE-M 13 Konzeptstudie: Navigation}\\
+  Um zu dem richtigen Tisch zu kommen, muss der Multicopter anhand des Tischplans zu diesem
+  navigieren. Im Tischplan sind die Routen und Tischpositionen hinterlegt.
+
+  \textbf{RE-M 14 Konzeptstudie: Kommunikation}\\
+  Ein Konzept zur Kommunikation zwischen Multicopter und Sensoren ist entworfen.
+  Der Multicopter ist mit den Sensoren verbunden. Von diesen bekommt er die nötigen Informationen.
+
+  \textbf{RE-M 15 Konzeptstudie: Positionserkennung}\\
+  Um durch den Raum navigieren zu können muss der Multicopter Informationen zu seiner Position haben.
+  Diese kann er anhand einiger Sensoren selbst auswerten und weiterverarbeiten.
+
+  \textbf{RE-M 16 Konzeptstudie: Objekterkennung}\\
+  Der Multicopter soll während seinem Flug bestimmte Objekte erkennen können, so z.B. Tische,
+  Personen oder Landeplattformen.
+
+  \textbf{RE-M 17 Konzeptstudie: Systemausfall-Maßnahmen}\\
+  Tritt bei dem Multicopter ein Systemausfall ein, landet das Flugobjekt und gibt eine Fehlermeldung aus.
+  Weiters besteht die Möglichkeit, in den manuellen Flugmodus umzusteigen.
+
+  \textbf{RE-M 18 Konzeptstudie: Sicherheitsmaßnahmen (Software)}\\
+  Bei Erkennung eines Hindernisses, welches eine Gefahr für den Multicopter darstellt muss dieser
+  entsprechend reagieren. Stationären Objekten wie zum Beispiel Wänden weicht er, sofern dies
+  möglich ist, aus. Erkennt er Personen in unmittelbarer Nähe landet er.
+
+  \textbf{RE-M 19 Zusammenbau des Multicopters}\\
+  Der ausgewählte Multicopter ist soweit zusammengebaut, dass er flugfähig ist.
+
+  \textbf{RE-M 20 Auswahl der Bauteil (Multicopter)}\\
+  Um einen flugfähigen Multicopter zu schaffen, bedarf es mehrerer Bauteile, diese sind ausgewählt
+  und bestellt. Dazu zählen unter anderem: Fernbedienung, Gestell, Motoren, Rotorblätter,
+  FlightController, Akkus.
+
+  \textbf{RE-M 21 Auswahl der Bauteile (Elektronik)}\\
+  Die Sensoren für einen autonomen Flug des Multicopters sind anhand des Sensorkonzepts
+  ausgewählt. Weiters ist ein Mikrocontroller ausgewählt, der die Steuerung des Multicopters
+  übernimmt.
+
+  \textbf{RE-M 22 Blog Team Nutzerkontos}\\
+  Für jedes Teammitglied ist ein Benutzerkonto angelegt, damit individuell Blogeinträge
+  verfasst werden können. Zusätzlich zu Namen, kann ein Benutzername, eine e-Mail Adresse
+  als Kontaktmöglichkeit und eine "Lieblingsfarbe" angegeben werden.
+
+  \textbf{RE-M 23 Blog Login}\\
+  Jedes Teammitglied kann sich mit dem individuell angelegten Benutzerkonto anmelden,
+  um Blogeinträge zu verfassen. Nur angemeldeten Benutzern ist es möglich Blogeinträge zu
+  verfassen.
+
+  \textbf{RE-M 24 Blog Responsive Design}\\
+  Bei Verwendung von kleinen Geräten, wie Smartphones oder Tablets verändert sich die
+  Anordnung und Darstellung einzelner Elemente so, dass eine gute Usability auch bei mobilder
+  Nutzung des Blogs gewährleistet ist.
+
+  \subsection{Optionale Ziele}
+  \textbf{RE-O 01 Speisen verwalten}\\
+  Der Adminscreen beinhaltet die Funktion Speisen hinzuzufügen und zu löschen.
+
+  \textbf{RE-O 02 Kategorien}\\
+  Bevor der Gast auf den Screen mit den einzelnen Speisen verwiesen worden ist, muss er
+  eine Kategorie auswählen, in der die dazugehörigen Speisen gesammelt sind. Anschließend
+  sind die Speisen, welche in die ausgewählte Kategorie gehören, aufgelistet.
+
+  \textbf{RE-O 03 Farbcodes für Tische}\\
+  Der Admin hat die Möglichkeit den Tischnummern Farbcodes zuzuteilen. Anhand der
+  Farbcodes findet der Multicopter die einzelnen Tische.
+
+  \textbf{RE-O 04 Platinenanfertigung}\\
+  Die Platinen für die Kommunikation zwischen dem Multicopter, der
+  Basis und den Zwischenstationen werden angefertigt und bestückt.
+
+  \textbf{RE-O 05 Sensorik (Hardware)}\\
+  Das Positionierungssystem erfordert Sensoren, damit der Multicopter weiß, wo er
+  ist, beziehungsweise wo er landen soll. Diese Sensoren sind an dem Multicopter
+  mittels Halterungen befestigt.
+
+  \textbf{RE-O 06 Objekttransport - Einfache Transportplatte}\\
+  Die Haltevorrichtung ist an dem Multicopter montiert, um ein Objekt transportieren zu können.
+  Das Objekt wird auf dem Multicopter platziert und bis zu dem Gast transportiert.
+  Die Haltevorrichtung ist möglichst einfach aufgebaut, um Gewicht zu sparen.
+
+  \textbf{RE-O 07 System aufsetzen}\\
+  Die einzelnen Komponenten des Multicopters sind miteinander verbunden und er ist
+  durch eine manuelle Steuerung flugfähig. Die Entwicklungsumgebung für die
+  Programmierung der Software und somit der automatischen Steuerung ist installiert.
+
+  \textbf{RE-O 08 Kommunikation}\\
+  Der Multicopter ist mit den ausgewählten Sensoren verbunden. Er kann Befehle geben,
+  Informationen empfangen und diese verarbeiten.
+
+  \textbf{RE-O 09 Auswertung Serverdaten}\\
+  Der Multicopter empfängt die Tischinformation über Bluetooth/WLAN vom Server,
+  wertet diese aus und verarbeitet sie im Anschluss.
+
+  \textbf{RE-O 10 Grundfunktion Multicopter: Starten}\\
+  Steigen/Starten, wird durch höhere Drehzahlen erreicht.
+
+  \textbf{RE-O 11 Grundfunktion Multicopter: Landen}\\
+  Negative Steigung/Landen, wird durch niedrigere Drehzahlen erreicht.
+
+  \textbf{RE-O 12 Grundfunktion Multicopter: Rollen}\\
+  Wenn sich die rechten Propeller schneller als die linken drehen, neigt sichder
+  Multicopter nach links und fliegt in diese Richtung. Wenn sich die linken Propeller
+  schneller drehen, fliegt er nach rechts.
+
+  \textbf{RE-O 13 Grundfunktion Multicopter: Nicken}\\
+  Durch Neigung wird Vortrieb erzeugt. Beim Vorwärtsflug drehen sich die hinteren
+  Rotoren schneller, beim Rückwärtsflug die Vorderen.
+
+  \textbf{RE-O 14 Grundfunktion Multicopter: Gieren}\\
+  Der Multicopter dreht sich um seine eigene Hochachse, wenn die Drehzahlen der
+  Rotorenpaare unterschiedlich sind. Wenn sich die nach links drehenden Rotoren schneller
+  bewegen, dreht er sich nach links und umgekehrt nach rechts.
+
+  \textbf{RE-O 15 Blog Entryfilter}\\
+  Nutzer des Blogs haben die Möglichkeit sich Blogeinträge nach Autor oder nach
+  Art des Eintrags (Blogeintrag oder Entwicklertagebuch) sortieren zu lassen.
+
+  \textbf{RE-O 16 Blog Benutzerkonto bearbeiten}\\
+  Es gibt die Möglichkeit für die Teammitglieder Informationen wie Benutzername,
+  Farbe oder E-Mail Adresse im Nachhinein zu ändern.
+
+  \textbf{RE-O 17 Blog Statistiken}\\
+  Auf dem Dashboard des Blogs sind Informationen, wie zum Beispiel die Anzahl der
+  verfassten Blogs, zu sehen. Loggt sich ein Teammitglied ein, sieht es diese Werte
+  noch einmal auf die eigenen Blogs bezogen.
+
+  \textbf{RE-O 18 Datenverkehr mit Multicopter}\\
+  Durch einen Klick auf den „Servierbutton“, der sich auf der Bestellliste des
+  Adminscreens neben jedem Eintrag befindet, bekommt der Multicopter die Tischinformation
+  des Gastes, um dessen Bestellung es sich handelt, drahtlos zugeschickt. Dies geschieht
+  entweder durch eine Datenübertragung von dem Gerät auf dem der Adminbereich geöffnet
+  ist an das Flugobjekt oder durch eine manuelle Eingabe der Tischinformation in eine
+  bereits existierende Anwendung, welche die Daten an den Multicopter schickt.
+
+  \subsection{Optionale Erweiterungen}
+
+  \subsection{Nicht-Ziele}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Projektmanagement-Methode}
+
+  \subsection{Kanban}
+
+  \subsection{Wasserfall}
+
+  \subsection{Scrum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teammanagement / Teambuilding}
+
+  \subsection{KaTeCos}
+
+  \subsection{Playground-Meetings}
+
+  \subsection{Sonstiges}

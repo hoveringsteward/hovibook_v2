@@ -6,7 +6,6 @@
 *.fls
 *.out
 *.toc
-*.fmt
 
 ## Intermediate documents:
 *.dvi
@@ -14,7 +13,7 @@
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
-# *.pdf
+*.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -33,6 +32,7 @@
 *.pdfsync
 
 ## Auxiliary and intermediate files from other packages:
+
 # algorithms
 *.alg
 *.loa
@@ -47,9 +47,6 @@ acs-*.bib
 *.nav
 *.snm
 *.vrb
-
-# cprotect
-*.cpt
 
 #(e)ledmac/(e)ledpar
 *.end
@@ -96,8 +93,7 @@ acs-*.bib
 # minitoc
 *.maf
 *.mtc
-*.mtc[0-9]
-*.mtc[1-9][0-9]
+*.mtc0
 
 # minted
 _minted*
@@ -105,9 +101,6 @@ _minted*
 
 # morewrites
 *.mw
-
-# mylatexformat
-*.fmt
 
 # nomencl
 *.nlo
@@ -122,38 +115,18 @@ _minted*
 *.sympy
 sympy-plots-for-*.tex/
 
-# pdfcomment
-*.upa
-*.upb
-
-#pythontex
-*.pytxcode
-pythontex-files-*/
-
-# Texpad
-.texpadtmp
-
-# TikZ & PGF
-*.dpth
-*.md5
-*.auxlock
-
 # todonotes
 *.tdo
 
 # xindy
 *.xdy
 
-# xypic precompiled matrices
-*.xyc
-
 # WinEdt
 *.bak
 *.sav
 
-# endfloat
-*.ttt
-*.fff
 
-# Latexian
-TSWLatexianTemp*
+##Large filetypes (pictures etc)
+#*.jpg
+*.png
+*.bmp

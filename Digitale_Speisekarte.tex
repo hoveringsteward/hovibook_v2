@@ -1,0 +1,202 @@
+% !TEX root = diplomarbeit.tex
+\chapter{Digitale Speisekarte}
+\renewcommand{\kapitelautor}{Autor: Katharina Joksch}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Allgemeine technische Planung}
+
+  \subsection{Entwicklungsumgebungen}
+
+    \subsubsection{PhpStorm}
+
+    \subsubsection{Allgemeiner Code-Aufbau}
+
+	Die Webapplikation baut auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten. Sie baten neben optionalen Funktionalitäten wie Packabes und Plugins vor allem auch eine strukturierte Arbeitsumgebung.
+	In der anschließenden Grafik ist ist der allgemeine Aufbau der Webapplikation abgebildet. Die Hauptkomponente bildet das PHP-Framework Symfony, welches alle weiteren Engines miteinander verknüpft. In der Modelebene wurde mit dem Framework Doctrine und dem Datenbanksystem MySQL gearbeitet. In der View-Schicht kamen der Package Manager Bower, das CSS Framework Bootstrap 4 alpha, die Stylesheet-Sprache Sass, der TaskRunner Gulp, Ajax, jQuery, DOM und die Template Engine Twig zum Einsatz. Der Controller wurde auf der Basis von PHP programmiert. All diese Bibliotheken und Frameworks werden in den dazugehörigen Kapiteln genauer erläutert.
+	(Skizze folgt noch)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Backend}
+
+  \subsection{Technische Planung}
+
+    \subsubsection{MySQL}
+
+	MySQL ist ein relationales Datenbanksystem, welches sowohl als kommerzielle Enterpriseversion wie auch als Open-Source-Software verfügbar ist. MySQL basiert wie der Name bereits vermuten lässt auf der Datenbanksprache SQL(=Structured Quere Language), welche zur Definition von Datenstrukturen und zum Verwalten von darauf basierenden Datenbeständen zuständig ist. Es dient daher zur elektronischen Datenverwaltung und beruht auf einem tabellenbasierten Datenbankmodell.
+
+    \subsubsection{Apache HTTP Server}
+
+	Der Apache HTTP Server ist eine Open-Source-Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten.
+
+    \subsubsection{MAMP}
+
+	MAMP ist eine Distribution von LAMP, welches auf Linux-Basis entwickelt wurde. Es dient dazu dynamische Webseiten zur Verfügung zu stellen. MAMP ist auf das Betriebssystem Mac OS X angepasst. Das Package verwendet den Apache HTTP Server und das Datenbanksystem MySQL. Außerdem basieren sie auf der Programmiersprache PHP. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepackets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt.
+
+    \subsubsection{Doctrine}
+
+	Doctrine ist ein Framework, welches dabei hilft ein objektrelationales Abbild zu erschaffen. Bei objektrelationalen Abbildungen werden Tabellen wie Klassen und Tabellenzeilen wie Objekte behandelt. Das vereinfacht den Zugriff auf verschiedene Datenbanken im Vergleich zu dem Zugriff mittels Plain PHP um ein Vielfaches.
+
+    \subsubsection{Symfony}
+
+	Da Frameworks, welche auf dem Model-View-Controller Schema beruhen, den Arbeitsaufwand erleichtern und dafür sorgen, dass während dem Programmieren eine ordentliche Struktur im Code beibehalten wird, wurde eines als Grundgerüst für die Entwicklung der Applikation verwendet. Nachdem eine Speisekarte viele Informationen enthält, welche in einer Datenbank verwaltet werden sollten, wurde ein PHP-Framework gewählt, welches den Zugriff darauf objektrelational regelt.
+	Symfony ist ein Open Source Web Application Framework, welches sowohl das Model-View-Controller Schema nützt als auch den Datenbankzugriff mittels einem objektrelationalen Abbild regelt, weshalb es die ideale Wahl für die Umsetzung der digitalen Speisekarte und des Adminbereichs ist. Wie bereits erwähnt, ergibt sich durch die Einteilung in Model, View und Controller während dem Entwicklungsprozess eine strukturierte Ordnung im Code. In der Model Schicht, welche die darzustellenden Daten zur Verfügung stellt, empfiehlt es sich in der Kombination mit Symfony Doctrine zu verwenden. Die View-Ebene ist für die visuelle Darstellung der Applikation zuständig. Für die  Darstellung werden meistens Templates miteinbezogen. Symfony unterstützt hierbei die Template Engine Twig auf welche im Kapitel „Frontend“ noch genauer eingegangen wird.
+	Der Controller verwaltet die Darstellung der Applikation und nimmt von ihr Benutzeraktionen entgegen, wertet diese aus und behandelt sie entsprechend. Außerdem fungiert der Controller als Schnittstelle zwischen Model und View, was bedeutet, dass er die Daten von der einen Schicht zur anderen weiterleitet.
+
+    \subsubsection{ER-Modell}
+
+	Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können.
+	(Bild von ERM folgt noch)
+
+  \subsection{Umsetzung}
+
+    \subsubsection{Framework einrichten}
+
+	Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer installiert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in den Terminal bewerkstelligt:
+	(Code)
+	Anschließend wurde ein Projekt angelegt. Dafür wurde in das Zielverzeichnis gewechselt. Um das Projekt im Anschluss über den Apache Server aufrufen zu können, empfiehlt es sich das Projekt direkt im „htdocs“-Ordner der jeweiligen LAMP Distribution abzuspeichern. Damit das Projekt auf einem Mac OS X basierenden Gerät angelegt wurde, musste der anschließende Befehl in den Terminal eingegeben werden:
+	(Code)
+	Der Befehl „lts“ legt fest, dass die neueste Version von Symfony verwendet wird.
+
+    \subsubsection{Seitenabrufbarkeit bewerkstelligen}
+
+	Um Seiten anzulegen, welche später im Browser angezeigt werden konnten, musste man im Controller folgende Schritte erledigen. Zuerst empfahl es sich Action Funktionen anzulegen. Diese wurden passend zu der jeweiligen Seite beziehungsweise zu den dementsprechenden Funktionalitäten benannt, welche im Anschluss angezeigt und ausgeführt wurden. Wenn auf der auszugebenden Seite mit einer Template Engine gearbeitet wurde, wurde als Rückgabewert der Methode der anschließende Code definiert:
+	(Code)
+	Die Funktion render() formt den Inhalt des Templates in einen Ausgabewert um, damit die Seite  ausgegeben werden kann.
+	Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funktion eine Annotation hinzugefügt. Diese wurde folgendermaßen angegeben:
+	(Code)
+	Damit die erstellte Seite anschließend mit MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:
+	(Code)
+
+
+    \subsubsection{Datenbankgenerierung}
+
+	Für die Generierung der Datenbank wurde die Variante „Code First“ verwendet, da diese die Möglichkeit bietet, im Nachhinein ohne großen Aufwand die Datenbank zu ändern.
+	Um die Datenbankeinträge zu erstellen, wurde zu Beginn eine PHP-Datei erstellt in welcher die Tabellen als Klassen und die Tabellenzeilen als Objekte angelegt wurden. Die Variablen wurden allesamt mit dem Zugriffsmodifikator „protected“ deklariert, damit nur Klassen, welche von dieser PHP-Datei erben, auf sie zugreifen können. Anschließend wurde oben in der Datei ein USE-Statement eingefügt, welches definiert, dass die Abkürzung „ORM“ in darauf folgender Verwendung besagt, dass es sich um die Generierung eines objektrelationalen Abbilds handelt.
+	(Code)
+	Statt dem Kürzel „ORM“ hätte auch ein beliebiges anderes Wort eingesetzt werden können, auf welches später zugegriffen werden könnte, allerdings ist diese Bezeichnung sehr zu empfehlen, da sie etwaige Verwirrungen vermeidet.
+	Um die Klassen später als Tabellen generieren lassen zu können, wurden Annotationen mit folgendem Schema darüber geschrieben:
+	(Code)
+	Damit die relationale Datenbank Objekte den richtigen Datentypen zuordnen konnte, wurden diese ebenfalls mit einer Anmerkung versehen. Da es bei Objekten zu unterscheiden gilt ob es sich um einen Primärschlüssel oder Fremdschlüssel handelt als auch ob es ein Texteintrag, Ganzzahleneintrag, Eintrag mit Kommastellen, Booleaneintrag oder gar ein Zeitstempel ist, gibt es hierbei verschiedene Varianten.
+	Um eine ID als Primare Key zu definieren wurde folgende Annotation verwendet:
+	(Code)
+	Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
+	Bei einem Eintrag mit Kommazahlen musste der Spaltentyp einfach nur auf „float“ eingestellt werden. Für einen Booleaneintrag wurde zwar als Anmerkung der Typ „boolean“ definiert, jedoch ändert das Datenbanksystem MySQL diese Annotation automatisch in das Datenformat „tinyint“.
+	Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Länge definiert werden:
+	(Code)
+	Damit man einen Zeitstempel erstellen kann, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, musste die folgende Anmerkung hinzugefügt werden:
+	(Code)
+	Mithilfe von „nullable=false“ wurde festgelegt, dass der Zeitstempel niemals ein null-Wert sein darf.
+	Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden:
+	(Code)
+	Damit eine ManyToOne beziehungsweise eine OneToMany Verbindung erstellt werden konnte, musste dies ebenfalls mithilfe von Anmerkungen festgelegt werden.
+	Auf der ManyToOne Seite sieht die Annotation dafür folgendermaßen aus:
+	(Code)
+	In der oberen Zeile musste angegeben werden, zwischen welchen Tabellen die Verbindung geschaffen werden soll. Als Zieleintrag gibt man hierbei die Bezeichnung der Tabelle auf der Seite der OneToMany Verbindung an und als Kehrwerteintrag den Namen der Tabelle, welche der anderen Seite viele Einträge zur Verfügung stellt.
+	Um die andere Seite der Verbindung zu generieren, wurde folgende Anmerkung verwendet:
+	(Code)
+	Hierbei mussten nur die Namen der Tabellen angegeben werden, welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, musste dafür eine ArrayCollection konstruiert werden:
+	(Code)
+	Damit im Anschluss im Controller auf die Daten zugegriffen werden konnte, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden. Diese konnte man sich ganz einfach mit einem Rechtsklick über die Menüpunkte „Generate…“ und „Getters and Setters…“ automatisch erstellen lassen.
+	Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das PHPMyAdmin-Interface erstellt werden. Darauf folgend musste in der „config.yml“-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, folgendes festgelegt sein:
+	(Code)
+	Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen wurden, mussten in der „parameter.yml“-Datei mit Werten deklariert werden:
+	(Code)
+	Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
+	Anschließend konnte bereits über den Terminal die Datenbank mit den Tabellen, welche zuvor in der PHP-Datei generiert wurden, in MySQL erstellt werden:
+	(Code)
+	Um zukünftige Änderungen in der Datenbank von der PHP-Datei zu übernehmen, musste anschließend nur noch folgender Befehl in die Konsole eingegeben werden:
+	(Code)
+	Mit diesen Schritten wurde die Datenbank erfolgreich generiert.
+
+    \subsubsection{Datenzugriff}
+
+	Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden:
+	(Code)
+	Mithilfe der Befehle „findAll()“, „findAllByTABELLENSPALTE(WERT“ und „findOneByTABELLENSPALTE(WERT)“ konnten die benötigten Werte aufgerufen werden.
+	Diese Werte konnten anschließend, einfach in der render-funktion, welche die auszugebende Seite generiert, in einem Array mitgegeben werden, damit sie im Nachhinein im Frontend angezeigt werden konnten:
+	(Code)
+	Um Operationen in der Datenbank vorzunehmen, wurde folgendermaßen vorgegangen:
+	(Code)
+	Zuerst wurde ein Datenbankmanager erstellt. Anschließend konnte entweder mit „remove“ ein Datenbankeintrag gelöscht, mit „persist“ ein neuer Datenbankeintrag hinzugefügt oder mit „merge“ ein Datenbankeintrag upgedatet werden. Mit dem Befehl „flush()“ werden davor definierte Methoden ausgeführt beziehungsweise an die Datenbank geschickt.
+
+    \subsubsection{Formulargenerierung}
+
+	Um zu gewährleisten, dass der Controller die Interaktion eines Benutzers mit dem Formular wahrnimmt, musste dieses darin generiert werden. Mithilfe folgender Codezeilen konnte man die Erstellung des Formulars realisieren:
+	(Code)
+	Dank der Funktion „createFormBuilder()“, ist es möglich das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der „add()“ Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion „getForm()“ übergibt das Formular der Variable „FORMULAR_BEZEICHNUNG“.
+	Mittels der Funktion „handleRequest()“ konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, kann man in einer IF-Abfrage die Boolean Funktionen „isSubmitted()“ und „isValid()“ verwenden:
+	(Code)
+	Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
+	Damit das Formular im Frontend angezeigt werden konnte, wurde das Formular in der „render“-Funktion des Return-Statements im Array mitgeliefert:
+	(Code)
+	Damit das Formular visuell dargestellt werden konnte, wurde noch die Funktion „createView()“ an die Formularvariable gehängt.
+	Mithilfe dieser Variante wurden der Speiseverwaltungsscreen, der Farbcodeverwaltungsscreen und die Anmeldescreens des Admins erstellt.
+
+
+  \subsection{Herausforderungen und Lösungen}
+
+	(Text folgt noch(Zeitzonenerror, Symfony Cache löschen, MAMP Zugriffsverweigerung))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Frontend}
+
+  \subsection{Technische Planung}
+
+    \subsubsection{Bower}
+
+	Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwaltungstool Bower verwendet, welches ein Kommandozeilenprogramm ist und daher über den Terminal gesteuert wird.
+
+    \subsubsection{Bootstrap}
+
+	Zur Umsetzung der Screendesigns wurde mit dem freien CSS–Framework Bootstrap gearbeitet. Es liefert Gestaltungsvorlagen für Typografie, Formulare, Buttons, Tabellen, Navigationsleisten und andere Oberflächengestaltungselemente sowie zusätzliche JavaScript-Erweiterungen.
+
+    \subsubsection{Sass}
+
+	Damit die Designelemente von Bootstrap vereinfacht angepasst werden konnten, wurde die Stylesheet-Sprache Sass(Syntactically Awesome Stylesheets) verwendet. Sass erleichtert als Preprozessor die Erzeugung von CSS(Cascading Style Sheets).
+
+    \subsubsection{Gulp}
+
+	Zum kompilieren der Sass Dateien wurde der TaskRunner Gulp verwendet, welcher als build system die Automatisierung routinemäßiger Aufgaben beim Erstellen von Webapplikationen. Dies hilft dabei den Fokus während dem Arbeiten an einer Webseite auf die wesentlichen Aufgaben zu legen. Neben dem kompilieren von Sass und Less, können mithilfe von Gulp auch CSS Dateien zusammengefasst und minimiert werden. Davon wurde im Zuge der Diplomarbeit ebenfalls profitiert.
+
+    \subsubsection{Twig}
+
+	Um Variablen vom Controller ohne Umwege im Frontend aufrufen zu können empfahl es sich die Template Engine Twig zu verwenden, welche seit dem Jahr 2009 einen festen Bestandteil des Symfony-Frameworks ausmacht. Neben den typischen Template Engine Funktionalitäten wie beispielsweise dem Erben von einem Layout, bietet Twig auch die Möglichkeit Schleifen zu generieren, welche es vereinfachen Datenbanktabellen zu iterieren. Außerdem kann man mithilfe von Twig auch auf Pfade von Controllerfunktionen verweisen und diesen Variablen mitschicken, welche anschließend darin verwaltet werden können.
+
+    \subsubsection{jQuery}
+
+	JQuery ist eine JavaScript Bibliothek, die häufig vorkommende Problemstellungen in Javascript in Methoden, welche in wenigen Codezeilen aufgerufen werden können, verpackt. Diese Methoden beschäftigen sich beispielsweise mit Ajax-Requests, der Handhabung von eintreffenden Events und der Manipulation von DOM-Elementen.
+
+    \subsubsection{DOM}
+
+	DOM(Document Object Model Elementen) bietet die Möglichkeit XML- und HTML-Dokumente in einem bestimmten Format darzustellen. Es definiert eine Programmierschnittstelle damit auf Objekte des DOM-Baums zugegriffen werden kann, um diese anschließend zu bearbeiten.
+
+    \subsubsection{Ajax}
+
+	Ajax(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen.
+
+    \subsubsection{Screen Mockups und Designkonzept}
+
+	(Text und Bilder folgen noch)
+
+  \subsection{Umsetzung}
+
+    \subsubsection{Layout}
+
+	Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe dem Befehl „npm Einstall -g bower“ global über den Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete werden mithilfe dieses Managers in der Datei „bower.json“ dokumentiert, welche mit folgenden Kommandozeileneingaben generiert wurde:
+	(Code)
+	Nachdem Bower in dem Projektverzeichnis installiert wurde, konnten alle notwendigen Bibliotheken über den Terminal installiert werden. Außerdem wurden die Abhängigkeiten in der Bower-Datei festgelegt. Dies war vor allem für Bootstrap 4 alpha wichtig, da es sonst nicht möglich gewesen wäre die neueste Version zu verwenden. Die Bibliothek jQuery wurde automatisch mitinstalliert, da Bootstrap als Abhängigkeit definiert wurde. Für die Installation von Gulp wurden einige weitere Bibliotheken benötigt, welche mithilfe von Bower einfach heruntergeladen werden konnten.
+	(Text bzgl. Sass und Bootstrapvariablen folgt noch)
+	Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald man den Gulp-Befehl in den Terminal eingibt. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
+	(weiterer Text folgt noch)
+
+    \subsubsection{Datenausgabe}
+
+	(Text folgt noch)
+
+    \subsubsection{Formulargenerierung}
+
+	(Text folgt noch)
+
+  \subsection{Herausforderungen und Lösungen}
+
+	(Text folgt noch)

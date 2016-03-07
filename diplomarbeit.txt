@@ -1,0 +1,984 @@
+Höhere Technische Bundeslehranstalt Wien 3, Rennweg IT & Mechatronik HTL Rennweg :: Rennweg 89b A-1030 Wien :: Tel +43 1 24215-10 :: Fax DW 18
+Diplomarbeit
+Hovering Steward
+ausgeführt an der Höheren Abteilung für Informationstechnologie/Ausbildungsschwerpunkt
+der Höheren Technischen Lehranstalt Wien 3 Rennweg
+im Schuljahr 2015/2016
+durch
+Christina Bornberg Katharina Joksch
+Markus Kaiser Alexander Punz
+Lucas Ullrich
+unter der Anleitung von Mag. Andreas Fink DI Herbert Fleck
+Wien, 29. Februar 2016
+
+Kurzfassung
+Darum geht es. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem.
+Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque. Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis. Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan semper.
+iii
+
+Abstract
+Thats why ­ the translated text ,,Kurzfassung" (this should be an exact translation). Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem.
+Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque. Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis. Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan semper.
+v
+
+Ehrenwörtliche Erklärung
+Ich versichere, · dass ich meinen Anteil an dieser Diplomarbeit selbstständig verfasst habe, · dass ich keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe · und mich auch sonst keiner unerlaubten Hilfe bzw. Hilfsmittel bedient habe. Wien, am 29. Februar 2016
+Markus Kaiser
+Lucas Ullrich
+Christina Bornberg
+Katharina Joksch
+Alexander Punz
+vii
+
+Präambel
+Die Inhalte dieser Diplomarbeit entsprechen den Qualitätsnormen für ,,Ingenieurprojekte" gemäß § 29 der Verordnung des Bundesministers für Unterricht und kulturelle Angelegenheiten über die Reife- und Diplomprüfung in den berufsbildenden höheren Schulen, BGBl. Nr. 847/1992, in der Fassung der Verordnungen BGBl. Nr. 269/1993, Nr. 467/1996 und BGBl. II Nr. 123/97.
+Liste der betreuenden Lehrer: Mag. Andreas Fink DI Herbert Fleck DI August Hörandl DI Fran Temper MMag. Florian Weiss
+Liste der Kooperationspartner: GRZ IT Center GmbH OFI Technologie & Innovation GmbH DI Dr. Michael Pyerin EVO-tech GmbH
+ix
+
+Inhaltsverzeichnis
+
+Inhaltsverzeichnis
+
+1. Einleitung 1.1. Projektidee . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.2. Ausgangssituation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.2.1. Ideenfindung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.2.2. Was es schon gibt . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.2.3. Positionierungsverfahren . . . . . . . . . . . . . . . . . . . . . . . . . 1.3. Team . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.4. Betreuer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.5. Partner / Sponsoren . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.6. Danksagung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+1 1 1 1 1 1 1 1 1 1
+
+2. Projektmanagement 2.1. Ziele . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.1.1. Muss-Ziele . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.1.2. Optionale Ziele . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.1.3. Optionale Erweiterungen . . . . . . . . . . . . . . . . . . . . . . . . 2.1.4. Nicht-Ziele . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.2. Projektmanagement-Methode . . . . . . . . . . . . . . . . . . . . . . . . . . 2.2.1. Kanban . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.2.2. Wasserfall . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.2.3. Scrum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.3. Teammanagement / Teambuilding . . . . . . . . . . . . . . . . . . . . . . . 2.3.1. KaTeCos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.3.2. Playground-Meetings . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.3.3. Sonstiges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+3 3 3 3 3 3 3 3 3 3 3 3 3 3
+
+3. Marketing 3.1. Allgemein . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.1.1. Marktanalysen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.1.2. Marketing-Strategie . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.2. Blog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.2.3. Implementierung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.2.4. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 3.3. Social Media . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.3.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.3.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.3.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . .
+
+5 5 5 6 6 6 7 10 10 10 10 10 10
+
+xi
+
+Inhaltsverzeichnis
+
+3.4. Wettbewerbe, Events, Präsentationen . . . . . . . . . . . . . . . . . . . . . 10 3.4.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 10 3.4.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+4. Digitale Speisekarte
+
+11
+
+4.1. Allgemeine technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+4.1.1. Entwicklungsumgebungen . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+4.2. Backend . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+4.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+4.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+4.2.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 12
+
+4.3. Frontend . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+4.3.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+4.3.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+5. Elektronik
+
+15
+
+5.1. Allgemeine technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+5.1.1. Benötigte Elemente . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+5.2. Blockschaltbild . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+
+5.2.1. Hauptplatine . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+
+5.2.2. WLAN-Modul . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+6. Sensoren
+
+21
+
+6.1. PIXY CMUcam5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+
+6.1.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+6.1.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+6.1.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 24
+
+6.2. Ultraschallsensor HC-SR04 . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+6.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+6.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+6.2.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 26
+
+7. Aktoren
+
+27
+
+7.1. Propeller, A E R und T . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+7.1.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+7.1.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+7.1.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 27
+
+8. Firmware
+
+29
+
+8.1. Allgemeine technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.1.1. Tischkonzept . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.1.2. Flussdiagramme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.1.3. Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.2. Navigation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+8.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+xii
+
+Inhaltsverzeichnis
+
+8.3. Objekterkennung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.3.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.3.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.3.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 31
+8.4. Sicherheit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.4.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.4.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.4.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 31
+8.5. Systemausfall . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.5.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.5.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31 8.5.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 31
+
+9. Kommunikation Applikation und Hexacopter
+
+33
+
+9.1. Allgemeine technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . 33
+
+9.2. Schnittstelle Hexacopter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+
+9.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+
+9.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+
+9.2.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 35
+
+9.3. Schnittstelle Applikation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+9.3.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+9.3.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+9.3.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 35
+
+10. Mechanik
+
+37
+
+10.1. Allgemeine technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . 37
+
+10.2. Halterung für Cupcakes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+10.2.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+10.2.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+10.2.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 40
+
+10.3. Rotorschutz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+
+10.3.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+
+10.3.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+
+10.3.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 44
+
+10.3.4. Implementierung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+
+10.4. Halterung Ultraschallsensor . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+
+10.4.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+
+10.4.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+
+10.4.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 47
+
+10.5. Halterung PIXY CMU cam5 . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+
+10.5.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+
+10.5.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+
+10.5.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 49
+
+10.5.4. Berechnungen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+
+10.6. Führung für Testflüge . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+
+10.6.1. Technische Planung . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+
+10.6.2. Umsetzung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+
+xiii
+
+Inhaltsverzeichnis
+
+10.6.3. Herausforderungen und Lösungen . . . . . . . . . . . . . . . . . . . . 52 10.7. Persönliche Erfahrungen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+
+A. Anhang 1
+
+55
+
+Glossar
+
+59
+
+xiv
+
+Tabellenverzeichnis
+Tabellenverzeichnis
+10.1. Befehle G Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+xv
+
+Abbildungsverzeichnis
+
+Abbildungsverzeichnis
+
+5.1. Flightcontroller DJI NAZA-M lite . . . . . . . . . . . . . . . . . . . . . . . 16 5.2. WLAN-Modul RN171 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16 5.3. Blockschaltbild der Hauptplatine . . . . . . . . . . . . . . . . . . . . . . . . 17 5.4. Die bestückte Hauptplatine . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 5.5. Die bestückte WLAN-Platine . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+6.1. PIXY CMUcam5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21 6.2. Erkennbare Objekttypen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21 6.3. Ausgang der SPI Schnittstelle . . . . . . . . . . . . . . . . . . . . . . . . . . 23 6.4. Ultraschallsensor HC-SR04 . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+9.1. RN171 Evaluation-Kit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+10.1. Maschinencode Erklärung . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.2. Einstellung für STL File . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.3. Position Cupcake . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.4. Halterung Cupcake . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.5. Berechnung des Winkels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.6. Gedrucktes Halterungssystem . . . . . . . . . . . . . . . . . . . . . . . . . . 10.7. Propellerschutz oben . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.8. Propellerschutz unten . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.9. Propellerschutz Unterteilung . . . . . . . . . . . . . . . . . . . . . . . . . . 10.10.Propellerschutz Klebestellen . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.11.Ultraschallsensorhalterung . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.12.Halterung PIXY Cam . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.13.Messung Winkel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.14.PIXY Cam Anschlussbuchse . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.15.Gleitbuchse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+37 38 39 40 41 41 42 43 44 44 46 48 49 50 51
+
+xvii
+
+1. Einleitung
+1. Einleitung
+1.1. Projektidee 1.2. Ausgangssituation
+1.2.1. Ideenfindung 1.2.2. Was es schon gibt 1.2.3. Positionierungsverfahren
+1.2.3.1. Welche Positionierungsverfahren gibt es? 1.2.3.2. Warum optisches Tracking
+1.3. Team 1.4. Betreuer 1.5. Partner / Sponsoren 1.6. Danksagung
+1
+
+2. Projektmanagement
+2. Projektmanagement
+2.1. Ziele
+2.1.1. Muss-Ziele 2.1.2. Optionale Ziele 2.1.3. Optionale Erweiterungen 2.1.4. Nicht-Ziele
+2.2. Projektmanagement-Methode
+2.2.1. Kanban 2.2.2. Wasserfall 2.2.3. Scrum
+2.3. Teammanagement / Teambuilding
+2.3.1. KaTeCos 2.3.2. Playground-Meetings 2.3.3. Sonstiges
+3
+
+3. Marketing
+
+3. Marketing
+3.1. Allgemein
+Im folgenden Kapitel wird beschrieben, mit welchen Mitteln und mit welcher Effektivität das Projekt Hovering Steward vermarktet worden ist. Unter Anderem werden zwei der wichtigsten Marktanalysen, aber auch Marketing-Strategien und deren Anwendung erläutert.
+3.1.1. Marktanalysen
+SWOT-Analyse Mithilfe der SWOT-Analyse wird der aktuelle Zustand eines Unternehmens, oder in unserem Fall Projektes, analysiert um anschließend eine von vier möglichen Strategien für den weiteren Verlauf des Unternehmens zu erarbeiten. Es werden Stärken, Schwächen, Möglichkeiten und Risiken evaluiert, wobei sich jeweils Stärken & Schwächen, und Möglichkeiten & Risiken gegenüberstehen. Die vier Begriffe auf englisch übersetzt Strengths, Weaknesses, Opportunities und Risks ergeben dadurch das Akronym SWOT.
+(BILD Analyse) Die vier Strategien:
+· SO-Strategie Die Stärken des Unternehmens werden hervorgehoben und mit den Möglichkeiten verknüpft. Macht ein Unternehmen beispielsweise hohe Umsätze in Industrieländern und hat genügend finanzielle Mittel, wird expandiert und ein neuer Standort in einem weiteren Industrieland aufgebaut.
+· ST-Strategie Auch hier werden die Stärken des Unternehmens genutzt, allerdings um bestehende Risiken einzuschränken oder zu entfernen. Besteht die Gefahr, dass die Konkurrenz einen höheren Marktanteil erlangt, kann das Unternehmen beispielsweise durch eine sehr gute Marketingabteilung neue Produkte herstellen, die dies verhindern.
+· WO-Strategie Hierbei wird versucht, die Schwächen eines Unternehmens als Chance zu sehen sich weiterzuentwickeln. Erzielt ein gewisses Produkt nicht die erwarteten Gewinne, können durch neue Lösungsansätze neue Erfahrungen gewonnen werden, die nach Erfolg auch auf andere Produkte angewendet werden können.
+· WT-Strategie Die Schwächen des Unternehmens werden näher betrachtet, um beim Versuch diese zu dezimieren, gleichzeitig Riskiken einzugrenzen. Diese Strategie kann sehr hilfreich sein, wenn das Unternehmen sich auf dem Markt schwer über Wasser halten kann.
+Portfolioanalyse nach Boston Consulting Group Die Definition laut "Boston Consulting Group"[7] beschreibt: "Das BCG-Portfolio erlaubt eine Bewertung strategisch relevanter Geschäftseinheiten auf Basis zukünftiger Gewinnchancen (Marktwachstum) und der gegenwärtigen Wettbewerbsposition (relativer Marktanteil)." Anders gesagt: Diese
+
+Autor: Markus Kaiser
+
+5
+
+3.2. BLOG
+Analyse hilft dabei Teile eines Unternehmens wie Produkte oder Dienstleistungen nach Kosten und Ertrag einzuschätzen und in vier Kategorien zu unterteilen.
+(BILD BCG-Matrix)
+· Die Cashcow ist ein Produkt des Unternehmens, welches sich bereits lange Zeit auf dem Markt hält und dadurch hohe Gewinne erziehlt. Durch die erarbeitete hohe Position auf dem Markt decken sich ihre Kosten durch den Gewinn selbst. Die Cashcow stellt zudem die Basis für die Weiterentwicklung anderer Produkte dar.
+· Der Superstar ist ein Produkt mit den besten Aussichten. Es erzielt bereits nach kurzer Zeit auf dem Markt hohe Gewinne. Um den Marktanteil zu halten, muss jedoch viel in dieses Produkt investiert werden. In der Regel geschieht dies durch die Überschüsse, die die Cashcow abwirft.
+· Ein Poor Dog ist ein weniger erfolgreiches Produkt. Da es nach hohen Investitionen und langer Zeit auf dem Markt keine nennenswerte Gewinne erbracht hat, ist es ratsam zu überlegen, ob weiter investiert, oder die Produktion gestoppt wird.
+· Als Questionmarks werden die Produkte bezeichnet, bei denen sich noch nicht eindeutig gezeigt hat, in welche Richtung sie sich entwickeln werden. Es steht offen ob sie zu einem Superstar, oder einem Poor Dog werden. Diese Tatsache macht es schwer zu entscheiden, ob weiter in sie investiert, oder das Produkt verkauft wird.
+3.1.2. Marketing-Strategie
+3.2. Blog
+Dieses Kapitel setzt sich mit dem Entwicklungsprozess, von technischer Planung bis Testphase des Blogs auseinander. Es werden technische Hintergründe wie verwendete Technologien, aber auch allgemeine Überlegungen wie der Einsatz eines bereits vorhandenen Content Management Systems behandelt.
+3.2.1. Technische Planung
+... Die technische Planung setzt sich aus folgenden Teilbereichen zusammen:
+· Eigenes und vorhandenes CMS
+· Server und Datenbank
+· Mockups
+· Frameworks
+3.2.1.1. Eigenes und vorhandenes CMS Der Blog fungiert als Content Management System, kurz CMS. Der Zweck eines Content Management Systems ist der, dass durch Trennung von Inhalt und Design eine sehr einfache Nutzung ermöglicht wird. Gewöhnliche Nutzer müssen keine besonderen Kenntnisse über das Bearbeiten oder Erstellen einer Website vorweisen, sondern können über einfache Eingabefelder Text, Bilder oder Videos auf dem Blog einbinden. ...
+6 Autor: Markus Kaiser
+
+3. Marketing
+3.2.1.2. Server und Datenbank
+Für die Speicherung der Nutzerdaten des Teams und . (Aufzählung von Alternativen und Begründung)
+3.2.1.3. Mockups
+Die Überlegungen bezüglich des Designs des Blogs unterschieden sich stark zwischen den ersten Entwürfen und der schlussendlich gewählten Variante.
+Die Wahl der Farben basierte ursprünglich auf einer Studie der deutschen Schriftstellerin Eva Heller, die mit ihrem Buch "Wie Farben wirken" analysierte, welche Farbtöne von einem Großteil der Menschen mit welcher Eigenschaft verbunden werden. Der Fokus von Hovering Steward lag darin, die zwei Begriffe "Hunger"[11] und "Appetit" möglichst gut zu vermitteln. Das Resultat war eine Kombination der Farben Braun, Gelb und Rosa assoziiert wurden. Den Blog mithilfe dieser Farbkombination zu gestalten erschien jedoch nicht passend, weswegen ein zweiter Ansatz notwendig war.
+Die Überlegung den Blog gleich wie die digitale Speisekarte zu gestalten führte dazu, Elemente, die an ein Restaurant erinnern einzubinden. Dies führte zu der Idee, einen Holztisch im Hintergrund abzubilden. Damit das Design trotzdem einen modernen Eindruck macht wurde für die Darstellung von Inhalten ein "Flat Design"[1] herangezogen. Das Flat Design zeichnet sich vor allem durch sehr vereinfache Gestaltung, grelle Farben und zweidimensionale Abbildungen aus. Es ist auf optimale Usability, also verständliche Nutzung ausgelegt.
+Das Endresultat war folgendes: (BILD VOM BLOG)
+3.2.1.4. Frameworks
+Für die Entwicklung des Blogs erschien der Einsatz eines Frameworks als sehr hilfreich. Das Framework sollte komplexe Methoden wie Datenbankzugriffe oder Formularvalidierungen vereinfacht zur Verfügung stellen. Eine Recherche brachte folgende Frameworks als Optionen:
+· Laravel
+· Symphony
+· CodeIgniter
+· CakePHP
+Die Wahl fiel letztlich auf CodeIgniter
+3.2.2. Umsetzung
+3.2.2.1. Frontend
+Das Frontend des Blogs setzt sich aus den drei Technologien HTML, Javascript und CSS zusammen.
+
+Autor: Markus Kaiser
+
+7
+
+3.2. BLOG
+3.2.2.2. Backend
+3.2.2.3. SEO
+Der Blog war unsere wichtigste Schnittstelle nach Außen, weswegen er im Internet leicht zu finden sein musste. Suchmaschinen wie Google oder Bing nutzen sogenannte Robots, kleine Programme die selbstständig das World Wide Web durchstöbern, um Websiten zu inspizieren und zu bewerten. Je besser die Bewertung, desto weiter oben lässt sich die Website in der Suchmaschine auffinden. Die Bewertung hängt von einer Vielzahl von Kriterien ab, von denen folgende bei der entwicklung des Blogs beachtet wurden:
+· Aufbau der Seite Die Grundstruktur eines HTML Dokuments besteht aus folgenden Tags: (BILD VON HTML BASIC STRUCTURE) Im <head> Bereich werden zum einen <meta> Tags angegeben, in denen allgemeine Informationen zur Website, wie Autor oder Keywords und Beschreibung gespeichert werden. Letztere zwei sind besonders wichtig, da sie dem Robot mitteilen, um was es auf der Seite geht. Der Robot achtet hierbei auch darauf, dass die Beschreibung nicht länger als 155 Zeichen lang ist und die Keywords eindeutig gewählt werden.
+Im <body>, also im eigentlichen Inhalt der Website legt der Robot zum einen sehr viel Wert Struktur. Beispielsweise muss die Verschachtelung der Tags stimmen, oder der <h1> Tag darf nur einmal pro Seite vorkommen. Zum anderen werden Inhalt und Code in Relation gesetzt. Wenn der Aufbau des HTML Dokuments riesig ist, in jedem Absatz jedoch nur ein Satz steht kennt sich der Robot nicht aus.
+· Responsive Design Das Smartphone ist mittlerweile ein ebenso beliebtes Gerät zum Surfen im Internet, wie der Computer. Damit auf dem kleinen Display alles gut lesbar muss die Website speziell gestaltet werden. Frameworks wie Bootsrap helfen bei diesem Vorhaben, indem mithilfe von vodefinierten CSS-Klassen die Elemente der Website so gestaltet werden, dass diese mit der Bilschirmgröße mitwachsen, sich verschieben oder ausgeblendet werden.
+· Interne und externe Links Bei Links werden sowohl Links, die auf die Website verweisen, als auch Links, die auf andere Seiten zeigen bewertet. Zeigen sehr viele externe Links auf eine Seite, interpretiert der Robot diese als geläufig und sie erhält eine höhere Wertung. In unserem Fall war die Kombination mit anderen sozialen Medien sehr hilfreich, da durch Veröffentlichungen auf diesen automatisch Links auf unseren Blog generiert werden. Links, die von der eigenen Seite auf andere verweisen stellen jedoch einen Nachteil dar, da der Robot dem Link folgen könnte, statt die eigene Seite weiter zu inspizieren. Möchte man dies verhindern, kann dem <a> Tag das Attribut rel="nofollow" hinzugefügt werden, um dem Robot zu sagen, dass er diesem Link nicht folgen soll.
+· Sitemap Die Sitemap ist ein Inhaltsverzeichnis der Website, z.B. in Form einer XML Datei. Die Sitemap hilft dem Robot, wenn er erst einmal auf einer Seite gelandet ist, zugehörige Seiten zu finden. Dadurch, dass in der Sitemap die zugehörigen Unterseiten einer Seite mittels URL angegeben werden, hat dies den selben Vorteil wie eine große Anzahl externer Links, die auf diese Unterseiten verweisen, nämlich dass Google diese schneller
+8 Autor: Markus Kaiser
+
+3. Marketing
+findet. Tools wie xml-sitemaps.com bieten an, eine Sitemap für die angegebene URL zu generieren. Hat der Robot die Seite vollständig untersucht, muss die Sitemap im Domain Root-Verzeichnis abgelegt werden. Zuletzt kann die URL zu dieser Sitemap bei Google registriert werden, um Google anzuweisen einen Robot über die Seite laufen zu lassen. Nach einigen Tagen sind die Ergebnisse direkt in der Google Suche sichtbar.
+· Browserkompatibilität Nicht jeder Browser stellt jede Seite gleich dar. Die Tags werden unterschiedlich, oder sogar garnicht verstanden. Wird dies nicht beachtet, wirkt sich das auf die Nutzerfreundlichkeit, und damit auch auf die Bewertung der Website aus. Um dies zu verhindern gibt es Tools wie zum Beispiel caniuse.com in denen genau verzeichnet ist, welcher Tag, oder welche CSS-Eigenschaft von welchem Browser, beziehungsweise welcher Browserversion unterstützt wird.
+· Ladezeit Der Robot bewertet ebenfalls die Ladezeit einer Website. Sie ergibt sich aus der Anzahl an Bildern, Videos oder eingebundenen Bibliotheken oder Schriftarten auf der Website. Speziell im Blog, war früh klar, dass viele Bilder geladen werden müssen. Den Upload auf eine niedrige Dateigröße einzuschränken hat zu Beginn nicht ausgereicht. Eine Javascript Bibliothek names yoxview hat es allerdings ermöglicht, die Bilder erst dann zu laden, wenn ein Nutzer auf einen Thumbnail klickt. Die Größe der Thumbnails betrugen bloß ein paar Kilobyte, wodurch die Ladezeit der Website bedeutend eingeschränkt werden konnte.
+· Barrierefreiheit Es gibt verschiedene Möglichkeiten eine Website so zu optimieren, dass auch körperlich eingeschränkte Nutzer sie selbstständig verwenden können.
+
+Autor: Markus Kaiser
+
+9
+
+3.3. SOCIAL MEDIA
+3.2.3. Implementierung
+3.2.3.1. Code-Beispiele 3.2.3.2. Testing
+3.2.4. Herausforderungen und Lösungen
+3.2.4.1. Sicherheit 3.2.4.2. Responsive Design
+3.3. Social Media
+3.3.1. Technische Planung
+3.3.1.1. Corporate Design 3.3.1.2. Corporate Identity
+3.3.2. Umsetzung
+3.3.2.1. Blogposts 3.3.2.2. Facebook 3.3.2.3. Twitter
+3.3.3. Herausforderungen und Lösungen
+3.3.3.1. Konsistenz zwischen den Netzwerken
+3.4. Wettbewerbe, Events, Präsentationen
+3.4.1. Technische Planung
+3.4.1.1. Präsentationsauftritt 3.4.1.2. Marketing-Artikel
+3.4.2. Umsetzung
+3.4.2.1. Jugend Innovativ 3.4.2.2. Jahr der Forschung 3.4.2.3. Bosch - Technik fürs Leben Preis 3.4.2.4. Accenture 3.4.2.5. Invasion der Drohnen 3.4.2.6. Tag der offenen Türe 3.4.2.7. European Conference on Educational Robotics
+10 Autor: Markus Kaiser
+
+4. Digitale Speisekarte
+
+4. Digitale Speisekarte
+4.1. Allgemeine technische Planung
+4.1.1. Entwicklungsumgebungen
+4.1.1.1. PhpStorm
+PhpStorm ist eine integrierte Entwicklungsumgebung für die Programmiersprache PHP, für welche man eine kostenpflichtige Lizenz zur Verwendung benötigt. Diese Entwicklungsumgebung wurde von JetBrains entwickelt und erschien erstmals 2009 auf dem Markt. Zu den besonderen Features von PhpStorm zählen Tools zur Kontrolle der Versionierung, Refaktorisierung, Code- und Syntax-Highlighting. Außerdem unterstützt es PHP-Unit, welches von Symfony verwendet wird und zum Testen von PHP-Skripten dient.
+4.1.1.2. Eclipse
+Eclipse, entwickelt von der Eclipse Foundation, ist ein Open Source Programmierwerkzeug. Ursprünglich wurde es als integrierte Entwicklungsumgebung für die Programmiersprache Java entwickelt, heutzutage wird es jedoch auch zur Bewältigung einiger anderer Entwicklungsaufgaben verwendet.
+evtl noch eine extra überschrift für arten von speisekarte also ipad oder iphone + qr code
+4.2. Backend
+4.2.1. Technische Planung
+4.2.1.1. MAMP und XAMPP
+auch zugriff auf mysql erklären
+4.2.1.2. Symfony
+Symfony ist ein Open Source Web Application Framework, welches das Model-ViewController-Schema nützt und den Datenbankzugriff mittels einem objektrelationalen Abbild regelt.
+Durch die Einteilung in Model, View und Controller, ergibt sich beim Entwickeln einer Web Applikation mithilfe von Symfony eine ordentliche Struktur. Beim Model kann man zur Speicherung der Objekte Doctrine verwenden, welches als Bibliothek zur objektrelationalen Abbildung dient. Die View-Ebene ist für die visuelle Darstellung der Applikation zuständig. Für die Darstellung werden meistens Templates miteinbezogen. Symfony unterstützt hierbei die Template Engine Twig. Der Controller verwaltet die visuellen Darstellungen der Applikation und nimmt von ihnen Benutzeraktionen entgegen, wertet diese aus und
+
+Autor: Katharina Joksch
+
+11
+
+4.3. FRONTEND
+behandelt sie entsprechend. Außerdem fungiert der Controller als Schnittstelle zwischen Modell und View, was bedeutet, dass er die Daten an die von der einen Schicht zur anderen weiterleitet.
+4.2.1.3. Doctrine Was ist Doctrine? bissl Codeschnipsel
+4.2.1.4. ER-Modell hier kommt dann ein Screenshot von ER-Modell hin + Erklärung pks und fks
+4.2.2. Umsetzung
+4.2.2.1. Framework einrichten Terminalbefehle + Erklärung
+4.2.2.2. Datenbankgenerierung Was ich in config.yml und param.yml eingegeben habe wie das schema meiner db mit code first durch doctrine ausschaut
+4.2.2.3. Datenzugriff zugriff mit controller
+4.2.3. Herausforderungen und Lösungen
+fk deklarierung symfony cache löschen
+4.3. Frontend
+4.3.1. Technische Planung
+4.3.1.1. Bootstrap was ist bootstrap? wieso bootstrap? durch klassen layout designen
+4.3.1.2. Sass was ist sass? sass mit bootstrap? durch ändern der klassenvariablen layout angepasst
+4.3.1.3. Gulp was ist gulp? wieso gulp und nicht grunt? -> weil gulp schneller
+4.3.1.4. Twig was macht twig? codeschnipsel?
+12 Autor: Katharina Joksch
+
+4. Digitale Speisekarte
+4.3.1.5. Screen Mockups bilder von screenmockups und weshalb schaun sie so aus, aspekte aus designerperspektve aufzählen -> usability
+4.3.2. Umsetzung
+4.3.2.1. Layout Bilder von entgültigen screens bissl was von sass und bootstrap bzw. gulp erklären -> terminal befehle (code nicht, da er eh auf der cd sein wird)
+4.3.2.2. Formulargenerierung controller und twig
+4.3.2.3. Datenausgabe twig daten holen von controller
+
+Autor: Katharina Joksch
+
+13
+
+5. Elektronik
+5. Elektronik
+5.1. Allgemeine technische Planung
+Für die Umsetzung eines autonomen Fluges sind diverse Sensoren sowie eine entsprechende Auswertung der gelieferten Daten notwendig. Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, aus diesen können schließlich die notwendigen Flugparameter ermittelt werden.
+5.1.1. Benötigte Elemente
+Eine eigens entwickelte Ansteuerung der einzelnen Rotoren gestaltet sich als sehr umfangreich, deshalb wird ein fertiger Flight-Controller verwendet. Das System selbst basiert auf einer Modulbauweise, so können einzelne Komponenten, je nach Bedarf, inkludiert oder exkludiert werden. Sämtliche Informationen werden über einen PIC-Mikrocontroller geleitet und über diesen ausgewertet.
+5.1.1.1. PIC Als zentrale Recheneinheit wird ein PIC18F46K22 verwendet. Dieser bietet ausreichend viel Speicherplatz und Pins für eine Testphase und kann mit einer Geschwindigkeit von bis zu 64 MHz intern getaktet werden. So ist keine aufwändige Oszillator-Schaltung notwendig und es ist eine vernünftig hohe Geschwindigkeit bei der Auswertung erzielbar.
+Der PIC ist dabei für die Auswertung der Kamera, des Ultraschallsensors, des Fernsteuerungsempfängers AR610 von Spektrum sowie dem WLAN-Modul zuständig. Je nach gewähltem Flugmodus steuert der PIC einen Multiplexer so an, dass ein autonomer oder manueller Flug möglich ist. Außerdem werden von ihm die Servo-Impulse für den Flightcontroller ausgegeben.
+5.1.1.2. DJI NAZA-M lite, Flamewheel F550 Der Flightcontroller NAZA-M lite von DJI ist ein bereits mit dem Flamewheel F550 ARF-Kit (Almost Ready to Fly) verkaufter Flugregler. Er ist dafür zuständig, dass die ankommenden Steuerimpulse namens Aileron, Elevator, Throttle und Rudder richtig verarbeitet werden. Dabei findet bereits eine automatische Regelung der Fluglage statt, der Hexacopter neigt sich also nicht z. B. über einen Winkel von 45°. Ebenso werden die einzelnen Rotoren bereits so angesteuert, dass hier kein externer Eingriff mehr notwendig ist.
+
+Autor: Lucas Ullrich
+
+15
+
+5.1. ALLGEMEINE TECHNISCHE PLANUNG
+Abbildung 5.1.: Flightcontroller DJI NAZA-M lite[5] 5.1.1.3. WLAN Das WLAN-Modul RN171 von welches von Microchip verkauft wird bietet die Schnittstelle zwischen Server und Hexacopter. Die Daten können entweder vom Server gesendet und vom PIC empfangen werden oder umgekehrt. Das WLAM-Modul wird mit einer UARTSchnittstelle betrieben. Für eine Kommunikation sind also nur 2 Leitungen notwendig. Es bietet die Möglichkeit über eine Anwendung wie TeraTerm oder HTerm eingestellt zu werden, zusätzlich wird aber auch ein Webinterface angeboten, dieses muss jedoch zuvor aktiviert werden.
+Abbildung 5.2.: WLAN-Modul RN171[10] Die Datenübertragung findet dabei für den Nutzer sehr unproblematisch dar. Einerseits sind konfigurierbare Pins vorhanden um die Verbindung zu steuern und zu überwachen, andererseits braucht man sich nicht mehr um das Verpacken der Datenpakete kümmern. 16 Autor: Lucas Ullrich
+
+5. Elektronik
+5.2. Blockschaltbild
+Die einzelnen Komponenten werden über den Mikrocontroller vereint. Sämtliche Berechnungen und Auswertung finden auf diesem statt und werden über diesen ausgegeben bzw. weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins angeschlossen.
+
+Abbildung 5.3.: Blockschaltbild der Hauptplatine
+
+Autor: Lucas Ullrich
+
+17
+
+5.2. BLOCKSCHALTBILD
+5.2.1. Hauptplatine
+Die Hauptplatine dient als zentrales Kommunikationselement. Auf dieser befindet sich der PIC welcher für sämtliche Berechnungen und Auswertungen zuständig ist. Um ein ausreichendes Maß an Kommunikationsfähigkeit zu ermöglichen befinden sich auf ihr folgende Anschlüsse: · +5 V Spannungsversorgung · Eingänge des Fernsteuerungsempfängers (5 Pins) · Ausgänge zum Flightcontroller (4 Pins) · Anschluss für den Ultraschallsensor · Anschluss für die PIXY CMUcam5 · Anschluss für das WLAN-Modul
+5.2.1.1. Technische Planung Das Hauptkriterium für die Hauptplatine war es alle notwendigen Komponenten für einen autonomen Flug zu enthalten. Wichtig waren hier vor allem die Kamera, der Ultraschallsensor sowie die Möglichkeit auf einen manuellen Flug zu wechseln.
+5.2.1.2. Umsetzung Für die Umsetzung wurden die einzelnen Komponenten entsprechend ihrer Funktion im Schalplan verbunden und aus diesem ein Platinen-Layout erstellt. Das Platinen-Layout wurde schließlich mit einem Fräsplotter auf das Rohmaterial übertragen.
+
+(a) Oberseite
+
+(b) Unterseite
+
+Abbildung 5.4.: Die bestückte Hauptplatine
+
+18 Autor: Lucas Ullrich
+
+5. Elektronik
+5.2.1.3. Herausforderungen und Lösungen Eine Herausforderung stellte die geringe Deckkraft des schwarzen Toners beim ätzen der Platine dar. Durch zu wenig Toner auf der Belichtungsvorlage sind angeätzte Masseflächen entstanden. Um dennoch eine ordentliche Platine zu haben wurde diese schließlich gefräst. Dies hat auch viel Arbeit beim Bohren der Löcher erspart.
+5.2.2. WLAN-Modul
+Das WLAN-Modul dient als Schnittstelle zwischen Hauptplatine und Server. Auf dieser Platine befinden sich das WLAN-Modul RN171 sowie ein Spannungsregler und Level-Shifter um eine Kompatibilität mit den anderen Komponenten zu gewährleisten.
+5.2.2.1. Technische Planung In der Planung war die Versorgungsspannung des WLAN-Modul das Hauptaugenmerk. Für den Betrieb sind 3,3 V notwendig, eine 5 V Toleranz ist nicht gegeben. Aufgrund der fehlenden Toleranz müssen alle Leitungen die zur Kommunikation dienen entweder auf 5 V angehoben oder auf 3,3 V abgesenkt werden, andernfalls kann es zu Datenverlust oder sogar einer Beschädigung eines Moduls kommen.
+5.2.2.2. Umsetzung Auch für diese Platine wurde ein Schaltplan und Layout erstellt. Anschließend wurde das Layout wieder mit einem Fräsplotter auf das Rohmaterial übertragen.
+
+(a) Oberseite
+
+(b) Unterseite
+
+Abbildung 5.5.: Die bestückte WLAN-Platine
+
+Autor: Lucas Ullrich
+
+19
+
+5.2. BLOCKSCHALTBILD 5.2.2.3. Herausforderungen und Lösungen Um eine funktionierende Kommunikation sicher stellen zu können, wurden mehrere LevelShifter in Richtung des Mikroprozessors sowie Spannungsteiler in Richtung des WLANModuls integriert. Diese Maßnahmen sorgen dafür, dass weder das WLAN-Modul beschädigt wird, noch Daten verloren gehen. Bei der Platinen-Fertigung wurde aufgrund der schlechten Deckkraft abermals auf den Fräsplotter zurückgegriffen.
+20 Autor: Lucas Ullrich
+
+6. Sensoren
+6. Sensoren
+6.1. PIXY CMUcam5
+Bei der PIXY CMUcam5 handelt es sich um ein Open Source Kameramodul, welches über eine Objekterkennung verfügt. Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkennen.
+
+Abbildung 6.1.: PIXY CMUcam5
+
+(a) Colorcode
+
+(b) Objekt
+
+Abbildung 6.2.: Erkennbare Objekttypen
+
+Autor: Lucas Ullrich
+
+21
+
+6.1. PIXY CMUCAM5
+6.1.1. Technische Planung
+6.1.1.1. Mögliche Verfahren zur Positionserkennung
+Hier muss grundsätzlich zwischen zwei Messmethoden unterschieden werden:
+· Absolute Positionsmessung Hier wird die Position von einem gleichbleibenden Punkt aus gemessen. Dabei ist ein konstanter Referenzpunkt wichtig. Verändert sich dieser oder kann die Distanz nicht genau gemessen werden ist die Messung unbrauchbar. Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an, diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung. Für die Triangulation können die unterschiedlichsten Signale verwendet werden, am gängigsten sind jedoch jene die mit elektromagnetischen Wellen arbeiten, z. B. WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten. Bei einer Messung derart schneller Signale muss ein hoher Aufwand betrieben werden um eine Messgenauigkeit von einigen cm zu erzielen. Eine weitere Herausforderung sind Mauern bzw. Hindernisse. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
+· Relative Positionsmessung Hier wird die Position von einem wechselnden Punkt aus gemessen. Um hier eine Positionierung im Raum ermöglichen zu können, ist es erforderlich immer zu einem bestimmten Punkt zu messen. Ein Wechsel dieses Punktes ist jedoch möglich, deshalb muss auch die Position der Punkte im Raum bekannt sein. Ist die Zielposition im Raum bekannt kann zu dieser hin navigiert werden. Auch hier muss wie bei einer absoluten Positionsmessung auf Hindernisse geachtet werden. Die zweite Alternative ist, dass eine bestimmte Route bekannt ist und sich das zu positionierende Objekt nur in einem bestimmten Bereich um diese Route bewegt. Wird bei der Positionierung der Route bereits auf Hindernisse geachtet müssen diese im Anschluss nicht mehr zwingend beachtet werden.
+6.1.2. Umsetzung
+Durch die PIXY CMUcam5 lässt sich eine relative Positionsmessung vergleichsweise einfach verwirklichen. Werden ein oder mehrere Objekte erkannt wird eine bestimmte Nummer (abhängig von der Farbe) sowie die Position am Bild und die Objektgröße übermittelt. Die Kamera arbeitet dabei mit einer Bildwiederholrate von 50 Hz, es ist also alle 20 ms eine Auswertung möglich.
+Die Kamera wird auf dem Hexacopter befestigt, mehrere Farbcodes kennzeichnen den Weg zu einem Tisch. Um an dieser Stelle eine Navigation zu erreichen wird der Hexacopter so gesteuert, dass er, abhängig von der Route, immer einen bestimmten Farbcode betrachtet, ist er über diesem sucht er den nächsten.
+6.1.2.1. SPI Schnittstelle
+Als Schnittstelle für die Kommunikation mit der Kamera wird eine SPI-Schnittstelle verwendet. Die Kamera selbst unterstützt unter anderem die seriellen Schnittstellen UART,
+22 Autor: Lucas Ullrich
+
+6. Sensoren
+I2C und SPI. Außerdem werden noch ein analoger und digitaler Output unterstütz, diese sind jedoch vergleichsweise beschränkt, da keine näheren Informationen zu dem Objekt übermittelt werden können sondern nur die Position bzw. ob überhaupt ein Objekt erkannt wurde.
+Die SPI-Schnittstelle ist bei der Kamera besonders ausfallsicher. Hier wird ein Synchronisationsbyte gefordert, wird dieses nicht erkannt, z. B. aufgrund eines Fehlers in der Datenübertragung, schickt die Kamera keine Daten.
+Überprüfen der SPI-Schnittstelle Um zu überprüfen ob die SPI-Schnittstelle auch korrekt arbeitet wird bei der ersten Inbetriebnahme der Output überprüft. Hierzu wird der Zustand der 3 Leitungen mit einem Oszilloskop betrachtet.
+· Taktleitung
+· Dateneingang (PIC)
+· Datenausgang (PIC)
+
+(a) Großer Zeitbereich
+
+(b) Kleiner Zeitbereich
+
+Abbildung 6.3.: Ausgang der SPI Schnittstelle
+
+Der Wert mit dem diese Überprüfung durchgeführt wird sollte möglichst variabel sein, hier wird 0xAA (1010 1010) verwendet. Wird dieser Wert nicht variabel angenommen kann es dazu kommen, dass fälschlicher Weise angenommen wird, dass die Übertragung korrekt ist. Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an.
+
+6.1.2.2. Erkennen und Auswerten eines Bildes Die Kamera schickt der Reihe nach die einzelnen Daten eines Objekts. Darunter ist auch eine Startbedingung welche ein neues Bild markiert. Mit den diversen Informationen zum Objekt ergeben sich folgende Daten:
+· Neues Bild 0xAA55
+· Objekt 0xAA55 oder Farbcode 0xAA56
+· Checksum
+
+Autor: Lucas Ullrich
+
+23
+
+6.1. PIXY CMUCAM5
+· Objektnummer
+· X-Position
+· Y-Position
+· Breite
+· Höhe
+· Drehwinkel, nur bei Farbcodes
+Dabei ist die Objektnummer von den im Objekt oder Farbcode vorkommenden Farben abhängig, zusätzlich ist zu beachten, dass sie oktal dargestellt wird. Ein übermittelter Wert von dezimal 10, also oktal 12, bedeutet, dass die Farben 1 und 2 erkannt wurden.
+Will man nun ein neues Bild finden muss man so lange nach 0xAA55 suchen bis man diese Daten gesendet bekommt. Anschließend gilt es noch festzustellen ob man einen Farbcode oder ein Objekt betrachtet, es muss also direkt darauf 0xAA56 oder nochmals 0xAA55 erkannt werden. Ist dies nicht der Fall, wurde kein neues Bild erkannt und man betrachtet ein normales Objekt.
+Betrachtet man nun die bis zum Erkennen eines neuen Bildes gesendeten Daten als gegenstandslos ergibt sich eine vergleichsweise einfache Schleife um ein Bild zu erkennen.
+1 while(frame == 0) { w = ExchangeSpiWord(PIXY_SYNC , DUMMY);
+3 if(lw == PIXY_FRAME_OBJ && w == PIXY_FRAME_OBJ) { frame = 1;
+5 obj_type = 0; a_color[c_obj].type = PIXY_FRAME_OBJ;
+7 } else if(lw == PIXY_FRAME_OBJ && w == PIXY_COLORCODE) { frame = 1;
+9 obj_type = 1; a_color[c_obj].type = PIXY_COLORCODE;
+11 } else if ( w == 0 && lw == 0){ frame = 0;
+13 } lw = w;
+15 c ++; if(c > 254) {
+17 return 0; // **** Error , end of function }
+19 }
+Um nicht ewig in dieser Schleife fest zu hängen, wenn kein Bild erkannt wird und einen Fehler auslösen zu können wird die gesamte Funktion der Bildauswertung nach 255 Versuchen verlassen.
+Die weiteren Werte eines Objekts werden der Reihe nach in einer Struktur abgespeichert, hier ist nichts Besonderes mehr zu beachten.
+6.1.3. Herausforderungen und Lösungen
+Besonders das Beispielprogramm[4] für eine Bildauswertung stellte einige Herausforderungen dar. Hier sind unterschiedliche Codeschnippsel in einem großen Beispiel zusammengefasst. Das ist besonders bei durch die ähnlichen Funktionen des Codes schwer auseinander zu
+24 Autor: Lucas Ullrich
+
+6. Sensoren
+halten. So steht eine Funktion für die Erkennung eines neuen Bildes, diese zählt aber nur Bilder pro Sekunde, eine andere ist dann für die gesamte Auswertung und sucht dafür erneut nach einem Bild.
+Diese Zusammenhänge konnten durch einige Überlegungen erkannt werden und darauffolgend die eigene Firmware geschrieben werden.
+Ein weiteres Problem stellt die Empfindlichkeit der Kamera bei wechselnden Lichtverhältnissen dar. Da diese über die Farbsignatur eines Objektes arbeitet werden bereits sehr kleine Differenzen unterschieden um verschiedene Objekte erkennen zu können bzw. keine Störungen durch den Hintergrund zu erhalten. Dies wird jedoch ebenso in der anderen Richtung zu einem Problem. Wechselt das Licht ein wenig kann ein Farbcode oft nicht mehr zuverlässig erkannt werden und die Kamera muss über einen Computer nachkalibriert werden. Eine mögliche Lösung ist das konstante Beleuchten der Farbcodes mit einer sehr bestimmten Leuchtstärke, hier kann es leicht zu Überbelichtungen kommen, besonders bei dunklen Verhältnissen, als auch die Umrüstung auf einen Infrarot-Kit. Bei einem Infrarot-Kit fällt jedoch die Individualität jedes einzelnen Markers weg.
+6.2. Ultraschallsensor HC-SR04
+Der Ultraschallsensor HC-SR04 ist ein für Arduino entwickeltes Modul um Abstände zu messen. Die Messung geschieht durch das Aussenden von Ultraschallimpulsen, die Messgröße wird dabei als laufzeitabhängiger Impuls retourniert.
+
+Abbildung 6.4.: Ultraschallsensor HC-SR04
+6.2.1. Technische Planung
+Für die Steuerung des Hexacopter ist es notwendig die aktuelle Flughöhe zu wissen. Es ist mit einer bekannten Objektgröße und den von der Kamera vorliegenden Daten zwar möglich die aktuelle Flughöhe rechnerisch zu bestimmen, jedoch gestaltet sich dies sehr rechenaufwändig. Um die Höhe möglichst einfach messen zu können bietet sich daher eine vergleichsweise langsame Messung, wie jene mit einem Ultraschallsignal an. Bei einer Schallgeschwindigkeit von 343 m/s entstehen bei einer zu messenden Distanz von 2 m, Laufzeiten des Ultraschallsignals von ca. 12 ms (Distanz mal 2 da das Signal wieder zurückkehren muss).
+
+Autor: Lucas Ullrich
+
+25
+
+6.2. ULTRASCHALLSENSOR HC-SR04
+6.2.2. Umsetzung
+Abhängig von der mit dem Mikroprozessor ermittelten Laufzeit time_height lässt sich jederzeit die aktuelle Flughöhe bestimmen.
+v · t 343 m/s · time_height s(time_height) = =
+22 Die Höhe wird dabei in der main-Routine durch den Aufruf folgender Funktionen regelmäßig bestimmt:
+1 void StartHeightMeasure(void) { TMR5L = 0;
+3 TMR5H = 0; Trigger = 0;
+5}
+7 void ReadHeight(void) { while(TMR5GIF == 0);
+9 TMR5GIF = 0; time_height = 0;
+11 ti me_h eigh t = TMR5H ; time_height <<= 8;
+13 ti me_h eigh t |= TMR5L ; TMR5L = 0;
+15 TMR5H = 0; a_frame[0].height = time_height;
+17 a_frame_dif [0]. dif_height = a_frame [1]. height - a_frame [0]. height ; Trigger = 1;
+19 }
+In der ersten Funktion wird die Messung gestartet. Dazu wird ein Trigger-Signal an den Ultraschallsensor gesendet, dieser reagiert auf eine fallende Flanke. Zuvor wird darauf geachtet, dass die Register in denen die Zeit zurückgegeben wird auch wirklich leer (= 0) sind. In der zweiten Funktion folgt das Auslesen der vorhandenen Daten. Dazu werden die zwei 8-Bit Register in der 16-Bit Variable time_height abgespeichert. Zusätzlich wird die gemessene Höhe für die Auswertung in der a_f rame[0].height Variable abgespeichert und die Differenz zur vorhergehenden Messung ermittelt.
+Auf eine Berechnung der genauen Höhe in m wird zu Gunsten der Verarbeitungszeit verzichtet, auf die spätere Auswertung der Flugdaten hat dies keinen Einfluss.
+6.2.3. Herausforderungen und Lösungen
+to be continued after realtime measurements
+26 Autor: Lucas Ullrich
+
+7. Aktoren
+7. Aktoren
+7.1. Propeller, A E R und T
+Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert. Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von 20 ms gesendet. Die Information selbst liegt in den ersten 2 ms. Für den Impuls beträgt die Mittelstellung 1,5 ms, das Minimum 1 ms und das Maximum 2 ms. Das Signal folgt somit den Konventionen eines Servo-Impulses.
+OSZIBILD: min, max Impuls
+7.1.1. Technische Planung
+7.1.1.1. Steuerbefehle Der Hexacopter wird über 4 unterschiedliche Steuerbefehle gesteuert:
+· Aileron auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
+· Elevator auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
+· Rudder auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
+· Throttle reguliert die Höhe.
+Quelle: Technikblog[8] Ergänzung? (chrisy?)
+7.1.1.2. Propeller
+7.1.2. Umsetzung
+Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.
+7.1.3. Herausforderungen und Lösungen
+
+Autor: Christina Bornberg, Lucas Ullrich
+
+27
+
+8. Firmware
+
+8. Firmware
+8.1. Allgemeine technische Planung
+8.1.1. Tischkonzept 8.1.2. Flussdiagramme 8.1.3. Tools
+8.1.3.1. GitHub 8.1.3.2. MPLAB
+8.2. Navigation
+8.2.1. Technische Planung 8.2.2. Umsetzung
+8.2.2.1. Vergleichen der Frames Für den Vergleich des aktuellen mit dem letzten Frame, werden zwei Strukturen verwendet, die über folgende Mitglieder verfügt.
+· num ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
+· pos_x ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
+· pos_y ist die Y-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
+· height ist die, vom Ultraschall übergebene Höhe.
+· angle ist die Rotation des Colorcodes. Da er zweifarbig ist, kann die PIXY CMUcam5 die Rotation des Objektes feststellen.
+Quelle: TITEL FEHLT [2] Zuerst wird die ID des Colorcodes verglichen, um herauszufinden, ob das Farbobjekt das selbe wie im letzten Frame ist. Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und gespeichert. Diese werden bei den folgenden Funktionen verwendet, um zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
+
+Autor: Christina Bornberg, Lucas Ullrich
+
+29
+
+8.2. NAVIGATION
+8.2.2.2. Aileron, Elevator und Rudder anhand der Kameradaten
+Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden die Flugparameter verändert.
+Die PIXY CMUcam5 XXXXXX
+· Überprüfen von Aileron Die Überprüfung von Aileron bezieht sich auf die Beschleunigung nach Links und Rechts, was der x-Koordinate entspricht. Ziel der Funktion ist es, den Farbcode in die Mitte des Frames zu bekommen. Der Idealzustand befindet sich zwischen 150 und 170. Sollte dieser Zustand erreicht werden, bleibt der Wert von Aileron unverändert und der Hexacopter fliegt weiterhin mit einer unveränderten Beschleunigung an der x-Koordinate. Sollte dies nicht der Fall sein, muss der Wert auf einige Komponenten XXXXX überprüft werden. Wenn der Farbcode zu weit auf der rechten Seite liegt, das bedeutet, wenn der Wert des Mittelpunktes vom Farbobjekt höher als 170 ist, muss der Hexacopter nach rechts fliegen, um seine Position zu korrigieren. Dabei muss zuerst verglichen werden, ob sich der Hexacopter in die richtige Richtung bewegt. Sollte er in die falsche Richtung fliegen, wird der Aileron-Flugparameter gesenkt, dies setzt die Beschleunigung nach Rechts vorraus. Wenn die Beschleunigung nach rechts hoch genug ist und die Drohne tatsächlich nach rechts fliegt, wird die Geschwindigkeit überprüft. Die Geschwindigkeit wird durch die Differenz der x-Koordinate beider Strukturen herausgefunden. Die Einheit ist in diesem Fall
+· Überprüfen von Elevator Position der Farbobjekte (CHECK AILERON & ELEVATOR) Wenn ein Farbobjekt nicht im gewünschten Bereich plaziert ist, muss der Hexacopter weiter nach links oder weiter nach rechts fliegen.
+· Überprüfen von Rudder Rotation der Farbojekte (CHECK RUDDER) Wenn der Hexacopter über einem Farbobjekt fliegt, soll er kontrollieren, ob der 2-Farbige Code die richtige Rotation hat und sich im richtigen Bereich des Bildschirmes befindet. Wenn diese Informationen richtig sind, darf der Copter zum nächsten Farbobjekt fliegen. Durch dieses System könne die genauen Wege vorgegeben werden und können sich durch das gesamte Restaurant verteilen. Durch die Rotation der Codes können auch Kurven eingebaut werden. Richtung (CHECK RUDDER) Durch die Rotation der Colorcodes, kann der Hexacopter bestimmen, ob er den richtigen Weg und in die richtige Richtung fliegt, wenn er am Weg zurück zur Base ist, muss er den umgekehrten Colorcode verwenden. (Rotation 180Grad)
+8.2.2.3. Throttle anhand des Ultraschallsensors
+Starten und landen auf Landeplattformen (CHECK THROTTLE) Der Hexacopter startet und landet auf den mit ebenfalls mit Colorcodes gekennzeichneten Landeplattformen. Bei einem Fehler, besteht auch das Landen auf einem beliebigen Fleck
+Höhe korrigieren (CHECK THROTTLE) Höhenunterschied zwischen Tisch und Boden
+30 Autor: Christina Bornberg, Lucas Ullrich
+
+8. Firmware
+8.2.2.4. Speichern der alten Daten
+8.3. Objekterkennung
+8.3.1. Technische Planung 8.3.2. Umsetzung 8.3.3. Herausforderungen und Lösungen
+8.4. Sicherheit
+8.4.1. Technische Planung 8.4.2. Umsetzung 8.4.3. Herausforderungen und Lösungen
+8.5. Systemausfall
+8.5.1. Technische Planung 8.5.2. Umsetzung 8.5.3. Herausforderungen und Lösungen
+
+Autor: Christina Bornberg, Lucas Ullrich
+
+31
+
+9. Kommunikation Applikation und Hexacopter
+
+9. Kommunikation Applikation und Hexacopter
+Um zwischen dem Hexacopter und dem Server eine Verbindung herzustellen wird eine Kommunikationsschnittstelle benötigt. Diese muss Drahtlos arbeiten und einen größeren Bereich abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu zählen z. B. die Route, bzw. der Name des Gastes.
+9.1. Allgemeine technische Planung
+In der Planung wurde eine unkomplizierte und verlässliche Lösung für beide Kommunikationspartner gesucht. Da Bluetooth kaum noch standardmäßig verbaut wird hier wiederum Serverseitig eine externe Hardware benötigt, um dies zu vermeiden wurde WLAN ins Auge gefasst.
+WLAN stellte sich folglich als ideale Schnittstelle heraus, es gibt die Möglichkeit zu Handover in sehr großen Bereichen, es ist nach einmaligem Setup vergleichsweise unkompliziert und es bietet diverse Möglichkeiten um festzustellen ob die Verbindung noch aufrecht ist.
+9.2. Schnittstelle Hexacopter
+Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss über eine der Schnittstellen des Mikrocontrollers ansprechbar sein.
+9.2.1. Technische Planung
+Bei der Planung wurde darauf geachtet ein WLAN-Modul zu wählen welches bekannter maßen funktioniert bzw. ein entsprechender Support zur Verfügung steht. So fiel die Wahl auf das WLAN-Modul RN171, vertrieben durch Microchip, hergestellt von Roving Networks.
+Das gewählte WLAN-Modul wird über eine UART-Schnittstelle angesteuert und verfügt über einige frei konfigurierbare Pins, diese werden schließlich zum Überwachen der Verbindung verwendet.
+9.2.2. Umsetzung
+Bei der Umsetzung stand für die anfänglichen Tests ein Evaluation-Kit zur Verfügung. Dieses kann ohne weitere Hardware direkt über ein USB-Kabel mit einem PC verbunden werden. So ist es möglich die nötigen Konfigurationen des Moduls auszutesten bevor dieses in der Hardware implementiert wird.
+
+Autor: Katharina Joksch, Lucas Ullrich
+
+33
+
+9.2. SCHNITTSTELLE HEXACOPTER
+Abbildung 9.1.: RN171 Evaluation-Kit[9] Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host verbindet sind einige Schritte notwendig: · $$$ Öffnet den Commandmode, nun können die Einstellungen vorgenommen werden · set wlan ssid <network_name> Deklariert den Netzwerknamen · set wlan phrase <network_passphrase> Deklariert das Passwort mit dem das Netzwerk gesichert ist · set ip host <host_ip-address> Deklariert die IP-Adresse des Empfängers · set ip remote <host_portnumber> Deklariert den Port auf dem der Empfänger die Daten empfangen soll · set sys iofunc 0x70 Durch diese Einstellung kann das WLAN-Modul über die Pins gesteuert werden · set wlan join 1 Stellt das WLAN-Modul auf automatisches Verbinden mit dem angegebenen Netzwerk ein · set ip protocol 4 Stellt das WLAN-Modul auf eine TCP/IP-Verbindung ein bei der nur Daten vom gespeicherten Host akzeptiert werden · set uart baud <desired-baudrate> Stellt die Baudrate des WLAN-Moduls ein, Standard ist 9600 · save Speichert die Parameter in den Standardeinstellungen die nach einem Neustart geladen werden
+34 Autor: Katharina Joksch, Lucas Ullrich
+
+9. Kommunikation Applikation und Hexacopter
+· reboot Erzeugt einen Neustart bei dem die Standardeinstellungen geladen werden
+9.2.3. Herausforderungen und Lösungen
+Eine Herausforderung stellte die Frage dar wie genau die Verbindung hergstellt wird. Das Datenblatt des WLAN-Moduls mit über 100 Seiten bietet viele potentielle Möglichkeiten. Die erste Wahl fiel auf das Auslesen einer Website, auf den ersten Anblick funktionierte das auch, jedoch musste festgestellt werden, dass unabhängig von der Website sehr ähnliche Daten verarbeitet werden, jedoch nicht der eigentliche Inhalt der Website sondern Providerinformationen.
+Die zweite Wahl fiel auf eine TCP/IP Verbindung, lediglich die genaue Umsetzung dieser ließ viele Möglichkeiten offen. Einerseits besteht die Möglichkeit eine Verbindung direkt über die Eingabe "open" im Commandmode zu öffnen, andererseits jedoch auch über die Pins als auch automatische Timeouts.
+Aufgrund der Einfachheit und vollen Kontrolle viel die Wahl auf die Ansteuerung über die Pins. Dazu stehen 3 unterschiedliche Pins zur Verfügung:
+· Associated Mit einem Netzwerk verbunden
+· Open TCP connection Die Verbidnung zum Host herstellen
+· Connected Die Verbindung zum Host ist hergestellt
+9.3. Schnittstelle Applikation
+9.3.1. Technische Planung
+9.3.2. Umsetzung
+9.3.3. Herausforderungen und Lösungen
+
+Autor: Katharina Joksch, Lucas Ullrich
+
+35
+
+10. Mechanik
+10. Mechanik
+10.1. Allgemeine technische Planung
+10.1.0.1. Allgemeine Informationen über 3D Drucken Die Technologie des 3D Druckens hat in den letzten Jahren immer mehr an Popularität gewonnen. Mit Hilfe des 3D Druckers kann man fast alle vorstellbaren Formen anfertigen. Es gibt verschiedenste Verfahren wie man ein Werkstück anfertigen kann: Laser Sintern, Stereolithographie, Drucken mit flüssigen Materialien, etc. In diesem Projekt wird nur die Variante des Druckens mit flüssigen Material verwendet. Diese ist kostengünstig bzw. genau genug für die Teile. Wie der Name schon sagt, wird Material in einem Druckkopf geschmolzen und dann Schicht für Schicht auf der Druckplatte aufgetragen. Der Druckkopf fährt nur in X und Y Richtung, die Höhe wird mit der Druckplatte selbst verfahren.
+Meist werden Drucker über einen Maschinencode gesteuert, dem sogenannten ,,G-Code". In diesem Code werden die Punkte (Koordinaten) definiert, die der Extruder (Druckkopf) abfahren muss. Die folgende Abbildung zeigt ein Beispiel eines Maschinencodes.
+
+Abbildung 10.1.: Maschinencode Erklärung
+
+G1 X, Y E F
+
+Tabelle 10.1.: Befehle G Code Kontrollierte Bewegung Koordinaten in horizontaler und vertikaler Richtung Angabe der Menge des Filaments, dass in den Extruder geschoben werden muss Geschwindigkeit, mit der das Material in den Extruder geschoben wird (mm/min)
+
+Je nachdem wie der Drucker aufgebaut ist, werden die Produkte genau oder nur grob angefertigt. Sehr genaue Teile kann man am besten in einem Drucker produzieren, der einen geschlossenen Druckraum bzw. eine beheizte Druckplatte hat. Besonders an dünnen Platten merkt man das. Wenn der Druckraum nach bzw. während des Druckvorgangs warm ist, kühlt das Werkstück an jeder Stelle fast gleich ab. Ist der Druckraum offen, kühlt das Werkstück in der Mitte schneller ab, kühles Material zieht sich zusammen, daher biegt sich das Material auf.
+Es kann vorkommen, dass ein Teil nur so gedruckt werden kann, wenn es nicht komplett auf der Druckplatte aufliegt zum Beispiel ein Steg, der ,,in der Luft" liegt oder eine Bohrung
+
+Autor: Alexander Punz
+
+37
+
+10.1. ALLGEMEINE TECHNISCHE PLANUNG im Werkstück, die horizontal gedruckt werden muss. In solchen Fällen, druckt der Drucker unter diesem Steg Stützmaterial. Basierend auf diesem Stützmaterial, wird dann die gewünschte Form gedruckt. Das Stützmaterial ist so gefertigt, dass man es leicht von dieser abbrechen kann, ohne dass Rückstände zurück bleiben. 10.1.0.2. Materialeigenschaften 10.1.0.3. Von der Idee zur Anfertigung Die größte Hürde an der Realisierung einer Idee ist, eine CAD Zeichnung zu erstellen. In 3D CAD Programmen wie Creo, SolidWorks, etc. kann man ein Teil konstruieren und dann als STL (Standard Triangulation Language) File abspeichern. Dieses Format gibt dann nur mehr Informationen über die Oberfläche und Struktur an (siehe Abbildung 10.2). Die Sehnenhöhe gibt an wie genau die Oberfläche gedruckt werden muss, die Winkelsteuerung gibt die Genauigkeit der Radien und Kanten des Teiles an.
+Abbildung 10.2.: Einstellung für STL File Mit diesem File kann man anschließend in Programmen wie Slic3r den gewünschten Maschinencode generieren lassen. In diesen Programmen gibt man die Lage des Werkstückes an bzw. in genaueren Einstellungen auch die Temperatur des Druckbettes, den Geschwindigkeiten und ähnliche Konfigurationen. Am häufigsten haben die Drucker eine USB Schnittstelle, bzw. verfügen über einen SD Karten Slot. Der Maschinencode wird auf diesen Speichermedien gespeichert und einfach auf den Drucker überspielt.
+38 Autor: Alexander Punz
+
+10. Mechanik
+10.2. Halterung für Cupcakes
+10.2.1. Technische Planung
+Die Diplomarbeit hat sich speziell auf den Transport von Cupcakes spezialisiert, um diesen sicher transportieren zu können, ist es notwendig eine Halterung zu konzipieren. Zu beachten ist, dass die Halterung möglichst wenig wiegt bzw. leicht zu montieren ist.
+Der Akku wurde an der Unterseite des Hexacopters befestigt, daher war es nur mehr möglich die Halterung an der oberen Centerplate zu platzieren. Damit der Multicopter möglichst ausgewogen ist, muss sich das zu transportierende Objekt in der Mitte befinden. Die Idee war es daher, den Cupcake mit einer Halterung zu umranden, um ihn gegen Verrutsche zu sichern. Die Geometrie der Platte bzw. die Größe des Objektes hat die Befestigungsmöglichkeiten etwas eingeschränkt (siehe Abbildung 10.3). Die innere Reihe der Langlöcher würde sich optimal anbieten, um die Halterung befestigen zu können, die Cupcakeform kann so direkt von einer Haltevorrichtung gestützt werden.
+
+Abbildung 10.3.: Position Cupcake
+10.2.2. Umsetzung
+Wie schon in der technischen Planung erwähnt wurde, sollte der Cupcake von einer Haltevorrichtung umrandet werden. Die inneren Ausnehmungen der oberen Centerplate haben sich optimal angeboten, da diese direkt bis zur Form reichen.
+Es wurden Stützen konstruiert, die in den Ausnehmungen fixiert werden können und sich direkt an das Dessert anpassen. Die folgenden Abbildungen zeigen die konstruierten Halterungsstutzen und deren Befestigung.
+
+Autor: Alexander Punz
+
+39
+
+10.2. HALTERUNG FÜR CUPCAKES
+
+(a) Halterung Cupcake oben
+
+(b) Halterung Cupcake unten
+
+Abbildung 10.4.: Halterung Cupcake
+
+Die Stützen (siehe Abbildung 10.4(a)) wurden so entworfen, dass sie sich dem Radius bzw. der Höhe der Form des Cupcake anpassen. Die Höhe der Halterung wurde so gewählt, dass etwa die Hälfte der Cupcakeform frei liegt. Das soll vermeiden, dass man sich die Finger beim Entnehmen des Cupcakes an der Creme schmutzig macht.
+Die Halterung wird direkt an der Centerplate mit Durchgangsschrauben und Muttern festgeschraubt. Durch den Platzmangel mussten M4 Schrauben gewählt werden, da diese klein sind und trotzdem viel Beanspruchung aufnehmen können. Die Schlüsselweite einer M4 Mutter beträgt 7.0 mm, die Breite der Ausnehmung 6.5 mm, würde man die Schrauben direkt mit der Platte verschrauben, müsste man eine Beilagscheibe zwischenlegen, um eine größere Aufliegefläche für die Mutter zu erhalten.
+Es wurden spezielle Mutterhalter entworfen (siehe Abbildung 10.4(b)), diese bezwecken zwei Funktionen: Einerseits muss man die Muttern während man die Halterung montiert nicht mehr festhalten und andererseits kann man die Schraubenverbindung viel fester anziehen, da man die Platte nicht mehr beschädigen kann.
+Der Platz für die Stutzen entlang der Langlöcher ist nur so kurz, dass sich die Köpfe der Schrauben und die Muttern schneiden würden. Um dieses Problem zu beheben, wurden Höhenunterschiede zwischen den Schrauben eingeplant. Das macht die Halterungsstutzen kompakter und verhindert Kollisionen.
+
+10.2.3. Herausforderungen und Lösungen
+
+Die größte Herausforderung beim Konstruieren war es, die Halterung an die Form des Cupcakes anzupassen. Die Halterungsstützen sollen an die Rundung bzw. den Durchmesserverlauf der Cupcakeform angepasst werden. Um die richtige Form der Stützen konstruieren zu können, wurde erst der Winkel der Cupcakeform mit der folgenden Formel ermittelt:
+
+35mm - 25mm tan  =
+40mm
+
+35mm - 25mm
+
+ = arctan
+
+= 14,04°
+
+40mm
+
+Konstruiert wurde die Halterung mit einem Winkel von 15° um Ungenauigkeiten des
+
+Druckers besser kompensieren zu können.
+
+In der folgenden Abbildung kann man erkennen, dass manche Wände bei den Bohrungen
+
+zu dünn sind zu drucken, es entstehen dadurch Löcher. Dieses Problem könnte man nur
+
+40 Autor: Alexander Punz
+
+10. Mechanik
+Abbildung 10.5.: Berechnung des Winkels lösen, wenn man die Schrauben weiter nach außen legen würde, jedoch ist das in diesem Fall nicht möglich, da die Ausnehmungen zu kurz sind.
+Abbildung 10.6.: Gedrucktes Halterungssystem
+
+Autor: Alexander Punz
+
+41
+
+10.3. ROTORSCHUTZ
+10.3. Rotorschutz
+10.3.1. Technische Planung
+In dem gewählten Bausatz des Hexacopters ist kein Rotorschutz vorhanden. Da der Hexacopter direkt zu den Gästen fliegen wird, ist es nicht umgänglich, den Kontakt mit den Propellern zu verhindern. Diese können durch die hohen Drehzahlen und die Kraft der Motoren erhebliche Verletzungen zuführen. Es gibt diverse Vorrichtungen für Multicopter zu kaufen, die nur die Rotorblätter schützen, jedoch keine, die auch das Eingreifen einer Hand verhindern.
+Der Rotor-, oder auch Propellerschutz genannt, soll wie ein Ring um die Rotorblätter liegen und auch auf der Ober,- und Unterseite Schutz vor Verletzungen bieten. Zu beachten ist jedoch auch, dass sechs Schutzvorrichtungen benötigt werden, daher sollten diese so leicht wie möglich sein, um das maximale Abfluggewicht nicht zu überschreiten.
+10.3.2. Umsetzung
+Die folgenden Abbildungen zeigen den konstruierten Propellerschutz, an dem Hexacopter montiert.
+Abbildung 10.7.: Propellerschutz oben
+42 Autor: Alexander Punz
+
+10. Mechanik
+
+Abbildung 10.8.: Propellerschutz unten
+Wie geplant, umrandet der Ring das komplette Rotorblatt, im Falle eines Absturzes kann der Propeller nicht den Boden berühren und wird somit nicht beschädigt. Auf der Oberseite und Unterseite ist ein Gitter vorgesehen, welches Verletzungen an Personen verhindert. Das Gitter an der Oberseite ist etwas feiner gegliedert als an der Unterseite, da man den Cupcake von der oberen Centerplate entnehmen muss. An der Unterseite ist das Gitter nur gestreift konstruiert, da die Luftströmung nicht stark beeinflusst werden darf und die größere Verletzungsgefahr an der Oberseite besteht.
+Der komplette Rotorschutz wird einerseits mit zwei Schrauben am Hexacopter befestigt (siehe Abbildung 10.7) und andererseits von einer Stütze (siehe Abbildung 10.8, blauer Balken) an der Unterseite gehalten. Die Stütze wird direkt an dem Motor angeschraubt, samt dem Arm des Hexacopters. Da die Schrauben der Centerplate und des Motors zu kurz sind, werden passende Zylinderkopfschrauben verwendet. Besonders bei dem Motor ist es wichtig, dass diese nicht zu lang sind, da sich der Motor nicht mehr bewegen könnte.
+Durch die Gewichtsbegrenzung bzw. der Form des Propellerschutzes, bot es sich an, diesen in einem 3D Drucker anzufertigen. Dazu wurde der Ring in zwei Hälften unterteilt, eine Ober,- und eine Unterseite. Der Ring hat einen ungefähren Innendurchmesser von 270 mm, das Druckbett eine maximale Abmessung von 270x210 mm. Beide Hälften mussten noch in weitere, für den Drucker passende Teile unterteilt werden. Die obere Hälfte wurde noch einmal in der Mitte geteilt, die Unterseite musste in vier Teile unterteilt werden (siehe folgende Abbildung 10.9).
+
+Autor: Alexander Punz
+
+43
+
+10.3. ROTORSCHUTZ
+Abbildung 10.9.: Propellerschutz Unterteilung
+Abbildung 10.10.: Propellerschutz Klebestellen Die einzelnen Hälften werden mit Sekundenkleber zusammengefügt, die Klebestellen wurden daher mit Nuten versehen, um eine größere Klebefläche zu gewährleisten (siehe Abbildung 10.10). Die geklebten Hälften werden dann mit Durchgangsschrauben und Sechskantmutter miteinander verschraubt (siehe Abbildung 10.9), der kleine Absatz an der unteren Hälfte wird extra angefertigt da der Drucker kein Stützmaterial drucken müsste.
+10.3.3. Herausforderungen und Lösungen
+Eines der größten Probleme war es, den Rotorschutz so zu konstruieren, dass er stabil, aber auch sehr leicht ist. Im Falle eines Absturzes, würden hohe Kräfte auf den Propellerschutz wirken, daher muss dieser sehr robust gefertigt sein. Der Vorteil von ABS bzw. 3D Druckteilen ist, dass diese sehr elastisch sind, nicht wie Styropor zum Beispiel, es ist daher nicht notwendig den Ring dickwandig zu konstruieren. Durch diesen Vorteil kann man 44 Autor: Alexander Punz
+
+10. Mechanik
+einiges an Gewicht einsparen, das Problem besteht aber trotzdem noch darin, dass der Ring enorme Dimensionen hat. Eine komplette Zusammenstellung (Ring, Stütze und Schrauben) hat ein Gewicht von etwa 90 g. Auf sechs Propeller aufgerechnet mehr als ein halbes Kilogramm, der Hexacopter kann das zwar noch tragen, jedoch schränkt das die hardwaremäßige Erweiterung stark ein.
+Eine weitere Herausforderung war es, den Ring anzufertigen. Wie schon in dem oberen Punkt erklärt wurde, musste der Ring in sieben Teile unterteilt werden. Die Herausforderung lag darin, die Stücke so zu gliedern, damit sie im 3D Drucker fertigbar sind und nicht zu viel Druckzeit auf sich nehmen. Die Druckzeit wurde zwar schon optimiert durch die Gliederung, jedoch braucht es trotzdem noch etwa 14 Stunden alle Teile für einen Rotorschutz zu drucken.
+10.3.4. Implementierung
+Die einzelnen Teile wurden wie schon erwähnt, miteinander verklebt. Bevor diese zusammengefügt wurden, musste sichergestellt werden, dass die Nuten exakt ineinander passen. Würde dies nicht gewährleistet sein, würden die obere und untere Hälfte des Propellerschutzes nicht mehr zusammenpassen. Die Toleranzen des Druckers, besonders bei solchen Stellen sind so groß, dass man meistens mit Feilen die Nuten nachbessern muss. Besonders beim Verkleben der Teile ist viel Geduld nötig, da auch der Sekundenkleber nicht sofort komplett trocken ist, es war ebenso wichtig, den richtigen Untergrund zu wählen, eine Holzplatte eignete sich am besten, da keine Rückstände blieben.
+Die beiden Hälften wurden dann miteinander verschraubt, samt der Stütze. Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Centerplate und dem Arm des Hexacopters befestigt werden.
+
+Autor: Alexander Punz
+
+45
+
+10.4. HALTERUNG ULTRASCHALLSENSOR
+10.4. Halterung Ultraschallsensor
+10.4.1. Technische Planung
+Die Höhe des Hexacopters wird mittels eines Ultraschallsensors gesteuert, dieser misst den Abstand von dem Boden aus. Damit der Sensor genaue Werte messen kann, muss er fest auf dem Multicopter befestigt werden. Um das gewährleisten zu können, musste eine Halterung entworfen werden, die den Ultraschallsensor optimal mit dem Hexacopter verbindet. Die Anforderungen an die Halterung begrenzen sich auf ein geringes Gewicht bzw. eine einfache Montagemöglichkeit. Der Sensor hat auf jeder Ecke eine kleine Bohrung von 1.5 mm vorgesehen, das erschwert die Befestigungsmöglichkeit des Sensors an der Halterung, da es keine gängigen Schrauben in dieser Größe gibt.
+10.4.2. Umsetzung
+Die folgende Abbildung (Abbildung 10.11(a)) zeigt die CAD Konstruktion und die gefertigte (Abbildung 10.11(b)) Ultraschallsensorhalterung.
+(a) CAD Konstruktion Ultraschallsensor- (b) Gefertigte Ultraschallsensorhalterung halterung
+Abbildung 10.11.: Ultraschallsensorhalterung
+Das Gewicht spielte, analog zu den anderen Konstruktionen, eine wichtige Rolle. Materialien wie Stahl oder Aluminium wären selbst bei diesem kleinen Teil (51x46x10 mm) zu schwer geworden. Um das zu verhindern wurde diese Haltevorrichtung, wie auch der Propellerschutz, in einem 3D Drucker angefertigt. Das Teil wiegt durch die Fertigungsmethode etwa 5.5 g, das entspricht etwa dem Gewicht einer 20 Cent Münze.
+Die Halterung wird an der unteren Centerplate befestigt, da wie schon erwähnt, der Sensor von dem Boden aus misst. Die Befestigungsmethode ist selbst entwickelt worden, dabei handelt es sich um ein spezielles Klammersystem, welches an einer Strebe der Platte montiert werden kann (siehe Abbildung 10.11(b)). Die Klammer besteht aus drei Stegen, auf denen jeweils ein Anschlag vorgesehen wurde. Die Form der Anschläge ist exakt an die Centerplate angepasst, damit sich die Halterung so geringfügig wie möglich bewegen lässt.
+Die ideale Stärke der Stege wurde durch Versuche ermittelt, es wurde dabei das Klammersystem mit unterschiedlichen Dicken gefertigt und an dem Hexacopter getestet. Die optimale Stärke war deshalb wichtig, da das System nicht funktionieren würde, wenn diese
+46 Autor: Alexander Punz
+
+10. Mechanik
+falsch dimensioniert werden würde. Die Elastizität des Materials bzw. die gewählte Dicke der Stege ermöglicht es, diese soweit auseinanderziehen zu lassen, dass die Anschläge einfach über die Platte geschoben werden können. Aufgrund dieser Eigenschaften verformen sich diese auch wieder komplett zurück und fixieren somit die Halterung.
+Damit der Sensor nicht nach unten kippen kann, wurde eine Nut in die Haltevorrichtung vorgesehen. Droht die Halterung nach unten zu kippen, verkeilt sich diese mit der Centerplate und kann nicht mehr weitersinken. Die Nut ist so groß dimensioniert worden, dass sie leicht auf die Platte geschoben werden aber sich nur minimal bewegen lässt.
+Der zweite Teil der Halterung wurde so konstruiert, dass die vier Ecken der Sensorplatine gleichmäßig aufliegen können. Auf dem Ultraschallsensor selbst befinden sich jedoch vier Anschlussstifte, die es nicht ermöglichen, die Platine direkt auf der ,,Gabel" zu befestigen. Um Kabel trotzdem problemlos anschließen zu können, wurde der Sensor mittels vier Stutzen 5 mm höher gelegt.
+Geplant wurde, dass der Sensor an den Stutzen mit vier Blechschrauben befestigt wird, die Durchmesser der Bohrungen sind aber so klein, dass keine gängigen Schraubendurchmesser verwendet werden können. Die geeigneten Schrauben werden nur in ausgewählten Geschäften verkauft, um einen viel höheren Preis bzw. längeren Lieferzeiten, als bei normalen Schrauben. Um den Sensor trotzdem befestigen zu können, wurden Kupferdrähte zur Fixierung verwendet. Da nur das Gewicht des Ultraschallsensors an den Drähten zieht, geben diese selbst bei heftigen Flugmanövern nur minimal nach.
+10.4.3. Herausforderungen und Lösungen
+Das Klammersystem hat die meiste Zeit auf sich genommen. Die erste Version der Halterung hat gezeigt, dass die angenommenen Dimensionen nicht umgesetzt werden konnten. Das Problem lag darin, dass die Halterung nicht hochkant, sondern vertikal gedruckt werden musste. Damit die Haltevorrichtung gedruckt werden kann, hat der Drucker Stützmaterial in die Nut gedruckt. Dieses Stützmaterial kann jedoch nicht restlos entfernt werden, daher musste die Höhe des Spaltes vergrößert werden. Es brauchte drei verschiedene Versionen der Ultraschallsensorhalterung, bis alle Parameter ideal gepasst haben, das kostete natürlich Zeit, da jedes Mal ein neues Teil gedruckt werden musste.
+
+Autor: Alexander Punz
+
+47
+
+10.5. HALTERUNG PIXY CMU CAM5
+10.5. Halterung PIXY CMU cam5
+10.5.1. Technische Planung
+Der Hexacopter soll dem Gast sein gewünschtes Dessert bringen, der Weg zu dem Gast wird über Farbcodes am Boden vorgegeben. Um dem Farbcode folgen zu können, wird eine PIXY CMU cam5 verwendet (genaueres siehe Kapitel Sensoren).
+Die Halterung soll so konstruiert werden, dass die Kamera während des Fluges nicht wackelt, das verhindert ungenaue bzw. falsche Messwerte. Besonders zu beachten ist, dass die PIXY Cam immer in die Flugrichtung ausgerichtet sein muss. Der Flightcontroller gibt dem Hexacopter eine fixe Orientierung vor, würde die Kamera nicht in diese Richtung messen, könnte es zu Fehlmessung kommen und den Multicopter falsch navigieren.
+10.5.2. Umsetzung
+In den folgenden Abbildungen wird einerseits die konstruierte Halterung Abbildung 10.12(a)) und andererseits die Gefertigte mit der PIXY CMU cam5 (Abbildung 10.12(b)).
+(a) CAD Konstruktion PIXY (b) Gefertigte PIXY Cam Halterung Cam Halterung
+Abbildung 10.12.: Halterung PIXY Cam Aus Gewichtsgründen wurde die Halterung in einem 3D Drucker angefertigt. Diese wiegt etwa 5.2 g, ist also etwas leichter als die Ultraschallsensorhalterung. Um den Hexacopter, selbst bei so geringen Massen besser ausgleichen zu können, wurden beide Befestigungsmöglichkeiten gegenüber voneinander platziert. Da die PIXY Cam Halterung auf der unteren Centerplate platziert wird, konnte wieder das eigens entwickelte Klammersystem verwendet werden. Das garantiert auch in diesem Fall eine gute Passgenauigkeit, um den Sensor optimal zu fixieren. Die Kamera hat an der unteren Leiste der Platine zwei Bohrungen vorgesehen, diese wurden genutzt um den Sensor mit der Halterung zu verbinden. Es bot sich nicht viel
+48 Autor: Alexander Punz
+
+10. Mechanik
+Platz auf der Platine an, um den Sensor fest genug zu fixieren, jedoch reichte der untere Streifen ausreichend aus.
+Wie schon in der technischen Planung erwähnt wurde, spielt die exakte Position der PIXY Cam eine wichtige Rolle. Die Vorgangsweise zur Ermittlung der Ausrichtung wird mit der folgenden Abbildung erklärt.
+
+Abbildung 10.13.: Messung Winkel
+Der Flightcontroller wurde so eingebaut, dass ein Arm des Hexacopters zur Kontrolle in die Flugrichtung steht. Die Halterung wurde genau in der Mitte der Strebe platziert, daher konnte eine Konstruktionslinie vom Mittelpunkt der Platte aus, gesetzt werden. Der Winkel konnte gemessen werden, indem die zweite Konstruktionslinie entlang der Mitte des Arm gesetzt wurde. Die Schräge ist deshalb notwendig, da der Platz auf der Platine des Sensors so begrenzt ist, dass nur die Fläche der unteren Leiste aufliegen kann.
+10.5.3. Herausforderungen und Lösungen
+Der begrenzte Platz zum Montieren der PIXY Cam an der Halterung war die größte Herausforderung. Das Problem war, dass sich auf der Platine eine Kabelbuchse befindet, diese ist genau auf der Ecke des Streifens vorgesehen (siehe Abbildung 10.14, orange markierter Bereich).
+
+Autor: Alexander Punz
+
+49
+
+10.5. HALTERUNG PIXY CMU CAM5
+Abbildung 10.14.: PIXY Cam Anschlussbuchse[6] In den Konstruktionen wurde dieses Problem nicht behandelt, erst bei dem ersten Test hat sich gezeigt, dass die Halterung nicht komplett passt. Um nicht noch eine neue Version drucken und Zeit verlieren zu müssen, wurde die Kante an der linken Bohrung (siehe Abbildung 10.12(a)) passgenau mit einer Feile abgerundet.
+10.5.4. Berechnungen
+50 Autor: Alexander Punz
+
+10. Mechanik
+10.6. Führung für Testflüge
+10.6.1. Technische Planung
+Im Laufe des Projektes hat es sich bestätigt, dass es manchmal passieren kann, dass die Funkverbindung zwischen der Fernbedienung und dem Flugobjekt abbrechen kann. Ist jedoch keine Sicherung in der Firmware des Copters vorgesehen, fliegt dieser unkontrollierbar und stürzt ab.
+In diesem Projekt ist das Problem aufgetreten während eines Testfluges zur Testung der Höhenbestimmung durch den Ultraschallsensor. Damit dies nicht mehr vorkam, müsste eine Hardwaremäßige Vorrichtung entwickelt werden, die im Falle eines unvorhergesehenen Funkabbruches den Hexacopter sicher auf den Boden sinken lässt.
+10.6.2. Umsetzung
+Die folgende Abbildung zeigt die konstruierte (Abbildung 10.15(a)) und die gefertigte Gleitbuchse (Abbildung 10.15(b)).
+
+(a) CAD Konstruktion Gleitbuchse
+
+(b) Gefertigte Gleitbuchse
+
+Abbildung 10.15.: Gleitbuchse
+
+Prinzipiell werden zwei Gleitbuchsen gegenüberliegend am Hexacopter montiert, der Copter wird dann auf zwei langen Stangen aufgefädelt und kann sich dadurch nur mehr nach oben und unten bewegen. Das soll verhindern, dass der Hexacopter nicht nach links, rechts, vorne oder hinten abdriften kann. Beide Buchsen verwenden das spezielle Klammersystem um sie leicht und fest montieren zu können, wie auch die Halterungen für den Ultraschallsensor und die PIXY Cam, werden die Führungen auf die Platte geklippt. Die Führungen wurden diesmal auf beide Centerplates befestigt, das bedeutet die obere Klammer musste an die Centerplate angepasst werden. Die Centerplates haben komplett verschiedene Ausnehmungen vorgesehen, das erschwerte die Anpassung des Klammersystems um ein Vielfaches. Um diese Herausforderung trotzdem lösen zu können, wurden die Platten in Creo ausgemessen und dann auf die Halterungen übertragen.
+Gefertigt wurden beide Teile in dem 3D Drucker der Schule, da die Form der Gleitbuchsen händisch sehr aufwändig zu fertigen werden würden, bzw. es wird sehr viel Gewicht durch diese Fertigungsmethode eingespart. Zu beachten war beim Konstruieren wiederum, dass der Drucker grobe Toleranzen hat und diese miteingerechnet werden mussten.
+
+Autor: Alexander Punz
+
+51
+
+10.6. FÜHRUNG FÜR TESTFLÜGE Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter leicht auf und ab fliegen kann, ohne zu stark zu verkanten. Die Phasen bei den Bohrungen oben und unten, lassen den Copter leichter auffädeln, da die Stangen leichter in die Bohrungen führen.
+10.6.3. Herausforderungen und Lösungen
+Das Verkanten zwischen den Buchsen und Stangen war besonders während des Startes ein Problem. Der Hexacopter hob zu Beginn etwas schief ab, das kann man auch nicht mit sehr großen Bohrungen verhindern. Es musste manuell mit der Fernsteuerung entgegen dieses Neigens gesteuert werden, damit der Multicopter abheben konnte. Nach etwa 5 cm hatte sich der Copter so ausgeglichen, dass nicht mehr entgegen gesteuert werden musste. Die Gleitbuchsen haben sich trotzdem sehr bewährt, da der Multicopter, auch wenn er kein Gas mehr gab, nur auf dem Landesgestell landete und so keine Teile beschädigt wurden.
+52 Autor: Alexander Punz
+
+10. Mechanik
+10.7. Persönliche Erfahrungen
+
+Autor: Alexander Punz
+
+53
+
+A. Anhang 1
+A. Anhang 1
+55
+
+Literaturverzeichnis
+
+Literaturverzeichnis
+
+[1] The beginner's guide to flat design.
+
+http://www.creativebloq.com/
+
+graphic-design/what-flat-design-3132112, Abruf: 2016-21-02
+
+[2] Benutzerdefinierte Datentypen. http://homepage.univie.ac.at/Heinz.Kabelka/ edv-ueb/structur.htm, Abruf: 2016-02-21
+
+[3] elektromagnetisches Spektrum.
+
+http://www.spektrum.de/lexikon/physik/
+
+elektromagnetisches-spektrum/4054, Abruf: 2016-02-28
+
+[4] How to talk to Pixy. http://cmucam.org/projects/cmucam5/wiki/Porting_Guide, Abruf: 2016-02-28
+
+[5] Naza-M. http://wiki.dji.com/en/index.php/Naza-M, Abruf: 2016-02-17
+
+[6] PIXY Cam Hinterseite.
+
+https://www.google.at/search?q=
+
+pixy+cmu+cam5&biw=1366&bih=657&source=lnms&tbm=isch&sa=X&ved=
+
+0ahUKEwil8ZDh-JXLAhWmPZoKHfAQAboQ_AUIBigB#tbm=isch&q=pixy+cmucam5+
+
+back&imgrc=z8L3am8weM0uVM%3A, Abruf: 2016-02-26
+
+[7] Portfoliomatrix. http://www.bcg.de/bcg_deutschland/geschichte/klassiker/ portfoliomatrix.aspx, Abruf: 2016-26-02
+
+[8] Projekt Multicopter: Wie funktioniert ein Multicopter. http://technikblog.ch/ 2013/03/projekt-multicopter-wie-funktioniert-ein-multicopter/, Abruf: 2016-02-18
+
+[9] RN-171 Evaluation Kit.
+
+http://www.microchip.com/DevelopmentTools/
+
+ProductDetails.aspx?PartNO=RN-171-EK, Abruf: 2016-02-29
+
+[10] RN171. http://www.microchip.com/wwwproducts/en/RN171, Abruf: 2016-02-17
+
+[11] Heller, Eva: Wie Farben wirken. In: Rowohlt Taschenbuch Verlag; Auflage: 8 (1. Dezember 2004) (2004). ISBN 3499619601
+
+57
+
+Glossar
+Glossar
+Infrarot Infrarot ist ein Teil des Lichtspektrums im nicht sichtbaren Bereich. Die Wellenlänge beträgt dabei zwischen 1 mm und 800 nm, jene des sichtbaren Lichts liegt zwischen 800 nm und 400 nm[3], infrarotes Licht ist also langwelliger als sichtbares.. 25
+Struktur Eine Struktur (eng. struct) ist eine Speichermethode von Daten. Sie bietet die Möglichkeit einen neuen Datentypen zu erstellen. Die einzelnen Variablen/Mitglieder können, anders als bei einem Array, von verschiedenen Datentypen sein. [2] . 24, 29
+59
+
+

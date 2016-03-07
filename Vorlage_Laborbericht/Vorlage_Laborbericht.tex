@@ -1,0 +1,257 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,ngerman,naustrian,DIV=12,BCOR=1cm]{scrbook}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{makeidx}
+\makeindex
+\usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={Hovering Steward},
+ pdfauthor={Christina Bornberg, Katharina Joksch, Markus Kaiser, Alexander Punz, Lucas Ullrich},
+ pdfsubject={Diplomarbeit},
+ pdfkeywords={project,hexacopter,multicopter,drone,hovering,steward,autonomous,flying,blog,HTL,rennweg,event,cupcakes,restaurant,vienna,austria,technology,research}}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newcommand{\strong}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%%%%%%%%%%%%
+% Latex-Vorspann
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{blindtext}
+
+%% geht nicht mit jeder Latex Variante, gibt aber ein schöneres Layout
+\usepackage{microtype} 
+
+%% Aufzählungen nicht so weit einrücken
+\usepackage{enumitem}
+%\setitemize{leftmargin=*} 
+
+%\usepackage{caladea}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{xspace}
+
+%% für pandoc
+%% maximale Breite der Bilder
+\usepackage{graphicx}
+\setkeys{Gin}{width=0.90\linewidth,keepaspectratio}
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%%für Bilder nebeneinander
+\usepackage{subfigure}
+
+%um Schusterjungen und Hurenkinder vermeiden zu können
+\usepackage{needspace}
+
+%Farbpaket
+\usepackage{xcolor}
+
+\usepackage{float}
+
+\usepackage{setspace}
+\spacing{1.3}
+
+\makeatother
+
+\usepackage{listings}
+\addto\captionsnaustrian{\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}}
+\addto\captionsngerman{\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
+
+\begin{document}
+%%%%%%
+% Weitere Einstellungen siehe Latex-Vorspann
+
+\sloppy % weniger Meldungen
+
+\voffset5mm % etwas nach unten%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% falls man die erste Zeile der Absätze nicht einrücken will
+% dann sollte man aber etwas mehr Abstand zwischen den Absätzen erlauben
+% Alternative \usepackage{parskip}
+%%\setlength{\parindent}{0pt}
+%%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+% Auch Fußnoten bündig ausrichten
+\deffootnote[]{1em}{1em}{\textsuperscript{\thefootnotemark\ }}
+% Listen etwas wenige einrücken, erfordert enumitem
+\setitemize{leftmargin=*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Kopf und Fußzeilen -- links und rechts verschieden 
+\newcommand{\kopfseitenummer}{{\bfseries \thepage}}
+\newcommand{\kopfkapl}{{\bfseries\leftmark}}
+\newcommand{\kopfkapr}{{\bfseries\rightmark}}
+\newcommand{\kopfbild}{\includegraphics[width=25mm]{HTL3RLogoRGB}}
+\newcommand{\kopfHTL}{Höhere Technische Bundeslehranstalt Wien 3, \\Rennweg 	Abteilung für Informationstechnologie}
+\renewcommand{\chaptermark}[1]%
+  {\thispagestyle{fancy}\markboth{\thechapter.\ #1}{}}%\thispagestyle{fancy}
+
+%\lhead[\fancyplain{\kopfbild}{\kopfbild}]% li aussen
+%      {\fancyplain{\kopfHTL}{\kopfHTL}}% re innen
+%\rhead[\kopfHTL]% li innen
+%      {\kopfbild}% re aussen
+
+%% mit kapitelautor kann man den Autor festlegen oder auf leer setzen - steht dann in der Fußzeile.
+\newcommand{\kapitelautor}{}
+
+%%%
+% Alternative: am Rand (Marginale)
+%\setlength{\marginparsep}{-5mm}
+%\mbox{}\marginpar{\raggedleft\hspace{0pt}Autor: Hans Huber}
+
+%% kopf links: [linke] und {rechte} Seite
+\lhead[\kopfbild]{\kopfkapl}
+\rhead[\kopfkapr]{\kopfbild}
+\chead{}
+
+\lfoot[\kopfseitenummer]{\kapitelautor}
+\cfoot[]{}
+\rfoot[\kapitelautor]{\kopfseitenummer}
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand{\headrulewidth}{0.2pt}
+
+%%
+% einfaches "siehe ..." - das Ziel muss man markieren
+\newcommand{\kap}[1]{Kapitel~\ref{#1}, Seite~\pageref{#1}}
+\newcommand{\siehe}[1]{siehe \kap{#1}}
+
+%% http://ieg.ifs.tuwien.ac.at/~aigner/download/tuwien.sty
+%Div. Abkürzungen (in Anlehnung an Jochen Köpper, jkthesis):
+%\RequirePackage{xspace}
+\newcommand{\bzw}{bzw.\@\xspace}
+\newcommand{\bzgl}{bzgl.\@\xspace}
+\newcommand{\ca}{ca.\@\xspace}
+\newcommand{\dah}{d.\thinspace{}h.\@\xspace}
+\newcommand{\Dah}{D.\thinspace{}h.\@\xspace}
+\newcommand{\ds}{d.\thinspace{}s.\@\xspace}
+\newcommand{\evtl}{evtl.\@\xspace}
+\newcommand{\ua}{u.\thinspace{}a.\@\xspace}
+\newcommand{\Ua}{U.\thinspace{}a.\@\xspace}
+\newcommand{\usw}{usw.\@\xspace}
+\newcommand{\va}{v.\thinspace{}a.\@\xspace}
+\newcommand{\vgl}{vgl.\@\xspace}
+\newcommand{\zB}{z.\thinspace{}B.\@\xspace}
+\newcommand{\ZB}{Zum Beispiel\xspace} 
+
+%%%%%Anfang Titelseite
+\pagenumbering{roman}
+\title{Diplomarbeit}
+\begin{titlepage}
+\begin{minipage}[b]{1\columnwidth}
+\parbox[b]{50mm}{\includegraphics[width=45mm]{HTL3RLogoRGB}}
+\hfill
+\parbox[b]{130mm}{\footnotesize \textsc{Höhere Technische Bundeslehranstalt} Wien 3, Rennweg\\
+IT \& Mechatronik\\
+\\
+HTL Rennweg :: Rennweg 89b\\
+A-1030 Wien :: Tel +43 1 24215-10 :: Fax DW 18
+}\\
+\mbox{}
+\end{minipage}
+
+\vspace{1cm}
+
+
+\begin{center}
+\textbf{\LARGE{}Diplomarbeit}{\large{}}\\
+{\large{}\vspace{15mm}
+ }\textbf{\large{}}\\
+\textbf{\large{}Hovering Steward}\\
+ \vspace{15mm}
+ ausgeführt an der\\
+ Höheren Abteilung für Informationstechnologie/Ausbildungsschwerpunkt\\
+ der Höheren Technischen Lehranstalt Wien 3 Rennweg\\
+ \vspace{1cm}
+ im Schuljahr 2015/2016\\
+ \vspace{1cm}
+ durch\\
+ \vspace{0.5cm}
+\textbf{\large{}Christina Bornberg}\\
+\textbf{\large{}Katharina Joksch}\\
+\textbf{\large{}Markus Kaiser}\\
+\textbf{\large{}Alexander Punz}\\
+\textbf{\large{}Lucas Ullrich}\\
+
+\par\end{center}{\large \par}
+
+\begin{center}
+\vspace{20mm}
+\normalsize unter der Anleitung von\\
+\vspace{0.5cm}
+Mag. Andreas Fink\\
+DI Herbert Fleck
+\par\end{center}
+
+\begin{center}
+\vspace{5mm}
+Wien, \today 
+\par\end{center}
+
+\end{titlepage}%%%%%%%%%%%%%%%%%%%%% Ende Titelseite %%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand*{\chapterpagestyle}{fancy}
+
+%%%%%Programmlisting%%%%%%%%
+% das braucht man nur einmal
+\lstset{basicstyle = \ttfamily\footnotesize,
+	keywordstyle = \color{blue},
+	stringstyle = \color{cyan},
+	commentstyle = \color{lightgray},
+	numbers = left,
+	numberstyle = \tiny,
+	stepnumber = 2, 
+	numbersep = 5pt, 
+	showspaces = false, 
+	frame = single,
+	escapechar = $
+}
+%lstset{language=...} vor jedem Listing
+
+%hier geht es los mit dem Text - auf einer rechten Seite
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\thispagestyle{fancy} 
+
+%\renewcommand{\kapitelautor}{Autor: VN NN} immer im Unterdokument
+
+\thispagestyle{fancy}
+
+\input{Allgemeines}
+
+\input{Elektronik}
+
+\input{Firmware}
+
+\input{2015-12-20_STH_Mechanik}
+
+
+\blindtext\blindtext
+\chapter{Blindtext}
+\blindtext\blindtext
+
+\end{document}
