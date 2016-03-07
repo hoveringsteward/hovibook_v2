@@ -54,86 +54,227 @@
     \subsubsection{Framework einrichten}
 
 	Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer installiert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in den Terminal bewerkstelligt:
-	(Code)
+	\lstset{language = bash}
+  	\begin{lstlisting}
+	sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+	sudo chmod a+x /usr/local/bin/symfony
+  	\end{lstlisting}
+
 	Anschließend wurde ein Projekt angelegt. Dafür wurde in das Zielverzeichnis gewechselt. Um das Projekt im Anschluss über den Apache Server aufrufen zu können, empfiehlt es sich das Projekt direkt im „htdocs“-Ordner der jeweiligen LAMP Distribution abzuspeichern. Damit das Projekt auf einem Mac OS X basierenden Gerät angelegt wurde, musste der anschließende Befehl in den Terminal eingegeben werden:
-	(Code)
+	\lstset{language = bash}
+  	\begin{lstlisting}
+	symfony new PROJEKTNAME lts
+  	\end{lstlisting}
 	Der Befehl „lts“ legt fest, dass die neueste Version von Symfony verwendet wird.
 
     \subsubsection{Seitenabrufbarkeit}
 
 	Um Seiten anzulegen, welche später im Browser angezeigt werden konnten, musste man im Controller folgende Schritte erledigen. Zuerst empfahl es sich Action Funktionen anzulegen. Diese wurden passend zu der jeweiligen Seite beziehungsweise zu den dementsprechenden Funktionalitäten benannt, welche im Anschluss angezeigt und ausgeführt wurden. Wenn auf der auszugebenden Seite mit einer Template Engine gearbeitet wurde, wurde als Rückgabewert der Methode der anschließende Code definiert:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+	$this->render(‚DATEIBEZEICHNUNG.html.twig')
+  	\end{lstlisting}
 	Die Funktion render() formt den Inhalt des Templates in einen Ausgabewert um, damit die Seite  ausgegeben werden kann.
 	Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funktion eine Annotation hinzugefügt. Diese wurde folgendermaßen angegeben:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+	/**
+	* @Route("/ROUTE, name=„ROUTENBEZEICHNUNG“)
+	*/
+  	\end{lstlisting}
 	Damit die erstellte Seite anschließend mit MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:
-	(Code)
-
+	http://IP-ADRESSE:PORT/PROJEKTNAME/web/ROUTE
 
     \subsubsection{Datenbankgenerierung}
 
 	Für die Generierung der Datenbank wurde die Variante „Code First“ verwendet, da diese die Möglichkeit bietet, im Nachhinein ohne großen Aufwand die Datenbank zu ändern.
 	Um die Datenbankeinträge zu erstellen, wurde zu Beginn eine PHP-Datei erstellt in welcher die Tabellen als Klassen und die Tabellenzeilen als Objekte angelegt wurden. Die Variablen wurden allesamt mit dem Zugriffsmodifikator „protected“ deklariert, damit nur Klassen, welche von dieser PHP-Datei erben, auf sie zugreifen können. Anschließend wurde oben in der Datei ein USE-Statement eingefügt, welches definiert, dass die Abkürzung „ORM“ in darauf folgender Verwendung besagt, dass es sich um die Generierung eines objektrelationalen Abbilds handelt.
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+	use Doctrine\ORM\Mapping as ORM;
+  	\end{lstlisting}
 	Statt dem Kürzel „ORM“ hätte auch ein beliebiges anderes Wort eingesetzt werden können, auf welches später zugegriffen werden könnte, allerdings ist diese Bezeichnung sehr zu empfehlen, da sie etwaige Verwirrungen vermeidet.
 	Um die Klassen später als Tabellen generieren lassen zu können, wurden Annotationen mit folgendem Schema darüber geschrieben:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+	/**
+ 	* @ORM\Entity
+ 	* @ORM\Table(name=„ TABELLENNAME")
+	*/
+	class TABELLENNAME
+	{
+	…
+	}
+    \end{lstlisting}
 	Damit die relationale Datenbank Objekte den richtigen Datentypen zuordnen konnte, wurden diese ebenfalls mit einer Anmerkung versehen. Da es bei Objekten zu unterscheiden gilt ob es sich um einen Primärschlüssel oder Fremdschlüssel handelt als auch ob es ein Texteintrag, Ganzzahleneintrag, Eintrag mit Kommastellen, Booleaneintrag oder gar ein Zeitstempel ist, gibt es hierbei verschiedene Varianten.
 	Um eine ID als Primare Key zu definieren wurde folgende Annotation verwendet:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	/**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+  	\end{lstlisting}
 	Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
 	Bei einem Eintrag mit Kommazahlen musste der Spaltentyp einfach nur auf „float“ eingestellt werden. Für einen Booleaneintrag wurde zwar als Anmerkung der Typ „boolean“ definiert, jedoch ändert das Datenbanksystem MySQL diese Annotation automatisch in das Datenformat „tinyint“.
 	Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Länge definiert werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	/**
+     * @ORM\Column(type="string", length=ANZAHL_DER_ZEICHEN)
+     */
+  	\end{lstlisting}
 	Damit man einen Zeitstempel erstellen kann, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, musste die folgende Anmerkung hinzugefügt werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	public function __construct()
+    /** @ORM\Column(type="datetime", nullable=false ) */
+    protected $zeitstempel;
+  	\end{lstlisting}
 	Mithilfe von „nullable=false“ wurde festgelegt, dass der Zeitstempel niemals ein null-Wert sein darf.
 	Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	public function __construct()
+    {
+        $this->zeitstempel = new \DateTime();
+
+    }
+  	\end{lstlisting}
 	Damit eine ManyToOne beziehungsweise eine OneToMany Verbindung erstellt werden konnte, musste dies ebenfalls mithilfe von Anmerkungen festgelegt werden.
 	Auf der ManyToOne Seite sieht die Annotation dafür folgendermaßen aus:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	/**
+     * @ORM\ManyToOne(targetEntity=„NAME_DER_ZIELTABELLE“, inversedBy=„NAME_DER_AKTUELLEN_TABELLE“)
+     * @ORM\JoinColumn(name=„BEZEICHNUNG_DES_FREMDSCHLÜSSELS“, referencedColumnName=„ID_DER_ZIELTABELLE“)
+     **/
+  	\end{lstlisting}
 	In der oberen Zeile musste angegeben werden, zwischen welchen Tabellen die Verbindung geschaffen werden soll. Als Zieleintrag gibt man hierbei die Bezeichnung der Tabelle auf der Seite der OneToMany Verbindung an und als Kehrwerteintrag den Namen der Tabelle, welche der anderen Seite viele Einträge zur Verfügung stellt.
 	Um die andere Seite der Verbindung zu generieren, wurde folgende Anmerkung verwendet:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	/**
+     * @ORM\OneToMany(targetEntity="NAME_DER_ZIELTABELLE", mappedBy="NAME_DER_AKTUELLEN_TABELLE")
+     **/
+  	\end{lstlisting}
 	Hierbei mussten nur die Namen der Tabellen angegeben werden, welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, musste dafür eine ArrayCollection konstruiert werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	public function __construct() {
+        $this->speiseeintraege = new ArrayCollection();
+    }
+  	\end{lstlisting}
 	Damit im Anschluss im Controller auf die Daten zugegriffen werden konnte, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden. Diese konnte man sich ganz einfach mit einem Rechtsklick über die Menüpunkte „Generate…“ und „Getters and Setters…“ automatisch erstellen lassen.
 	Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das PHPMyAdmin-Interface erstellt werden. Darauf folgend musste in der „config.yml“-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, folgendes festgelegt sein:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	imports:
+    - { resource: parameters.yml }
+	…
+	doctrine:
+   	 	dbal:
+        	driver:   pdo_mysql
+        	host:     "%database_host%"
+        	port:     "%database_port%"
+        	dbname:   "%database_name%"
+        	user:     "%database_user%"
+        	password: "%database_password%"
+        	unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
+        	charset:  UTF8
+	orm:
+        	auto_generate_proxy_classes: "%kernel.debug%"
+        	naming_strategy: doctrine.orm.naming_strategy.underscore
+      	  	auto_mapping: true
+  	\end{lstlisting}
 	Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen wurden, mussten in der „parameter.yml“-Datei mit Werten deklariert werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	parameters:
+    	database_host: IP-ADRESSE
+    	database_port: DATENBANKPORT
+    	database_name: DATENBANKNAME
+    	database_user: USERNAME
+    	database_password: PASSWORT
+    	mailer_transport: smtp
+    	mailer_host: IP-ADRESSE
+    	mailer_user: USERNAME
+    	mailer_password: PASSWORT
+    	secret: GEHEIMCODE
+  	\end{lstlisting}
 	Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
 	Anschließend konnte bereits über den Terminal die Datenbank mit den Tabellen, welche zuvor in der PHP-Datei generiert wurden, in MySQL erstellt werden:
-	(Code)
-	Um zukünftige Änderungen in der Datenbank von der PHP-Datei zu übernehmen, musste anschließend nur noch folgender Befehl in die Konsole eingegeben werden:
-	(Code)
+	\lstset{language = bash}
+  	\begin{lstlisting}
+	php app/console doctrine:generate:entities AppBundle
+  	\end{lstlisting}
+	Um Änderungen in der Datenbank von der PHP-Datei zu übernehmen, musste anschließend nur noch folgender Befehl in die Konsole eingegeben werden:
+	\lstset{language = bash}
+  	\begin{lstlisting}
+	php app/console doctrine:schema:update —force
+  	\end{lstlisting}
 	Mit diesen Schritten wurde die Datenbank erfolgreich generiert.
 
     \subsubsection{Datenzugriff}
 
 	Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	$repository = $this->getDoctrine()
+            ->getRepository(‚AppBundle:TABELLENNAME');
+  	\end{lstlisting}
 	Mithilfe der Befehle „findAll()“, „findAllByTABELLENSPALTE(WERT“ und „findOneByTABELLENSPALTE(WERT)“ konnten die benötigten Werte aufgerufen werden.
 	Diese Werte konnten anschließend, einfach in der render-funktion, welche die auszugebende Seite generiert, in einem Array mitgegeben werden, damit sie im Nachhinein im Frontend angezeigt werden konnten:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	return $this->render('DATEIBEZEICHNUNG.html.twig'
+            , array(
+                ‚BELIEBIGE_BEZEICHNUNG' => $DATENBANKEINTRAG
+            )
+        );
+  	\end{lstlisting}
 	Um Operationen in der Datenbank vorzunehmen, wurde folgendermaßen vorgegangen:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	$em = $this->getDoctrine()->getManager();
+	$em->remove($DATENBANKEINTRAG);
+	//oder
+	$em->persist($DATENBANKEINTRAG);
+	//oder
+	$em->merge(DATENBANKEINTRAG->setSPALTENBEZEICHNUNG(NEUER_SPALTENEINTRAG));
+	$em->flush();
+  	\end{lstlisting}
 	Zuerst wurde ein Datenbankmanager erstellt. Anschließend konnte entweder mit „remove“ ein Datenbankeintrag gelöscht, mit „persist“ ein neuer Datenbankeintrag hinzugefügt oder mit „merge“ ein Datenbankeintrag upgedatet werden. Mit dem Befehl „flush()“ werden davor definierte Methoden ausgeführt beziehungsweise an die Datenbank geschickt.
 
     \subsubsection{Formulargenerierung}
 
 	Um zu gewährleisten, dass der Controller die Interaktion eines Benutzers mit dem Formular wahrnimmt, musste dieses darin generiert werden. Mithilfe folgender Codezeilen konnte man die Erstellung des Formulars realisieren:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	$FORMULAR_BEZEICHNUNG = $this->createFormBuilder($REPOSITORY)
+            ->add(‚FORMULARFELD_BEZEICHNUNG', 'DATENTYP')
+	->add(‚BUTTON_BEZEICHNUNG', 'submit', array('label' => ‚BUTTON_BESCHRIFTUNG'))
+            ->getForm();
+  	\end{lstlisting}
 	Dank der Funktion „createFormBuilder()“, ist es möglich das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der „add()“ Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion „getForm()“ übergibt das Formular der Variable „FORMULAR\_BEZEICHNUNG“.
 	Mittels der Funktion „handleRequest()“ konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, kann man in einer IF-Abfrage die Boolean Funktionen „isSubmitted()“ und „isValid()“ verwenden:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	if ($form_anmeldebutton_admin->isSubmitted() && $form_anmeldebutton_admin->isValid()) {…}
+  	\end{lstlisting}
 	Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
 	Damit das Formular im Frontend angezeigt werden konnte, wurde das Formular in der „render“-Funktion des Return-Statements im Array mitgeliefert:
-	(Code)
+	\lstset{language = html}
+  	\begin{lstlisting}
+  	return $this->render(‚DATEIBEZEICHNUNG.html.twig'
+            , array(
+                'FORMULAR_BEZEICHNUNG' => $FORMULAR_BEZEICHNUNG->createView()
+            )
+        );
+  	\end{lstlisting}
 	Damit das Formular visuell dargestellt werden konnte, wurde noch die Funktion „createView()“ an die Formularvariable gehängt.
 	Mithilfe dieser Variante wurden der Speiseverwaltungsscreen, der Farbcodeverwaltungsscreen und die Anmeldescreens des Admins erstellt.
-
 
   \subsection{Herausforderungen und Lösungen}
 
@@ -185,7 +326,10 @@
     \subsubsection{Layout}
 
 	Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe dem Befehl „npm Einstall -g bower“ global über den Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete werden mithilfe dieses Managers in der Datei „bower.json“ dokumentiert, welche mit folgenden Kommandozeileneingaben generiert wurde:
-	(Code)
+	\lstset{language = bash}
+  	\begin{lstlisting}
+  	bower init
+  	\end{lstlisting}
 	Nachdem Bower in dem Projektverzeichnis installiert wurde, konnten alle notwendigen Bibliotheken über den Terminal installiert werden. Außerdem wurden die Abhängigkeiten in der Bower-Datei festgelegt. Dies war vor allem für Bootstrap 4 alpha wichtig, da es sonst nicht möglich gewesen wäre die neueste Version zu verwenden. Die Bibliothek jQuery wurde automatisch mitinstalliert, da Bootstrap als Abhängigkeit definiert wurde. Für die Installation von Gulp wurden einige weitere Bibliotheken benötigt, welche mithilfe von Bower einfach heruntergeladen werden konnten.
 	(Text bzgl. Sass und Bootstrapvariablen folgt noch)
 	Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald man den Gulp-Befehl in den Terminal eingibt. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
