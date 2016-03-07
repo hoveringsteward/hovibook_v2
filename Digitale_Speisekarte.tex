@@ -123,7 +123,7 @@
 
 	Um zu gewährleisten, dass der Controller die Interaktion eines Benutzers mit dem Formular wahrnimmt, musste dieses darin generiert werden. Mithilfe folgender Codezeilen konnte man die Erstellung des Formulars realisieren:
 	(Code)
-	Dank der Funktion „createFormBuilder()“, ist es möglich das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der „add()“ Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion „getForm()“ übergibt das Formular der Variable „FORMULAR_BEZEICHNUNG“.
+	Dank der Funktion „createFormBuilder()“, ist es möglich das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der „add()“ Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion „getForm()“ übergibt das Formular der Variable „FORMULAR\_BEZEICHNUNG“.
 	Mittels der Funktion „handleRequest()“ konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, kann man in einer IF-Abfrage die Boolean Funktionen „isSubmitted()“ und „isValid()“ verwenden:
 	(Code)
 	Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
