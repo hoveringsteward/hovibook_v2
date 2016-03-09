@@ -79,7 +79,7 @@
 	\lstset{language = php}
   	\begin{lstlisting}
 	/**
-	* @Route("/ROUTE", name=„ROUTENBEZEICHNUNG“)
+	* @Route('/ROUTE', name=„ROUTENBEZEICHNUNG“)
 	*/
   	\end{lstlisting}
 	Damit die erstellte Seite anschließend mit MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:
@@ -99,7 +99,7 @@
   	\begin{lstlisting}
 	/**
  	* @ORM\Entity
- 	* @ORM\Table(name=„TABELLENNAME")
+ 	* @ORM\Table(name=„TABELLENNAME')
 	*/
 	class TABELLENNAME
 	{
@@ -111,9 +111,9 @@
 	\lstset{language = php}
   	\begin{lstlisting}
   	/**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type='integer')
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy='AUTO')
      */
   	\end{lstlisting}
 	Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
@@ -122,14 +122,14 @@
 	\lstset{language = php}
   	\begin{lstlisting}
   	/**
-     * @ORM\Column(type="string", length=ANZAHL_DER_ZEICHEN)
+     * @ORM\Column(type='string', length=ANZAHL_DER_ZEICHEN)
      */
   	\end{lstlisting}
 	Damit man einen Zeitstempel erstellen kann, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, musste die folgende Anmerkung hinzugefügt werden:
 	\lstset{language = php}
   	\begin{lstlisting}
   	public function __construct()
-    /** @ORM\Column(type="datetime", nullable=false ) */
+    /** @ORM\Column(type='datetime', nullable=false ) */
     protected $zeitstempel;
   	\end{lstlisting}
 	Mithilfe von „nullable=false“ wurde festgelegt, dass der Zeitstempel niemals ein null-Wert sein darf.
@@ -156,7 +156,7 @@
 	\lstset{language = php}
   	\begin{lstlisting}
   	/**
-     * @ORM\OneToMany(targetEntity="NAME_DER_ZIELTABELLE", mappedBy="NAME_DER_AKTUELLEN_TABELLE")
+     * @ORM\OneToMany(targetEntity='NAME_DER_ZIELTABELLE', mappedBy='NAME_DER_AKTUELLEN_TABELLE')
      **/
   	\end{lstlisting}
 	Hierbei mussten nur die Namen der Tabellen angegeben werden, welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, musste dafür eine ArrayCollection konstruiert werden:
@@ -176,15 +176,15 @@
 	doctrine:
    	 	dbal:
         	driver:   pdo_mysql
-        	host:     "%database_host%"
-        	port:     "%database_port%"
-        	dbname:   "%database_name%"
-        	user:     "%database_user%"
-        	password: "%database_password%"
+        	host:     '%database_host%'
+        	port:     '%database_port%'
+        	dbname:   '%database_name%'
+        	user:     '%database_user%'
+        	password: '%database_password%'
         	unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
         	charset:  UTF8
 	orm:
-        	auto_generate_proxy_classes: "%kernel.debug%"
+        	auto_generate_proxy_classes: '%kernel.debug%'
         	naming_strategy: doctrine.orm.naming_strategy.underscore
       	  	auto_mapping: true
   	\end{lstlisting}
