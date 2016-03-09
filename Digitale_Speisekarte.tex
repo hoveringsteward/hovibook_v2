@@ -22,10 +22,6 @@
 
   \subsection{Technische Planung}
 
-    \subsubsection{MySQL}
-
-	MySQL ist ein relationales Datenbanksystem, welches sowohl als kommerzielle Enterpriseversion wie auch als Open-Source-Software verfügbar ist. MySQL basiert wie der Name bereits vermuten lässt auf der Datenbanksprache SQL(=Structured Quere Language), welche zur Definition von Datenstrukturen und zum Verwalten von darauf basierenden Datenbeständen zuständig ist. Es dient daher zur elektronischen Datenverwaltung und beruht auf einem tabellenbasierten Datenbankmodell.
-
     \subsubsection{Apache HTTP Server}
 
 	Der Apache HTTP Server ist eine Open-Source-Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten.
@@ -143,10 +139,9 @@
 	php app/console doctrine:generate:entities AppBundle
   	\end{lstlisting}
 	Um Änderungen in der Datenbank von der PHP-Datei zu übernehmen, musste anschließend nur noch folgender Befehl in die Konsole eingegeben werden:
-	\lstset{language = bash}
-  	\begin{lstlisting}
-	php app/console doctrine:schema:update —force
-  	\end{lstlisting}
+	
+	Code
+	
 	Mit diesen Schritten wurde die Datenbank erfolgreich generiert.
 
     \subsubsection{Datenzugriff}
