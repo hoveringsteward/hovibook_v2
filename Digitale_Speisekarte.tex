@@ -5,13 +5,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
 
-  \subsection{Entwicklungsumgebungen}
-
-    \subsubsection{PhpStorm}
+  \subsection{PhpStorm}
     
     PhpStorm ist eine integrierte Entwicklungsumgebung für die Programmiersprache PHP, für welche man eine kostenpflichtige Lizenz zur Verwendung benötigt. Diese Entwicklungsumgebung wurde von JetBrains entwickelt und erschien erstmals 2009 auf dem Markt. Zu den besonderen Features von PhpStorm zählen Tools zur Kontrolle der Versionierung, Refaktorisierung, Code- und Syntax-Highlighting. Außerdem unterstützt es PHP-Unit, welches von Symfony verwendet wird und zum Testen von PHP-Skripten dient. 
-
-    \subsubsection{Allgemeiner Code-Aufbau}
+ 
+  \subsection{Allgemeiner Code-Aufbau}
 
 	Die Webapplikation baut auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten. Sie baten neben optionalen Funktionalitäten wie Packabes und Plugins vor allem auch eine strukturierte Arbeitsumgebung.
 	In der anschließenden Grafik ist ist der allgemeine Aufbau der Webapplikation abgebildet. Die Hauptkomponente bildet das PHP-Framework Symfony, welches alle weiteren Engines miteinander verknüpft. In der Modelebene wurde mit dem Framework Doctrine und dem Datenbanksystem MySQL gearbeitet. In der View-Schicht kamen der Package Manager Bower, das CSS Framework Bootstrap 4 alpha, die Stylesheet-Sprache Sass, der TaskRunner Gulp, Ajax, jQuery, DOM und die Template Engine Twig zum Einsatz. Der Controller wurde auf der Basis von PHP programmiert. All diese Bibliotheken und Frameworks werden in den dazugehörigen Kapiteln genauer erläutert.
