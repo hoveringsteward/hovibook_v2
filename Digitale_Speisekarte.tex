@@ -79,7 +79,7 @@
 	\lstset{language = php}
   	\begin{lstlisting}
 	/**
-	* @Route("/ROUTE, name=„ROUTENBEZEICHNUNG“)
+	* @Route("/ROUTE", name=„ROUTENBEZEICHNUNG“)
 	*/
   	\end{lstlisting}
 	Damit die erstellte Seite anschließend mit MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:
@@ -99,7 +99,7 @@
   	\begin{lstlisting}
 	/**
  	* @ORM\Entity
- 	* @ORM\Table(name=„ TABELLENNAME")
+ 	* @ORM\Table(name=„TABELLENNAME")
 	*/
 	class TABELLENNAME
 	{
@@ -148,7 +148,7 @@
   	\begin{lstlisting}
   	/**
      * @ORM\ManyToOne(targetEntity=„NAME_DER_ZIELTABELLE“, inversedBy=„NAME_DER_AKTUELLEN_TABELLE“)
-     * @ORM\JoinColumn(name=„BEZEICHNUNG_DES_FREMDSCHLÜSSELS“, referencedColumnName=„ID_DER_ZIELTABELLE“)
+     * @ORM\JoinColumn(name=„BEZEICHNUNG_DES_FREMDSCHLÜSSELS“, referencedColumnName=„PRIMARYKEY_DER_ZIELTABELLE“)
      **/
   	\end{lstlisting}
 	In der oberen Zeile musste angegeben werden, zwischen welchen Tabellen die Verbindung geschaffen werden soll. Als Zieleintrag gibt man hierbei die Bezeichnung der Tabelle auf der Seite der OneToMany Verbindung an und als Kehrwerteintrag den Namen der Tabelle, welche der anderen Seite viele Einträge zur Verfügung stellt.
