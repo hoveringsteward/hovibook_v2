@@ -11,13 +11,18 @@
   % BILD %
 
   \subsection{Multicopter}
-  Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, die abwechselnd nach links und nach rechts Rotieren, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
+  Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, bei denen sich abwechselnd einer nach links und einer nach rechts dreht, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
 
   \subsubsection{Funktion}
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
   Dem Empfängermodul, dem DJI NAZA-M Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Höhe bzw. entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
 
   % BILD Funktion Blockschaltbild (Dokument) %
+
+  \subsubsection{Erweiterte Funktion}
+  Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: Pixycam, Ultraschallsensor, WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
+
+  % BILD %
 
   \subsubsection{Multicopter Arten}
   Es gibt verschiedene Arten von Multicoptern. 
@@ -52,17 +57,28 @@
   
 
   \subsubsection{Steuerungsarten}
-  Signale
-  Aileron
-  Elevator
-  Rudder
-  Throttle
+
+  DAS IS SCHON TEILWEISE WO ANDERS !!!!!!!!!!!!!!!!!!
+  ICH KANN GRAD NICHT RECHTSCHREIBEN !!!!!!!!!!!
+
+  Der Hexacopter wird über 4 Befehle gesteuert:
+
+    \begin{itemize}
+      \item \textbf{Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
+      Um diese auszuführen, werden bei der Beschleunigung nach links, die rechten Propeller stärker betrieben, umgekehrt drehen sich die auf der linken Seite befindlichen Propeller beim Flug nach rechts schneller. Durch die entstehende Neigung, fliegt der Hexacopter in die gewünschte Richtung.
+      \item \textbf{Elevator} auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
+      Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen. 
+      \item \textbf{Rudder} auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
+      Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
+      \item \textbf{Throttle} reguliert die Höhe.
+      Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
+    \end{itemize}
+
+    \subsubsection{Propeller}
+
 
   \cite{GrundlagenMulticopter}
   
-  \subsubsection{erweiterte Funktion}
-  unsere Dipl
-
 
   \subsection{Programmierung}
   Zum Programmieren des Mikrocontrollers von Microchip wurde die Programmiersprache C verwendet.
@@ -90,8 +106,6 @@
       \item \textbf{MPLAB}\\ 
       MPLAB ist eine Integrierte Entwicklungsumgebung von Microchip. In dieser wurde der Mikrocontroller programmiert und anschließend compiliert. Weiters hat die Entwicklungsumgebung eine Git Funktion, wodurch die Daten ohne zusätzliches Tool vom Server herunter- beziehungsweise hinaufgeladen werden können. \cite{Tool_mplab}
     \end{itemize}
-
-
 
   \subsection{Positionierungssystem}
 
@@ -126,6 +140,12 @@
     Die absolute Positionierung verwendet Referenzgitter und Koordinaten. Das Paradebeispiel für absolute Ortung ist die Angabe von Längen­ und Breitengrad.   Die darauf aufsetzende Technik, die sich diese Kartographie zu Nutze macht, ist GPS. \\
     Die relative Positionierung legt ihre eigenen Rahmen vor, die auf Basisstationen oder definierten Punkten basieren. Hier wird angegeben, wie weit das Objekt entfernt ist.
 
+    \textbf{Selbst- und fernortende Lokalisierungstechniken}\\
+    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
+    Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
+    Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
+    % BILD %
+
     \textbf{Genauigkeit}\\
     Die Genauigkeit gibt an, wie sehr sich gemessene und tatsächliche Position unterscheiden.
 
@@ -138,11 +158,7 @@
     \textbf{Limitierung}\\
     Unter Limitierung fallen Einschränkungen und Störfaktoren. Manche Systeme haben besondere Ansprüche an ihre Umgebung.
 
-    \textbf{Selbst- und fernortende Lokalisierungstechniken}\\
-    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
-    Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
-    Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
-    % BILD %
+
 
     \subsubsection{Signalbasierte Verfahren}
 
@@ -197,62 +213,56 @@
     \textbf{Segmentierung}\\
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.
 
-    \textbf{Pixelorienterte Segmentierung}\\ 
-    Pixelorientierte wird auch Punktorientierte Segmentierung genannt. \cite{Seg_punkt}
+    \subsection*{Pixelorienterte Segmentierung} 
+    Pixelorientierte Segmentierung wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte \cite{Seg_punkt}
     \textbf{Treshholding}\\ 
     Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelne Pixel unabhängig angewendet wird, gehört es zur Pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
-    \textbf{Modellbasierte Segmentierung}\\ \cite{Seg_modell}
+    \subsection*{Modellbasierte Segmentierung} 
+    Modelle, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. \cite{Seg_modell}
     \textbf{Templatematching}\\
     Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
     \textbf{Hough-Transformation}\\
-    Durch die Hough-Transformation können geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
+    Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
 
-    \textbf{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
+    \subsection*{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
+    Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft.
     \textbf{Region Growing}\\ 
     Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
-    \textbf{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
+    \subsection*{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
     Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet.
     \textbf{Co-Occurrence-Matrizen}
-    Um eine Texturanalyse durchzuführen, wird die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet. \cite{seg_coocc}
+    Um eine Texturanalyse durchzuführen, kann die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet werden. \cite{seg_coocc}
     Bei dieser Matrix werden die Grauwertverhältnisse der Umgebung eines Pixels beschrieben.
 
-    \textbf{Merkmalsextraktion}\\
+    \subsection*{Merkmalsextraktion}\\
     Bei diesem Schritt sollen Merkmale wie Kanten und Ecken erkannt werden.
-
     \textbf{Kantendetektion}\\
-    Kanten spielen im menschlichen Sehen eine dominante Rolle, ein Bild kann beinahe vollständig aus Kanten abgebildet werden.
-
-    Kantenbasiernde Segmentierung
-    Regionenbasierende Segmentierung: Benachbarte Pixel werden auf Gleichheit zum Startpixel geprüft.
-
-    \textbf{Sobel} Operator Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
-    
+    Im menschlichen Sehen, haben Kanten eine wichtige Bedeutung. Durch sie kann ein Bild beinahe vollständig nachgebildet werden. Es gibt einige Verfahren um diese Erkennung durchzuführen.
+    \textbf{Sobel Operator} Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
     \textbf{Laplace-Filter}
-
     \textbf{Canny Algorithmus} Zur Glättung, Einsatz eines zweidimensionalen Gaußfilters und Einsatz von gerichteten Ableitungsoperatoren. Nach der Ausdünnung der Linien, Anwendung einer Hysterese zur Erkennung ob es sich um eine Kante oder um ein Rauschen handelt.
-
     \textbf{Sombrerofilter} Der Sombrerofilter wird auch Laplace of Gaussian Operator und Marr-Hildreth-Operator genannt.
 
     \textbf{Eckendetektion}\\
+    Ecken sind Punkte, in denen zwei Kanten enden, weswegen sie ebenfalls ein wichtiges Merkmal in einem Bild darstellen. Hierfür gibt es ebenfalls mehrere Verfahren.
     \textbf{Moravec´s Corner Detector} Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
     \textbf{Harris Corner Detector} Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
 
 
-    \textbf{Klassifikation}\\ 
+    \subsection*{Klassifikation}\\ 
     Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
    
-    \textbf{Verfolgen von Objekten}\\
+    \subsection*{Verfolgen von Objekten}\\
     \textbf{Kalman-Filter}\\
     Kalman-Filter: Ist ein stochastischer Zustandsschätzer mit iterativer Struktur, der in Echtzeitsystemen angewendet wird unter der Annahme von normalverteilten Vorhersagen und Messungen und Vorhersage von Fehlern.
-
 
     \textbf{Optical-Flow}\\
     Optical Flow: Oberflächen erhalten eine Geschwindigkeit und eine Richtung, wobei die Bewegung von einer 3 D Szene in die 2 D Bildebene unter Berechnung eines Bewegungsvektors, der die Bewegung in Bildkoordinaten ausdrückt.
 
-    Optical Flow: %http://www.inf.fu-berlin.de/inst/ag-ki/rojas_home/documents/Betreute_Arbeiten/Master-Zetzsche.pdf
-    Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenommen. Ein mitfliegender Microcontroller verarbeitet dann die Bilder mit Hilfe einer entwickelten Software. Durch einen Mustervergleich wird die richtige Situation eingeschätzt. Das Konzept funktionierte bei Translationen-Bewegung. Drehungen und größere Winkel führten jedoch zu Fehlinterpretationen. Zur Berechnung des optischen Flusses (optical flow) werden Algorithmen von Shi-Tomasi und Lucas-Kanade verwendet. Die Shi-Tomasi Algorithmen benötigen markante Punkte in Bildern, um diese wieder erkennen zu können. Auch die Lucas-Kanade-Methode verwendet die Methode der Eckenerkennung, Punkte und Ecken müssen wiedererkannt werden.
+    Optical Flow:
+    Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenommen. Ein mitfliegender Microcontroller verarbeitet dann die Bilder mit Hilfe einer entwickelten Software. Durch einen Mustervergleich wird die richtige Situation eingeschätzt. Das Konzept funktionierte bei Translationen-Bewegung. Drehungen und größere Winkel führten jedoch zu Fehlinterpretationen. Zur Berechnung des optischen Flusses (optical flow) werden Algorithmen von Shi-Tomasi und Lucas-Kanade verwendet. Die Shi-Tomasi Algorithmen benötigen markante Punkte in Bildern, um diese wieder erkennen zu können. Auch die Lucas-Kanade-Methode verwendet die Methode der Eckenerkennung, Punkte und Ecken müssen wiedererkannt werden. \cite{opticalflow}
 
     \subsubsection{Optische Trackingsysteme}
 
@@ -261,7 +271,9 @@
     \textbf{Pixy CMUcam5}\\
     Die Pixy CMUcam5 ist ein optisches Trackingsystem. Das Kameramodul ist in der Lage, Objekte in 7 verschiedenen Farben zu scannen, diese zu speichern und wiederzuerkennen. Daten über die Höhe und die Breite, sowie die x- und y-Position des getrackten Objektes innerhalb des Frames werden ausgegeben. Bei sogenannten Colorcodes, die sich aus zwei oder mehrfarbigen Objekten ergeben, kann die Rotation des Objektes ebenfalls ermittelt werden.
 
-    Verfahren der Pixy
+    \textbf{CMVision}
+    CMVision, Color Machine Vision, ist ähnlich dem Algorithmus der Pixy
+    % https://books.google.at/books?id=QHUlp1tI-JwC&pg=PT480&lpg=PT480&dq=cmvision+cmucam&source=bl&ots=xn9xZCsBk1&sig=v3GwsxR9w4SRIRX9p7uzolQWqdc&hl=de&sa=X&ved=0ahUKEwjlidqal7HLAhUGKXIKHdSuBSsQ6AEIQjAF#v=snippet&q=cmucam&f=false
 
     \cite{Pixy}
     \cite{Pixy_Verfahren}
@@ -360,14 +372,14 @@
 
 
   \textbf{Tracking mittels Infrarot}\\
-
+  Um das System auch ohne entsprechende Lichtverhältnisse durchführen zu können, besteht die Möglichkeit einen Infrarotfilter an der Pixycam anzubringen und die Wegpunkte mittels Infrarotlampen zu makieren. 
 
   Vorteile:
   System funktioniert ebenfalls im Dunkeln.
   Nachteile: 
   Jeder Tisch benötigt einen Stromanschluss.
   Die Wartung ist aufwändiger.
-  Komplexer für den Administrator - wo ist welcher Infrarotsender
+  Komplexer für den Administrator - wo ist welcher Infrarotsender (Für den Menschen nicht sofort ersichtlich)
 
 
   \subsubsection{Das gewählte Konzept}
@@ -384,6 +396,9 @@
 
   \textbf{Relative Positionierung}\\
   Das gewählte System gestaltet sich relativ, da der Hexacopter seine Position relativ zu Farbobjekten bestimmt.
+
+  \textbf{Selbstortendes Positionierungssystem}\\
+  Das Positionierungssystem ist selbstortend. Die am boden liegenden Farbobjekte werden von der Pixy getrackt und die daraus entstehenden Daten verarbeitet. Der Hexacopter kann ohne externe Einflüsse navigieren und ist somit unabhängig.
 
   \textbf{Genauigkeit}\\
   Da das System mittels optischem Tracking umgesetzt wird, ist die Genauigkeit sehr hoch.
@@ -408,10 +423,6 @@
 
   Der verwendete Ultraschallsensor misst die Entfernung mit einer Auflösung von 3mm. Er eignet sich für den Bereich zwischen 2cm und 3m. 
   \cite{Ultrasonic}
-
-  \textbf{Selbstortendes Positionierungssystem}\\
-  Das Positionierungssystem ist selbstortend. Die am boden liegenden Farbobjekte werden von der Pixy getrackt und die daraus entstehenden Daten verarbeitet. Der Hexacopter kann ohne externe Einflüsse navigieren und ist somit unabhängig.
-
 
   \subsection{Tischplan}
 
@@ -656,14 +667,25 @@ void SignalOut(void) {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sicherheit}
 
-Sicherheitskonzepte
-Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Wenn ein Hindernis erkannt wird, sollen alle Komponenten geschützt werden, um Verletzungs- und Beschädigungsgefahr zu verringern. 
-
   \subsection{Technische Planung}
+
+Sicherheitskonzepte
+Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Hier werden mögliche Fehler mit Anlehnung an FMEA analysiert.
+
+GEKLAUT
+
+FMEA: Failure Mode and Effects Analysis = "Fehlermöglichkeits- und -einflussanalyse" / "Auswirkungsanalyse"
+
+FMEA zielt darauf, Fehler von vornherein zu vermeiden, statt sie nachträglich zu entdecken und zu korrigieren. Bereits in der Entwurfsphase sollen potenzielle Fehlerursachen identifiziert und bewertet werden. 
+
+Durch das frühe Beschäftigen mit möglichen Fehlerquellen wird eine Strategie der Fehlervermeidung anstatt aufwändiger Fehlerbeseitigung verfolgt. Die FMEA ist daher besonders gut für Neuentwicklungen und Änderungen von Produkten und Prozessen geeignet. Durch die Risikobewertung können kritische Komponenten gefunden und Schwerpunkte bei der Verhütung von Fehlern gesetzt werden.
 
   \subsection{Umsetzung}
 
-  \subsection{Herausforderungen und Lösungen}
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systemausfall}
@@ -672,4 +694,3 @@ Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von 
 
   \subsection{Umsetzung}
 
-  \subsection{Herausforderungen und Lösungen}
