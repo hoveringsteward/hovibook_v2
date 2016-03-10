@@ -336,7 +336,7 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.5\textwidth]{Bilder/werte_abs}
+			\includegraphics[width = 1\textwidth]{Bilder/werte_abs}
 			\par\end{centering}
 			\caption[Werte ABS]{Werte für ABS\cite{werte_abs}}
 			\label{werte_abs}
@@ -352,7 +352,7 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.45\textwidth]{Bilder/auswahl_creo}
+			\includegraphics[width = 1\textwidth]{Bilder/auswahl_creo}
 			\par\end{centering}
 			\caption{Auswahlmenü Simulation}
 			\label{auswahl_creo}
@@ -404,7 +404,7 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 					\label{max_spannung_f20_r0_5}
 				\end{figure}
 
-	Die maximale Spannung beträgt etwa 40.2 N, vergleicht man dies mit dem Ausschnitt aus dem Datenblatt (siehe Abbildung \ref{werte_abs}) sieht man,
+	Die maximale Spannung beträgt etwa $40.2 N/mm^{2}$, vergleicht man dies mit dem Ausschnitt aus dem Datenblatt (siehe Abbildung \ref{werte_abs}) sieht man,
 	dass die maximale Biegespannung an beiden Stellen überschritten wurde. In der Realität würde das bedeuten, dass die Lasche bei dieser Belastung sehr stark verformt oder gar gebrochen wäre.
 	Solche starken Beanspruchungen treten in diesem Fall niemals auf, da  bei einem Absturz die Halterung geschützt wäre.
 
@@ -424,10 +424,51 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 	Abbildung \ref{max_spannung_f20_r1}, zeigt das Ergebnis mit der gleichen Kraft, aber einem Radius von 1 mm, also doppelt so groß wie in der ersten Simulation.
 	Man kann sehr gut erkennen, dass die Spannung von $40.2 N/mm^{2}$ auf $30.3 N/mm^{2}$ gesunken ist, also um fast das eineinhalb-fache.
 
-	Dieses Vorkommen wird in der Mechanik als \uline{Kerbwirkung} bezeichnet:
+	Dieses Vorkommen wird in der Mechanik als \textbf{Kerbwirkung} bezeichnet:
 
+			\begin{figure}[H]
+				\begin{centering}
+					\subfigure[Spannungsverteilung ohne Kerbe\label{spannungsverteilung_ohne_kerbe}]{\includegraphics[width = 0.4\textwidth]{Bilder/spannungsverteilung_ohne_kerbe}}
+					\subfigure[Spannungsverteilung mit Kerbe\label{spannungsverteilung_mit_kerbe}]{\includegraphics[width = 0.4\textwidth]{Bilder/spannungsverteilung_mit_kerbe}}
+				\par\end{centering}
+				\caption{Spannungsverteilung bei Zug und Biegung}
+				\label{spannungsverteilung_ohne_kerbe}
+			\end{figure}
 
+	Abbildung \ref{spannungsverteilung_ohne_kerbe} zeigt die Spannungsverteilung in einem Zug,- \bzw Biegestab ohne Querschnittsbeeinflussungen.
+	Im Vergleich dazu wird in der Abbildung \ref{spannungsverteilung_mit_kerbe}, die Spannungsverteilung mit dem Einfluss einer Kerbe dargestellt.
+	Für weitere Erklärungen wird der erste Stab „A“ und der zweite „B“ genannt.
 
+	Beansprucht man „A“ mit einer Kraft oder einem Moment, verteilt sich die Spannung gleichmäßig über das Werkstück.
+	Wird „B“, auf Zug oder Biegung beansprucht, kann man erkennen, dass sich die Spannung nur unter dem Kerbengrund verteilt.
+	Die Spannung „A“ wird in der Regel mit $\sigma_{n}$ bezeichnet und die maximale Spannung in „B“ mit $\sigma_{max}$.
+	Bildet man die Division zwischen $\sigma_{n}$ und $\sigma_{max}$, erhält man die Formzahl $\alpha_{k}$.
+	$\alpha_{k}$ kann niemals kleiner als 1 werden, das würde bedeuten, dass die Kerbe als Stärkung des Querschnitts gelten würde.
+
+	Die Form der Kerbe ist maßgebend, da diese die Spitzenwerte der Spannung beeinflussen, wie in Abbildung \ref{kerbform} ersichtlich ist.
+
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.45\textwidth]{Bilder/kerbform}
+			\par\end{centering}
+			\caption{Spannungsverteilung bei verschiedenen Kerbformen}
+			\label{kerbform}
+			\end{figure}
+
+	Je scharfkantiger die Form ist, desto größer sind die maximalen Spannungen an der Kerbe, hingegen, je runder und größerer die Kerbe ist, desto besser werden die auftretenden Spannungen verteilt.
+
+	In der Halterung sollen die Rundungen kein Schwächen des Querschnittes bezwecken, in diesem Fall haben diese eine andere Wirkung.
+	Berechnet man sich die Fläche der Lasche mit einer scharfen Kante und einer runden,
+	sieht man dass der Radius die Oberfläche \bzw das Volumen vergrößert (siehe folgende Abbildungen), daher ist auch mehr Widerstand vorhanden.
+
+			\begin{figure}[H]
+				\begin{centering}
+					\subfigure[FlÃ¤che mit Radius\label{klammer_mit_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_mit_radius}}
+					\subfigure[FlÃ¤che ohne Radius\label{klammer_ohne_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_ohne_radius}}
+				\caption{FlÃ¤cheneinfluss durch Radius}
+				\par\end{centering}
+				\label{klammer_radius}
+			\end{figure}
 
 			\newpage
 
