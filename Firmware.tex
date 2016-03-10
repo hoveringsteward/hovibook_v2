@@ -6,10 +6,9 @@
 \section{Allgemeine technische Planung}
 
   \subsection{Konvention}
+  In der Arbeit wird folgende Konvention festgelegt. Die z-Achse ist die Höhe, die y-Achse ist vorwärts und rückwärts und die x-Achse ist Seitwärts.
 
-    In der Arbeit wird folgende Konvention festgelegt. Die z-Achse ist die Höhe, die y-Achse ist vorwärts und rückwärts und die x-Achse ist Seitwärts.
-
-    % BILD %
+  % BILD %
 
   \subsection{Multicopter}
   Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, die abwechselnd nach links und nach rechts Rotieren, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
@@ -20,12 +19,12 @@
 
   % BILD Funktion Blockschaltbild (Dokument) %
 
-   \subsubsection{Multicopter Arten}
+  \subsubsection{Multicopter Arten}
   Es gibt verschiedene Arten von Multicoptern. 
   Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
-  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren.
+  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
 
-  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben.
+  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
   \subsubsection{Konfiguration}
   Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren.
@@ -38,6 +37,7 @@
   % BILD mit 4, 6, 8 in + bzw x %
 
   \subsection{Mögliche Anwendungsgebiete}
+  Multicopter finden in vielen Bereichen Anwendung. \cite{copterAnwendung}
   \begin{itemize}
     \item Fotographie und Videos / Filmindustrie / Anfertigen von hoch aufgelösten Luftbildkarten
     \item Multicopter als Hobby / Kunstflug
@@ -49,7 +49,7 @@
     \item Kontrolle, Inspektion und Dokumentation von Brücken, Gebäuden, Gräben
     \item Militärische Anwendung: Spionagedrohne zur Aufklärung, Kampfdrohne zur Zerstörung, Rettungungsdrohne für Hilfsaktionen
   \end{itemize}  
-  \cite{copterAnwendung}
+  
 
   \subsubsection{Steuerungsarten}
   Signale
@@ -65,7 +65,6 @@
 
 
   \subsection{Programmierung}
-  
   Zum Programmieren des Mikrocontrollers von Microchip wurde die Programmiersprache C verwendet.
   Um die Sprache zu lernen, wurde ein sogenanntes Bootcamp als Vorbereitung für die weitere Programmierung veranstaltet.
 
@@ -84,23 +83,22 @@
   \subsection{Tools}
 
     \begin{itemize}
-      \item \textbf{yEd - Graph Editor}\\ \cite{Tool_yed}
-      Zum Erstellen der benötigten Flussdiagramme wurde eine Desktop Anwendung namens yEd verwendet.
-      \item \textbf{GitHub}\\ \cite{Tool_github}
-      Zur Versionsverwaltung des Codes wurde die digitale Ablage GitHub verwendet. Durch diese ist eine gemeinsame Programmierung möglich.
-      \item \textbf{MPLAB}\\ \cite{Tool_mplab}
-      MPLAB ist eine Integrierte Entwicklungsumgebung von Microchip. In dieser wurde der Mikrocontroller programmiert und anschließend compiliert.
-      Weiters hat die Entwicklungsumgebung eine Git Funktion, wodurch die Daten ohne zusätzliches Tool vom Server herunter- beziehungsweise hinaufgeladen werden können. 
+      \item \textbf{yEd - Graph Editor}\\ 
+      Zum Erstellen der benötigten Flussdiagramme wurde eine Desktop Anwendung namens yEd verwendet. \cite{Tool_yed}
+      \item \textbf{GitHub}\\ 
+      Zur Versionsverwaltung des Codes wurde die digitale Ablage GitHub verwendet. Durch diese ist eine gemeinsame Programmierung möglich.\cite{Tool_github}
+      \item \textbf{MPLAB}\\ 
+      MPLAB ist eine Integrierte Entwicklungsumgebung von Microchip. In dieser wurde der Mikrocontroller programmiert und anschließend compiliert. Weiters hat die Entwicklungsumgebung eine Git Funktion, wodurch die Daten ohne zusätzliches Tool vom Server herunter- beziehungsweise hinaufgeladen werden können. \cite{Tool_mplab}
     \end{itemize}
 
 
 
   \subsection{Positionierungssystem}
 
-    \subsubsection{Allgemein} \cite{PositionAllg}
+    \subsubsection{Allgemein}
     Um eine Positionsbestimmung durchzuführen, benötigt man ein Trackingsystem. 
-    Es gibt mehrere Verfahren, um die Position zu bestimmen:
-    \begin{\begin{itemize}
+    Es gibt mehrere Verfahren, um die Position zu bestimmen: \cite{PositionAllg}
+    \begin{itemize}
     \item Laufzeitverfahren (Ultraschall, GPS, optische Kreisel) ???
     \item räumliches Scanning / optische Verfahren (outside-in, inside-out)
     \item Inertialsysteme (mechanische Kreisel/Gyro, Beschleunigungssensoren)
@@ -112,176 +110,149 @@
     \item hybride Ansätze (Kombinationen, welche genaue, aber langsame Systeme mit schnellen, ungenaueren integrieren).
     \end{itemize}   
 
-    \subsubsection{Anwendung} \cite{posAnwendung}
-    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung verwendet, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden verwendet. 
+    \subsubsection{Anwendung} 
+    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung verwendet, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden verwendet. \cite{posAnwendung}
 
     \subsubsection{Eigenschaften der Positionsbestimmung}
 
-    Ein Positionierungssystem kann verschiedene Arten von Informationsdaten bereitstellen. 
+    Ein Positionierungssystem kann verschiedene Arten von Informationsdaten bereitstellen. \cite{pos_eigenschaften}
 
     \textbf{Physische und symbolische Positionierung}\\
-    Die physische Positionierung ist eine exakte Position, die zum Beispiel in einem Koordination, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.
-    Symbolische Positionierung ist die abstrakte beschreibung eines Ortes, sie wird sprachlich beschrieben, beispielsweise Küche, Garten, Dachboden.
+    Die physische Positionierung ist eine exakte Position, die zum Beispiel in einem Koordination, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.\\
+    Symbolische Positionierung ist die abstrakte beschreibung eines Ortes, sie wird sprachlich beschrieben, beispielsweise Küche, Garten, Dachboden.\\
     Eine physikalische Position kann auch symbolisch Beschrieben werden.
     
     \textbf{Relative und absolute Positionierung}\\
-    Die absolute Positionierung verwendet Referenzgitter und Koordinaten. Das Paradebeispiel für absolute Ortung ist die Angabe von Längen­ und Breitengrad.   Die darauf aufsetzende Technik, die sich diese Kartographie zu Nutze macht, ist GPS. 
+    Die absolute Positionierung verwendet Referenzgitter und Koordinaten. Das Paradebeispiel für absolute Ortung ist die Angabe von Längen­ und Breitengrad.   Die darauf aufsetzende Technik, die sich diese Kartographie zu Nutze macht, ist GPS. \\
     Die relative Positionierung legt ihre eigenen Rahmen vor, die auf Basisstationen oder definierten Punkten basieren. Hier wird angegeben, wie weit das Objekt entfernt ist.
 
-    \textbf{Genauigkeit}
+    \textbf{Genauigkeit}\\
     Die Genauigkeit gibt an, wie sehr sich gemessene und tatsächliche Position unterscheiden.
 
-    \textbf{Skalierung}
+    \textbf{Skalierung}\\
     Hierbei gibt es mehrere Faktoren, beispielsweise die Anzahl der zu trackenden Objekte, die Reichweite und die benötigte Zeit.
 
-    \textbf{Kosten}
+    \textbf{Kosten}\\
     Hier gibt es Kosten im Bereich der Anschaffung des Systems und Kosten während des Betriebs.
 
-    \textbf{Limitierung}
+    \textbf{Limitierung}\\
     Unter Limitierung fallen Einschränkungen und Störfaktoren. Manche Systeme haben besondere Ansprüche an ihre Umgebung.
 
-    \subsubsection{Selbst- und fernortende Lokalisierungstechniken}
-
-    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.
-
+    \textbf{Selbst- und fernortende Lokalisierungstechniken}\\
+    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
+    Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
+    Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
     % BILD %
-
-    \textbf{Selbstortendes Positionierungssystem}\\
-    Der mobile, bewegliche Empfänger bekommt die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.
-
-    \textbf{Fernortendes Positionierungssystem}\\
-    Mobile, bewegliche Sender mit stationären, unbeweglichem Empfänger. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
 
     \subsubsection{Signalbasierte Verfahren}
 
-    Verfahren zur Positionsbestimmung
-
-    \cite{pos_signal_2}
-    \cite{pos_signal_4}
-
-    \begin{itemize}
-      \item \textbf{Lateration}\\
-      Bei der Lateration wird die Position mit Hilfe der Entfernungsmessung bestimmt.
-      Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
-      Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung. 
-      Um schlussendlich die Position zu bestimmen, werden 3 Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die 3 Entfernungen kann mittels Trilateration die Position berechnet werden.
-      \\ % BILD %
-      \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung. 
-      Die mobile Sation sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
-      \\ % BILD %
-      \item \textbf{Angulation}\\
-      Bei der Angulation wird die Position durch die Bestimmung von Winkeln ermittelt. \\
-      \textbf{AOA} (Angel of Arrival) wird mittels Berechnung des Einfallswinkels auf ein Antennenarray umgesetzt. Bei dieser Technik werden mindestens 2 Basisstationen benötigt. Mit den Einfallswinkeln der empfangenen Signale kann die Position durch Triangulation festgestellt werden. Die Winkelbeziehungen eines Dreiecks werden dafür verwendet.
-      Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware. 
-      \\ % BILD %
-      \item \textbf{Scene Analysis}\\
-      Bei der Szenenanalyse werden Umgebungsparameter erfasst und ausgewertet.\\
-      Für die Technik \textbf{Fingerprint} werden Signalstärken gemessen und als Fingerprint in einer Datenbank abgespeichert. Die Position wird dann durch den Vergleich von Fingerprints mit der Signalstärke, die bei der aktuellen Position gemessen wird, herausgefunden.
-      \item \textbf{Proximity}\\
-      Für das Verfahren Proximity wird die physische Nähe genutzt.
-      Hier gibt es die Technik COO (cell of origin). \\
-      Bei \textbf{COO} gibt es Basisstationen, mit bekannter Position. Die mobile Station verbindet sich mit der nächstgelegenen Basisistation. Wenn die mobile Station von mehreren Basisstationen erkannt wird, wird die Signalstärke beachtet. Diese Methode ist sehr ungenau.
-      \\ % BILD %
-    \end{itemize}
+    Verfahren zur Positionsbestimmung mittels Signal \cite{pos_signal_2} \cite{pos_signal_4}
+    
+    \textbf{Lateration}\\
+    Bei der Lateration wird die Position mit Hilfe der Entfernungsmessung bestimmt.
+    Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
+    Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung. 
+    Um schlussendlich die Position zu bestimmen, werden 3 Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die 3 Entfernungen kann mittels Trilateration die Position berechnet werden.
+    \\ % BILD %
+    \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung. 
+    Die mobile Sation sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
+    \\ % BILD %
+    \textbf{Angulation}\\
+    Bei der Angulation wird die Position durch die Bestimmung von Winkeln ermittelt. \\
+    \textbf{AOA} (Angel of Arrival) wird mittels Berechnung des Einfallswinkels auf ein Antennenarray umgesetzt. Bei dieser Technik werden mindestens 2 Basisstationen benötigt. Mit den Einfallswinkeln der empfangenen Signale kann die Position durch Triangulation festgestellt werden. Die Winkelbeziehungen eines Dreiecks werden dafür verwendet.
+    Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware. 
+    \\ % BILD %
+    \textbf{Scene Analysis}\\
+    Bei der Szenenanalyse werden Umgebungsparameter erfasst und ausgewertet.\\
+    Für die Technik \textbf{Fingerprint} werden Signalstärken gemessen und als Fingerprint in einer Datenbank abgespeichert. Die Position wird dann durch den Vergleich von Fingerprints mit der Signalstärke, die bei der aktuellen Position gemessen wird, herausgefunden.
+    \textbf{Proximity}\\
+    Für das Verfahren Proximity wird die physische Nähe genutzt.
+    Hier gibt es die Technik COO (cell of origin). \\
+    Bei \textbf{COO} gibt es Basisstationen, mit bekannter Position. Die mobile Station verbindet sich mit der nächstgelegenen Basisistation. Wenn die mobile Station von mehreren Basisstationen erkannt wird, wird die Signalstärke beachtet. Diese Methode ist sehr ungenau.
+    \\ % BILD %
 
     \subsubsection{Signalbasierte Technologien}
-    \begin{itemize}
-        \item \textbf{GPS (Global Positioning System)}\\
-        GPS ist ein satellitengestützte Navigationssystem, das Ende der 1980er-Jahre zur globalen Positionsbestimmung entwickelt wurde. Die Nachteile des Systems sind der schlechte Empfang der Satellitensignale für indoor- Anwendungen. 
-        \item \textbf{RFID (radio-frequency identification)}\\
-        RFID bezeichnet eine Technologie für Sender-Empfänger-Systeme zum automatischen und berührungslosen Identifizieren und Lokalisieren von Objekten mit Radiowellen. Ein RFID-System besteht aus einem Transponder, der sich am oder im Objekt befindet und einen kennzeichnenden Code enthält, sowie einem Lesegerät zum Auslesen dieser Kennung. 
-        \item \textbf{WPS (WLAN Positioning System)}\\    
-        WPS ist ein indoor Positionierungssystem, das auf WLAN basiert. Durch sogenannte  Access Points (de. drahtloser Zugangspunkt), wird die Entfernung zu Endgeräten bestimmt. Durch drei Accesspoints kann mittels Dreiecksmethode, die Position des Endgeräts ermittelt werden.
-        \item \textbf{Ultraschall}\\
-        Ein Ultraschallsensor ist Sender und Empfänger in einem. Das System basiert auf der Zeitdifferenzmessung. Er sendet ein Signal, dieses wird reflektiert und anschließend empfängt der Sensor sein eigenes Echo.
-        Durch die Information, mit welcher Geschwindigkeit sich elektromagnetische sowie akustische Wellen ausbreiten, ist es möglich Entfernungen zu messen. Die Zeit, die ein Signal zum zu messenden Objekt und wieder zurück braucht, nennt man Laufzeit.
-    \end{itemize}
+    \textbf{GPS (Global Positioning System)}\\
+    GPS ist ein satellitengestützte Navigationssystem, das Ende der 1980er-Jahre zur globalen Positionsbestimmung entwickelt wurde. Die Nachteile des Systems sind der schlechte Empfang der Satellitensignale für indoor- Anwendungen. 
+    \textbf{RFID (radio-frequency identification)}\\
+    RFID bezeichnet eine Technologie für Sender-Empfänger-Systeme zum automatischen und berührungslosen Identifizieren und Lokalisieren von Objekten mit Radiowellen. Ein RFID-System besteht aus einem Transponder, der sich am oder im Objekt befindet und einen kennzeichnenden Code enthält, sowie einem Lesegerät zum Auslesen dieser Kennung. 
+    \textbf{WPS (WLAN Positioning System)}\\    
+    WPS ist ein indoor Positionierungssystem, das auf WLAN basiert. Durch sogenannte  Access Points (de. drahtloser Zugangspunkt), wird die Entfernung zu Endgeräten bestimmt. Durch drei Accesspoints kann mittels Dreiecksmethode, die Position des Endgeräts ermittelt werden.
+    \textbf{Ultraschall}\\
+    Ein Ultraschallsensor ist Sender und Empfänger in einem. Das System basiert auf der Zeitdifferenzmessung. Er sendet ein Signal, dieses wird reflektiert und anschließend empfängt der Sensor sein eigenes Echo.
+    Durch die Information, mit welcher Geschwindigkeit sich elektromagnetische sowie akustische Wellen ausbreiten, ist es möglich Entfernungen zu messen. Die Zeit, die ein Signal zum zu messenden Objekt und wieder zurück braucht, nennt man Laufzeit.
 
     \subsubsection{Optische Verfahren}
     Maschinelles Sehen (machine vision) beschreibt die Fähigkeit eines Computers zu sehen. 
     Für einen Menschen ist es einfach, Objekte auf einem Bild zu erkennen, für Computer besteht ein Bild jedoch aus Daten, die die Graustufe beziehungsweise Farbe jedes einzelnen Pixels angeben, was die Möglichkeit des "Bildverstehens" erschwert.
-    Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen.  
-    \cite{machinevision}
-    \cite{machinevision2}
+    Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen. \cite{machinevision} \cite{machinevision2}
 
     Es wird zwischen Objekt Erkennung (detection) und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, dass in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
     \cite{obj_det_trak}
 
-    \paragraph{Bildverarbeitung} \cite{Bildverarbeitung} \cite{Bildverarbeitung2}
+    \textbf{Bildverarbeitung}\\ 
     Die Bildverarbeitung besteht aus einer Reihe von Schritten, je nach Anwendung werden dabei manche ausgelassen.
-    Der Beginn besteht aus der Bildvorverarbeitung, bei der das Bild optisch verbessert wird. Daraufhin folgt die Bildanalyse, die aus den Schritten Segmentierung, in der das Bild in Bereiche aufgeteilt wird, Merkmalsextraktion und Klassifizierung, bei der das Bild Klassen zuge besteht. 
-
+    Der Beginn besteht aus der Bildvorverarbeitung, bei der das Bild optisch verbessert wird. Daraufhin folgt die Bildanalyse, die aus den Schritten Segmentierung, in der das Bild in Bereiche aufgeteilt wird, Merkmalsextraktion und Klassifizierung, bei der das Bild Klassen zuge besteht. \cite{Bildverarbeitung} \cite{Bildverarbeitung2}
 
     \textbf{Segmentierung}\\
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.
 
-    \begin{itemize}
-      \item \textbf{Pixelorienterte Segmentierung}\\ \cite{Seg_punkt}
-      Pixelorientierte wird auch Punktorientierte Segmentierung genannt. 
-      \textbf{Treshholding}\\ 
-      Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelne Pixel unabhängig angewendet wird, gehört es zur Pixelorientierten Segmentierung.
+    \textbf{Pixelorienterte Segmentierung}\\ 
+    Pixelorientierte wird auch Punktorientierte Segmentierung genannt. \cite{Seg_punkt}
+    \textbf{Treshholding}\\ 
+    Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelne Pixel unabhängig angewendet wird, gehört es zur Pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
-      \item \textbf{Modellbasierte Segmentierung}\\ \cite{Seg_modell}
-      \textbf{Templatematching}\\
-      Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
-      \textbf{Hough-Transformation}\\
-      Durch die Hough-Transformation können geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
+    \textbf{Modellbasierte Segmentierung}\\ \cite{Seg_modell}
+    \textbf{Templatematching}\\
+    Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
+    \textbf{Hough-Transformation}\\
+    Durch die Hough-Transformation können geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
 
-      \item \textbf{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
-      \textbf{Region Growing}\\ 
-      Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
+    \textbf{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
+    \textbf{Region Growing}\\ 
+    Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
-      \item textbf{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
-      Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet.
+    \textbf{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
+    Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet.
+    \textbf{Co-Occurrence-Matrizen}
+    Um eine Texturanalyse durchzuführen, wird die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet. \cite{seg_coocc}
+    Bei dieser Matrix werden die Grauwertverhältnisse der Umgebung eines Pixels beschrieben.
 
-      \item textbf{Kanten- und Eckenorientierte Segmentierung}\\
-      \textbf{Kantendetektion}\\
-      Kanten spielen im menschlichen Sehen eine dominante Rolle, ein Bild kann beinahe vollständig aus Kanten abgebildet werden.
+    \textbf{Merkmalsextraktion}\\
+    Bei diesem Schritt sollen Merkmale wie Kanten und Ecken erkannt werden.
 
-      Kantenbasiernde Segmentierung
-      Regionenbasierende Segmentierung: Benachbarte Pixel werden auf Gleichheit zum Startpixel geprüft.
+    \textbf{Kantendetektion}\\
+    Kanten spielen im menschlichen Sehen eine dominante Rolle, ein Bild kann beinahe vollständig aus Kanten abgebildet werden.
+
+    Kantenbasiernde Segmentierung
+    Regionenbasierende Segmentierung: Benachbarte Pixel werden auf Gleichheit zum Startpixel geprüft.
+
+    \textbf{Sobel} Operator Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
     
-      Merkmalextraktion:Durchsuchung eines Bildes nach Kanten, Ecken und Templates
-      Kantendetektoren
+    \textbf{Laplace-Filter}
 
-         % Sobel Operator
-    %Laplace-Filter
- %   Canny Algorithmus
+    \textbf{Canny Algorithmus} Zur Glättung, Einsatz eines zweidimensionalen Gaußfilters und Einsatz von gerichteten Ableitungsoperatoren. Nach der Ausdünnung der Linien, Anwendung einer Hysterese zur Erkennung ob es sich um eine Kante oder um ein Rauschen handelt.
 
-        Sobel Kantendetektion: Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
-        
-        Canny Kantendetektion: Zur Glättung, Einsatz eines zweidimensionalen Gaußfilters und Einsatz von gerichteten Ableitungsoperatoren. Nach der Ausdünnung der Linien, Anwendung einer Hysterese zur Erkennung ob es sich um eine Kante oder um ein Rauschen handelt.
+    \textbf{Sombrerofilter} Der Sombrerofilter wird auch Laplace of Gaussian Operator und Marr-Hildreth-Operator genannt.
 
-        Sombrerofilter
-        Der Sombrerofilter wird auch Laplace of Gaussian Operator und Marr-Hildreth-Operator genannt.
-
-      \textbf{Eckendetektion}\\
-      Eckendetektoren
-      Moravec´s Corner Detector: Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
-      Harris Corner Detector: Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
-
-      \end{itemize}
+    \textbf{Eckendetektion}\\
+    \textbf{Moravec´s Corner Detector} Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
+    \textbf{Harris Corner Detector} Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
 
 
-      textbf{Objekterkennung}\\
-      \begin{itemize}
-  
-      \item \textbf{Klassifikation}\\ \cite{Bildverarbeitung}
-      Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. 
-     
-      \item textbf{Verfolgen von Objekten}\\
-      \textbf{Kalman-Filter}\\
-      Kalman-Filter: Ist ein stochastischer Zustandsschätzer mit iterativer Struktur, der in Echtzeitsystemen angewendet wird unter der Annahme von normalverteilten Vorhersagen und Messungen und Vorhersage von Fehlern.
+    \textbf{Klassifikation}\\ 
+    Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
+   
+    \textbf{Verfolgen von Objekten}\\
+    \textbf{Kalman-Filter}\\
+    Kalman-Filter: Ist ein stochastischer Zustandsschätzer mit iterativer Struktur, der in Echtzeitsystemen angewendet wird unter der Annahme von normalverteilten Vorhersagen und Messungen und Vorhersage von Fehlern.
 
 
-      \textbf{Optical-Flow}\\
-      Optical Flow: Oberflächen erhalten eine Geschwindigkeit und eine Richtung, wobei die Bewegung von einer 3 D Szene in die 2 D Bildebene unter Berechnung eines Bewegungsvektors, der die Bewegung in Bildkoordinaten ausdrückt.
+    \textbf{Optical-Flow}\\
+    Optical Flow: Oberflächen erhalten eine Geschwindigkeit und eine Richtung, wobei die Bewegung von einer 3 D Szene in die 2 D Bildebene unter Berechnung eines Bewegungsvektors, der die Bewegung in Bildkoordinaten ausdrückt.
 
-      Optical Flow: %http://www.inf.fu-berlin.de/inst/ag-ki/rojas_home/documents/Betreute_Arbeiten/Master-Zetzsche.pdf
-Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenommen. Ein mitfliegender Microcontroller verarbeitet dann die Bilder mit Hilfe einer entwickelten Software. Durch einen Mustervergleich wird die richtige Situation eingeschätzt. Das Konzept funktionierte bei Translationen-Bewegung. Drehungen und größere Winkel führten jedoch zu Fehlinterpretationen. Zur Berechnung des optischen Flusses (optical flow) werden Algorithmen von Shi-Tomasi und Lucas-Kanade verwendet. Die Shi-Tomasi Algorithmen benötigen markante Punkte in Bildern, um diese wieder erkennen zu können. Auch die Lucas-Kanade-Methode verwendet die Methode der Eckenerkennung, Punkte und Ecken müssen wiedererkannt werden.
-
-    \end{itemize}
-
+    Optical Flow: %http://www.inf.fu-berlin.de/inst/ag-ki/rojas_home/documents/Betreute_Arbeiten/Master-Zetzsche.pdf
+    Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenommen. Ein mitfliegender Microcontroller verarbeitet dann die Bilder mit Hilfe einer entwickelten Software. Durch einen Mustervergleich wird die richtige Situation eingeschätzt. Das Konzept funktionierte bei Translationen-Bewegung. Drehungen und größere Winkel führten jedoch zu Fehlinterpretationen. Zur Berechnung des optischen Flusses (optical flow) werden Algorithmen von Shi-Tomasi und Lucas-Kanade verwendet. Die Shi-Tomasi Algorithmen benötigen markante Punkte in Bildern, um diese wieder erkennen zu können. Auch die Lucas-Kanade-Methode verwendet die Methode der Eckenerkennung, Punkte und Ecken müssen wiedererkannt werden.
 
     \subsubsection{Optische Trackingsysteme}
 
@@ -315,8 +286,8 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
 
       Bei diesem Konzept, soll durch die benützung sogenannter Pseudolites (Gefälschte Sateliten) eine Art lokales GPS erschaffen werden.
 
-      Wir haben 3 Sender, die signale Schicken, der Empfänger ist im Hexacopter.
-      Jeder der 3 Pseudolites sendet ein Signal, dadurch werden 3 Distanzen ausgerechnet.
+      Das System besteht aus 3 Sendern, die signale Schicken und einem Empfänger, der sich im Hexacopter befindet.
+      Durch das Senden eines Signals von jedem Pseudolite zum Empfänger, können 3 Distanzen berechnet werden.
       Aus diesen 3 Distanzen und der bekannten Koordinaten der Pseudolites, wird die augenblickliche Position mittels Trilateration des Hexacopters berechnet.
 
 %\[
@@ -325,9 +296,9 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
 %      Distanz 3 = (x3 - x)^2 + (y3 - y)^2 + (z3 - z)^2
 %\]
 
-      Distanz ... ist die durchgeführte Messung
-      x1, y1, ... z2, z3 ... sind die staatischen Koordinaten von den Pseudolites 
-      x, y, z ... werden durch die Lösung dieses quadratischen Gleichungssystems ermittelt. 
+      Distanz ... ist die durchgeführte Messung\\
+      x1, y1, ... z2, z3 ... sind die staatischen Koordinaten von den Pseudolites \\
+      x, y, z ... werden durch die Lösung dieses quadratischen Gleichungssystems ermittelt \\
       
       Beim lösen der Gleichung erhält man 2 Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen 3er verschmolzener Kugeln 2 Schnittpunkte haben.
       Wenn die Pseudoliten am Boden anbringt, liegt eine der beiden Lösungen oberhalb und die 2. Lösung unterhalb des Bodens, womit man einfacherweise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
@@ -335,111 +306,111 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
     \subsubsection{Optisches Tracking}
     % Aufgrund der Komplexität einer signalbasierten
 
-      \textbf{Kamerasystem im Raum}\\
+  \textbf{Kamerasystem im Raum}\\
 
-      Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (also ein Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen. 
+  Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (also ein Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen. 
 
-      Für ein fernortendes Positionierungssystem, werden Kameras in einem Raum verteilt. 
-      Sowohl Tische und Kreuzungen als auch der Hexacopter sind mit Markern versehen. Die einzelnen Komponenten werden vom Kamerasystem erfasst und anschließend wird eine Karte erstellt. Diese Karte besitzt, wie ein Koordinatensystem Längen und Breitengrade.
+  Für ein fernortendes Positionierungssystem, werden Kameras in einem Raum verteilt. 
+  Sowohl Tische und Kreuzungen als auch der Hexacopter sind mit Markern versehen. Die einzelnen Komponenten werden vom Kamerasystem erfasst und anschließend wird eine Karte erstellt. Diese Karte besitzt, wie ein Koordinatensystem Längen und Breitengrade.
 
-      Der Hexacopter wählt seine Route, die er mittels Position der Kreuzugen und Tische berechnet.
+  Der Hexacopter wählt seine Route, die er mittels Position der Kreuzugen und Tische berechnet.
 
-      Durch das Trackingsystem kann die Position des Hexacopters getrackt werden. Somit wird kontrolliert, ob er sich auf der richtigen Route befindet.
+  Durch das Trackingsystem kann die Position des Hexacopters getrackt werden. Somit wird kontrolliert, ob er sich auf der richtigen Route befindet.
 
-      Anhand der Markerbewegungen in den einzelnen Kamerabildern kann mittels Triangulation die Position der Marker in 3D berechnet werden.
+  Anhand der Markerbewegungen in den einzelnen Kamerabildern kann mittels Triangulation die Position der Marker in 3D berechnet werden.
 
-      \textbf{Linien}\\
-      Bei einem selbstortenden Positionierungssystem sind Sensoren auf dem sich bewegenden Objekt angebracht.
-      Der Hexacopter trackt eine Linie, die Kamera ist am Hexacopter befestigt
-      Zunächst wurde ein Konzept mit Linien erstellt. Der Hexacopter folgt einer einfarbigen Linie, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.  
+  \textbf{Linien}\\
+  Bei einem selbstortenden Positionierungssystem sind Sensoren auf dem sich bewegenden Objekt angebracht.
+  Der Hexacopter trackt eine Linie, die Kamera ist am Hexacopter befestigt
+  Zunächst wurde ein Konzept mit Linien erstellt. Der Hexacopter folgt einer einfarbigen Linie, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.  
 
-      Vorteile: Der Hexacopter kann die Linie nur schwer verlieren
-      Nachteile: Das verwendete Kamerasystem ist nicht in der Lage eine Linie zu tracken.
-
-
-      \textbf{Farbcode pro Wegabschnitt}\\
-      Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben haben, zu scannen.
-
-      Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand.
-
-      Version 1: 1 ColorCode pro Wegabschnitt
-
-      Vorteile:
-      - (kein Problem, wenn ein Farbobjekt nicht mitgetrackt wird)
-
-      Nachteile:
-      - die Korrektur der Rotation ist komplizierter, da zuerst über das Koordinatensystem der Kamera herausgefunden werden muss, welches Farbobjekt am nächesten zu y = 0 ist. 
-      - Weiß nicht, ob das Nächste wirklich das Nächste ist oder ein Fehler
-
-      \textbf{Farbcodes variieren}\\
-      Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt.
-
-      Erklärung: Jedes Farbobjekt hat einen ColorCode
-
-      Vorteile:
-      keine großartigen Kosten neben Copter und Server
-      Rechnung am Hexacopter
-      - relative Position kann besser bestimmt werden
-      - kennt das Ende des Weges und muss daher nicht herausfinden, wann der Weg zu ende ist und die Landeplattform vor ihm ist
-
-      Nachteile:
-      - (Probleme, sollte ein Farbobjekt nicht erkannt werden)
-      - Mehr Aufwand bezüglich auflegen der Farbobjekte -> man muss eine Reihenfolge beachten. Dadurch müssen auch mehrere Daten vom Server geschickt werden. => die Farbinformation ist länger, da jedes einzelne Objekt eingetragen werden muss. 
+  Vorteile: Der Hexacopter kann die Linie nur schwer verlieren
+  Nachteile: Das verwendete Kamerasystem ist nicht in der Lage eine Linie zu tracken.
 
 
+  \textbf{Farbcode pro Wegabschnitt}\\
+  Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben haben, zu scannen.
 
-      \textbf{Tracking mittels Infrarot}\\
+  Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand.
+
+  Version 1: 1 ColorCode pro Wegabschnitt
+
+  Vorteile:
+  - (kein Problem, wenn ein Farbobjekt nicht mitgetrackt wird)
+
+  Nachteile:
+  - die Korrektur der Rotation ist komplizierter, da zuerst über das Koordinatensystem der Kamera herausgefunden werden muss, welches Farbobjekt am nächesten zu y = 0 ist. 
+  - Weiß nicht, ob das Nächste wirklich das Nächste ist oder ein Fehler
+
+  \textbf{Farbcodes variieren}\\
+  Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt.
+
+  Erklärung: Jedes Farbobjekt hat einen ColorCode
+
+  Vorteile:
+  keine großartigen Kosten neben Copter und Server
+  Rechnung am Hexacopter
+  - relative Position kann besser bestimmt werden
+  - kennt das Ende des Weges und muss daher nicht herausfinden, wann der Weg zu ende ist und die Landeplattform vor ihm ist
+
+  Nachteile:
+  - (Probleme, sollte ein Farbobjekt nicht erkannt werden)
+  - Mehr Aufwand bezüglich auflegen der Farbobjekte -> man muss eine Reihenfolge beachten. Dadurch müssen auch mehrere Daten vom Server geschickt werden. => die Farbinformation ist länger, da jedes einzelne Objekt eingetragen werden muss. 
 
 
-      Vorteile:
-      System funktioniert ebenfalls im Dunkeln.
-      Nachteile: 
-      Jeder Tisch benötigt einen Stromanschluss.
-      Die Wartung ist aufwändiger.
-      Komplexer für den Administrator - wo ist welcher Infrarotsender
+
+  \textbf{Tracking mittels Infrarot}\\
 
 
-      \subsubsection{Das gewählte Konzept}
+  Vorteile:
+  System funktioniert ebenfalls im Dunkeln.
+  Nachteile: 
+  Jeder Tisch benötigt einen Stromanschluss.
+  Die Wartung ist aufwändiger.
+  Komplexer für den Administrator - wo ist welcher Infrarotsender
 
-      Das geählte Konzept ist ein optisches Trackingsystem, bei dem die Farbcodes variieren.
 
-      Um die Höhe zu messen wird eine einfache Entfernungsmessung mittels Ultraschallsensor durchgeführt.
+  \subsubsection{Das gewählte Konzept}
 
-      Das System wurde auf die oben genannten Eigenschaften analysiert:
+  Das geählte Konzept ist ein optisches Trackingsystem, bei dem die Farbcodes variieren.
 
-      \textbf{Physische und symbolische Positionierung}\\
-      Die Positionierung erfolgt physisch. Durch die Pixy kann die tatsächliche Position ermittelt werden.
-      Zum Besseren verständnis, wir die Positionen ebenfalls symbolisch beschrieben. Es werden die Namen Base, für die Küche beziehungsweise den Stützpunkt, Weg für die Route aus Colorcodes und Tisch, für die Landeplattform, auf der der Hexacopter landen soll, verwendet.
+  Um die Höhe zu messen wird eine einfache Entfernungsmessung mittels Ultraschallsensor durchgeführt.
 
-      \textbf{Relative Positionierung}\\
-      Das gewählte System gestaltet sich relativ, da der Hexacopter seine Position relativ zu Farbobjekten bestimmt.
+  Das System wurde auf die oben genannten Eigenschaften analysiert:
 
-      \textbf{Genauigkeit}\\
-      Da das System mittels optischem Tracking umgesetzt wird, ist die Genauigkeit sehr hoch.
-      
-      \textbf{Skalierung}\\
+  \textbf{Physische und symbolische Positionierung}\\
+  Die Positionierung erfolgt physisch. Durch die Pixy kann die tatsächliche Position ermittelt werden.
+  Zum Besseren verständnis, wir die Positionen ebenfalls symbolisch beschrieben. Es werden die Namen Base, für die Küche beziehungsweise den Stützpunkt, Weg für die Route aus Colorcodes und Tisch, für die Landeplattform, auf der der Hexacopter landen soll, verwendet.
 
-      Das System ist beliebig Skalierbar, da es auf Farbcodes basiert. Es besteht die Möglichkeit, beliebig viele Farbcodes dem Weg hinzuzufügen oder wieder wegzunehmen. Die Routen sind im Adminbereich hinterlegt und müssen, je nach dem, wie der Administrator die Farbcodes legt, diese auch mitverändern. Im System gibt es aus Testgründen eine Grenze von 20 Farbcodes, diese kann aber einfach verändert werden.
+  \textbf{Relative Positionierung}\\
+  Das gewählte System gestaltet sich relativ, da der Hexacopter seine Position relativ zu Farbobjekten bestimmt.
 
-      Die Pixy CMUcam5 ist in der Lage 135 Objekte pro Frame zu tracken. Unser System ist selbstortend, dewegen interessiert sich der Hexacopter nur für ein Objekt pro Frame. \cite{PIXY_Porting_Examplecode}
+  \textbf{Genauigkeit}\\
+  Da das System mittels optischem Tracking umgesetzt wird, ist die Genauigkeit sehr hoch.
+  
+  \textbf{Skalierung}\\
 
-      Das System ist, wegen des Ultraschallsensors auf eine Höhe von 3 Metern begrenzt. Im System ist eine Maximalhöhe von 220m über dem Boden und 120m über einem Tisch hinterlegt.
+  Das System ist beliebig Skalierbar, da es auf Farbcodes basiert. Es besteht die Möglichkeit, beliebig viele Farbcodes dem Weg hinzuzufügen oder wieder wegzunehmen. Die Routen sind im Adminbereich hinterlegt und müssen, je nach dem, wie der Administrator die Farbcodes legt, diese auch mitverändern. Im System gibt es aus Testgründen eine Grenze von 20 Farbcodes, diese kann aber einfach verändert werden.
 
-      \textbf{Kosten}\\
-      Da  die Positionierung auf einer Kamera mit Farbcodes, einem Ultraschallsensor, einem Mikcrocontroller und einem WLAN fähigen Gerät basiert, beschränken sich die Kosten auf wenige Hundert Euro
+  Die Pixy CMUcam5 ist in der Lage 135 Objekte pro Frame zu tracken. Unser System ist selbstortend, dewegen interessiert sich der Hexacopter nur für ein Objekt pro Frame. \cite{PIXY_Porting_Examplecode}
 
-      \textbf{Limitierung}\\
-      Die Pixy CMUcam5 muss zuvor gespeicherte Farben wiedererkennen, die Lichtverhältnisse müssen daher optimal sein.  
-      Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. 
-      \cite{Pixy}
+  Das System ist, wegen des Ultraschallsensors auf eine Höhe von 3 Metern begrenzt. Im System ist eine Maximalhöhe von 220m über dem Boden und 120m über einem Tisch hinterlegt.
 
-      Das System kann sowohl Indoor als auch Outdoor angewendet werden.
+  \textbf{Kosten}\\
+  Da  die Positionierung auf einer Kamera mit Farbcodes, einem Ultraschallsensor, einem Mikcrocontroller und einem WLAN fähigen Gerät basiert, beschränken sich die Kosten auf wenige Hundert Euro
 
-      Der verwendete Ultraschallsensor misst die Entfernung mit einer Auflösung von 3mm. Er eignet sich für den Bereich zwischen 2cm und 3m. 
-      \cite{Ultrasonic}
+  \textbf{Limitierung}\\
+  Die Pixy CMUcam5 muss zuvor gespeicherte Farben wiedererkennen, die Lichtverhältnisse müssen daher optimal sein.  
+  Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. 
+  \cite{Pixy}
 
-      \textbf{Selbstortendes Positionierungssystem}\\
-      Das Positionierungssystem ist selbstortend. Die am boden liegenden Farbobjekte werden von der Pixy getrackt und die daraus entstehenden Daten verarbeitet. Der Hexacopter kann ohne externe Einflüsse navigieren und ist somit unabhängig.
+  Das System kann sowohl Indoor als auch Outdoor angewendet werden.
+
+  Der verwendete Ultraschallsensor misst die Entfernung mit einer Auflösung von 3mm. Er eignet sich für den Bereich zwischen 2cm und 3m. 
+  \cite{Ultrasonic}
+
+  \textbf{Selbstortendes Positionierungssystem}\\
+  Das Positionierungssystem ist selbstortend. Die am boden liegenden Farbobjekte werden von der Pixy getrackt und die daraus entstehenden Daten verarbeitet. Der Hexacopter kann ohne externe Einflüsse navigieren und ist somit unabhängig.
 
 
   \subsection{Tischplan}
@@ -531,21 +502,14 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
   \subsection{Umsetzung}
 
     \subsubsection{Vergleichen der Frames}
-    Für den Vergleich des aktuellen mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} verwendet, die über folgende Mitglieder verfügt.
+    Für den Vergleich des aktuellen mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} verwendet, die über folgende Mitglieder verfügt. \cite{Structs}
     \begin{itemize}
-      \item \textbf{num}\\
-      ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
-      \item \textbf{pos\_x}\\
-      ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
-      \item \textbf{pos\_y}\\
-      ist die Y-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
-      \item \textbf{height}\\
-      ist die, vom Ultraschall übergebene Höhe.
-      \item \textbf{angle}\\
-      ist die Rotation des Colorcodes. Da er zweifarbig ist, kann die PIXY CMUcam5 die Rotation des Objektes feststellen.
+      \item \textbf{num} ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
+      \item \textbf{pos\_x} ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
+      \item \textbf{pos\_y} ist die Y-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
+      \item \textbf{height} ist die, vom Ultraschall übergebene Höhe.
+      \item \textbf{angle} ist die Rotation des Colorcodes. Da er zweifarbig ist, kann die PIXY CMUcam5 die Rotation des Objektes feststellen.
     \end{itemize}
-
-    Quelle: \textcolor{red}{TITEL FEHLT \cite{Structs}, das sollte verlegt werden -Lucas}
 
     Zuerst wird die ID des Colorcodes verglichen, um herauszufinden, ob das Farbobjekt das selbe wie im letzten Frame ist.
     Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und gespeichert.
@@ -565,62 +529,53 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
     Er fliegt anschließend so lange, bis er über dem aktuellen Farbcode ist, dieser also mittig im Bild ist und sucht darauf den nächsten.
 
 
-      \begin{itemize}
-        \item \textbf{Überprüfen von Aileron}\\
+    \textbf{Überprüfen von Aileron}\\
+    Beim Vergleichen von Aileron wird die Veränderung an der x-Achse überprüft. 
 
-        Beim Vergleichen von Aileron wird die Veränderung an der x-Achse überprüft. 
-
-        Durch diese Funktion soll der Hexacopter mithilfe der Pixy-Daten, den Colorcode in der Mitte des Frames plazieren. An der x-Achse sind Werte zwischen 150 und 170 optimal. Der übergebene Wert ist dabei der Mittelpunkt des Colorcodes. 
-        Sollte die Pixycam keinen Wert in diesem Bereich erfassen, kann sie durch eine weitere Funktion namens ActAileron, die die Änderungsrate an den Flightcontroller weitergibt, die Position an der x-Achse korigieren.
-        Um herauszufinden, ob der Mittelpunkt unter oder über dem optimalen Wert liegt, also der Hexacopter zu weit Links oder Rechts vom Objekt fliegt, gibt es für beide Fälle eine Abfrage.
-        Um den Aileron Wert entgültig zu setzen, müssen nach der Überprüfung, ob der übergebene Wert an der x-Achse 170 über- beziehungsweise 150 unterschreitet, folgende Zustände kontrolliert werden.
-        Zunächst muss der Hexacopter über die Pixycam herausfinden, ob er sich bereits in die richtige Richtung bewegt. Dafür werden die beiden Frames miteinander verglichen. Wenn der Wert zu hoch ist, muss der x-Wert im alten Frame größer als im neuen sein. Sollte er zu niedrig sein, muss der Wert im neuen Frame höher sein.
-        Anderenfalls fliegt der Hexacopter auf die falsche Seite. Die Firmware reagiert darauf mit der Änderung der Pulszeit am Aileron-Pin.
-        Bei der Bewegung in die richtige Richtung wird der Wert so lange in diese gesteuert, bis sich die Geschwindigkeit, gemessen in den veränderten Pixel zwischen zwei Frames, zwischen 2 Konstanten Werten befindet.
+    Durch diese Funktion soll der Hexacopter mithilfe der Pixy-Daten, den Colorcode in der Mitte des Frames plazieren. An der x-Achse sind Werte zwischen 150 und 170 optimal. Der übergebene Wert ist dabei der Mittelpunkt des Colorcodes. 
+    Sollte die Pixycam keinen Wert in diesem Bereich erfassen, kann sie durch eine weitere Funktion namens ActAileron, die die Änderungsrate an den Flightcontroller weitergibt, die Position an der x-Achse korigieren.
+    Um herauszufinden, ob der Mittelpunkt unter oder über dem optimalen Wert liegt, also der Hexacopter zu weit Links oder Rechts vom Objekt fliegt, gibt es für beide Fälle eine Abfrage.
+    Um den Aileron Wert entgültig zu setzen, müssen nach der Überprüfung, ob der übergebene Wert an der x-Achse 170 über- beziehungsweise 150 unterschreitet, folgende Zustände kontrolliert werden.
+    Zunächst muss der Hexacopter über die Pixycam herausfinden, ob er sich bereits in die richtige Richtung bewegt. Dafür werden die beiden Frames miteinander verglichen. Wenn der Wert zu hoch ist, muss der x-Wert im alten Frame größer als im neuen sein. Sollte er zu niedrig sein, muss der Wert im neuen Frame höher sein.
+    Anderenfalls fliegt der Hexacopter auf die falsche Seite. Die Firmware reagiert darauf mit der Änderung der Pulszeit am Aileron-Pin.
+    Bei der Bewegung in die richtige Richtung wird der Wert so lange in diese gesteuert, bis sich die Geschwindigkeit, gemessen in den veränderten Pixel zwischen zwei Frames, zwischen 2 Konstanten Werten befindet.
 
 
-        Die Überprüfung von Aileron bezieht sich auf die Beschleunigung nach Links und Rechts, was der x-Koordinate entspricht.
+    Die Überprüfung von Aileron bezieht sich auf die Beschleunigung nach Links und Rechts, was der x-Koordinate entspricht.
 
-        Ziel der Funktion ist es, den Farbcode in die Mitte des Frames zu bekommen. Der Idealzustand befindet sich zwischen 150 und 170.
-        Sollte dieser Zustand erreicht werden, bleibt der Wert von Aileron unverändert und der Hexacopter fliegt weiterhin mit einer unveränderten Beschleunigung an der x-Koordinate.
-        Sollte dies nicht der Fall sein, muss der Wert auf einige Komponenten \textcolor{red}{XXXXX} überprüft werden.
-        Wenn der Farbcode zu weit auf der rechten Seite liegt, das bedeutet, wenn der Wert des Mittelpunktes vom Farbobjekt höher als 170 ist,
-        muss der Hexacopter nach rechts fliegen, um seine Position zu korrigieren.
-        Dabei muss zuerst verglichen werden, ob sich der Hexacopter in die richtige Richtung bewegt. Sollte er in die falsche Richtung
-        fliegen, wird der Aileron-Flugparameter gesenkt, dies setzt die Beschleunigung nach Rechts vorraus.
-        Wenn die Beschleunigung nach rechts hoch genug ist und die Drohne tatsächlich nach rechts fliegt, wird die Geschwindigkeit überprüft.
-        Die Geschwindigkeit wird durch die Differenz der x-Koordinate beider Strukturen herausgefunden. Die Einheit ist in diesem Fall
+    Ziel der Funktion ist es, den Farbcode in die Mitte des Frames zu bekommen. Der Idealzustand befindet sich zwischen 150 und 170.
+    Sollte dieser Zustand erreicht werden, bleibt der Wert von Aileron unverändert und der Hexacopter fliegt weiterhin mit einer unveränderten Beschleunigung an der x-Koordinate.
+    Sollte dies nicht der Fall sein, muss der Wert auf einige Komponenten \textcolor{red}{XXXXX} überprüft werden.
+    Wenn der Farbcode zu weit auf der rechten Seite liegt, das bedeutet, wenn der Wert des Mittelpunktes vom Farbobjekt höher als 170 ist,
+    muss der Hexacopter nach rechts fliegen, um seine Position zu korrigieren.
+    Dabei muss zuerst verglichen werden, ob sich der Hexacopter in die richtige Richtung bewegt. Sollte er in die falsche Richtung
+    fliegen, wird der Aileron-Flugparameter gesenkt, dies setzt die Beschleunigung nach Rechts vorraus.
+    Wenn die Beschleunigung nach rechts hoch genug ist und die Drohne tatsächlich nach rechts fliegt, wird die Geschwindigkeit überprüft.
+    Die Geschwindigkeit wird durch die Differenz der x-Koordinate beider Strukturen herausgefunden. Die Einheit ist in diesem Fall
 
-        \item \textbf{Überprüfen von Elevator}\\
+    \textbf{Überprüfen von Elevator}\\
+    Elevator, die Bewegung an der y-Achse, also die Bewegung nach vorne und nach hinten, funktioniert nach dem selben Prinzip wie Aileron. 
 
-        Elevator, die Bewegung an der y-Achse, also die Bewegung nach vorne und nach hinten, funktioniert nach dem selben Prinzip wie Aileron. 
+    Zuerst wird kontrolliert, ob sich der Farbcode im gewünschten Bereich befindet, in diesem Fall zwischen 90 und 110.
+    Sollte der Mittelpunkt an der y-Achse nicht in diesem Bereich liegen, fliegt der Hexacopter nach vorne beziehungsweise zurück.
+    Da die Route aus mehreren Farbcodes besteht, richtet sich der Hexacopter nach dem Objekt, das sich am nächsten zum Nullpunkt der y-Achse befindet. Somit probiert er die Position zentriert über dem Farbobjekt zu optimieren, bis er das nächste Farbobjekt erkennt und trackt. Das alte ist nun unwichtig, der Hexacopter bezieht sich auf das vordere Farbobjekt.
 
-        Zuerst wird kontrolliert, ob sich der Farbcode im gewünschten Bereich befindet, in diesem Fall zwischen 90 und 110.
-        Sollte der Mittelpunkt an der y-Achse nicht in diesem Bereich liegen, fliegt der Hexacopter nach vorne beziehungsweise zurück.
-        Da die Route aus mehreren Farbcodes besteht, richtet sich der Hexacopter nach dem Objekt, das sich am nächsten zum Nullpunkt der y-Achse befindet. Somit probiert er die Position zentriert über dem Farbobjekt zu optimieren, bis er das nächste Farbobjekt erkennt und trackt. Das alte ist nun unwichtig, der Hexacopter bezieht sich auf das vordere Farbobjekt.
+    Wie bei der Überprüfung von Aileron, gibt es auch hier zwei Konstante Werte, zwischen denen sich die Geschwindigkeit befinden soll, solange die Position optimiert wird.
 
-        Wie bei der Überprüfung von Aileron, gibt es auch hier zwei Konstante Werte, zwischen denen sich die Geschwindigkeit befinden soll, solange die Position optimiert wird.
+    \textbf{Überprüfen von Rudder}\\
+    Rudder beschreibt die Rotation um seine eigene Hochachse. Dafür wird zunächst unterschieden, ob sich der Hexacopter am hin- oder rückflug befindet, da die Rotation der Colorcodes beim Rückflug um 180 Grad gedreht werden muss.
 
+    Die optimale Rotation befindet sich beim Hinflug zwischen -5 und 5 Grad. 
+    Bei einem zu niedrigen oder zu hohen Wert wird kontrolliert, ob sich der Hexacopter bereits in die richtige Richtung dreht. 
+    Sollte dies nicht der Fall sein, wird die Änderungsrate an die dazugehörige Funktion geschickt, die dem Flightcontroller die Information zur Beschleunigung gibt. 
+    Ansonsten wird die Veränderung der Pixel zweier Frames verglichen, wenn sie sich im gewünschten Bereich befindet, wird der Wert nicht geändert, bei einem zu hohen Wert, wird die Rotationsgeschwindigkeit gesenkt, ansonsten erhöht.
 
-        \item \textbf{Überprüfen von Rudder}\\
+    Beim Rückflug soll die Rotation des Colorcodes größer als 175 oder kleiner als -175 sein. 
 
-        Rudder beschreibt die Rotation um seine eigene Hochachse. Dafür wird zunächst unterschieden, ob sich der Hexacopter am hin- oder rückflug befindet, da die Rotation der Colorcodes beim Rückflug um 180 Grad gedreht werden muss.
+    Die Schwierigkeit dieser Funktion, war die Rotation im negativen Bereich, da erst verinnerlicht werden musste, dass die höchste negative Zahl nicht wie im Plusbereich im Bereich unendlich liegt, sondern -1 Beträgt.
 
-        Die optimale Rotation befindet sich beim Hinflug zwischen -5 und 5 Grad. 
-        Bei einem zu niedrigen oder zu hohen Wert wird kontrolliert, ob sich der Hexacopter bereits in die richtige Richtung dreht. 
-        Sollte dies nicht der Fall sein, wird die Änderungsrate an die dazugehörige Funktion geschickt, die dem Flightcontroller die Information zur Beschleunigung gibt. 
-        Ansonsten wird die Veränderung der Pixel zweier Frames verglichen, wenn sie sich im gewünschten Bereich befindet, wird der Wert nicht geändert, bei einem zu hohen Wert, wird die Rotationsgeschwindigkeit gesenkt, ansonsten erhöht.
-
-        Beim Rückflug soll die Rotation des Colorcodes größer als 175 oder kleiner als -175 sein. 
-
-        Die Schwierigkeit dieser Funktion, war die Rotation im negativen Bereich, da erst verinnerlicht werden musste, dass die höchste negative Zahl nicht wie im Plusbereich im Bereich unendlich liegt, sondern -1 Beträgt.
-
-       
-
-      \end{itemize}
 
     \subsubsection{Throttle anhand des Ultraschallsensors}
-
     Der Hexacopter steht auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, diesen fokusiert er so lange, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
     Beim Starten fliegt er vertikal nach oben, bis er den 2. Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von 50cm befindet, mit einer Hohen Änderungsrate. Ab dieser Höhe, beschleunigt er mit einer geringeren Erhöhung der Änderungsrate, bis er die 80cm-Grenze erreicht hat. 
     zwischen 80 und 120cm bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von 120 erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über 120cm kommt, wird die Beschleunigung nach unten hin verändert. Der Hexacopter pendelt also zwischen 80 und 120cm.
@@ -644,7 +599,6 @@ Dazu werden Bilder von einer Kamera an der Frontseite des Multicopters aufgenomm
 
     \subsubsection{Speichern der alten Daten}
     Die alten Daten werden gespeichert, um die Differenzen von zwei Frames zu errechnen. Der Frame mit Index 0, ist der aktuelle Frame, der Frame mit dem Index 1, der alte. Bei jedem durchlauf, werden die Werte aktualisiert.
-
 
     \subsubsection{Ausgabe der Steuersignal}
     Nachdem die Steuersignale berechnet und korrigiert wurden müssen diese an den Hexacopter ausgegeben werden. Dies muss periodisch alle $\SI{20}{\milli\second}$ geschehen.
