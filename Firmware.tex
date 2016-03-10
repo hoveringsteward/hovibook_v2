@@ -32,7 +32,7 @@
   Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
   \subsubsection{Konfiguration}
-  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren.
+  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
   Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage. 
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
@@ -61,7 +61,7 @@
   DAS IS SCHON TEILWEISE WO ANDERS !!!!!!!!!!!!!!!!!!
   ICH KANN GRAD NICHT RECHTSCHREIBEN !!!!!!!!!!!
 
-  Der Hexacopter wird über 4 Befehle gesteuert:
+  Der Hexacopter wird über 4 Befehle gesteuert: \cite{GrundlagenMulticopter}
 
     \begin{itemize}
       \item \textbf{Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
@@ -74,12 +74,10 @@
       Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
     \end{itemize}
 
-    \subsubsection{Propeller}
+    U AUCH ERKLÄREN ?????????
 
-
-  \cite{GrundlagenMulticopter}
+ 
   
-
   \subsection{Programmierung}
   Zum Programmieren des Mikrocontrollers von Microchip wurde die Programmiersprache C verwendet.
   Um die Sprache zu lernen, wurde ein sogenanntes Bootcamp als Vorbereitung für die weitere Programmierung veranstaltet.
@@ -404,7 +402,6 @@
   Da das System mittels optischem Tracking umgesetzt wird, ist die Genauigkeit sehr hoch.
   
   \textbf{Skalierung}\\
-
   Das System ist beliebig Skalierbar, da es auf Farbcodes basiert. Es besteht die Möglichkeit, beliebig viele Farbcodes dem Weg hinzuzufügen oder wieder wegzunehmen. Die Routen sind im Adminbereich hinterlegt und müssen, je nach dem, wie der Administrator die Farbcodes legt, diese auch mitverändern. Im System gibt es aus Testgründen eine Grenze von 20 Farbcodes, diese kann aber einfach verändert werden.
 
   Die Pixy CMUcam5 ist in der Lage 135 Objekte pro Frame zu tracken. Unser System ist selbstortend, dewegen interessiert sich der Hexacopter nur für ein Objekt pro Frame. \cite{PIXY_Porting_Examplecode}
@@ -487,15 +484,87 @@
 
     \subsubsection{Elevator}
 
+    Vorwärts- und Rückwärtsbewegung: Die Vorwärtsbewegung muss auf einer konstanten Position gehalten werden. Beim Endpunkt wird die Geschwindigkeit der Vorwärtsbewegung auf 0 gesetzt werden. Im Idealfall muss eine Rückwärtsbewegung gar nicht durchgeführt werden, nur, wenn der Multicopter über das Ziel hinausschießt.
+
     Das Weiterschalten auf den nächsten Bodenmarker
 
     Der Algorithmus zielt immer auf den Marker, der sich am nächsten zum Nullpunkt an der y-Achse befindet. Er trackt den Ersten, bis er den zweiten erkennt, diesen verfolgt er wieder, danach kommt der dritte dran, diese Routine läuft, bis der letzte Colorcode erreicht ist. Welcher Marker der Zielmarker ist, wird durch die größe eines Arrays erkannt. Dieses wird mit den Daten, die im Admin-Interface hinterlegt sind und im Endeffekt vom Wlan-Modul empfangen werden, befüllt.
 
     \subsubsection{Rudder}
 
+    Mitt Hilfe der Rudder Funktion muss der Winkel auf die nächste Positionsmarkierung ausgerichtet werden.
+
     % Rotationsbild + 2er Komplement %
 
-    Darstellung negativer Zahlen im binärsystem
+    Darstellung negativer Zahlen im Binärsytem
+
+Ohne Vorzeichen: 
+0000 0000 = 0
+1111 1111 = 255
+1 Bit für Vorzeichen:
+    0000 0000 = 0
+    1000 0000 = -0
+    0111 1111 = 127
+    1111 1111 = -127
+Einerkomplement:
+    0000 0000 = 0
+    Invertierung aller Bits ergibt negative Zahl
+    1111 1111 = -0
+    0111 1111 = 127
+    1000 0000 = -127
+Zweierkomplement:
+    0000 0000 = 0
+    0000 0001 = 1
+    1111 1111 = -1
+
+    0000 0010 = 2
+    1111 1110 = -2
+
+    0111 1111 = 127
+    1000 0001 = -127
+Bilden des Zweierkomplement:
+    0111 1111 = 127
+Invertieren
+    1000 0000
++1
+    1000 0001 = -127
+    
+    1000 0000 im Komplement
+           -1
+    0111 1111 Invertieren:
+    1000 0000 = 128 = -128
+Bei 16 Bit:
+    0000 0000 0111 1111 = 127
+
+0000 0000 0000 0000 = 0
+0000 0000 0000 0001 = 1
+0000 0000 0000 0010 = 2
+-1:
+Invertieren: 1111 1111 1111 1110
++1 rechnen:  1111 1111 1111 1111 = -1
+-128:
+0000 0000 1000 0000 = 128
+Inv. 1111 1111 0111 1111
++1:  1111 1111 1000 0000 = -128
+
+Ohne 2er Komplement {
+0000 0000 0000 0000 = 0
+0000 0000 0000 0001 = 1
+0000 0000 0000 0010 = 2
+0000 0000 0000 0100 = 4
+0000 0000 1000 0000 = 128
+0000 0001 0000 0000 = 256
+1000 0000 0000 0000 = 32.768}
+
+
+00B4: 11 * 16 + 4 * 1 = 180
+
+B4 = 1011 0100 // -> ist bereits eine negative Zahl da MSB == 1
+Betrag von B4:
+    -1 rechnen:  1011 0011
+    invertieren: 0100 1100 = 64 + 8 + 4 = 76
+daraus folgt: B4 = -76
+
 
     % Bild von Rotation %
 
@@ -682,7 +751,17 @@ Durch das frühe Beschäftigen mit möglichen Fehlerquellen wird eine Strategie 
 
   \subsection{Umsetzung}
 
+%BSP CRYPT DRIVE
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|r|l|p{7cm}|c|}
+\hline \# & Bezeichnung & Beschreibung & Bewertung \\\hline
+\hline 1 & PL Michael Springsits & Projektleiter vieler schulischer Projekte, zeigt stets Neugier für neuartige Technologien und programmiert leidenschaftlich. & + \\
+\hline 15 & crypt-drive team & Zwischenmenschliche Probleme können das Projektklima negativ beeinflussen.  & - \\\hline
+\end{tabular}
+\caption{Beschreibung der Umfelder}
+\end{table}
 
 
 
