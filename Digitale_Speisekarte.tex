@@ -72,7 +72,7 @@
 	Um Seiten anzulegen, welche später im Browser angezeigt werden konnten, musste man im Controller folgende Schritte erledigen. Zuerst empfahl es sich Action Funktionen anzulegen. Diese wurden passend zu der jeweiligen Seite beziehungsweise zu den dementsprechenden Funktionalitäten benannt, welche im Anschluss angezeigt und ausgeführt wurden. Wenn auf der auszugebenden Seite mit einer Template Engine gearbeitet wurde, wurde als Rückgabewert der Methode der anschließende Code definiert:
 	\lstset{language = html}
   	\begin{lstlisting}
-	$this->render(‚DATEIBEZEICHNUNG.html.twig')
+	$this->render(`DATEIBEZEICHNUNG.html.twig')
   	\end{lstlisting}
 	Die Funktion render() formt den Inhalt des Templates in einen Ausgabewert um, damit die Seite  ausgegeben werden kann.
 	Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funktion eine Annotation hinzugefügt. Diese wurde folgendermaßen angegeben:
