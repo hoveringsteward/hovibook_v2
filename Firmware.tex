@@ -32,13 +32,8 @@
   Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
   \subsubsection{Konfiguration}
-<<<<<<< HEAD
-  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren.
-  Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
-=======
   Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
   Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
->>>>>>> origin/master
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
@@ -63,12 +58,6 @@
 
   \subsubsection{Steuerungsarten}
 
-<<<<<<< HEAD
-  \cite{GrundlagenMulticopter}
-
-  \subsubsection{erweiterte Funktion}
-  unsere Dipl
-=======
   DAS IS SCHON TEILWEISE WO ANDERS !!!!!!!!!!!!!!!!!!
   ICH KANN GRAD NICHT RECHTSCHREIBEN !!!!!!!!!!!
 
@@ -84,7 +73,6 @@
       \item \textbf{Throttle} reguliert die Höhe.
       Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
     \end{itemize}
->>>>>>> origin/master
 
     U AUCH ERKLÄREN ?????????
 
@@ -223,15 +211,9 @@
     \textbf{Segmentierung}\\
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.
 
-<<<<<<< HEAD
-    \textbf{Pixelorienterte Segmentierung}\\
-    Pixelorientierte wird auch Punktorientierte Segmentierung genannt. \cite{Seg_punkt}
-    \textbf{Treshholding}\\
-=======
     \subsection*{Pixelorienterte Segmentierung}
     Pixelorientierte Segmentierung wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte \cite{Seg_punkt}
     \textbf{Treshholding}\\
->>>>>>> origin/master
     Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelne Pixel unabhängig angewendet wird, gehört es zur Pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
     \subsection*{Modellbasierte Segmentierung}
@@ -241,14 +223,9 @@
     \textbf{Hough-Transformation}\\
     Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
 
-<<<<<<< HEAD
-    \textbf{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
-    \textbf{Region Growing}\\
-=======
     \subsection*{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
     Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft.
     \textbf{Region Growing}\\
->>>>>>> origin/master
     Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
     \subsection*{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
@@ -260,18 +237,9 @@
     \subsection*{Merkmalsextraktion}\\
     Bei diesem Schritt sollen Merkmale wie Kanten und Ecken erkannt werden.
     \textbf{Kantendetektion}\\
-<<<<<<< HEAD
-    Kanten spielen im menschlichen Sehen eine dominante Rolle, ein Bild kann beinahe vollständig aus Kanten abgebildet werden.
 
-    Kantenbasiernde Segmentierung
-    Regionenbasierende Segmentierung: Benachbarte Pixel werden auf Gleichheit zum Startpixel geprüft.
-
-    \textbf{Sobel} Operator Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
-
-=======
     Im menschlichen Sehen, haben Kanten eine wichtige Bedeutung. Durch sie kann ein Bild beinahe vollständig nachgebildet werden. Es gibt einige Verfahren um diese Erkennung durchzuführen.
     \textbf{Sobel Operator} Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
->>>>>>> origin/master
     \textbf{Laplace-Filter}
     \textbf{Canny Algorithmus} Zur Glättung, Einsatz eines zweidimensionalen Gaußfilters und Einsatz von gerichteten Ableitungsoperatoren. Nach der Ausdünnung der Linien, Anwendung einer Hysterese zur Erkennung ob es sich um eine Kante oder um ein Rauschen handelt.
     \textbf{Sombrerofilter} Der Sombrerofilter wird auch Laplace of Gaussian Operator und Marr-Hildreth-Operator genannt.
@@ -281,18 +249,11 @@
     \textbf{Moravec´s Corner Detector} Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
     \textbf{Harris Corner Detector} Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
 
-
-<<<<<<< HEAD
-    \textbf{Klassifikation}\\
-    Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
-
-    \textbf{Verfolgen von Objekten}\\
-=======
     \subsection*{Klassifikation}\\
     Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
 
     \subsection*{Verfolgen von Objekten}\\
->>>>>>> origin/master
+
     \textbf{Kalman-Filter}\\
     Kalman-Filter: Ist ein stochastischer Zustandsschätzer mit iterativer Struktur, der in Echtzeitsystemen angewendet wird unter der Annahme von normalverteilten Vorhersagen und Messungen und Vorhersage von Fehlern.
 
