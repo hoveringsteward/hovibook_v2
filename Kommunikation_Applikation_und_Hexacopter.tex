@@ -96,7 +96,11 @@ Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Ecl
 	   \subsubsection{JDBC}
 
 Die Java Datenbankschnittstelle JDBC ist ein Industriestandard für datenbankunabhängige Verbindungen zwischen Java Programmen, SQL Datenbanken und sämtlichen anderen tabellenbasierten Datenbankmodellen. Zu den Aufgaben von JDBC gehört es, Datenbankverbindungen aufzubauen und diese zu verwalten. Außerdem kann JDBC  SQL-Anfragen an die Datenbank weiterleiten, Ergebnisse in eine für Java nutzbare Form umwandeln und diese dem Programm zur Verfügung stellen.
-    
+
+	   \subsubsection{Zusammenspiel mit der Applikation und dem WLAN-Modul}
+Das Java-Programm und die Applikation kommunizieren nur indirekt miteinander, da beide nur auf die Datenbank zugreifen um deren Inhalt zu überprüfen und Einträge updaten beziehungsweise erstellen.
+Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert. Dieses wird nämlich als Thread etabliert und direkt in den Javaklassen verwaltet.
+(Bild Aufbau)
   \subsection{Umsetzung}
 Für die Umsetzung des Javaprogramms wurden drei verschiedene Klassen erstellt:
 \begin{itemize}
