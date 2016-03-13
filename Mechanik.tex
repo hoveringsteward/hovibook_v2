@@ -315,9 +315,9 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 	\subsection{Berechnungen}
 
-	Die Halterung des Ultraschallsensor wurde so dimensioniert, dass der Ultraschallsensor \bzw im Falle eines Absturzes auch noch die auftretenden Kräfte getragen werden können,
+	Die Halterung des Ultraschallsensor wurde so dimensioniert, dass der Ultraschallsensor, \bzw im Falle eines Absturzes auch noch die auftretenden Kräfte getragen werden können,
 	es ist trotzdem wichtig zu wissen, wie viel die Halterung maximal tragen kann.
-	Sollte sich herausstellen, dass das Werkstück nicht richtig konstruiert wurde, muss man Maßnahmen treffen um die Belastbarkeit zu steigern.
+	Sollte sich herausstellen, dass das Werkstück nicht richtig konstruiert wurde, müssen Maßnahmen getroffen werden um die Belastbarkeit zu steigern.
 
 	Man kann diese Belastungen händisch rechnen, jedoch ist das in diesem Fall sehr aufwändig, da die Lagerung sehr komplex zu rechnen wäre.
 	Es ist einfacher die Beanspruchungen in Programmen wie Creo simulieren und auswerten zu lassen.
@@ -325,7 +325,7 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 	Die maximalen Belastbarkeiten sind für jeden Kunststoff anders, jede Firma verwendet andere Stoffe um bessere Leistungen erzielen zu können, je nach dem Anwendungsgebiet.
 	Wollte man die Berechnungen auf die Kommastelle genau vornehmen, müsste man einen Zug,- oder Biegeversuch für den jeweiligen Werkstoff machen,
-	um die tatsächlichen Eigenschaften zu ermitteln.
+	um die tatsächlichen Daten zu ermitteln.
 
 	In diesen Versuchen wird meist ein Stab mit einer vordefinierten Fläche und Länge hergestellt und dann in eine Zugprüfmaschine eingespannt.
 	Die Zugprüfmaschine zieht den Stab langsam auseinander bis dieser reißt, diese bestimmte Kraft und die Fläche des Stabes ergeben die maximale Streckspannung.
@@ -395,14 +395,30 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 	Die Abbildungen \ref{max_spannung_f20_r0_5} und \ref{max_spannung_f20_r0_5_oben}  zeigen die Simulationsergebnisse mit einer Beanspruchung von 20 N (2 kg).
 
-				\begin{figure}[H]
-					\begin{centering}
-						\subfigure[max. Spannung bei 20 N oben\label{max_spannung_f20_r0_5}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5}}
-						\subfigure[max. Spannung bei 20 N unten\label{max_spannung_f20_r0_5_oben}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5_oben}}
-					\par\end{centering}
-					\caption{max. Spannung bei 20 N}
-					\label{max_spannung_f20_r0_5}
-				\end{figure}
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/max_spannung_f20_r0_5}
+			\par\end{centering}
+			\caption{max. Spannung bei 20 N}
+			\label{max_spannung_f20_r0_5}
+			\end{figure}
+
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/max_spannung_f20_r0_5_oben}
+			\par\end{centering}
+			\caption{max. Spannung bei 20 N}
+			\label{max_spannung_f20_r0_5_oben}
+			\end{figure}
+
+				%\begin{figure}[H]
+				%	\begin{centering}
+				%		\subfigure[max. Spannung bei 20 N oben\label{max_spannung_f20_r0_5}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5}}
+				%		\subfigure[max. Spannung bei 20 N unten\label{max_spannung_f20_r0_5_oben}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5_oben}}
+				%	\par\end{centering}
+				%	\caption{max. Spannung bei 20 N}
+				%	\label{max_spannung_f20_r0_5}
+				%\end{figure}
 
 	Die maximale Spannung beträgt etwa $40.2 N/mm^{2}$, vergleicht man dies mit dem Ausschnitt aus dem Datenblatt (siehe Abbildung \ref{werte_abs}) sieht man,
 	dass die maximale Biegespannung an beiden Stellen überschritten wurde. In der Realität würde das bedeuten, dass die Lasche bei dieser Belastung sehr stark verformt oder gar gebrochen wäre.
@@ -411,13 +427,29 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 	Um auch im Notfall hohe Belastungen kompensieren zu können, wurden in den Kanten der Laschen Rundungen vorgesehen. Den Zweck dieser Rundungen zeigen die folgenden Abbildungen.
 
 			\begin{figure}[H]
-				\begin{centering}
-					\subfigure[max. Spannung bei 20 N, Radius 0.5 mm\label{max_spannung_f20_r0_5}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5}}
-					\subfigure[max. Spannung bei 20 N, Radius 1.0 mm\label{max_spannung_f20_r1}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r1}}
-				\par\end{centering}
-				\caption{max. Spannung bei 20 N, unterschiedliche Radien}
-				\label{max_spannung_f20_r0_5}
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/max_spannung_f20_r0_5}
+			\par\end{centering}
+			\caption{max. Spannung bei 20 N, Radius 0.5 mm}
+			\label{max_spannung_f20_r0_5}
 			\end{figure}
+
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/max_spannung_f20_r1}
+			\par\end{centering}
+			\caption{max. Spannung bei 20 N, Radius 1 mm}
+			\label{max_spannung_f20_r1}
+			\end{figure}
+
+			%\begin{figure}[H]
+			%	\begin{centering}
+			%		\subfigure[max. Spannung bei 20 N, Radius 0.5 mm\label{max_spannung_f20_r0_5}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r0_5}}
+			%		\subfigure[max. Spannung bei 20 N, Radius 1.0 mm\label{max_spannung_f20_r1}]{\includegraphics[width = 0.4\textwidth]{Bilder/max_spannung_f20_r1}}
+			%	\par\end{centering}
+			%	\caption{max. Spannung bei 20 N, unterschiedliche Radien}
+			%	\label{max_spannung_f20_r0_5}
+			%\end{figure}
 
 	Abbildung \ref{max_spannung_f20_r0_5} zeigt die Beanspruchung von 2 kg und einem Radius von 0.5 mm.
 	Das Ergebnis zeigt, wie schon erwähnt, dass die maximale Biegespannung überschritten wurde.
@@ -463,12 +495,14 @@ Der gesamte Rotorschutz konnte dann mittels den vorgesehenen Schrauben an der Ce
 
 			\begin{figure}[H]
 				\begin{centering}
-					\subfigure[FlÃ¤che mit Radius\label{klammer_mit_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_mit_radius}}
-					\subfigure[FlÃ¤che ohne Radius\label{klammer_ohne_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_ohne_radius}}
-				\caption{FlÃ¤cheneinfluss durch Radius}
+					\subfigure[Fläche mit Radius\label{klammer_mit_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_mit_radius}}
+					\subfigure[Fläche ohne Radius\label{klammer_ohne_radius}]{\includegraphics[width = 0.4\textwidth]{Bilder/klammer_ohne_radius}}
+				\caption{Flächeneinfluss durch Radius}
 				\par\end{centering}
 				\label{klammer_radius}
 			\end{figure}
+
+	Ist ein Radius vorhanden, beträgt das Volumen etwas mehr als $948.3 mm^{3}$, dieses Volumen verringert sich auf $947.6 mm^{3}$, wenn die Kante keinen Radius hat. Die Differnz ist nicht sehr hoch, wirkt sich auf die Spannung trotzdem enorm aus.
 
 			\newpage
 
