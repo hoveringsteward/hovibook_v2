@@ -161,13 +161,11 @@
     \textbf{Sobel Operator} Faltung des Bildes mit Hilfe einer Sobel-Matrix und anschließende Approximation der ersten Ableitung des Bildes
     \textbf{Laplace-Filter}
     \textbf{Canny Algorithmus} Zur Glättung, Einsatz eines zweidimensionalen Gaußfilters und Einsatz von gerichteten Ableitungsoperatoren. Nach der Ausdünnung der Linien, Anwendung einer Hysterese zur Erkennung ob es sich um eine Kante oder um ein Rauschen handelt.
-    \textbf{Sombrerofilter} Der Sombrerofilter wird auch Laplace of Gaussian Operator und Marr-Hildreth-Operator genannt.
-
+    \textbf{Sombrerofilter} Der Sombrerofilter wird auch Laplace of Gaussian Operator oder Marr-Hildreth-Operator genannt.
     \textbf{Eckendetektion}\\
     Ecken sind Punkte, in denen zwei Kanten enden, weswegen sie ebenfalls ein wichtiges Merkmal in einem Bild darstellen. Hierfür gibt es ebenfalls mehrere Verfahren.
     \textbf{Moravec´s Corner Detector} Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
     \textbf{Harris Corner Detector} Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
-
 
     \subsection*{Klassifikation} 
     Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
@@ -301,7 +299,7 @@
 
 
   \subsubsection{Das gewählte Konzept}
-  Das gewählte Konzept ist eine hybride Methode zwischen optischen Trackings und einer Laufzeitmessung. 
+  Das gewählte Konzept ist eine hybride Methode zwischen optischen Trackings und einer Laufzeitmessung mit akustischen Wellen. 
   Durch die Pixy CMUcam5 werden am Boden liegende Farbcodes getrackt. Diese variieren um die relative Position besser zu bestimmen. Mit der Information, über welchem Farbcode sich der Hexacopter befindet, kann die Position im 2 Dimensionalen Raum herausgefunden werden. Da der Hexacopter fliegt, muss das System 3 Dimensional sein. Die z-Koordinate, beziehungsweise die Höhe, wird deswegen mit einem Ultraschallsensor über eine Laufzeitmessung bestimmt.
 
   Das System wurde auf die oben erklärten Eigenschaften analysiert:
@@ -330,11 +328,15 @@
   Da  die Positionierung auf einer Kamera mit Farbcodes, einem Ultraschallsensor, einem Mikcrocontroller und einem WLAN fähigen Gerät basiert, beschränken sich die Kosten auf wenige Hundert Euro
 
   \subsection*{Limitierung}
-  Die Pixy CMUcam5 muss zuvor gespeicherte Farben wiedererkennen, die Lichtverhältnisse müssen daher optimal sein.  
+  Da die Pixy CMUcam5 ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.  
   Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. \cite{Pixy}
 
-  Das System kann sowohl Indoor als auch Outdoor angewendet werden.
+  Das System kann sowohl Indoor als auch Outdoor angewendet werden. Da die Farbobjekte am Boden positioniert werden, werden keine Wände, Decken oder sonstige Räumlichkeiten benötigt. Die gennannten Objekte würden die Positionsbestimmung aber auch nicht negativ beeinträchtigen.
 
-  Der verwendete Ultraschallsensor misst die Entfernung mit einer Auflösung von 3mm. Er eignet sich für den Bereich zwischen 2cm und 3m. \cite{Ultrasonic}
+  Der verwendete Ultraschallsensor misst die Entfernung mit einer Messgenauigkeit von 3mm. Er eignet sich für den Bereich zwischen 2cm und 3m. Bei der Entfernungsmessung muss man die Schallgeschwindigkeit berücksichtigen. Da diese Temperaturabhängig ist, muss man darauf achten, dass die Temperaturdifferenz gering zur gewählten Geschwindigkeit ist. Bei 20 Grad Celsius beträgt diese 343m/S. Wenn die Abweichung 20 Grad Celsius, in diesem Beispiel eine Temperatur von etwa 0 oder 40 Grad Celsius beträgt, kann ein Fehler von 3,4 Prozent erwartet werden.
+  Bei der Reflektion auf glatten und ebenen Flächen erzeugt das beste Messergebnis, bei Distanzen unter 1m erweisen sich beide Faktoren als unkritisch.
+  Weiters muss der Winkel des Sensors beachtet werden, dabei spielt die Entfernung eine Rolle. Unter 1m kann der Sensor bis zu 45 Grad geneigt sein, bei der maximalen Höhe von 3m sind höchstens 15 Grad möglich.
+
+  \cite{Ultrasonic}
 
  
