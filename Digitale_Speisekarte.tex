@@ -15,7 +15,7 @@ Die Webapplikation baut, wie man auf der folgenden Abbildung erkennen kann, auf 
 Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in der Entwicklungsumgebung PhpStorm programmiert, da diese einen guten Überblick über die Ordnerstruktur bietet.
 Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann. In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, für welche das Modell MySQL gewählt wurde, kommuniziert.
 Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. 
-Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da einige Screens es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnte man die vordefinierten Bootstrapvariablen verändern und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsch anpassen. 
+Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnte man die vordefinierten Bootstrapvariablen verändern und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche anpassen. 
 Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe dem Task-Runner Gulp kompiliert.
 (Skizze von Aufbau)
 
@@ -57,20 +57,26 @@ Der Controller fungiert als Schnittstelle zwischen der Model- und der View-Ebene
 Um diese Funktionalitäten anhand eines Szenarios zu veranschaulichen, kann man sich auch folgendes vorstellen:
 Angenommen man möchte einen Cupcake backen und im Schaufenster einer Konditorei herzeigen. Dafür benötigt man zuerst einmal Daten aus einem Rezeptbuch, diese sind somit in der Model-Schicht zu finden.
 Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch wirklich visuell erschaffen zu können. Dafür benötigen wir einen Konditor, welcher unseren Controller symbolisiert. 
-Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Einsicht zur Verfügung.
+Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
 (Bild von MVC evtl mit Cupcake bsp)
 
     \subsubsection{ER-Modell}
 
 Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können. Ein ERM dient dazu die Verknüpfungen zwischen zwei relationalen Tabellen visuell darzustellen. Die Verbindung wird dadurch gewährleistet, dass man die zwei Tabellen über Foreign Keys verbindet, welche meist auf den Primary Key, also die ID der Tabelle, verweisen. Bei der Verknüpfung gilt es zu entscheiden ob es sich um eine ManyToMany oder um eine ManyToOne beziehungsweise OneToMany handelt. Eine ManyToMany Verbindung wird dann benötigt, wenn eine Tabelle auf viele Tabelleneinträge einer anderen Tabelle verweist und diese ebenfalls auf mehrere Einträge verlinkt. Die ManyToOne und OneToMany Verbindungsvariante wird verwendet, wenn man von einem einzigen Eintrag auf mehrere einer anderen Tabelle verweisen möchte.
-(Bild von ERM)
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM.png}
+			\par\end{centering}
+			\caption{ER - Model der digitalen Speisekarte}
+			\label{ERM der digitalen Speisekarte}
+			\end{figure}
 Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
 \begin{itemize}
     \item \textbf{Speiseinträge und Kategorien}\\
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass man in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien wechseln kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
     \item \textbf{Bestellungen und Speiseeinträge}\\
-Damit der Administrator als auch der Gast die Möglichkeit hat zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei verweist kann ein Speiseintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
-    \item \textbf{Bestellungen und Tischdaten}\\ Bestellungen und Tischdaten
+Damit der Administrator als auch der Gast die Möglichkeit hat zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
+    \item \textbf{Bestellungen und Tischdaten}\\ 
 Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, war es wichtig zwischen diesen zwei Tabellen eine Verbindung herzustellen. Da mehrere Bestellungseinträge auf dieselben Tischdaten verweisen können musste auf der Bestellungen Seite eine OneToMany und auf der Tischdaten Seite eine ManyToOne Verknüpfung erschaffen werden.
   \end{itemize}  
 
@@ -84,7 +90,6 @@ Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 sudo chmod a+x /usr/local/bin/symfony
   	\end{lstlisting}
-
 Anschließend wurde ein Projekt angelegt. Dafür wurde in das Zielverzeichnis gewechselt. Um das Projekt im Anschluss über den Apache Server aufrufen zu können, empfiehlt es sich das Projekt direkt im „htdocs“-Ordner der jeweiligen LAMP Distribution abzuspeichern. Damit das Projekt auf einem Mac OS X basierenden Gerät angelegt wurde, musste der anschließende Befehl in den Terminal eingegeben werden:
 	\lstset{language = bash}
   	\begin{lstlisting}
@@ -109,7 +114,7 @@ Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funk
 */
   	\end{lstlisting}
 	
-Damit die erstellte Seite anschließend mit dem Package MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:
+Damit die erstellte Seite anschließend mit dem Package MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:\\
 http://IP-ADRESSE:PORT/PROJEKTNAME/web/ROUTE
 
     \subsubsection{Datenbankgenerierung}
@@ -202,7 +207,7 @@ public function __construct() {
 }
   	\end{lstlisting}
 Um im Anschluss im Controller auf die Daten zugreifen zu können, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden, welche dazu verwendet werden konnten Datenbankinhalte zu bekommen und neue zu setzen. Diese kann man sich mit einem Rechtsklick über die Menüpunkte „Generate…“ und „Getters and Setters…“ automatisch erstellen lassen.
-Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der „config.yml“-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben auf welche Datenbank zugegriffen werden soll.
+Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der „config.yml“-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben werden auf welche Datenbank zugegriffen werden soll.
 	
 	\lstset{language=php}
   	\begin{lstlisting}
@@ -236,7 +241,7 @@ parameters:
     mailer_password: PASSWORT
     secret: GEHEIMCODE
   	\end{lstlisting}
-Für den Datenbankhost muss man die IP-Adresse des Servers angeben. Falls sich die Datenbank auf einem lokalen Server befindet, wei es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Prot "3306" angegeben. Diesen Wert kann man allerdings auch verändern, indem man auf ihn in der jeweiligen LAMP-Distrubution unter den Einstellungen anders definiert. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten kann man über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermitteln. Der Geheimcode kann automatisch generiert werden.
+Für den Datenbankhost muss man die IP-Adresse des Servers angeben. Falls sich die Datenbank auf einem lokalen Server befindet, wie es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Prot "3306" angegeben. Diesen Wert kann man allerdings auch verändern, indem man auf ihn in der jeweiligen LAMP-Distrubution unter den Einstellungen anders definiert. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten kann man über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermitteln. Der Geheimcode kann automatisch generiert werden.
 Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
 Anschließend konnte die Datenbank bereits über den Terminal in MySQL erstellt werden:
 	\lstset{language = bash}
@@ -268,7 +273,7 @@ return $this->render("DATEIBEZEICHNUNG.html.twig"
     )
 );
   	\end{lstlisting}
-Um Operationen in der Datenbank vorzunehmen, wurde zuerst wurde ein Datenbankmanager erstellt. Anschließend konnte entweder mit "remove()" ein Datenbankeintrag gelöscht, mit "persist()" ein neuer Datenbankeintrag hinzugefügt oder mit "merge()" ein Datenbankeintrag upgedatet werden. Mit dem Befehl "flush()" werden davor definierte Methoden ausgeführt beziehungsweise als Operatoren an die Datenbank geschickt.
+Um Operationen in der Datenbank vorzunehmen, wurde zuerst ein Datenbankmanager erstellt. Anschließend konnte entweder mit "remove()" ein Datenbankeintrag gelöscht, mit "persist()" ein neuer Datenbankeintrag hinzugefügt oder mit "merge()" ein Datenbankeintrag upgedatet werden. Mit dem Befehl "flush()" werden davor definierte Methoden ausgeführt beziehungsweise als Operatoren an die Datenbank geschickt.
 	
 	\lstset{language=php}
   	\begin{lstlisting}
@@ -339,7 +344,7 @@ php app/console cache:clear -e prod
 
     \subsubsection{Bower}
 
-Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwaltungstool Bower verwendet. Bower ist ein freies Kommandozeilenprogramm und wird daher über den Terminal gesteuert. Das heißt, dass Bower dazu verwendet werden konte alle Packages, welche für die Gestaltung des Frontends benötigt wurden, über die Konsole zu installieren.
+Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwaltungstool Bower verwendet. Bower ist ein freies Kommandozeilenprogramm und wird daher über den Terminal gesteuert. Das heißt, dass Bower dazu verwendet werden konnte alle Packages, welche für die Gestaltung des Frontends benötigt wurden, über die Konsole zu installieren.
 
     \subsubsection{Sass}
 
@@ -352,13 +357,13 @@ Zum kompilieren der Sass Dateien wurde der TaskRunner Gulp verwendet, welcher al
     \subsubsection{Twig}
 
 Um Variablen vom Controller ohne Umwege im Frontend aufrufen zu können empfahl es sich die Template Engine Twig zu verwenden, welche seit dem Jahr 2009 einen festen Bestandteil des Symfony-Frameworks ausmacht. Ein Template dient, wie die englische Bezeichnung bereits vermuten lässt, als Vorlage. Sobald die Web-App am Client angezeigt wird, werden Platzhalter der Templates durch Daten ersetzt. 
-Um erstellte Templates samt Variablen einzubinden, kann man muss man nur folgende Codezeile angeben:
+Um erstellte Templates samt Variablen einzubinden, muss man nur folgende Codezeile angeben:
 	\lstset{language = php}
   	\begin{lstlisting}
 {% include "TEMPLATE_BEZEICHNUNG.html.twig" 
 with {'BELIEBIGE_BEZEICHNUNG': VARIABLEN_BEZEICHNUNG } %}
   	\end{lstlisting}
-  	Twig bietet zusätzlich auch die Möglichkeit an bestimmte Blöcke zu definieren, die m File, welches das Layout und die dort vorhandenen Variablen erben soll, welche überschrieben werden können.
+  	Twig bietet zusätzlich auch die Möglichkeit an bestimmte Blöcke zu definieren, die im File, welches das Layout und die dort vorhandenen Variablen erben soll, welche überschrieben werden können.
 	\lstset{language = php}
   	\begin{lstlisting}
 {% block BLOCK_BEZEICNHNUNG%}
@@ -400,17 +405,28 @@ Ajax(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführ
 
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden MockUps angefertigt, welche dazu dienen festzulegen welche Buttons und Felder sich wo befinden.
-Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. 
-Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen.
+Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
+Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen.\\
 \textbf{alte MockUps}\\
-(Bild alte Mockups)
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups.png}
+			\par\end{centering}
+			\caption{alte MockUps}
+			\label{alte MockUps}
+			\end{figure}
 \textbf{neue MockUps}\\
-(Bild neue Mockups)
-
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups.png}
+			\par\end{centering}
+			\caption{neue MockUps}
+			\label{neue MockUps}
+			\end{figure}
 \textbf{Funktionalitäten der Applikation}\\
 Wie man auf den MockUps bereits erkennen kann, wurde damals schon festgelegt welche Funktionalitäten die einzelnen Screens haben.
-Diese sind, wie in den neuen MockUps festgelegt, folgendermaßen:
-\textbf{Funktionalitäten der digitalen Speisekarte}\\
+Diese sind, wie in den neuen MockUps festgelegt, folgendermaßen:\\
+\textbf{Funktionalitäten der digitalen Speisekarte}
 \begin{itemize}
     \item \textbf{Loginscreen}\\
 Der Loginscreen beeinhaltet sowohl ein Eingabefeld für den Administratornamen als auch für das Administratorpasswort und einen Loginbutton.
@@ -422,9 +438,9 @@ Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zu
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen. 
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton. 
 Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wurde.
-Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung bestellt wurde. Nun kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen. 
-  \end{itemize} 
-\textbf{Funktionalitäten des Adminbereichs}\\ 
+Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung bestellt wurde. Nun kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+  \end{itemize}
+\textbf{Funktionalitäten des Adminbereichs} 
 \begin{itemize}
     \item \textbf{Loginscreen}\\
 Der Loginscreen des Admininterface hat nahezu dieselben Funktionalitäten wie der der digitalen Speisekarte. Der einzige Unterschied besteht darin, dass man nach dem Klick auf den Loginbutton zum Hauptscreen des Admininterfaces weitergeleitet wird.
@@ -471,9 +487,8 @@ Der Hauptscreen enthält ebenfalls einen Header mit nahezu demselben Schema wie 
   \end{itemize}
 Das Design der Screens orientiert sich an dem des Blogs. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
-Das finalle Layout der Screens sieht daher folgendermaßen aus:\\ 
+Das finale Layout der Screens sieht daher folgendermaßen aus:\\ 
 \textbf{Screens der digitalen Speisekarte}
-
 \textbf{Screens des Admininterfaces}
   
     \subsubsection{Datenausgabe}
@@ -497,18 +512,18 @@ Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die v
 	{{ AKTUELLER_TABELLENEINTRAG.SPALTEN_BEZEICHNUNG }}
 {% endfor %}
 	\end{lstlisting}
-Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie es zum Beispiel beim Zugriff auf die Speiseeinträge der jeweiligen Kategorien der Fall war, musste der im Aufruf ebenfalls auf diese verwiesen werden, bevor der auszugebende Wert von ihr geholt werden konnte.
+Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie es zum Beispiel beim Zugriff auf die Speiseeinträge der jeweiligen Kategorien der Fall war, musste im Aufruf ebenfalls auf diese verwiesen werden, bevor der auszugebende Wert von ihr geholt werden konnte.
 \lstset{language = php}
   	\begin{lstlisting}
 {% for AKTUELLER_TABELLENEINTRAG in BEZEICHNUNG_DER_DATENBANKTABELLE %}
-{{ AKTUELLER_TABELLENEINTRAG.BEZEICHNUNG_DER_ANDEREN_TABELLE.SPALTEN_BEZEICHNUNG }}
+{{ AKTUELLER_TABELLENEINTRAG.BEZEICHNUNG_VERLINKTE_TABELLE.SPALTENBEZEICHNUNG }}
 {% endfor %}
 	\end{lstlisting}
 Bei Werten, welche man sich auf diese Art und Weise von der Datenbank holt, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies bewerkstelligt man am besten mit einer JSON-Kodierung.
 \lstset{language = php}
   	\begin{lstlisting}
 var VARIABLEN_BEZEICHNUNG = 
-{{ AKTUELLER_TABELLENEINTRAG.SPALTEN_BEZEICHNUNG|json_encode|raw  }};
+{{ AKTUELLER_TABELLENEINTRAG.SPALTENBEZEICHNUNG|json_encode|raw  }};
 	\end{lstlisting}
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frostend der Applikation angezeigt werden.
 
@@ -537,15 +552,42 @@ $kernel = newAppKernel('prod', true);
   	\end{lstlisting}
 Der Wert "prod" steht hierbei für "production environment", also für die Produktionsumgebung.
 
+\chapter{Testphase}
+\renewcommand{\kapitelautor}{Katharina Joksch}
+Für die Testphase wurden präzise Testfälle erstellt, welche abgesehen von TC-5 von einer externen Person getestet wurden.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
+\hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Erzieltes Ergebnis} \\\hline
+\hline TC-1 & Adminlogin - Admininterface & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Hauptscreen des Admininterfaces soll angezeigt werden & Hauptscreen des Admininterfaces wird angezeigt \\\hline
+\hline TC-2 & Adminlogin - Speisekarte & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Der Admin soll auf den Tischnummernauswahlscreen weitergeleitet werden & Der Admin wird auf den Tischnummernauswahlscreen weitergeleitet \\\hline
+\hline TC-3 & Speisebestellung & Der Gast bestellt eine Speise & Ein neuer Bestellungseintrag soll erstellt werden und in der Bestellliste erscheinen & Ein neuer Bestellungseintrag wird erstellt und erscheint in der Bestellliste, nachdem man in einer Alertbox die Bestellung bestätigt \\\hline
+\hline TC-4 & "Ausliefern"-Wert ändern & Der Admin klickt auf den "Ausliefern"-Button & Der "ausliefern"-Wert der Speise soll auf 1 gesetzt werden & Der "ausliefern"-Wert der Speise wird auf 1 gesetzt \\\hline
+\hline TC-5 & Tischroute schicken & Der Hexacopter schickt eine bestimmte Nachricht an den Server & Die Tischroute soll geschickt werden & Die Tischroute wird geschickt \\\hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
+\hline TC-6 & Speiseeintrag hinzufügen & Der Admin gibt neue Speisedaten in das Formular ein und klickt auf "Speiseeintrag hinzufügen" & Ein neuer Speiseeintrag soll in der Datenbank angelegt werden & Ein neuer Speiseeintrag wird in der Datenbank angelegt \\\hline
+\hline TC-7 & Kategorie hinzufügen & Der Admin gibt eine neue Kategoriebezeichnung in das Formular ein und klickt auf “Kategorie hinzufügen” & Eine neue Kategorie soll in der Datenbank angelegt werden & Eine neue Kategorie wird in der Datenbank angelegt \\\hline
+\hline TC-8 & Speiseeintrag löschen & Der Admin wählt einen Speiseeintrag aus und klickt auf den "Speiseeintrag Löschen"-Button & Der ausgewählte Speiseeintrag soll gelöscht werden & Der ausgewählte Speiseeintrag wird gelöscht \\\hline
+\hline TC-9 & Kategorie löschen & Der Admin wählt eine Kategorie aus und klickt auf den "Kategorie Löschen"-Button & Die ausgewählte Kategorie soll gelöscht werden & Die ausgewählte Kategorie wird gelöscht \\\hline
+\hline TC-10 & Tischroute verändern & Der Admin wählt eine Tischnummer aus und gibt eine Tischroute in das Formularfeld ein & Die Tischroute des Tisches mit der ausgewählten Tischnummer soll geändert werden & Die Tischroute des Tisches mit der ausgewählten Tischnummer wird geändert \\\hline
+\end{tabular}
+\caption{Testfälle der Applikation und des Java Programms}
+\end{table}
+
 \chapter{Persönliche Erfahrungen}
 Da ich zuvor kaum mit einer der hierfür verwendeten Technologien gearbeitet habe, konnte ich mir dank der Diplomarbeit einige neue Fähigkeiten erlernen.
 Zwar habe ich bereits in der vierten Klasse die Grundlagen eines MVC-Frameworks gelernt, doch war mir damals trotzdem kaum klar, wie es genau funktioniert und wie viele positive Eigenschaften es eigentlich mit sich bringt.
 Zuerst dachte ich, dass es mehr Aufwand mit sich bringen würde, da ich mich nicht gut damit auskannte, doch mittlerweile ist die Verwendung von Symfony für mich kaum noch wegzudenken. Ohne diesem Framework, hätte ich mich vermutlich kaum in meiner Codestruktur zurechtgefunden.
 So ging es mir jedoch nicht nur mit Symfony sondern nahezu mit jeder anderen Technologie die verwendet wurde auch. 
-Ich habe zwar ziemlich viel Zeit dafür aufgebracht mit Doctrine zurechtzukommen. Doch dies hat sich auf jeden Fall ausgezahlt, denn dadurch konnte ich Änderungen in der Datenbank ohne großem Aufwand vornehmen. 
+Ich habe zwar ziemlich viel Zeit dafür aufgebracht mit Doctrine zurechtzukommen, doch dies hat sich auf jeden Fall ausgezahlt. Dadurch konnte ich nämlich Änderungen in der Datenbank ohne großen Aufwand vornehmen. 
 Ich bin wirklich froh darüber, dass ich mit der Template Engine Twig gearbeitet habe, da ich dadurch keinen aufwendigen Code in den Dateien für die visuelle Darstellung zur Ausgabe von Variablen eingeben musste, sondern lediglich wenige Zeilen mit dem Twig-Syntax angeben konnte.
 \\
-Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, führten wir Coachings ein, welche regelmäßig stattfanden. In diesen wurde der Fokus neben der Planung des Projekts auch immer wieder auf das Zusammenschweißen der Teammitglieder gelegt. Dadurch kann ich mittlerweile wirklich behaupten, dass wir fünf uns nun prima miteinander verstehen und auch längere Zeit miteinander auskommen ohne dass es zu Streitigkeiten kommt. Wir können alle offen miteinander über Probleme reden und man kann sich darauf verlassen, dass jeder dem anderen bei Schwierigkeiten mit Rat oder Motivation zur Hilfe kommt.
+Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, führten wir Coachings ein, welche regelmäßig stattfanden. In diesen wurde der Fokus neben der Planung des Projekts auch immer wieder auf das Zusammenschweißen der Teammitglieder gelegt. Dadurch kann ich mittlerweile wirklich behaupten, dass wir fünf uns nun prima miteinander verstehen und auch längere Zeit miteinander auskommen ohne dass es zu Streitigkeiten kommt. Wir können alle offen miteinander über Probleme reden und man kann sich darauf verlassen, dass jeder dem anderen bei Schwierigkeiten mit Rat oder Motivation zur Seite steht.
 \\
 Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, dass meine sozialen Kompetenzen davon profitiert haben. 
 
