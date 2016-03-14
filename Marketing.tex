@@ -318,11 +318,11 @@ behandelt.
 
     Der Beste Weg XSS zu unterbinden ist, die Eingaben, die über ein Formular vom User an den Server gesendet werden über PHP zu validieren und notfalls, Zeichen, die
     XSS andeuten zu ersetzen. PHP stellt dafür die Methode htmlspecialchars() zur Verfügung. Sie konvertiert bestimmte Sonderzeichen in HTML-Code. Beispielsweise wird
-    das Zeichen "\<", welches notwendig ist um Javascript mittels <script>-Tag zu schreiben durch "&lt;".
+    das Zeichen "<", welches notwendig ist um Javascript mittels <script>-Tag zu schreiben durch "\&lt;".
 
     Bei einer SQL-Injection hingegen injiziert ein User SQL-Statements in eine Anwedungung um somit Daten aus der Datenbank auszulesen, oder diese zu manipulieren.
     Wird SQL Code dynamisch und mittels User Eingaben generiert, kann der User diese Statements manipulieren. Werden über ein Formular
-    geschickte Daten per "$\_POST['name'];" direkt in ein SQL Statement übernommen, ohne auf korrekte Zeicheneingabe, Länge des Strings oder Ähnliches validiert wird,
+    geschickte Daten per "\$\_POST['name'];" direkt in ein SQL Statement übernommen, ohne auf korrekte Zeicheneingabe, Länge des Strings oder Ähnliches validiert wird,
     können Fehler entstehen, die Schaden an der Datenbank anrichten.
 
     Eine Möglichkeit eine SQL Injection zu verhindern ist, ähnlich wie bei XSS bestimmte Zeichen zu erkennen und stattdessen als Strings weiterzuverwenden.

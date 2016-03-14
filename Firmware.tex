@@ -476,7 +476,7 @@
 
     Ein Frame entsteht bei jeder Messung der Pixy CMUcam5. Der Frame hat eine Breite von 319 und eine Höhe von 199 Pixel. Die Koordinate (0/0) befindet sich in der linken oberen Ecke.
 
-    Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen des Frames. Die Differenz entsteht aus den Positionen des Objektes im alten und neuem Frame. Das Objekt soll in den Bereich zwischen X_MIN und X_MAX, beziehungsweise Y_MIN und Y_MAX gelangen.
+    Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen des Frames. Die Differenz entsteht aus den Positionen des Objektes im alten und neuem Frame. Das Objekt soll in den Bereich zwischen X\_MIN und X\_MAX, beziehungsweise Y\_MIN und Y\_MAX gelangen.
 
     % BILD VON LUCAS %
 
@@ -683,7 +683,7 @@ Die Werte beziehen sich auf den Fehler, die obere Analyse beschreibt das Auftret
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{1cm}|p{5cm}|p{5cm}|p{5cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}}
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|}
 
 \hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
  1 & Mensch in unmittelbarer Nähe & Mensch wird verletzt, da Hexacopter nicht ausweicht & Eine Person steht auf dem Weg und wird vom Hexacopter als Hindernis erkannt & 5 & 10 & 10 & 500\\
@@ -699,6 +699,7 @@ Die Werte beziehen sich auf den Fehler, die obere Analyse beschreibt das Auftret
  3 & Bewegliches Hindernis wird erkannt & Hexacopter fliegt gegen ein Hindernis und stürzt ab & Eine Hindernis wird erkannt. & 3 & 6 & 10 & 180\\
 \hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
  - & Bewegliche Hindernisse werden wenn möglich aus dem Weg geräumt. & Hexacopter probiert dem Hindernis auszuweichen und seinen Weg weiter zu meistern. & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Hindernisse erkannt, er landet daraufhin & 2 & 6 & 5 & 60 \\\hline
+
 \hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
  4 & Hände in der Nähe von den Propellern  & Person hat seine Hände beim fliegenden Hexacopter und verletzt sich & Eine Person greift in die Propeller. & 7 & 10 & 10 & 700 \\
 \hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
@@ -732,25 +733,24 @@ Das Konzept Systemausfall beschreibt die Maßnahmen, wenn der Hexacopter seine A
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{10cm}|p{10cm}}
-
+\begin{tabular}{|p{7cm}|p{7cm}|}
 \hline Fehler & Lösung\\\hline
-\hline Akku schwach & Fail Safe, eventuell sofort Landen
-\hline Akku explodiert: Lithium Ionen Akkus können explodieren & Vor dem Flug kontrollieren, Feuerlöscher bereitstellen
-\hline Copter findet keine Farbobjekte mehr & Position Hold, nach einer Zeit: Landen
-\hline Copter findet falsche Farbobjekte & Position Hold, nach einer Zeit: Landen 
-Manueller Flug optimal
-\hline Ausfall von Aktoren (Propeller, bzw. Motoren blockiert/ …) &  Wenn es möglich ist: Landen
-\hline Copter fliegt in die falsche Richtung * & Da Colorcodes aus 2 Farben bestehen, kann die Rotation des Objektes bestimmt und korrigiert werden. 
-\hline Hexacopter ist zu hoch / verliert an Höhe * & Durch die Daten des Ultraschallsensors, kann die Höhe korrigiert werden.
-\hline Ausfall von Sensoren (Pixy / Ultraschall / …) & Fehlermeldung, Manueller Flug
-\hline Hackerangriff & Durch den WLAN Standard (wpa2) ist die Übertragung sicher genug
-\hline Funkstörung bei manuellem Flug & Pilot muss verstehen, in welchem Frequenzband die Fernsteuerung arbeitet, Störquellen vermeiden und abschalten (sonstiges WLAN, Bluetooth, andere Fernsteuerungen im Umfeld) -> saubere Vorbereitung - Analyse von möglichen Störquellen
+\hline Akku schwach & Fail Safe, eventuell sofort landen\\
+\hline Akku explodiert: Lithium Ionen Akkus können explodieren & Vor dem Flug kontrollieren, Feuerlöscher bereitstellen\\
+\hline Copter findet keine Farbobjekte mehr & Position Hold, nach einer Zeit: Landen\\
+\hline Copter findet falsche Farbobjekte & Position Hold, nach einer Zeit: Landen \\
+Manueller Flug optimal\\
+\hline Ausfall von Aktoren (Propeller, bzw. Motoren blockiert/ …) &  Wenn es möglich ist: Landen\\
+\hline Copter fliegt in die falsche Richtung * & Da Colorcodes aus 2 Farben bestehen, kann die Rotation des Objektes bestimmt und korrigiert werden. \\
+\hline Hexacopter ist zu hoch / verliert an Höhe * & Durch die Daten des Ultraschallsensors, kann die Höhe korrigiert werden.\\
+\hline Ausfall von Sensoren (Pixy / Ultraschall / …) & Fehlermeldung, Manueller Flug\\
+\hline Hackerangriff & Durch den WLAN Standard (wpa2) ist die Übertragung sicher genug\\
+\hline Funkstörung bei manuellem Flug & Pilot muss verstehen, in welchem Frequenzband die Fernsteuerung arbeitet, Störquellen vermeiden und abschalten (sonstiges WLAN, Bluetooth, andere Fernsteuerungen im Umfeld) -> saubere Vorbereitung - Analyse von möglichen Störquellen\\
 \end{tabular}
 \caption{Fehlt noch}
 \end{table}
 
-\subsection*{Beispiele für Lösungen} 
+\subsection*{Beispiele für Lösungen}
 \begin{itemize}
 \item \textbf{Landen:} sofort auf der Stelle landen
 \item \textbf{Position hold:} in der Luft stehen bleiben – Option auf manuelle Steuerung umstellen
