@@ -85,70 +85,52 @@
   
     \subsubsection{Frames}
 
+    Ein Frame entsteht bei jeder Messung der Pixy CMUcam5. Der Frame hat eine Breite von 319 und eine Höhe von 199 Pixel. Die Koordinate (0/0) befindet sich in der linken oberen Ecke.
+
+    Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen des Frames. Die Differenz entsteht aus den Positionen des Objektes im alten und neuem Frame. Das Objekt soll in den Bereich zwischen X_MIN und X_MAX, beziehungsweise Y_MIN und Y_MAX gelangen.
+
     % BILD VON LUCAS %
 
-    Ein Frame hat die Größe von xxx
-
-    \subsubsection{Aileron}
-
-    Die Beschleunigung auf die Seiten links und Rechts
-
-    Anhand des aktuell getrackte Colorcodes werden die Seiten links und rechts korrigiert. 
-
-
-
     \subsubsection{Elevator}
-
     Vorwärts- und Rückwärtsbewegung: Die Vorwärtsbewegung muss auf einer konstanten Position gehalten werden. Beim Endpunkt wird die Geschwindigkeit der Vorwärtsbewegung auf 0 gesetzt werden. Im Idealfall muss eine Rückwärtsbewegung gar nicht durchgeführt werden, nur, wenn der Multicopter über das Ziel hinausschießt.
 
-    Das Weiterschalten auf den nächsten Bodenmarker
-
+    \textbf{Das Weiterschalten auf den nächsten Bodenmarker}\\
     Der Algorithmus zielt immer auf den Marker, der sich am nächsten zum Nullpunkt an der y-Achse befindet. Er trackt den Ersten, bis er den zweiten erkennt, diesen verfolgt er wieder, danach kommt der dritte dran, diese Routine läuft, bis der letzte Colorcode erreicht ist. Welcher Marker der Zielmarker ist, wird durch die größe eines Arrays erkannt. Dieses wird mit den Daten, die im Admin-Interface hinterlegt sind und im Endeffekt vom Wlan-Modul empfangen werden, befüllt.
 
     \subsubsection{Rudder}
 
-    Mitt Hilfe der Rudder Funktion muss der Winkel auf die nächste Positionsmarkierung ausgerichtet werden.
+    Mithilfe der Rudder Funktion muss der Winkel auf die aktuelle Positionsmarkierung ausgerichtet werden.
 
-    % Rotationsbild + 2er Komplement %
+    \subsection*{Darstellung negativer Zahlen im Binärsytem}
 
-    \subsection{Darstellung negativer Zahlen im Binärsytem}
+    Für die Rotation werden die Grundlagen negativer binärer Zahlen benötigt.
 
-    \textbf{Binäre Zahlen ohne Vorzeichen:}\\
+    \textbf{Binäre Zahlen ohne Vorzeichen}\\
     0000 0000 = 0, 1111 1111 = 255
-    \textbf{Ein Bit für das Vorzeichen:}\\
+    \textbf{Binäre Zahl mit Vorzeichen}\\
+    Ein Bit wird für das Vorzeichen verwendet.
     0000 0001 = 1 -> 1000 0001 = -1, 
     0111 1111 = 127 -> 1111 1111 = -127
-    \textbf{Einerkomplement:}\\
+    \textbf{Einerkomplement}\\
     Beim Invertieren aller Bits entsteht eine negative Zahl
     0000 0000 = "+0" -> 1111 1111 = "-0"
     0111 1111 = 127 -> 1000 0000 = -127
-    \textbf{Zweierkomplement:}
+    \textbf{Zweierkomplement}
     0000 0001 = 1 -> 1111 1111 = -1
     0000 0010 = 2 -> 1111 1110 = -2
     0111 1111 = 127 -> 1000 0001 = -127
-    \textbf{Bilden des Zweierkomplements:}
+    \textbf{Bilden des Zweierkomplements}
     Beispiel: 0111 1111 = 127
-    Invertieren
-    1000 0000
-    +1
-    1000 0001 = -127
+    Die Binäre Zahl wird invertiert (1000 0000) und mit 1 addiert.
+    Das Ergebins lautet: 1000 0001 = -127
     Beispiel: 1000 0000 = 128 (im Komplement)
-    -1
-    0111 1111 Invertieren:
-    1000 0000 = 128 = -128
+    Die binäre Zahl wird mit 1 subtrahiert (0111 1111) und danach invertiert.
+    Das Ergebnis lautet: 1000 0000 = 128 = -128
 
     % Bild von Rotation %
 
     \subsubsection{Throttle}
-
-    \subsubsection{Glätten des Pendelns}
-
-    P-Regler
-
-    \subsubsection{Glättung des Messergebnises}
-    
-    PT1 Filter
-
+    Über den Ultraschallsensor erfährt der Hexacopter, wie hoch er fliegt, wenn er seine maximale Flughöhe erreicht hat, soll er seine Antriebskraft nicht weiter erhöhen. Dadurch korrigiert er seine Höhe bei jedem Aufruf der Funktion und eine Änderung des Gewichts, wird ausgeglichen. Der entnommene Cupcake am jeweiligen Tisch soll daher keine Probleme erschaffen.
 
   \subsection{Umsetzung}
 
@@ -163,8 +145,7 @@
     \end{itemize}
 
     Zuerst wird die ID des Colorcodes verglichen, um herauszufinden, ob das Farbobjekt das selbe wie im letzten Frame ist.
-    Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und gespeichert.
-    Diese werden bei den folgenden Funktionen verwendet, um zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
+    Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und in einem weiteren Struct gespeichert. Dieses wird bei den folgenden Funktionen verwendet, um anhand der Änderung zwischen zwei Frames zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
 
     \subsubsection{Aileron, Elevator und Rudder anhand der Kameradaten}
     Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden anschließend die Flugparameter verändert.
@@ -179,7 +160,6 @@
     Die Position wird anhand solcher Farbcodes erkannt, im Tischkonzept ist hinterlegt in welcher Reihenfolge der Hexacopter die Farbcodes suchen muss.
     Er fliegt anschließend so lange, bis er über dem aktuellen Farbcode ist, dieser also mittig im Bild ist und sucht darauf den nächsten.
 
-
     \textbf{Überprüfen von Aileron}\\
     Beim Vergleichen von Aileron wird die Veränderung an der x-Achse überprüft. 
 
@@ -190,19 +170,6 @@
     Zunächst muss der Hexacopter über die Pixycam herausfinden, ob er sich bereits in die richtige Richtung bewegt. Dafür werden die beiden Frames miteinander verglichen. Wenn der Wert zu hoch ist, muss der x-Wert im alten Frame größer als im neuen sein. Sollte er zu niedrig sein, muss der Wert im neuen Frame höher sein.
     Anderenfalls fliegt der Hexacopter auf die falsche Seite. Die Firmware reagiert darauf mit der Änderung der Pulszeit am Aileron-Pin.
     Bei der Bewegung in die richtige Richtung wird der Wert so lange in diese gesteuert, bis sich die Geschwindigkeit, gemessen in den veränderten Pixel zwischen zwei Frames, zwischen 2 Konstanten Werten befindet.
-
-
-    Die Überprüfung von Aileron bezieht sich auf die Beschleunigung nach Links und Rechts, was der x-Koordinate entspricht.
-
-    Ziel der Funktion ist es, den Farbcode in die Mitte des Frames zu bekommen. Der Idealzustand befindet sich zwischen 150 und 170.
-    Sollte dieser Zustand erreicht werden, bleibt der Wert von Aileron unverändert und der Hexacopter fliegt weiterhin mit einer unveränderten Beschleunigung an der x-Koordinate.
-    Sollte dies nicht der Fall sein, muss der Wert auf einige Komponenten \textcolor{red}{XXXXX} überprüft werden.
-    Wenn der Farbcode zu weit auf der rechten Seite liegt, das bedeutet, wenn der Wert des Mittelpunktes vom Farbobjekt höher als 170 ist,
-    muss der Hexacopter nach rechts fliegen, um seine Position zu korrigieren.
-    Dabei muss zuerst verglichen werden, ob sich der Hexacopter in die richtige Richtung bewegt. Sollte er in die falsche Richtung
-    fliegen, wird der Aileron-Flugparameter gesenkt, dies setzt die Beschleunigung nach Rechts vorraus.
-    Wenn die Beschleunigung nach rechts hoch genug ist und die Drohne tatsächlich nach rechts fliegt, wird die Geschwindigkeit überprüft.
-    Die Geschwindigkeit wird durch die Differenz der x-Koordinate beider Strukturen herausgefunden. Die Einheit ist in diesem Fall
 
     \textbf{Überprüfen von Elevator}\\
     Elevator, die Bewegung an der y-Achse, also die Bewegung nach vorne und nach hinten, funktioniert nach dem selben Prinzip wie Aileron. 
@@ -229,11 +196,7 @@
     \subsubsection{Throttle anhand des Ultraschallsensors}
     Der Hexacopter steht auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, diesen fokusiert er so lange, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
     Beim Starten fliegt er vertikal nach oben, bis er den 2. Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von 50cm befindet, mit einer Hohen Änderungsrate. Ab dieser Höhe, beschleunigt er mit einer geringeren Erhöhung der Änderungsrate, bis er die 80cm-Grenze erreicht hat. 
-    zwischen 80 und 120cm bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von 120 erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über 120cm kommt, wird die Beschleunigung nach unten hin verändert. Der Hexacopter pendelt also zwischen 80 und 120cm.
-
-    \textbf{P-Regler}\\
-    Um Pendelungen entgegenzuwirken gibt es den sogenannten P-Regler.
-    % Erklärung P-Regler%
+    zwischen 80 und 120cm bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von 120 erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über 120cm kommt, wird die Beschleunigung nach unten hin verändert. Der Hexacopter pendelt sich zwischen 80 und 120cm ein.
 
     Nun muss er herausfinden, ob er sich noch über dem Tisch oder schon über dem Boden befindet. Dies stellt er fest, wenn 2 hintereinanderliegende Messungen 50cm von der Vorigen abweichen. Die zweite Messung ist erforderlich, um mögliche Fehlmessungen auszuschließen.
 
@@ -310,19 +273,9 @@ void SignalOut(void) {
   \subsection{Technische Planung}
 
 Sicherheitskonzepte
-Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Hier werden mögliche Fehler mit Anlehnung an FMEA analysiert.
-
-GEKLAUT
-
-FMEA: Failure Mode and Effects Analysis = "Fehlermöglichkeits- und -einflussanalyse" / "Auswirkungsanalyse"
-
-FMEA zielt darauf, Fehler von vornherein zu vermeiden, statt sie nachträglich zu entdecken und zu korrigieren. Bereits in der Entwurfsphase sollen potenzielle Fehlerursachen identifiziert und bewertet werden. 
-
-Durch das frühe Beschäftigen mit möglichen Fehlerquellen wird eine Strategie der Fehlervermeidung anstatt aufwändiger Fehlerbeseitigung verfolgt. Die FMEA ist daher besonders gut für Neuentwicklungen und Änderungen von Produkten und Prozessen geeignet. Durch die Risikobewertung können kritische Komponenten gefunden und Schwerpunkte bei der Verhütung von Fehlern gesetzt werden.
+Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Hier werden mögliche Fehler mit Anlehnung an FMEA ("Fehlermöglichkeits- und -einflussanalyse" / "Auswirkungsanalyse") analysiert. Dieses Konzept ist ein rein schriftliches Konzept.
 
   \subsection{Umsetzung}
-
-%BSP CRYPT DRIVE
 
 \begin{table}[H]
 \centering
