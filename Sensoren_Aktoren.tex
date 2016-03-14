@@ -217,37 +217,80 @@ void ReadHeight(void) {
 \renewcommand{\kapitelautor}{Autor: Christina Bornberg, Lucas Ullrich}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Propeller, A E R und T}
-Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
-Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von $\SI{20}{\milli\second}$ gesendet.
-Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
-und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
+\section{Multicopter Chrisy}
+  Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, bei denen sich abwechselnd einer nach links und einer nach rechts dreht, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
 
-\textcolor{red}{OSZIBILD: min, max Impuls}
+  \subsection{Funktion Chrisy}
+  Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
+  Dem Empfängermodul, dem DJI NAZA-M Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Höhe bzw. entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
 
-  \subsection{Technische Planung}
-    \subsubsection{Steuerbefehle}
-    Der Hexacopter wird über 4 unterschiedliche Steuerbefehle gesteuert:
+  % BILD Funktion Blockschaltbild (Dokument) %
 
-    \begin{itemize}
-      \item \textbf{Aileron}\\
-      auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
+  \subsection{Erweiterte Funktion Chrisy}
+  Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: Pixycam, Ultraschallsensor, WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
 
-      \item \textbf{Elevator}\\
-      auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
+  % BILD %
 
-      \item \textbf{Rudder}\\
-      auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
+  \subsection{Multicopter Arten Chrisy}
+  Es gibt verschiedene Arten von Multicoptern. 
+  Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
+  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
 
-      \item \textbf{Throttle}\\
-      reguliert die Höhe.
-      %Uplift and Downfall
-    \end{itemize}
-    Quelle: Technikblog\cite{GrundlagenMulticopter} \textcolor{red}{Ergänzung? (chrisy?)}
+  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
-    \subsubsection{Propeller}
+  \subsection{Konfiguration Chrisy}
+  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
+  Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage. 
+
+  Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
+
+  Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die Roten unten.
+
+  % BILD mit 4, 6, 8 in + bzw x %
+
+  \subsection{Mögliche Anwendungsgebiete Chrisy}
+  Multicopter finden in vielen Bereichen Anwendung. \cite{copterAnwendung}
+  \begin{itemize}
+    \item Fotographie und Videos / Filmindustrie / Anfertigen von hoch aufgelösten Luftbildkarten
+    \item Multicopter als Hobby / Kunstflug
+    \item Lagerhallen und Logistik / Bestands- und Inventaraufnahmen im Straßenbau
+    \item Forschung / Schwarmverhalten
+    \item Multicopter als Lebensretter / Rettungseinsätze / Katastrophenschutz
+    \item Unterstützung der Polizei / große Menschenmengen überwachen
+    \item Unbemannter Aufklärer bei Spezialeinheiten
+    \item Kontrolle, Inspektion und Dokumentation von Brücken, Gebäuden, Gräben
+    \item Militärische Anwendung: Spionagedrohne zur Aufklärung, Kampfdrohne zur Zerstörung, Rettungungsdrohne für Hilfsaktionen
+  \end{itemize}  
+  
+
+\section{Rotoren}
+
+  \subsection{Technische Planung Lucas}
+
+  Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
+  Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von $\SI{20}{\milli\second}$ gesendet.
+  Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
+  und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
+
+  \textcolor{red}{OSZIBILD: min, max Impuls}
 
 
+    \subsubsection{Steuerungsarten Chrisy}
+    Der Flightcontroller DJI NAZA-M lite wird über die Befehle Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. \cite{GrundlagenMulticopter}
+
+      \begin{itemize}
+        \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
+        Um diese auszuführen, werden bei der Beschleunigung nach links, die rechten Propeller stärker betrieben, umgekehrt drehen sich die auf der linken Seite befindlichen Propeller beim Flug nach rechts schneller. Durch die entstehende Neigung, fliegt der Hexacopter in die gewünschte Richtung.
+        \item \textbf{E: Elevator} auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
+        Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen. 
+        \item \textbf{R: Rudder} auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
+        Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
+        \item \textbf{T: Throttle} reguliert die Höhe.
+        Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
+        \item \textbf{U: 2/3-position switch channel} ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. \cite{positionswitch}
+      \end{itemize}
+
+    % BILD Fernsteuerung%
 
   \subsection{Umsetzung}
   Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.

@@ -88,6 +88,7 @@
     Nach dem Initialisieren der Pins, wurde das Programm geschrieben, debuggt und getestet.
     Die Teile wurden als Grundlage für die Hexacopter Firmware genutzt.
 
+
     Durch die einfachen Programme, wurde die Entwicklungsumgebung besser kennengelernt. Die Zeit wurde auch für die Erstellung von Flussdiagrammen und das Einrichten von GitHub genutzt.
 
     \textbf{Codingrules}\\
@@ -424,7 +425,6 @@
   \cite{Ultrasonic}
 
   \subsection{Tischplan}
-
   Das Konzept Tischplan beschreibt den Aufbau / die Infrastruktur des Restaurants. Welche Komponenten benötigt werden und wo diese platziert sind.
   Um eine vorgegeben Route fliegen zu können muss der Multicopter einen Routenplan vorgegeben bekommen, in diesem sind die einzelnen Markierungspunkte enthalten, welche der Multicopter auf seinem Weg zum Tisch überfliegt.
 
@@ -498,75 +498,31 @@
 
     % Rotationsbild + 2er Komplement %
 
-    Darstellung negativer Zahlen im Binärsytem
+    \subsection{Darstellung negativer Zahlen im Binärsytem}
 
-Ohne Vorzeichen:
-0000 0000 = 0
-1111 1111 = 255
-1 Bit für Vorzeichen:
-    0000 0000 = 0
-    1000 0000 = -0
-    0111 1111 = 127
-    1111 1111 = -127
-Einerkomplement:
-    0000 0000 = 0
-    Invertierung aller Bits ergibt negative Zahl
-    1111 1111 = -0
-    0111 1111 = 127
-    1000 0000 = -127
-Zweierkomplement:
-    0000 0000 = 0
-    0000 0001 = 1
-    1111 1111 = -1
-
-    0000 0010 = 2
-    1111 1110 = -2
-
-    0111 1111 = 127
-    1000 0001 = -127
-Bilden des Zweierkomplement:
-    0111 1111 = 127
-Invertieren
+    \textbf{Binäre Zahlen ohne Vorzeichen:}\\
+    0000 0000 = 0, 1111 1111 = 255
+    \textbf{Ein Bit für das Vorzeichen:}\\
+    0000 0001 = 1 -> 1000 0001 = -1,
+    0111 1111 = 127 -> 1111 1111 = -127
+    \textbf{Einerkomplement:}\\
+    Beim Invertieren aller Bits entsteht eine negative Zahl
+    0000 0000 = "+0" -> 1111 1111 = "-0"
+    0111 1111 = 127 -> 1000 0000 = -127
+    \textbf{Zweierkomplement:}
+    0000 0001 = 1 -> 1111 1111 = -1
+    0000 0010 = 2 -> 1111 1110 = -2
+    0111 1111 = 127 -> 1000 0001 = -127
+    \textbf{Bilden des Zweierkomplements:}
+    Beispiel: 0111 1111 = 127
+    Invertieren
     1000 0000
-+1
+    +1
     1000 0001 = -127
-
-    1000 0000 im Komplement
-           -1
+    Beispiel: 1000 0000 = 128 (im Komplement)
+    -1
     0111 1111 Invertieren:
     1000 0000 = 128 = -128
-Bei 16 Bit:
-    0000 0000 0111 1111 = 127
-
-0000 0000 0000 0000 = 0
-0000 0000 0000 0001 = 1
-0000 0000 0000 0010 = 2
--1:
-Invertieren: 1111 1111 1111 1110
-+1 rechnen:  1111 1111 1111 1111 = -1
--128:
-0000 0000 1000 0000 = 128
-Inv. 1111 1111 0111 1111
-+1:  1111 1111 1000 0000 = -128
-
-Ohne 2er Komplement {
-0000 0000 0000 0000 = 0
-0000 0000 0000 0001 = 1
-0000 0000 0000 0010 = 2
-0000 0000 0000 0100 = 4
-0000 0000 1000 0000 = 128
-0000 0001 0000 0000 = 256
-1000 0000 0000 0000 = 32.768}
-
-
-00B4: 11 * 16 + 4 * 1 = 180
-
-B4 = 1011 0100 // -> ist bereits eine negative Zahl da MSB == 1
-Betrag von B4:
-    -1 rechnen:  1011 0011
-    invertieren: 0100 1100 = 64 + 8 + 4 = 76
-daraus folgt: B4 = -76
-
 
     % Bild von Rotation %
 
@@ -600,7 +556,7 @@ daraus folgt: B4 = -76
     \subsubsection{Aileron, Elevator und Rudder anhand der Kameradaten}
     Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden anschließend die Flugparameter verändert.
 
-    \begin{figure} [H]
+    \begin{figure} [tbh]
       \begin{centering}
         \includegraphics[width = \textwidth]{Bilder/Farbcode_erkannt}
       \par\end{centering}
@@ -741,9 +697,7 @@ void SignalOut(void) {
   \subsection{Technische Planung}
 
 Sicherheitskonzepte
-
 Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Hier werden mögliche Fehler mit Anlehnung an FMEA analysiert.
-
 
 GEKLAUT
 
