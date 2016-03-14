@@ -16,7 +16,7 @@ Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in
 Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann. In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, für welche das Modell MySQL gewählt wurde, kommuniziert.
 Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. 
 Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnte man die vordefinierten Bootstrapvariablen verändern und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche anpassen. 
-Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe dem Task-Runner Gulp kompiliert.
+Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe dem Task-Runner Gulp kompiliert.\\ 
 (Skizze von Aufbau)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,7 +58,6 @@ Um diese Funktionalitäten anhand eines Szenarios zu veranschaulichen, kann man 
 Angenommen man möchte einen Cupcake backen und im Schaufenster einer Konditorei herzeigen. Dafür benötigt man zuerst einmal Daten aus einem Rezeptbuch, diese sind somit in der Model-Schicht zu finden.
 Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch wirklich visuell erschaffen zu können. Dafür benötigen wir einen Konditor, welcher unseren Controller symbolisiert. 
 Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
-\textbf{MVC-Erklärung}\\
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc.png}
@@ -76,8 +75,7 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
 			\par\end{centering}
 			\caption{ER - Model der digitalen Speisekarte}
 			\label{ERM der digitalen Speisekarte}
-			\end{figure}
-Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
+			\end{figure}Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
 \begin{itemize}
     \item \textbf{Speiseinträge und Kategorien}\\
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass man in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien wechseln kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
@@ -120,7 +118,6 @@ Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funk
 * @Route("/ROUTE", name="ROUTENBEZEICHNUNG")
 */
   	\end{lstlisting}
-	
 Damit die erstellte Seite anschließend mit dem Package MAMP im Browser aufgerufen werden konnte, musste man einfach den folgenden Link in der Adresszeile eingeben:\\
 http://IP-ADRESSE:PORT/PROJEKTNAME/web/ROUTE
 
@@ -146,8 +143,7 @@ class TABELLENNAME{...}
   	\end{lstlisting}
 Mit der Deklarierung Entity verweist man auf die Entity Methode der Mapping-Datei und erstellt somit den Datensatz. Anschließend wurde dieser mit Table() als Tabelle mit dem mitgeschickten Parameter als Bezeichnung definiert. 
 Damit die relationale Datenbank Objekte den richtigen Datentypen zuordnen konnte, wurden diese ebenfalls mit einer Anmerkung versehen. Da es bei Objekten zu unterscheiden gilt ob es sich um einen Primärschlüssel oder Fremdschlüssel handelt als auch ob es ein Texteintrag, Ganzzahleneintrag, Eintrag mit Kommastellen, Booleaneintrag oder gar ein Zeitstempel ist, gibt es hierbei verschiedene Deklarierungsvarianten.
-Um eine ID als Primary Key zu definieren wurde folgende Annotation verwendet:
-	
+Um eine ID als Primary Key zu definieren wurde folgende Annotation verwendet:	
 	\lstset{language=php}
   	\begin{lstlisting}
 /**
@@ -156,7 +152,6 @@ Um eine ID als Primary Key zu definieren wurde folgende Annotation verwendet:
 * @ORM\GeneratedValue(strategy="AUTO")
 */
   	\end{lstlisting}
-	
 Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
 Bei einem Eintrag mit Kommazahlen musste der Spaltentyp einfach nur auf „float“ eingestellt werden. Für einen Booleaneintrag wurde zwar als Anmerkung der Typ „boolean“ definiert, jedoch ändert das Datenbanksystem MySQL diese Annotation automatisch in das Datenformat „tinyint“.
 Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Anzahl der Zeichen definiert werden:
@@ -334,7 +329,6 @@ Aus diesem Grund muss in der "php.ini"-Datei der LAMP-Distribution eine Zeitzone
   	\begin{lstlisting}
 date.timezone = "ZEITZONE"
   	\end{lstlisting}
-
 \textbf{Symfony Cache}\\
 Symfony hat einen eigenen Cache, welcher gelegentlich gelöscht werden muss, damit es auf die aktuellen Einstellungen und Daten zugreifen kann.
 Dieses Problem kam erstmals beim Verbindungsaufbau zur Datenbank auf, da hierbei immer auf die veralteten Daten in der "config.yml"-Datei zugegriffen wurde.
@@ -413,7 +407,7 @@ Ajax(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführ
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden MockUps angefertigt, welche dazu dienen festzulegen welche Buttons und Felder sich wo befinden.
 Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
-Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen.\\
+Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen.\\ \\ 
 \textbf{alte MockUps}\\
 			\begin{figure}[H]
 			\begin{centering}
@@ -421,18 +415,9 @@ Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwen
 			\par\end{centering}
 			\caption{alte MockUps}
 			\label{alte MockUps}
-			\end{figure}
-\textbf{neue MockUps}\\
-			\begin{figure}[H]
-			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups.png}
-			\par\end{centering}
-			\caption{neue MockUps}
-			\label{neue MockUps}
-			\end{figure}
-\textbf{Funktionalitäten der Applikation}\\
+			\end{figure}\textbf{Funktionalitäten der Applikation}\\
 Wie man auf den MockUps bereits erkennen kann, wurde damals schon festgelegt welche Funktionalitäten die einzelnen Screens haben.
-Diese sind, wie in den neuen MockUps festgelegt, folgendermaßen:\\
+Diese sind, wie in den neuen MockUps festgelegt, folgendermaßen:\\ \\ 
 \textbf{Funktionalitäten der digitalen Speisekarte}
 \begin{itemize}
     \item \textbf{Loginscreen}\\
@@ -499,8 +484,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 \textbf{Screens der digitalen Speisekarte}
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_login.png}
-			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_tnr.png}
+			\includegraphics[width = 0.6\textwidth]{Bilder/Jok_login.png}
+			\includegraphics[width = 0.6\textwidth]{Bilder/Jok_tnr.png}
 			\par\end{centering}
 			\caption{Screens: Loginscreen / Tischnummernauswahl}
 			\label{Screens: Loginscreen / Tischnummernauswahl}
@@ -508,8 +493,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 			
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_speisekarte.png}
-			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_status.png}
+			\includegraphics[width = 0.6\textwidth]{Bilder/Jok_speisekarte.png}
+			\includegraphics[width = 0.6\textwidth]{Bilder/Jok_status.png}
 			\par\end{centering}
 			\caption{Screens: Speisekarte / Bestellungsüberblick}
 			\label{Screens: Speisekarte / Bestellungsüberblick}
@@ -517,35 +502,35 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 \textbf{Screens des Admininterfaces}
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_login.png}
+			\includegraphics[width = 0.9\textwidth]{Bilder/Jok_admin_login.png}
 			\par\end{centering}
 			\caption{Screen - Login}
 			\label{Screen - Login}
 			\end{figure}
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_hauptscreen.png}
+			\includegraphics[width = 0.9\textwidth]{Bilder/Jok_admin_hauptscreen.png}
 			\par\end{centering}
 			\caption{Screen: Hauptscreen}
 			\label{Screen: Hauptscreen}
 			\end{figure}  
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_einstellungsueberblick.png}
+			\includegraphics[width = 0.9\textwidth]{Bilder/Jok_admin_einstellungsueberblick.png}
 			\par\end{centering}
 			\caption{Screen: Einstellungsüberblick}
 			\label{Screen: Einstellungsüberblick}
 			\end{figure}  
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_speiseverwaltung.png}
+			\includegraphics[width = 0.9\textwidth]{Bilder/Jok_admin_speiseverwaltung.png}
 			\par\end{centering}
 			\caption{Screen: Speise- und Kategorieverwaltung}
 			\label{Screen: Speise- und Kategorieverwaltung}
 			\end{figure}  
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_tischdaten.png}
+			\includegraphics[width = 0.9\textwidth]{Bilder/Jok_admin_tischdaten.png}
 			\par\end{centering}
 			\caption{Screen: Tischdatenverwaltung}
 			\label{Screen: Tischdatenverwaltung}
@@ -575,7 +560,7 @@ Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie es zum Beispi
 \lstset{language = php}
   	\begin{lstlisting}
 {% for AKTUELLER_TABELLENEINTRAG in BEZEICHNUNG_DER_DATENBANKTABELLE %}
-{{ AKTUELLER_TABELLENEINTRAG.BEZEICHNUNG_VERLINKTE_TABELLE.SPALTENBEZEICHNUNG }}
+{{ AKTUELLER_TABELLENEINTRAG.VERLINKTE_TABELLE.SPALTENBEZEICHNUNG }}
 {% endfor %}
 	\end{lstlisting}
 Bei Werten, welche man sich auf diese Art und Weise von der Datenbank holt, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies bewerkstelligt man am besten mit einer JSON-Kodierung.
