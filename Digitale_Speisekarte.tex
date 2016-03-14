@@ -58,7 +58,14 @@ Um diese Funktionalitäten anhand eines Szenarios zu veranschaulichen, kann man 
 Angenommen man möchte einen Cupcake backen und im Schaufenster einer Konditorei herzeigen. Dafür benötigt man zuerst einmal Daten aus einem Rezeptbuch, diese sind somit in der Model-Schicht zu finden.
 Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch wirklich visuell erschaffen zu können. Dafür benötigen wir einen Konditor, welcher unseren Controller symbolisiert. 
 Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
-(Bild von MVC evtl mit Cupcake bsp)
+\textbf{MVC-Erklärung}\\
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc.png}
+			\par\end{centering}
+			\caption{MVC-Erklärung}
+			\label{MVC-Erklärung}
+			\end{figure}
 
     \subsubsection{ER-Modell}
 
@@ -488,9 +495,61 @@ Der Hauptscreen enthält ebenfalls einen Header mit nahezu demselben Schema wie 
 Das Design der Screens orientiert sich an dem des Blogs. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
 Das finale Layout der Screens sieht daher folgendermaßen aus:\\ 
+\\ 
 \textbf{Screens der digitalen Speisekarte}
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_login.png}
+			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_tnr.png}
+			\par\end{centering}
+			\caption{Screens: Loginscreen / Tischnummernauswahl}
+			\label{Screens: Loginscreen / Tischnummernauswahl}
+			\end{figure}
+			
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_speisekarte.png}
+			\includegraphics[width = 0.45\textwidth]{Bilder/Jok_status.png}
+			\par\end{centering}
+			\caption{Screens: Speisekarte / Bestellungsüberblick}
+			\label{Screens: Speisekarte / Bestellungsüberblick}
+			\end{figure}
 \textbf{Screens des Admininterfaces}
-  
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_login.png}
+			\par\end{centering}
+			\caption{Screen - Login}
+			\label{Screen - Login}
+			\end{figure}
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_hauptscreen.png}
+			\par\end{centering}
+			\caption{Screen: Hauptscreen}
+			\label{Screen: Hauptscreen}
+			\end{figure}  
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_einstellungsueberblick.png}
+			\par\end{centering}
+			\caption{Screen: Einstellungsüberblick}
+			\label{Screen: Einstellungsüberblick}
+			\end{figure}  
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_speiseverwaltung.png}
+			\par\end{centering}
+			\caption{Screen: Speise- und Kategorieverwaltung}
+			\label{Screen: Speise- und Kategorieverwaltung}
+			\end{figure}  
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_admin_tischdaten.png}
+			\par\end{centering}
+			\caption{Screen: Tischdatenverwaltung}
+			\label{Screen: Tischdatenverwaltung}
+			\end{figure}  				
     \subsubsection{Datenausgabe}
 
 Wie bereits zuvor erwähnt wurde, ermöglicht die Template Engine Twig einen vereinfachten Zugriff auf die Variablen, welche vom Controller übergeben wurden. Um eine einzige Variable aufzurufen, muss man diese lediglich mit zwei geschwungenen Klammern umhüllen. 
