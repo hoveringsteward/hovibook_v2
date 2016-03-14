@@ -672,28 +672,93 @@ Sicherheitskonzepte
 
 Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von Mensch, Umgebung und dem Multicopter selbst. Hier werden mögliche Fehler mit Anlehnung an FMEA ("Fehlermöglichkeits- und -einflussanalyse" / "Auswirkungsanalyse") analysiert. Dieses Konzept ist ein rein schriftliches Konzept.
 
-
   \subsection{Umsetzung}
+
+A: Auftreten
+B: Bedeutung
+E: Entdeckung
+RPZ: Risiko-Prioritätszahl = A * B * E
+
+Die Werte beziehen sich auf den Fehler, die obere Analyse beschreibt das Auftreten, die Bedeutung und die Entdeckung vor den Maßnahmen, die unteren danach.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|r|l|p{7cm}|c|}
-\hline \# & Bezeichnung & Beschreibung & Bewertung \\\hline
-\hline 1 & PL Michael Springsits & Projektleiter vieler schulischer Projekte, zeigt stets Neugier für neuartige Technologien und programmiert leidenschaftlich. & + \\
-\hline 15 & crypt-drive team & Zwischenmenschliche Probleme können das Projektklima negativ beeinflussen.  & - \\\hline
+\begin{tabular}{|p{1cm}|p{5cm}|p{5cm}|p{5cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}}
+
+\hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
+ 1 & Mensch in unmittelbarer Nähe & Mensch wird verletzt, da Hexacopter nicht ausweicht & Eine Person steht auf dem Weg und wird vom Hexacopter als Hindernis erkannt & 5 & 10 & 10 & 500\\
+\hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
+ - & Wege absperren, Menschen darauf hinweisen, sich nicht in unmittelbarer Nähe des Hexacopters aufzuhalten. & Hexacopter landet auf der Stelle um die Sicherheit der Person zu gewährleisten. & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Menschen erkannt, er landet daraufhin. & 2 & 10 & 5\\\hline
+
+\hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
+ 2 & Ein unbewegliches Hindernis befindet sich in unmittelbarer Nähe. & Hexacopter fliegt gegen ein unbewegliches Hindernis und stürzt ab. & Eine Wand oder ein ähnliches unbewegliches Hindernis befindet sich in unmittelbarer Nähe. & 5 & 7 & 9 & 315 \\
+\hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
+ - & Farbcodes werden nicht in der Nähe von unbeweglichen Hindernissen platziert. & Der Hexacopter landet, da er nicht zwischen Mensch, beweglichen und unbeweglichen Hindernissen unterscheiden kann. & Der Hexacopter darf nur über Farbcodes fliegen, dadurch wird vermieden, dass der Hexacopter in die Nähe dieser Objekte kommt. & 1 & 7 & 5 & 35 \\\hline
+
+\hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
+ 3 & Bewegliches Hindernis wird erkannt & Hexacopter fliegt gegen ein Hindernis und stürzt ab & Eine Hindernis wird erkannt. & 3 & 6 & 10 & 180\\
+\hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
+ - & Bewegliche Hindernisse werden wenn möglich aus dem Weg geräumt. & Hexacopter probiert dem Hindernis auszuweichen und seinen Weg weiter zu meistern. & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Hindernisse erkannt, er landet daraufhin & 2 & 6 & 5 & 60 \\\hline
+\hline \# & Bezeichnung & Fehler & Beschreibung & A & B & E & RPZ\\
+ 4 & Hände in der Nähe von den Propellern  & Person hat seine Hände beim fliegenden Hexacopter und verletzt sich & Eine Person greift in die Propeller. & 7 & 10 & 10 & 700 \\
+\hline - & Vermeidung & Maßnahme nach Eintritt & Mögliche Softwarelösung & A & B & E & RPZ\\
+ - & Hexacopter wartet lang genug, dass man den Cupcake runternehmen kann. Propellerschutz ist angebracht. & Hexacopter gibt über Display / LED / Ton aus, dass er wegfliegt. & Display / LED / Ton werden programmiert um Menschen beim Start zu warnen. & 1 & 10 & 5 & 50 \\\hline
 \end{tabular}
-\caption{Beschreibung der Umfelder}
+\caption{Fehlt noch}
 \end{table}
-
-
-%%%% WAS PASSIERT DANACH ????
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systemausfall}
 
+Das Konzept Systemausfall beschreibt die Maßnahmen, wenn der Hexacopter seine Anforderungen nicht erfüllen kann. Dieses Konzept ist rein schriftlich entwickelt.
+
   \subsection{Technische Planung}
 
-  \subsection{Umsetzung}
+  Mögliche Ursachen: \cite{tech_def}
+  \begin{itemize}
+  \item Materialermüdung
+  \item Programmfehler (eingespeiste Daten, Programmablauffehler)
+  \item Menschlicher Fehler
+  \item falsche Montage
+  \item fehlender elektrischer Kontakt
+  \item unzureichende oder fehlende Energieversorgung
+  \item Fehler in der Datenverarbeitung; beispielsweise Datenübertragung, Informationsverlust, Rechenfehler
+  \end{itemize}
 
-%%%% WAS PASSIERT DANACH ????
+
+  \subsection{Umsetzung}
+  Mit einem Stern gekennzeichnete Fehler, sind programmiert.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{10cm}|p{10cm}}
+
+\hline Fehler & Lösung\\\hline
+\hline Akku schwach & Fail Safe, eventuell sofort Landen
+\hline Akku explodiert: Lithium Ionen Akkus können explodieren & Vor dem Flug kontrollieren, Feuerlöscher bereitstellen
+\hline Copter findet keine Farbobjekte mehr & Position Hold, nach einer Zeit: Landen
+\hline Copter findet falsche Farbobjekte & Position Hold, nach einer Zeit: Landen 
+Manueller Flug optimal
+\hline Ausfall von Aktoren (Propeller, bzw. Motoren blockiert/ …) &  Wenn es möglich ist: Landen
+\hline Copter fliegt in die falsche Richtung * & Da Colorcodes aus 2 Farben bestehen, kann die Rotation des Objektes bestimmt und korrigiert werden. 
+\hline Hexacopter ist zu hoch / verliert an Höhe * & Durch die Daten des Ultraschallsensors, kann die Höhe korrigiert werden.
+\hline Ausfall von Sensoren (Pixy / Ultraschall / …) & Fehlermeldung, Manueller Flug
+\hline Hackerangriff & Durch den WLAN Standard (wpa2) ist die Übertragung sicher genug
+\hline Funkstörung bei manuellem Flug & Pilot muss verstehen, in welchem Frequenzband die Fernsteuerung arbeitet, Störquellen vermeiden und abschalten (sonstiges WLAN, Bluetooth, andere Fernsteuerungen im Umfeld) -> saubere Vorbereitung - Analyse von möglichen Störquellen
+\end{tabular}
+\caption{Fehlt noch}
+\end{table}
+
+\subsection*{Beispiele für Lösungen} 
+\begin{itemize}
+\item \textbf{Landen:} sofort auf der Stelle landen
+\item \textbf{Position hold:} in der Luft stehen bleiben – Option auf manuelle Steuerung umstellen
+\item \textbf{Fail Safe:} zurück zur Base fliegen und Flug abbrechen
+\item \textbf{Manuell fliegen:} auf manuelle Fernsteuerung umschalten
+\item \textbf{Fehlermeldung:} Fehlermeldung wird über Display oder blinkende LEDs ausgegeben. Fehler wird an Server gesendet
+\end{itemize}
+
+\subsection*{Was passiert nach einem Systemausfall?}
+Wenn der Hexacopter seinen Fehler selbst korrigieren kann, fliegt er weiter.
+Anderenfalls geht der Hexacopter, sobald er gelandet ist oder manuell gesteuert wurde, davon aus, beim nächsten Start in seiner Base zu stehen. Der Cupcake wird wieder in der Bestellliste angezeigt und muss erneut ausgeliefert werden. Je nach Fehler, wird ein Code über den Display ausgegeben, der bei der Fehlersuche helfen soll.
