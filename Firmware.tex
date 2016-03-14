@@ -13,33 +13,33 @@
   \subsection{Multicopter}
   Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, bei denen sich abwechselnd einer nach links und einer nach rechts dreht, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
 
-  \subsubsection{Funktion}
-  Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
-  Dem Empfängermodul, dem DJI NAZA-M Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Höhe bzw. entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+    \subsubsection{Funktion}
+    Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
+    Dem Empfängermodul, dem DJI NAZA-M Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Höhe bzw. entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
 
-  % BILD Funktion Blockschaltbild (Dokument) %
+    % BILD Funktion Blockschaltbild (Dokument) %
 
-  \subsubsection{Erweiterte Funktion}
-  Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: Pixycam, Ultraschallsensor, WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
+    \subsubsection{Erweiterte Funktion}
+    Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: Pixycam, Ultraschallsensor, WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
 
-  % BILD %
+    % BILD %
 
-  \subsubsection{Multicopter Arten}
-  Es gibt verschiedene Arten von Multicoptern.
-  Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
-  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
+    \subsubsection{Multicopter Arten}
+    Es gibt verschiedene Arten von Multicoptern.
+    Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
+    Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
 
-  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
+    Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
-  \subsubsection{Konfiguration}
-  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
-  Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
+    \subsubsection{Konfiguration}
+    Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
+    Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
 
-  Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
+    Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
-  Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die Roten unten.
+    Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die Roten unten.
 
-  % BILD mit 4, 6, 8 in + bzw x %
+    % BILD mit 4, 6, 8 in + bzw x %
 
   \subsection{Mögliche Anwendungsgebiete}
   Multicopter finden in vielen Bereichen Anwendung. \cite{copterAnwendung}
@@ -78,21 +78,21 @@
 
 
 
-  \subsection{Programmierung}
-  Zum Programmieren des Mikrocontrollers von Microchip wurde die Programmiersprache C verwendet.
-  Um die Sprache zu lernen, wurde ein sogenanntes Bootcamp als Vorbereitung für die weitere Programmierung veranstaltet.
+    \subsection{Programmierung}
+    Zum Programmieren des Mikrocontrollers von Microchip wurde die Programmiersprache C verwendet.
+    Um die Sprache zu lernen, wurde ein sogenanntes Bootcamp als Vorbereitung für die weitere Programmierung veranstaltet.
 
-  Das \textbf{Programmierbootcamp} leitet sich vom militärischen Bootcamp ab, in dem Rekruten ihre Grundausbildung absolvieren. Wie der Name annehmen lässt, lernt man in dieser Version die Grundlagen der Programmierung, hier im Zusammenhang mit Mikrocontrollern.
+    Das \textbf{Programmierbootcamp} leitet sich vom militärischen Bootcamp ab, in dem Rekruten ihre Grundausbildung absolvieren. Wie der Name annehmen lässt, lernt man in dieser Version die Grundlagen der Programmierung, hier im Zusammenhang mit Mikrocontrollern.
 
-  Einfache Programme, wie ein Lauflicht oder Entfernungsmessung über einen Ultraschallsensor, wurden erstellt.
-  Nach dem Initialisieren der Pins, wurde das Programm geschrieben, debuggt und getestet.
-  Die Teile wurden als Grundlage für die Hexacopter Firmware genutzt.
+    Einfache Programme, wie ein Lauflicht oder Entfernungsmessung über einen Ultraschallsensor, wurden erstellt.
+    Nach dem Initialisieren der Pins, wurde das Programm geschrieben, debuggt und getestet.
+    Die Teile wurden als Grundlage für die Hexacopter Firmware genutzt.
 
-  Durch die einfachen Programme, wurde die Entwicklungsumgebung besser kennengelernt. Die Zeit wurde auch für die Erstellung von Flussdiagrammen und das Einrichten von GitHub genutzt.
+    Durch die einfachen Programme, wurde die Entwicklungsumgebung besser kennengelernt. Die Zeit wurde auch für die Erstellung von Flussdiagrammen und das Einrichten von GitHub genutzt.
 
-  \textbf{Codingrules}\\
-  Eine weitere wichtige Aufgabe im Bootcamp war das Erstellen von Codingrules, um einheitliche Programmierung zu ermöglichen.
-  Als Vorbild wurd der C STYLE GUIDE von NASA, Stand: AUGUST 1994, verwendet. \cite{NasaCGuide}
+    \textbf{Codingrules}\\
+    Eine weitere wichtige Aufgabe im Bootcamp war das Erstellen von Codingrules, um einheitliche Programmierung zu ermöglichen.
+    Als Vorbild wurd der C STYLE GUIDE von NASA, Stand: AUGUST 1994, verwendet. \cite{NasaCGuide}
 
   \subsection{Tools}
 
@@ -123,7 +123,8 @@
     \end{itemize}
 
     \subsubsection{Anwendung}
-    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung verwendet, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden verwendet. \cite{posAnwendung}
+    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung verwendet, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden,
+    bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden. \cite{posAnwendung}
 
     \subsubsection{Eigenschaften der Positionsbestimmung}
 
@@ -223,18 +224,18 @@
     \textbf{Hough-Transformation}\\
     Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
 
-    \subsection*{Regionenorientierte Segmentierung}\\ \cite{Seg_region}
-    Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft.
+    \subsection*{Regionenorientierte Segmentierung}
+    Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft. \cite{Seg_region}
     \textbf{Region Growing}\\
     Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
-    \subsection*{Texturorientierte Segmentierung}\\ \cite{Seg_textur}
-    Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet.
+    \subsection*{Texturorientierte Segmentierung}
+    Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet. \cite{Seg_textur}
     \textbf{Co-Occurrence-Matrizen}
     Um eine Texturanalyse durchzuführen, kann die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet werden. \cite{seg_coocc}
     Bei dieser Matrix werden die Grauwertverhältnisse der Umgebung eines Pixels beschrieben.
 
-    \subsection*{Merkmalsextraktion}\\
+    \subsection*{Merkmalsextraktion}
     Bei diesem Schritt sollen Merkmale wie Kanten und Ecken erkannt werden.
     \textbf{Kantendetektion}\\
 
@@ -249,10 +250,10 @@
     \textbf{Moravec´s Corner Detector} Betrachtung eines kleinen lokalen Bildfensters und Messung der Intensitätsunterschiede beim Verschieben des Fensters. Erkennung von Kanten und Ecken
     \textbf{Harris Corner Detector} Betrachtung eines lokalen Bildfensters durch Verschiebung in 4 Richtungen durch die Taylor Entwicklung
 
-    \subsection*{Klassifikation}\\
+    \subsection*{Klassifikation}
     Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
 
-    \subsection*{Verfolgen von Objekten}\\
+    \subsection*{Verfolgen von Objekten}
 
     \textbf{Kalman-Filter}\\
     Kalman-Filter: Ist ein stochastischer Zustandsschätzer mit iterativer Struktur, der in Echtzeitsystemen angewendet wird unter der Annahme von normalverteilten Vorhersagen und Messungen und Vorhersage von Fehlern.
