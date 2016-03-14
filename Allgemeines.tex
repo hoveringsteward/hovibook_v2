@@ -3,6 +3,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Projektidee}
+Die Idee des Projektes, ist die Entwicklung eines innovativen Logistiksystems, das sich durch die Verwendung eines Multicopters auszeichnet.
+Für den Entwicklungsprozess im Zuge der Diplomarbeit wurde der die Gastronomie als Einsatzbereich gewählt. Diese Wahl ermöglich zum Einen
+ein konkreteres Fomulieren der Ziele und zum anderen eine einheitliche Vision innerhalb des Teams.
+
+Der innovative Aspekt des Projekts wird insofern abgedeckt, dass die Entwicklung des Systems so durchgeführt wird,
+dass es auch in anderwärtigen Bereichen der Logistik, wie beispielsweise der Lagerverwaltung eingesetzt werden kann.
+
+Das System setzt sich aus den drei Komponenten\\
+\begin{itemize}
+  \item Multicopter
+  \item Firmware
+  \item Digitale Speisekarte
+\end{itemize}
+
+zusammen.\\
+
+Der Multicopter ist die zentrale Komponente des Projekts. Sie ist für den selbstständigen Transport von Objekten zuständig,
+und muss somit flugfähig, und im Stande Unfälle zu verhindern sein.
+
+Die Firmware regelt alle logischen Prozesse des Systems. Sowohl die Steuerung des Multicopters, als auch der
+Austausch von Daten fällt unter diese Kategorie.
+
+Die digitale Speisekarte ist indirekt die externe Steuereinheit des Multicopters, und zugleich die Komponente,
+die das System für den Einsatz in der Gastronomie auszeichnet. Sie automatisiert Vorgänge eines gastronomischen
+Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ausgangssituation}
@@ -20,7 +45,6 @@
   Das Projekt erhielt später noch eine weitere Komponente, nämlich eine digitale Speisekarte, um das System in einem Restaurant vollständig zu automatisieren.
 
   \subsection{Stand der Technik}
-
   \textbf{Themenrestaurants}
   \begin{itemize}
     \item Disaster Café\\
@@ -118,231 +142,172 @@
   dabei ein Grundgerüst für die Entwicklung aufzubauen.
 
   \textbf{DI Franz Temper}\\
-  DI Franz Temper unterstützte Alexander Punz bei der Enticklung der Konstuktionen.
+  DI Franz Temper unterstützte Alexander Punz bei der Enticklung der Konstuktionen. Durch Fachwissen mit
+  der Software Creo und Unterstützung bei 3D-Druck war es möglich, dass Alexander alle seiner Ziele erfolgreich
+  umsetzen konnte.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Partner / Sponsoren}
 
+\textbf{GRZ IT Center GmbH}
+{GRZ IT Center\cite{grz}} ist eines der größten Rechenzentren Österreichs. Mit dem Fokus auf Bankenservicierung arbeitet das Unternehmen
+mit Partnern wie Raiffeisen zusammen. Auf eine Anfrage für ein Sponsoring der Diplomarbeit erhielten wir die überaschende
+Antwort, dass GRZ das Projekt sehr interessant findet, und uns aus diesen Gründen als Hauptsponsor, mit einem beträchtlichen Betrag
+unterstützen würde.
+Es wurde ein Sponsoringvertrag, auf Basis einer Mustervorlage aufgesetzt, in welchen beidseitig Konditionen für die Partnerschaft
+verfasst wurden, und von beiden Parteien unterzeichnet.
+
+\textbf{OFI}
+{Das Österreichische Forschungsinstitut\cite{ofi}} ist Experte die Prüfung für Werkstoffanwerundung
+und Bauwerkserneuerungen. Neben finanzieller Unterstützung erhielt das Projektteam
+ein professionelles, projektbegleitendes Team-Coaching, inklusive Zertifikat.
+
+\textbf{EVOtech GmbH}
+Dank der Firma {EVOtech\cite{evotech}} war es möglich additive Module für den Hexacopter selbst anzufertigen.
+Das gesamten Material, welches für den 3D-Druck benötigte wurde gesponsert.
+
+\textbf{LivingPhotos}
+LivingPhotos ermöglichte uns, unsere Internetauftritte durch professionelle Teamfotos und Portraits aufzuwerten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Danksagung}
+In erster Linie möchten wir uns bei unseren beiden Hauptbetreuern Mag. Andreas Fink und DI Herbert Fleck für die
+Betreuung des gesamten Teams bedanken. Sowohl fachbezogene Ratschläge, als auch konstruktives Feedback wurden sehr
+geschätzt und haben viel zur erfolgreichen Umsetzung der Diplomarbeit beigetragen.
+
+Ebenfalls bedanken wir uns bei unseren Individualbetreuern DI August Hörandl, MMag. Florian Weiss und
+DI Franz Temper, die dem Projektteam als Ansprechpersonen für besondere Fragestellungen zur Seite gestanden
+sind.
+
+Nicht zuletzt möchten wir unseren Dank unseren Partnern und Sponsoren, ganz besonders der GRZ IT Center GmbH
+ausdrücken, da wir die Diplomarbeit nicht ohne die Unterstützung in diesem Rahmen umsetzen hätten können.
 
 \chapter{Projektmanagement}
 \renewcommand{\kapitelautor}{Autor: Markus Kaiser}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ziele}
+Im folgenden Abschnitt werden zusammengefasst die Muss-, optionalen und Nicht-Ziele angeführt.
+Die Formulierungen sind aus dem Kontext, der Ziele aus dem Projektantrag entnommen, und für die
+Zusammenfassung umformuliert worden.
 
   \subsection{Muss-Ziele}
-  \textbf{RE-M 01 Blog}\\
-  Die Diplomarbeitswebsite fungiert in erster Linie als selbst programmierter Blog, um Interessenten
-  jederzeit die Möglichkeit zu bieten, sich über den Status des Projektes zu informieren. Jedes Teammitglied
-  kann individuelle Blog- oder Entwicklertagebucheinträge verfassen.
+  \textbf{Zusammenbau des Multicopters}\\
+  Der ausgewählte Multicopter ist soweit zusammengebaut, dass er flugfähig ist.
+  Zusätzliche Komponenten, wie Fernbedienung, Akkus und Ersatzteile liegen vor.
 
-  \textbf{RE-M 02 Facebookauftritt}\\
-  Eine Facebookseite names "Hovering Steward" ist erstellt. Sie informiert Interessenten über das
-  Projekt und den Blog. Sponsoren sind genannt und das Diplomarbeitsteam ist vorgestellt.
+  \textbf{Konzeptstudie: Sensorik}\\
+  Um ohne manuelle Einfüsse fliegen zu können und sein Ziel zu finden braucht der Multicopter eine Reihe
+  von Sensoren. Diese dienen zur Positions-bzw. zur Objekterfassung. Das Konzept beinhaltet außerdem eine
+  Maßnahme für die Kommunikation zwischen Multicopter und Sensoren.
+  Der Multicopter ist mit den Sensoren verbunden und bekommt von ihnen die notwendigen Informationen.
 
-  \textbf{RE-M 03 Sponsoren und Finanzen}\\
-  Um die Kosten des Projektes zu decken, sind diverse Unternehmen, die möglicherweise Interesse an dem
-  Projekt haben, per e-Mail oder telefonisch kontaktiert, und um eine Partnerschaft gefragt worden.
-  Für kooperative Firmen sind diverse webetechnische Gegenmaßnahmen geplant worden, um das Sponsoring
-  zu decken.
+  \textbf{Konzeptstudie: Navigation}\\
+  Es ist ein Konzept entworfen, wie der Multicopter die richtige Flugroute zum gewünschten
+  Zielort findet. Dazu zählt sowohl der Teil der Firmware, der für den automatisierten Flug programmiert ist,
+  als auch die Positionierung anhand von Sensoren und Wegmarkierungen.
 
-  \textbf{RE-M 04 Abrufbarkeit auf Tablets}\\
-  Die digitale Speisekarte steht für Gäste auf Tablets zur Verfügung. Damit der Gast bestellen kann,
-  ruft der User die Anwendung auf. Das Tablet benötigt zum Abruf der App mindestens einen der Browser
-  Safari 7, Firefox 30 oder Internet Explorer 11.
+  \textbf{Konzeptstudie: Objekterkennung}\\
+  Es liegt ein Konzept vor, wie der Multicopter anhand von Sensoren Hindernisse oder Zielobjekte
+  erkennen und diesen ausweichen, oder sie ansteuern kann.
 
-  \textbf{RE-M 05 Speiseinformationen}\\
-  Damit die Speisekarte der anerkannten Norm entspricht, enthält sie Informationen über die Inhaltsstoffe
-  beziehungsweise Allergikerinformationen. Auf dem Screen der Speiseinformationen befindet sich ein
-  Bestellbutton.
+  \textbf{Konzeptstudie: Sicherheit}\\
+  Für den Fall eines Systemausfalls liegt ein Konzept vor, wie der Multicopter sicher landen kann.
+  Weiters besteht die Möglichkeit, in den manuellen Flugmodus umzuschalten.
 
-  \textbf{RE-M 06 Datenverwaltung}\\
-  Die Daten der Speisekarte ruft die Webapp über eine Datenbank ab. Die Schnittstellen stehen für eine
-  HTML und JSON Ausgabe zur Verfügung.
-
-  \textbf{RE-M 07 Bestellfunktion}\\
-  Durch den Klick auf den "Bestellbutton", der sich auf dem Speiseinformationsscreen befindet, wird eine
-  Speise bestellt. Die Bestellung erscheint im Adminbereich der Applikation, auf einem anderen Gerät mit mindestens einem der Betriebssysteme
-  OS X Yosemite oder Windows 8, und auf dem zusätzlich mindestens einer der Browser Safari 7, Firefox 30,
-  Google Chrome oder Internet Explorer 11 installiert ist.
-
-  \textbf{RE-M 08 Adminbereich}\\
-  Nachdem eine Speise bestellt worden ist, erscheint ein neuer Bestelleintrag mit Bezeichnung der Speise
-  und Tischinformation in einer Liste auf einem PC oder Laptop.
-
-  \textbf{RE-M 09 Responsive Layout}\\
-  Das Layout der Speisekarte passt sich automatisch an die Größe des Geräts, von welchem es aufgerufen wird, an.
-
-  \textbf{RE-M 10 Testen der Konzeptstudien}\\
+  \textbf{Testen der Konzeptstudien}\\
   Um festzustellen ob sich die erarbeiteten Konzepte auch in der Praxis bewähren und somit einen Einsatz zu
   teuren Kameratrackingsystemen schaffen zu können, sind diese umgesetzt. Als Sensoren sind eine Kamera
   sowie Ultraschallsensoren verwendet. Um weitere Positionen zu markieren arbeitet der Multicopter mit
   Farbcodes und/oder Infrarotsendern.
 
-  \textbf{RE-M 11 Konzeptstudie: Sensorik}\\
-  Um ohne manuelle Einfüsse fliegen zu können und sein Ziel zu finden braucht der Multicopter eine Reihe
-  von Sensoren. Diese dienen zur Positions-bzw. zur Objekterfassung.
+  \textbf{Speisekarte}\\
+  Es ist eine digitale Speisekarte für ein autonomes Kellnersystem entwickelt.
+  Die Anwendung läuft auf einem Tablet und bietet Funktionen wie die Auflistung der Speisen,
+  die Bestellung und die Verarbeitung der Bestellung.
+  Außerdem gibt es eine Möglichkeit dem Multicopter Informationen zu schicken.
 
-  \textbf{RE-M 12 Konzeptstudie: Tischplan}\\
-  Um eine vorgegebene Route fliegen zu können muss der Multicopter einen Routenpan vorgegeben bekommen.
-  In diesem sind die einzelnen Markierungspunkte enthalten, welche der Multicopter auf seinem Weg zum
-  Tisch überfliegt.
-
-  \textbf{RE-M 13 Konzeptstudie: Navigation}\\
-  Um zu dem richtigen Tisch zu kommen, muss der Multicopter anhand des Tischplans zu diesem
-  navigieren. Im Tischplan sind die Routen und Tischpositionen hinterlegt.
-
-  \textbf{RE-M 14 Konzeptstudie: Kommunikation}\\
-  Ein Konzept zur Kommunikation zwischen Multicopter und Sensoren ist entworfen.
-  Der Multicopter ist mit den Sensoren verbunden. Von diesen bekommt er die nötigen Informationen.
-
-  \textbf{RE-M 15 Konzeptstudie: Positionserkennung}\\
-  Um durch den Raum navigieren zu können muss der Multicopter Informationen zu seiner Position haben.
-  Diese kann er anhand einiger Sensoren selbst auswerten und weiterverarbeiten.
-
-  \textbf{RE-M 16 Konzeptstudie: Objekterkennung}\\
-  Der Multicopter soll während seinem Flug bestimmte Objekte erkennen können, so z.B. Tische,
-  Personen oder Landeplattformen.
-
-  \textbf{RE-M 17 Konzeptstudie: Systemausfall-Maßnahmen}\\
-  Tritt bei dem Multicopter ein Systemausfall ein, landet das Flugobjekt und gibt eine Fehlermeldung aus.
-  Weiters besteht die Möglichkeit, in den manuellen Flugmodus umzusteigen.
-
-  \textbf{RE-M 18 Konzeptstudie: Sicherheitsmaßnahmen (Software)}\\
-  Bei Erkennung eines Hindernisses, welches eine Gefahr für den Multicopter darstellt muss dieser
-  entsprechend reagieren. Stationären Objekten wie zum Beispiel Wänden weicht er, sofern dies
-  möglich ist, aus. Erkennt er Personen in unmittelbarer Nähe landet er.
-
-  \textbf{RE-M 19 Zusammenbau des Multicopters}\\
-  Der ausgewählte Multicopter ist soweit zusammengebaut, dass er flugfähig ist.
-
-  \textbf{RE-M 20 Auswahl der Bauteil (Multicopter)}\\
-  Um einen flugfähigen Multicopter zu schaffen, bedarf es mehrerer Bauteile, diese sind ausgewählt
-  und bestellt. Dazu zählen unter anderem: Fernbedienung, Gestell, Motoren, Rotorblätter,
-  FlightController, Akkus.
-
-  \textbf{RE-M 21 Auswahl der Bauteile (Elektronik)}\\
-  Die Sensoren für einen autonomen Flug des Multicopters sind anhand des Sensorkonzepts
-  ausgewählt. Weiters ist ein Mikrocontroller ausgewählt, der die Steuerung des Multicopters
-  übernimmt.
-
-  \textbf{RE-M 22 Blog Team Nutzerkontos}\\
-  Für jedes Teammitglied ist ein Benutzerkonto angelegt, damit individuell Blogeinträge
-  verfasst werden können. Zusätzlich zu Namen, kann ein Benutzername, eine e-Mail Adresse
-  als Kontaktmöglichkeit und eine "Lieblingsfarbe" angegeben werden.
-
-  \textbf{RE-M 23 Blog Login}\\
-  Jedes Teammitglied kann sich mit dem individuell angelegten Benutzerkonto anmelden,
-  um Blogeinträge zu verfassen. Nur angemeldeten Benutzern ist es möglich Blogeinträge zu
-  verfassen.
-
-  \textbf{RE-M 24 Blog Responsive Design}\\
-  Bei Verwendung von kleinen Geräten, wie Smartphones oder Tablets verändert sich die
-  Anordnung und Darstellung einzelner Elemente so, dass eine gute Usability auch bei mobilder
-  Nutzung des Blogs gewährleistet ist.
+  \textbf{Blog}\\
+  Die Diplomarbeitswebsite fungiert in erster Linie als selbst programmierter Blog, um Interessenten
+  jederzeit die Möglichkeit zu bieten, sich über den Status des Projektes zu informieren. Jedes Teammitglied
+  kann im Backend-Bereich individuelle Blog- oder Entwicklertagebucheinträge über ein Benutzerkonto verfassen.
 
   \subsection{Optionale Ziele}
-  \textbf{RE-O 01 Speisen verwalten}\\
-  Der Adminscreen beinhaltet die Funktion Speisen hinzuzufügen und zu löschen.
+  \textbf{Erweiterte Funktionalitäten der Speisekarte}\\
+  Administratoren haben bestimmte Verwaltungsmöglichkeiten.
 
-  \textbf{RE-O 02 Kategorien}\\
-  Bevor der Gast auf den Screen mit den einzelnen Speisen verwiesen worden ist, muss er
-  eine Kategorie auswählen, in der die dazugehörigen Speisen gesammelt sind. Anschließend
-  sind die Speisen, welche in die ausgewählte Kategorie gehören, aufgelistet.
+  \textbf{Multicopter Erweiterungen}\\
+  Platinen für die Kommunikation zwischen Multicopter und Basis sind angefertigt.
+  Sensoren sind mittels Halterungen am Multicopter befestigt.
+  Es gibt eine Möglichkeit ein Objekt auf dem Multicopter zu platzieren und es sicher zu transportieren.
 
-  \textbf{RE-O 03 Farbcodes für Tische}\\
-  Der Admin hat die Möglichkeit den Tischnummern Farbcodes zuzuteilen. Anhand der
-  Farbcodes findet der Multicopter die einzelnen Tische.
-
-  \textbf{RE-O 04 Platinenanfertigung}\\
-  Die Platinen für die Kommunikation zwischen dem Multicopter, der
-  Basis und den Zwischenstationen werden angefertigt und bestückt.
-
-  \textbf{RE-O 05 Sensorik (Hardware)}\\
-  Das Positionierungssystem erfordert Sensoren, damit der Multicopter weiß, wo er
-  ist, beziehungsweise wo er landen soll. Diese Sensoren sind an dem Multicopter
-  mittels Halterungen befestigt.
-
-  \textbf{RE-O 06 Objekttransport - Einfache Transportplatte}\\
-  Die Haltevorrichtung ist an dem Multicopter montiert, um ein Objekt transportieren zu können.
-  Das Objekt wird auf dem Multicopter platziert und bis zu dem Gast transportiert.
-  Die Haltevorrichtung ist möglichst einfach aufgebaut, um Gewicht zu sparen.
-
-  \textbf{RE-O 07 System aufsetzen}\\
-  Die einzelnen Komponenten des Multicopters sind miteinander verbunden und er ist
-  durch eine manuelle Steuerung flugfähig. Die Entwicklungsumgebung für die
-  Programmierung der Software und somit der automatischen Steuerung ist installiert.
-
-  \textbf{RE-O 08 Kommunikation}\\
-  Der Multicopter ist mit den ausgewählten Sensoren verbunden. Er kann Befehle geben,
-  Informationen empfangen und diese verarbeiten.
-
-  \textbf{RE-O 09 Auswertung Serverdaten}\\
-  Der Multicopter empfängt die Tischinformation über Bluetooth/WLAN vom Server,
+  \textbf{Firmware Erweiterungen}\\
+  Der Multicopter empfängt Informationen drahtlos von einem Server,
   wertet diese aus und verarbeitet sie im Anschluss.
-
-  \textbf{RE-O 10 Grundfunktion Multicopter: Starten}\\
-  Steigen/Starten, wird durch höhere Drehzahlen erreicht.
-
-  \textbf{RE-O 11 Grundfunktion Multicopter: Landen}\\
-  Negative Steigung/Landen, wird durch niedrigere Drehzahlen erreicht.
-
-  \textbf{RE-O 12 Grundfunktion Multicopter: Rollen}\\
-  Wenn sich die rechten Propeller schneller als die linken drehen, neigt sichder
-  Multicopter nach links und fliegt in diese Richtung. Wenn sich die linken Propeller
-  schneller drehen, fliegt er nach rechts.
-
-  \textbf{RE-O 13 Grundfunktion Multicopter: Nicken}\\
-  Durch Neigung wird Vortrieb erzeugt. Beim Vorwärtsflug drehen sich die hinteren
-  Rotoren schneller, beim Rückwärtsflug die Vorderen.
-
-  \textbf{RE-O 14 Grundfunktion Multicopter: Gieren}\\
-  Der Multicopter dreht sich um seine eigene Hochachse, wenn die Drehzahlen der
-  Rotorenpaare unterschiedlich sind. Wenn sich die nach links drehenden Rotoren schneller
-  bewegen, dreht er sich nach links und umgekehrt nach rechts.
-
-  \textbf{RE-O 15 Blog Entryfilter}\\
-  Nutzer des Blogs haben die Möglichkeit sich Blogeinträge nach Autor oder nach
-  Art des Eintrags (Blogeintrag oder Entwicklertagebuch) sortieren zu lassen.
-
-  \textbf{RE-O 16 Blog Benutzerkonto bearbeiten}\\
-  Es gibt die Möglichkeit für die Teammitglieder Informationen wie Benutzername,
-  Farbe oder E-Mail Adresse im Nachhinein zu ändern.
-
-  \textbf{RE-O 17 Blog Statistiken}\\
-  Auf dem Dashboard des Blogs sind Informationen, wie zum Beispiel die Anzahl der
-  verfassten Blogs, zu sehen. Loggt sich ein Teammitglied ein, sieht es diese Werte
-  noch einmal auf die eigenen Blogs bezogen.
-
-  \textbf{RE-O 18 Datenverkehr mit Multicopter}\\
-  Durch einen Klick auf den „Servierbutton“, der sich auf der Bestellliste des
-  Adminscreens neben jedem Eintrag befindet, bekommt der Multicopter die Tischinformation
-  des Gastes, um dessen Bestellung es sich handelt, drahtlos zugeschickt. Dies geschieht
-  entweder durch eine Datenübertragung von dem Gerät auf dem der Adminbereich geöffnet
-  ist an das Flugobjekt oder durch eine manuelle Eingabe der Tischinformation in eine
-  bereits existierende Anwendung, welche die Daten an den Multicopter schickt.
-
-  \subsection{Optionale Erweiterungen}
+  Grundfunktionen wie Steigen, Rollen oder Nicken sind programmiert.
 
   \subsection{Nicht-Ziele}
+  \textbf{Mehrere Multicopter}\\
+  Das System ist fähig, mehrere Multicopter gleichzeitig zu steuern, ohne Abstürze
+  zu verursachen oder Menschen zu gefärden.
+
+  \textbf{Sicherheitsmaßnahmen}\\
+  Das Projekt enthält keine Sicherheitsmaßnahmen, die Verletzungen von von Menschen
+  verhindern und das Risiko eines Absturzes senken.
+
+  \textbf{Erfolgreiche Konzeptstudie}\\
+  Das Ziel der Diplomarbeit ist es, dass das konzeptionierte System
+  funktionsfähig umgesetzt ist.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Projektmanagement-Methode}
+Das nachfolgende Kapitel beschäftigt sich mit den wesentlichen Unterschieden
+zweier Projektmanagement-Methoden und der Wahl der Methode für diese Diplomarbeit.
 
-  \subsection{Kanban}
+  \subsection{Agile Entwicklungsmethoden}
+  Das Kennzeichen agiler Entwicklungsmethoden wie beispielsweise Scrum oder Kanban, sind
+  ein iterativer Arbeitsprozess, Flexibilität, gute und häufige Kommunikation und vorallem
+  Selbstständigkeit. Es wird kurz geplant und fortlaufend angepasst. Da nur bedingt eine Reihenfolge
+  von zu erledigenden Tasks besteht finden sich diese Methoden oft in der Softwareentwicklung vor.
 
-  \subsection{Wasserfall}
+  \subsection{Klassische Entwicklungsmethoden}
+  Klassischen Entwicklungsmethoden zeichnen sich durch eine phasenorientierte Arbeitsweise aus.
+  Ganz besonders die Planungsphasen sind sehr umfangreich, um das Risiko später auftretender Probleme oder
+  Änderungen zu minimieren. Alle Ziele sind klar definiert und Tasks bis in kleinste Details ausformuliert.
 
-  \subsection{Scrum}
+  \subsection{Die gewählte Methode}
+  Für die Entwicklung von Hovering Steward, war eine Kombination beider Methoden notwendig. Da,
+  das Projekt sich sowohl aus einigen Software-, als auch Hardwarekomponenten zusammensetzt, war das
+  Ziel sowohl die Vorteile der Flexibilität von agilen Methoden, als auch die ausführliche Planung der klassischen
+  Methoden auszunutzen.
+
+  Es entstand eine Mischung aus der agilen Entwicklungsmethode Scrum und der klassischen Methode Wasserfall.
+  Für die Entwicklung der Firmware des Multicopters, aber auch die der webtechnologischen Komponenten eignete
+  sich die flexible Arbeitsweise von Scrum, da nach Bedarf die einzelnen Module der Software entwickelt, und Schritt
+  für Schritt in das System integriert wurden.
+  Die Fertigung der Halterungen am Multicopter bedarfen jedoch einer genauen Planung von Reihenfolge von Arbeitsschritten,
+  welche mithilfe eines Projektstrukturplans visualisiert wurden.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teammanagement / Teambuilding}
+Da sich das Team aus sowohl aus Schülern verschiedener Klassen, aber auch Fachrichtungen
+zusammensetzte war Teambuilding ein primärer Teil des Managements. Das Projekt bestand außerdem
+aus Komponenten, die sich stark voneinader unterschieden, jedoch gut zusammenarbeiten mussten.
 
   \subsection{KaTeCos}
+  Eine Form von internen Meetings, die den Grundstein für die Teamdynamik setzten, waren unsere
+  sogenannten "Kaffe Team Coachings", kurz KaTeCo. Eine Projektmanegerin unseres Partnerunternehmens ofi
+  bot sich als Coach für das Team an. Alle drei Wochen erhielten wird bei diesen Coachings wertvolle Techniken und
+  Strategien, sowohl für das Teambuilding, als auch die Umsetzung des Projekts.
 
-  \subsection{Playground-Meetings}
-
-  \subsection{Sonstiges}
+  \subsection{Projektkultur}
+  In der Planungsphase wurde gemeinsam eine Projektkultur erarbeitet, die folgende Regeln und Pflichten
+  für jedes Teammitglied festlegte.
+  \begin{itemize}
+    \item Wenn eine Deadline voraussichtlich nicht erfüllt werden kann, wird dem gesamten Team so früh wie möglich Bescheid gegeben.
+    \item Ehrlichkeit und Offenheit gegenüber jedem Teammitglied
+    \item Entscheidungen werden nicht nur vom Projektleiter, sondern vom gesamten Team getroffen
+    \item Jedes Team hat immer Zugriff auf projektinterne Dateien und Informationen
+    \item Wichtige e-Mails sind zuerst vom gesamten Team abzusegnen, bevor sie verschickt werden.
+    \item Probleme werden nicht als Hindernis, sondern als Chance gesehen
+  \end{itemize}
