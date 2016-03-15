@@ -2,9 +2,9 @@
 \begin{theglossary}\glossaryheader
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossentry{Infrarot}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{25}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{77}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{Struktur}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{24}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{30}}}%
+		\setentrycounter[]{page}\glsnumberformat{76}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{98}}}%
 \end{theglossary}\glossarypostamble

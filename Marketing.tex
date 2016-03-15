@@ -152,6 +152,7 @@ behandelt.
     Es ist auf optimale Usability, also verständliche und einfache Nutzung ausgelegt.
 
     Das Endresultat war folgendes:
+
     \textcolor{red}{(BILD VOM BLOG)}
 
     \subsubsection{Frameworks}
@@ -194,9 +195,11 @@ behandelt.
     der vereinfachte Zugriff und die Manipulation auf DOM-Elemente.
 
     Beispiel JavaScript:
+
     \textcolor{red}{(CODE JS)}
 
     Beispiel: jQuery:
+
     \textcolor{red}{(CODE jQUery)}
 
     \subsection*{CSS}
@@ -259,11 +262,11 @@ behandelt.
 
         \textcolor{red}{(BILD HTML BASIC STRUCTURE)}
 
-        Im <head> Bereich werden <meta> Tags angegeben, in denen allgemeine Informationen zur Website, wie Autor oder Keywords und Beschreibung gespeichert werden.
+        Im \textless head \textgreater Bereich werden \textless meta \textgreater Tags angegeben, in denen allgemeine Informationen zur Website, wie Autor oder Keywords und Beschreibung gespeichert werden.
         Letztere zwei sind besonders wichtig, da sie dem Robot mitteilen, um was es auf der Seite geht. Der Robot achtet hierbei auch darauf, dass die Beschreibung nicht
         länger als 155 Zeichen lang ist und die Keywords eindeutig gewählt werden.
 
-        Im <body>, also im eigentlichen Inhalt der Website legt der Robot zum einen sehr viel Wert Struktur. Beispielsweise muss die Verschachtelung der Tags stimmen, oder der <h1> Tag darf nur einmal pro Seite
+        Im \textless body \textgreater, also im eigentlichen Inhalt der Website legt der Robot zum einen sehr viel Wert Struktur. Beispielsweise muss die Verschachtelung der Tags stimmen, oder der \textless h1 \textgreater Tag darf nur einmal pro Seite
         vorkommen. Zum anderen werden Inhalt und Code in Relation gesetzt. Wenn der Aufbau des HTML Dokuments riesig ist, in jedem Absatz jedoch nur ein Satz steht kennt sich der Robot nicht aus.
 
       \item \textbf{Responsive Design}
@@ -277,7 +280,7 @@ behandelt.
         Medien sehr hilfreich, da durch Veröffentlichungen auf diesen automatisch Links auf unseren Blog generiert werden.
 
         Links, die von der eigenen Seite auf andere verweisen stellen jedoch einen Nachteil dar, da der Robot dem Link folgen könnte, statt die eigene Seite weiter zu inspizieren. Möchte man dies
-        verhindern, kann dem <a> Tag das Attribut rel="nofollow" hinzugefügt werden, um dem Robot zu sagen, dass er diesem Link nicht folgen soll.
+        verhindern, kann dem \textless a \textgreater Tag das Attribut rel="nofollow" hinzugefügt werden, um dem Robot zu sagen, dass er diesem Link nicht folgen soll.
 
       \item \textbf{Sitemap}
       	Die Sitemap ist ein Inhaltsverzeichnis der Website, z.B. in Form einer XML Datei. Die Sitemap hilft dem Robot, wenn er erst einmal auf einer Seite gelandet ist, zugehörige Seiten
@@ -311,6 +314,7 @@ behandelt.
     \subsection*{Sicherheit}
     Zwei der größten Sicherheitslücken bei Webanwendungen sind zum Einen {"Cross-Side-Scripting"\cite{xss}} und zum Anderen {"SQL-Injections"\cite{sqlinjections}}.
 
+    \subsection*{Cross-Side-Scripting}
     Unter Cross-Side-Scripting, kurz genannt XSS versteht man die Injizierung von schadhaftem Code in eine Webapplikation über eine Schnittstelle, zu der ein User
     einfachen Zugang hat. In den meisten Fällen geschieht dies, wenn ein Nutzer gezielt JavaScript Code über ein Formular auf einer Website in die Anwedung schleust.
     Gelangt dieses Script an einen anderen Enduser, kann es dort beispielsweise ungehindert auf Cookies zugreifen, da der Browser des anderen Endusers nicht weiß,
@@ -318,8 +322,9 @@ behandelt.
 
     Der Beste Weg XSS zu unterbinden ist, die Eingaben, die über ein Formular vom User an den Server gesendet werden über PHP zu validieren und notfalls, Zeichen, die
     XSS andeuten zu ersetzen. PHP stellt dafür die Methode htmlspecialchars() zur Verfügung. Sie konvertiert bestimmte Sonderzeichen in HTML-Code. Beispielsweise wird
-    das Zeichen <, welches notwendig ist um Javascript mittels <script>-Tag zu schreiben durch "\&lt;".
+    das Zeichen \textless , welches notwendig ist um Javascript mittels \textless script \textgreater-Tag zu schreiben durch "\&lt;".
 
+    \subsection*{SQL-Injections}
     Bei einer SQL-Injection hingegen injiziert ein User SQL-Statements in eine Anwedungung um somit Daten aus der Datenbank auszulesen, oder diese zu manipulieren.
     Wird SQL Code dynamisch und mittels User Eingaben generiert, kann der User diese Statements manipulieren. Werden über ein Formular
     geschickte Daten per "\$\_POST['name'];" direkt in ein SQL Statement übernommen, ohne auf korrekte Zeicheneingabe, Länge des Strings oder Ähnliches validiert wird,
