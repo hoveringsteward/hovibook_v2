@@ -74,12 +74,20 @@
 \usepackage{float}
 %\usepackage{subcaption}
 
+%Darstellung im Abbildungsverzeichnis
+\usepackage[subfigure]{tocloft}
+\settowidth{\cftfignumwidth}{14.26\quad}
+\setlength{\cftfignumwidth}{12mm}
+
+
 %Einheitendarstellung
 \usepackage{siunitx}
 \sisetup{
   locale = DE ,
   per-mode = symbol
 }
+
+\usepackage{longtable}
 
 %%%%%%%%%%% GLOSSAR teil 1/2 - muss getestet werden
 \usepackage[toc,acronym]{glossaries}
