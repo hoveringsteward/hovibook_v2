@@ -17,8 +17,14 @@ Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und C
 Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. 
 Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnte man die vordefinierten Bootstrapvariablen verändern und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche anpassen. 
 Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe dem Task-Runner Gulp kompiliert.\\ 
-(Skizze von Aufbau)
-
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation.jpg}
+			\par\end{centering}
+			\caption{Zusammenspiel der Komponenten}
+			\label{Zusammenspiel der Komponenten}
+			\end{figure}
+			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Backend}
 
@@ -73,7 +79,7 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM.png}
 			\par\end{centering}
-			\caption{ER - Model der digitalen Speisekarte}
+			\caption{ERM der digitalen Speisekarte}
 			\label{ERM der digitalen Speisekarte}
 			\end{figure}Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
 \begin{itemize}
@@ -405,16 +411,41 @@ DOM(Document Object Model) ist ein vom W3-Konsortium standardiesiertes Schema f�
 Ajax(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte Ajax den regelmäßigen Aufruf der Seite, damit die  Daten auf den Screens am aktuellen Stand sein konnten.
 
     \subsubsection{Screenkonzept}
-Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden MockUps angefertigt, welche dazu dienen festzulegen welche Buttons und Felder sich wo befinden.
+Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden MockUps angfertigt, welche dazu dienen festzulegen welche Buttons und Felder sich wo befinden.
 Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
-Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen.\\ \\ 
+\\ \\
 \textbf{alte MockUps}\\
+\textbf{Speisekarte}\\
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups.png}
+			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_alte_mockups.jpg}
 			\par\end{centering}
-			\caption{alte MockUps}
+			\caption{alte Mockups - Speisekarte}
+			\label{alte Mockups - Speisekarte}
+			\end{figure}\textbf{Admininterface}\\
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups_admin.jpg}
+			\par\end{centering}
+			\caption{alte MockUps - Admininterface}
 			\label{alte MockUps}
+			\end{figure}Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen. Das Konzept des Admininterfaces wurde im Laufe der Zeit ebenfalls etwas überarbeitet. Beispielsweise wurde eine Alert-Box auf dem Hauptscreen eingefügt, um den Verbindungsstatus zwischen dem Hexacopter und dem Server anzuzeigen.
+\\ \\
+\textbf{neue MockUps}\\
+\textbf{Speisekarte}\\
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_neue_mockups.jpg}
+			\par\end{centering}
+			\caption{neue MockUps - Speisekarte}
+			\label{neue MockUps - Speisekarte}
+			\end{figure}\textbf{Admininterface}\\
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_neue_mockups_admin.png}
+			\par\end{centering}
+			\caption{neue MockUps - Admininterface}
+			\label{neue MockUps - Admininterface}
 			\end{figure}\textbf{Funktionalitäten der Applikation}\\
 Wie man auf den MockUps bereits erkennen kann, wurde damals schon festgelegt welche Funktionalitäten die einzelnen Screens haben.
 Diese sind, wie in den neuen MockUps festgelegt, folgendermaßen:\\ \\ 

@@ -100,7 +100,13 @@ Die Java Datenbankschnittstelle JDBC ist ein Industriestandard für datenbankuna
 	   \subsubsection{Zusammenspiel mit der Applikation und dem WLAN-Modul}
 Das Java-Programm und die Applikation kommunizieren nur indirekt miteinander, da beide nur auf die Datenbank zugreifen um deren Inhalt zu überprüfen und Einträge updaten beziehungsweise erstellen.
 Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert. Dieses wird nämlich als Thread etabliert und direkt in den Javaklassen verwaltet.
-(Bild Aufbau)
+			\begin{figure}[H]
+			\begin{centering}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_java.jpg}
+			\par\end{centering}
+			\caption{neue MockUps - Admininterface}
+			\label{neue MockUps - Admininterface}
+			\end{figure}
   \subsection{Umsetzung}
 Für die Umsetzung des Javaprogramms wurden drei verschiedene Klassen erstellt:
 \begin{itemize}
