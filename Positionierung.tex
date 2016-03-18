@@ -6,7 +6,7 @@
 \section{Allgemeine technische Planung}
 
     \subsection{Allgemein}
-    Um eine Positionsbestimmung durchzuführen, benötigt man ein Trackingsystem. 
+    Um eine Positionsbestimmung durchzuführen, benötigt man ein Trackingsystem.
     Es gibt mehrere Verfahren, um ein Objekt zu tracken: \cite{PositionAllg}
     \begin{itemize}
     \item Mechanische Systeme, umgesetzt mit einer physikalischen Verbindung
@@ -15,10 +15,10 @@
     \item Optisches Tracking, umgesetzt mit elektromagnetischen Wellen
     \item Inertial Tracking, umgesetzt mit Beschleunigungsmessern und Gyroskopen
     \item hybride Ansätze, umgesetzt mit Kombinationen, die mehrere Systeme vereinen
-    \end{itemize}   
+    \end{itemize}
     Auf die elektromagnetischen, optischen und akustischen Verfahren werden in späteren Abschnitten genauer behandelt.
 
-    \subsection{Anwendung} 
+    \subsection{Anwendung}
     Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden verwendet. \cite{posAnwendung}
 
     \subsection{Eigenschaften der Positionsbestimmung}
@@ -29,7 +29,7 @@
     Die physische Positionierung ist eine exakte Position, die zum Beispiel in einem Koordination, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.\\
     Symbolische Positionierung ist die abstrakte beschreibung eines Ortes, sie wird sprachlich beschrieben, beispielsweise Küche, Garten, Dachboden.\\
     Eine physikalische Position kann auch symbolisch Beschrieben werden.
-    
+
     \subsection*{Relative und absolute Positionierung Lucas}
     \textbf{Absolute Positionsmessung}\\
     Hier wird die Position von einem gleichbleibenden Punkt aus gemessen. Dabei ist ein konstanter Referenzpunkt wichtig.
@@ -73,23 +73,23 @@
 
     \subsection{Elektromagnetische Verfahren}
 
-    Elektromagnetische Wellen bestehen aus einer kombination von elektrischen und magnetischen Wellen. Das für das menschliche Auge sichtbare Spektrum nennt man Licht. Optische Verfahren sind in einem der folgenden Abschnitte erklärt. Weitere Beispiele sind Ultraviolett, Infrarot, Radiowellen, Mikrowellen und Röngtenstrahlung. 
+    Elektromagnetische Wellen bestehen aus einer kombination von elektrischen und magnetischen Wellen. Das für das menschliche Auge sichtbare Spektrum nennt man Licht. Optische Verfahren sind in einem der folgenden Abschnitte erklärt. Weitere Beispiele sind Ultraviolett, Infrarot, Radiowellen, Mikrowellen und Röngtenstrahlung.
 
     Verfahren zur Positionsbestimmung mittels Signal: \cite{pos_signal_2} \cite{pos_signal_4}
-    
+
     \subsection*{Lateration}
     Bei der Lateration wird die Position mit Hilfe der Entfernungsmessung bestimmt.
     Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
-    Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung. 
+    Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung.
     Um schlussendlich die Position zu bestimmen, werden 3 Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die 3 Entfernungen kann mittels Trilateration die Position berechnet werden.
     \\ % BILD %
-    \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung. 
+    \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung.
     Die mobile Sation sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
     \\ % BILD %
     \subsection*{Angulation}
     Bei der Angulation wird die Position durch die Bestimmung von Winkeln ermittelt. \\
     \textbf{AOA} (Angel of Arrival) wird mittels Berechnung des Einfallswinkels auf ein Antennenarray umgesetzt. Bei dieser Technik werden mindestens 2 Basisstationen benötigt. Mit den Einfallswinkeln der empfangenen Signale kann die Position durch Triangulation festgestellt werden. Die Winkelbeziehungen eines Dreiecks werden dafür verwendet.
-    Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware. 
+    Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware.
     \\ % BILD %
     \subsection*{Scene Analysis}
     Bei der Szenenanalyse werden Umgebungsparameter erfasst und ausgewertet.\\
@@ -102,10 +102,10 @@
 
     \subsection{Elektromagnetische Technologien}
     \subsection*{GPS (Global Positioning System)}
-    GPS ist ein satellitengestützte Navigationssystem, das Ende der 1980er-Jahre zur globalen Positionsbestimmung entwickelt wurde. Die Nachteile des Systems sind der schlechte Empfang der Satellitensignale für indoor- Anwendungen. 
+    GPS ist ein satellitengestützte Navigationssystem, das Ende der 1980er-Jahre zur globalen Positionsbestimmung entwickelt wurde. Die Nachteile des Systems sind der schlechte Empfang der Satellitensignale für indoor- Anwendungen.
     \subsection*{RFID (radio-frequency identification)}
-    RFID bezeichnet eine Technologie für Sender-Empfänger-Systeme zum automatischen und berührungslosen Identifizieren und Lokalisieren von Objekten mit Radiowellen. Ein RFID-System besteht aus einem Transponder, der sich am oder im Objekt befindet und einen kennzeichnenden Code enthält, sowie einem Lesegerät zum Auslesen dieser Kennung. 
-    \subsection*{WPS (WLAN Positioning System)}   
+    RFID bezeichnet eine Technologie für Sender-Empfänger-Systeme zum automatischen und berührungslosen Identifizieren und Lokalisieren von Objekten mit Radiowellen. Ein RFID-System besteht aus einem Transponder, der sich am oder im Objekt befindet und einen kennzeichnenden Code enthält, sowie einem Lesegerät zum Auslesen dieser Kennung.
+    \subsection*{WPS (WLAN Positioning System)}
     WPS ist ein indoor Positionierungssystem, das auf WLAN basiert. Durch sogenannte  Access Points (de. drahtloser Zugangspunkt), wird die Entfernung zu Endgeräten bestimmt. Durch drei Accesspoints kann mittels Dreiecksmethode, die Position des Endgeräts ermittelt werden.
 
     \subsection{Akustische Verfahren}
@@ -121,38 +121,38 @@
     Durch die Information, mit welcher Geschwindigkeit sich elektromagnetische sowie akustische Wellen ausbreiten, ist es möglich Entfernungen zu messen. Die Zeit, die ein Signal zum zu messenden Objekt und wieder zurück braucht, nennt man Laufzeit, da die Strecke doppelt gemessen wird, wird die Zeit durch 2 geteilt.
 
     \subsection{Optische Verfahren}
-    Maschinelles Sehen (machine vision) beschreibt die Fähigkeit eines Computers zu sehen. 
+    Maschinelles Sehen (machine vision) beschreibt die Fähigkeit eines Computers zu sehen.
     Für einen Menschen ist es einfach, Objekte auf einem Bild zu erkennen, für Computer besteht ein Bild jedoch aus Daten, die die Graustufe beziehungsweise Farbe jedes einzelnen Pixels angeben, was die Möglichkeit des "Bildverstehens" erschwert.
     Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen. \cite{machinevision} \cite{machinevision2}
 
     Es wird zwischen Objekt Erkennung (detection) und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, dass in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
     \cite{obj_det_trak}
 
-    \subsubsection{Bildverarbeitung} 
+    \subsubsection{Bildverarbeitung}
     Die Bildverarbeitung besteht aus einer Reihe von Schritten, je nach Anwendung werden dabei manche ausgelassen.
     Der Beginn besteht aus der Bildvorverarbeitung, bei der das Bild optisch verbessert wird. Daraufhin folgt die Bildanalyse, die aus den Schritten Segmentierung, in der das Bild in Bereiche aufgeteilt wird, Merkmalsextraktion, bei der beispielsweise Kanten erkannt werden, und Klassifizierung, bei der das Bild Klassen zugewiesen wird, besteht. \cite{Bildverarbeitung} \cite{Bildverarbeitung2}
 
     \subsubsection{Segmentierung}
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.
 
-    \subsection*{Pixelorienterte Segmentierung} 
+    \subsection*{Pixelorienterte Segmentierung}
     Pixelorientierte Segmentierung wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte \cite{Seg_punkt}
-    \textbf{Treshholding}\\ 
+    \textbf{Treshholding}\\
     Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelne Pixel unabhängig angewendet wird, gehört es zur Pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
-    \subsection*{Modellbasierte Segmentierung} 
+    \subsection*{Modellbasierte Segmentierung}
     Modelle, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. \cite{Seg_modell}
     \textbf{Templatematching}\\
     Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
     \textbf{Hough-Transformation}\\
     Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvolsltändige oder teils verdeckte Objekte erkennt.
 
-    \subsection*{Regionenorientierte Segmentierung} 
+    \subsection*{Regionenorientierte Segmentierung}
     Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft. \cite{Seg_region}
-    \textbf{Region Growing}\\ 
+    \textbf{Region Growing}\\
     Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
-    \subsection*{Texturorientierte Segmentierung} 
+    \subsection*{Texturorientierte Segmentierung}
     Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet. \cite{Seg_textur}
     \textbf{Co-Occurrence-Matrizen}
     Um eine Texturanalyse durchzuführen, kann die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet werden. \cite{seg_coocc}
@@ -168,17 +168,17 @@
         \item Nennenswerte Gradienten werden mittels Trashholding selektiert.
         \item Durch verschiedene Operationen und Algorithmen entstehen, mittels errechneter Daten, Kanten.
     \end{itemize}
-    Die Verfahren können in zwei Kategorien eingeteilt werden. 
+    Die Verfahren können in zwei Kategorien eingeteilt werden.
     \begin{itemize}
-        \item \textbf{1. Ableitung}//
+        \item \textbf{1. Ableitung}\\
         Hierfür können Sobel Operator, Laplace-Filter, Canny Algorithmus verwendet werden.
-        \item \textbf{2. Ableitung}//
+        \item \textbf{2. Ableitung}\\
         Für die 2. Ableitung kommt beispielsweise der Sombrerofilter, auch Laplace of Gaussian Operator oder Marr-Hildreth-Operator genannt, zum Einsatz.
     \end{itemize}
     \textbf{Eckendetektion}\\
     Ecken sind Punkte, in denen zwei Kanten enden und sind somit ein Objektabschlüsse. Sie sind ebenfalls wichtiges Merkmale in einem Bild und können durch Gradienten oder Morphologie erkannt werden. Um die Eckendetektion durchzuführen, können beispielsweise Moravec´s Corner Detector und Harris Corner Detector verwendet werden. \cite{Bildverarbeitung}
 
-    \subsubsection{Klassifikation} 
+    \subsubsection{Klassifikation}
     Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe/Klasse/Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
 
     \subsection{Optische Technologien}
@@ -189,7 +189,7 @@
     CMVision, Color Machine Vision, ist ähnlich dem Algorithmus der Pixy. Es ist ein echtzeit System, das mit dem robusten Farbmodell YUV umgesetzt wird. Das Y steht für die Lichstärke pro Fläche, U und V geben den Farbanteil an. Der Vorgang beginnt mit einer Farbraum Transformation. Als Segmentierungsmethode wird Treshholding angewendet. Regionen werden verbunden und entnommen und endet mit der Zusammenfassung von Regionen. \cite{Pixy} \cite{Pixy_Verfahren} \cite{Pixy_Verfahren2}
 
     \subsection*{Vicon}
-    Vicon ist ein System, das mit dem Tracking-Verfahren Motion Capture (Bewegungs-Erfassung) arbeitet. 
+    Vicon ist ein System, das mit dem Tracking-Verfahren Motion Capture (Bewegungs-Erfassung) arbeitet.
     Mehrere Kameras werden in einem Raum verteilt. Jede Kamera besitzt einen Infrarotfilter und Infrarot-LEDs. Die Lampen senden infrarotes Licht aus, dieses wird an Markern, die sich auf dem zu trackenden Objekt befinden, reflektiert. Mithilfe einer Software kann dadurch eine dreidimensionale Karte erstellt werden.
     \cite{Vicon}
 
@@ -201,7 +201,7 @@
     \subsection{Elektromagnetisches Tracking: Fernortend}
 
       \subsection*{Tracking mittels Time of Arival}
-      Mithilfe der Laufzeitmessung können Objekte, die mit einem Empfänger ausgestattet sind, geortet werden. Dafür wird die Zeit die ein Signal vom Sender zum Empfänger benötigt gemessen. Das Signal ist eine elektromagnetische Welle, die sich im Vakuum in Lichtgeschwindigkeit ausbreitet. Die gemessene Laufzeit wird mit der Lichtgeschwindigkeit multipliziert, damit kann die Entfernung berechnet werden. 
+      Mithilfe der Laufzeitmessung können Objekte, die mit einem Empfänger ausgestattet sind, geortet werden. Dafür wird die Zeit die ein Signal vom Sender zum Empfänger benötigt gemessen. Das Signal ist eine elektromagnetische Welle, die sich im Vakuum in Lichtgeschwindigkeit ausbreitet. Die gemessene Laufzeit wird mit der Lichtgeschwindigkeit multipliziert, damit kann die Entfernung berechnet werden.
 
       Bei diesem Konzept, soll durch die benützung sogenannter Pseudolites (Gefälschte Sateliten) eine Art lokales GPS erschaffen werden.
 
@@ -218,17 +218,17 @@
       Distanz ... ist die durchgeführte Messung\\
       x1, y1, ... z2, z3 ... sind die staatischen Koordinaten der Pseudolites \\
       x, y, z ... werden durch die Lösung dieses quadratischen Gleichungssystems ermittelt \\
-      
+
       Beim lösen der Gleichung erhält man 2 Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen 3er verschmolzener Kugeln 2 Schnittpunkte haben.
       Wenn die Pseudoliten am Boden anbringt, liegt eine der beiden Lösungen oberhalb und die 2. Lösung unterhalb des Bodens, womit man einfacherweise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
 
       % NAVIBILD MIT PSEUDOLITES
 
     \subsection{Optisches Tracking: Fernortend}
-    Aufgrund der Komplexität signalbasierter Verfahren, die ihre Position mittels elektromagnetischer Wellen bestimmen, werden hier Konzepte, die durch eine oder mehrere Kameras umgesetzt werden können, näher beschrieben. Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen. 
+    Aufgrund der Komplexität signalbasierter Verfahren, die ihre Position mittels elektromagnetischer Wellen bestimmen, werden hier Konzepte, die durch eine oder mehrere Kameras umgesetzt werden können, näher beschrieben. Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen.
 
   \subsection*{Kamerasystem im Raum}
-  Bei einem Raum, in dem Kameras verteilt sind, spricht man von einem fernortenden Positionierungssystem. 
+  Bei einem Raum, in dem Kameras verteilt sind, spricht man von einem fernortenden Positionierungssystem.
   Sowohl Tische und Kreuzungen als auch der Hexacopter sind mit Markern versehen. Die einzelnen Komponenten werden vom Kamerasystem erfasst und anschließend wird eine Karte erstellt. Diese Karte besitzt, wie ein Koordinatensystem Längen und Breitengrade.
   Um den Weg vom Stützpunkt zum gewünschten Tisch zu finden, muss der Hexacopter eine Route wählen. Diese bestimmt er mithilfe der Daten, wo er ich selbst, Kreuzungen und Tische befinden. Da das Trackingsystem die Position des Hexacopters trackt, kann kontrolliert werden, ob er sich auf dem richtigen Weg befindet. Die Position der einzelnen Komponenten kann, wie bei signalbasierten Verfahren, mittels Triangulation berechnet werden.
 
@@ -239,7 +239,7 @@
 
   \subsection*{Linien}
   Bei einem selbstortenden Positionierungssystem sind Sensoren auf dem sich bewegenden Objekt angebracht.
-  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.  
+  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.
   Vorteile dieser Version ist, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
 
   % NAVI BILD MIT LINIEN
@@ -248,21 +248,21 @@
   Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben aufweisen, zu scannen.
   Das Kamerasystem besitzt die Fähigkeit 7 unterschiedliche Farben zu erkennen, diese können vom Administrator selbst festgelegt werden. Da die Lichtverhältnisse sich nicht stark ändern sollten, ist es optimal, die Farben in dem Raum, in dem das System verwendet wird, abzuspeichern.
 
-  Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand. Hierbei kann es aber zu komlikationen führen. Der Hexacopter erkennt beispielsweise einen der bereits passierten Farbcodes und bezieht die Position auf diesen. Die relative Position beschränkt sich bei dieser Variante auf den Wegabschnitt. 
+  Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand. Hierbei kann es aber zu komlikationen führen. Der Hexacopter erkennt beispielsweise einen der bereits passierten Farbcodes und bezieht die Position auf diesen. Die relative Position beschränkt sich bei dieser Variante auf den Wegabschnitt.
 
   % NAVI BILD TEIL 1
 
   \subsection*{Farbcodes variieren}
-  Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt, der unterschied zum vorigen System liegt in der Variation der Farbcodes. Es dürfen keine gleichen Farbcodes nebeneinander liegen, da die relative Position auf diese Weise besser bestimmt werden kann. Es besteht keine verwechslungsgefahr mit einem anderen Farbcode. Außerdem kann durch die Anzahl der Farbcodes jeder Farbcode genau zugeordnet werden, der letzte Farbcode kann so einfach erkannt werden und erleichtert den Landevorgang. 
+  Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt, der unterschied zum vorigen System liegt in der Variation der Farbcodes. Es dürfen keine gleichen Farbcodes nebeneinander liegen, da die relative Position auf diese Weise besser bestimmt werden kann. Es besteht keine verwechslungsgefahr mit einem anderen Farbcode. Außerdem kann durch die Anzahl der Farbcodes jeder Farbcode genau zugeordnet werden, der letzte Farbcode kann so einfach erkannt werden und erleichtert den Landevorgang.
   Ein Nachteil des Systems ist der mehraufwand im jeweiligen Restaurant, da die Farbcodes in einer bestimmten Reihenfolge aufgelegt werden. Hierbei spielt die Rotation eine wichtige Rolle.
 
-  % NAVI BILD TEIL 2 
+  % NAVI BILD TEIL 2
 
   \subsection*{Tracking mittels Infrarot}
   Um das System auch ohne entsprechende Lichtverhältnisse durchführen zu können, besteht die Möglichkeit einen Infrarotfilter an der Pixycam anzubringen und die Wegpunkte mittels Infrarotlampen zu makieren. Das System kann dadurch auch im Dunkeln angewendet werden, aktive Marker benötigen dafür einen Stromanschluss, da sie Infrarotes Licht an den Empfänger senden. Bei passiven Markern, werden Infrarotlampen am Hexacopter genötigt, um das Licht reflektierender Marker zu empfangen.
 
   \subsection{Das gewählte Konzept}
-  Das gewählte Konzept ist eine hybride Methode zwischen optischen Trackings und einer Laufzeitmessung mit akustischen Wellen. 
+  Das gewählte Konzept ist eine hybride Methode zwischen optischen Trackings und einer Laufzeitmessung mit akustischen Wellen.
   Durch die Pixy CMUcam5 werden am Boden liegende Farbcodes getrackt. Diese variieren um die relative Position besser zu bestimmen. Mit der Information, über welchem Farbcode sich der Hexacopter befindet, kann die Position im 2 Dimensionalen Raum herausgefunden werden. Da der Hexacopter fliegt, muss das System 3 Dimensional sein. Die z-Koordinate, beziehungsweise die Höhe, wird deswegen mit einem Ultraschallsensor über eine Laufzeitmessung bestimmt.
 
   Das System wurde auf die oben erklärten Eigenschaften analysiert:
@@ -279,8 +279,8 @@
 
   \subsection*{Genauigkeit}
   Da das System mittels optischem Tracking umgesetzt wird, ist die Genauigkeit sehr hoch.
-  Der verwendete Ultraschallsensor misst die Entfernung mit einer Messgenauigkeit von 3mm. 
-  
+  Der verwendete Ultraschallsensor misst die Entfernung mit einer Messgenauigkeit von 3mm.
+
   \subsection*{Skalierung}
   Das System ist beliebig Skalierbar, da es auf Farbcodes basiert. Es besteht die Möglichkeit, beliebig viele Farbcodes dem Weg hinzuzufügen oder wieder wegzunehmen. Die Routen sind im Adminbereich hinterlegt und müssen, je nach dem, wie der Administrator die Farbcodes legt, diese auch mitverändern. Im System gibt es aus Testgründen eine Grenze von 20 Farbcodes, diese kann aber einfach verändert werden.
 
@@ -292,7 +292,7 @@
   Da  die Positionierung auf einer Kamera mit Farbcodes, einem Ultraschallsensor, einem Mikcrocontroller und einem WLAN-Modul sowie einem WLAN fähigen Gerät, als Admin-Interface, basiert, beschränken sich die Kosten auf wenige Hundert Euro.
 
   \subsection*{Limitierung}
-  Da die Pixy CMUcam5 ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.  
+  Da die Pixy CMUcam5 ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.
   Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. \cite{Pixy}
 
   Das System kann sowohl Indoor als auch Outdoor angewendet werden. Da die Farbobjekte am Boden positioniert werden, werden keine Wände, Decken oder sonstige Räumlichkeiten benötigt. Die gennannten Objekte würden die Positionsbestimmung aber auch nicht negativ beeinträchtigen.

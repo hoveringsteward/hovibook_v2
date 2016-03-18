@@ -24,7 +24,7 @@
   Der Weg besteht aus sich abwechselnden 2 farbigen Codes. Die Teile zwischen Tischen und Kreuzungen, werden als Wegabschnitt bezeichnet. Die ColorCodes müssen von jedem Restaurant eigenständig eingescannt und die Routen zu den jeweiligen Tisch in das Admin Interface eingetragen werden.
 
   \textbf{Tisch}\\
-  Auf einem Tisch befindet sich, wie in der Küche eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses enthält jeder Tisch seine eigene ID und dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden. 
+  Auf einem Tisch befindet sich, wie in der Küche eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses enthält jeder Tisch seine eigene ID und dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden.
   Die Tische können wie in jedem normalen Restaurant beliebig platziert werden, da der Hexacopter durch die Rotation der Farbobjekte auch Kurven fliegen kann. Dabei darf ein Teil des Tisches nicht besetzt sein, da der Hexacopter nicht über Menschen fliegen soll.
 
   % Bild vom Ablauf %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,26 +76,26 @@
     Für die Rotation werden die Grundlagen negativer binärer Zahlen benötigt.
 
     \subsection*{Binäre Zahlen ohne Vorzeichen}
-    0000 0000 = 0, 1111 1111 = 255 
+    0000 0000 = 0, 1111 1111 = 255
     \subsection*{Binäre Zahl mit Vorzeichen}
-    Ein Bit wird für das Vorzeichen verwendet. //
-    0000 0001 = 1 -> 1000 0001 = -1, //
-    0111 1111 = 127 -> 1111 1111 = -127 
+    Ein Bit wird für das Vorzeichen verwendet. \\
+    0000 0001 = 1 -> 1000 0001 = -1, \\
+    0111 1111 = 127 -> 1111 1111 = -127
     \subsection*{Einerkomplement}
-    Beim Invertieren aller Bits entsteht eine negative Zahl //
-    0000 0000 = "+0" -> 1111 1111 = "-0" //
+    Beim Invertieren aller Bits entsteht eine negative Zahl \\
+    0000 0000 = "+0" -> 1111 1111 = "-0" \\
     0111 1111 = 127 -> 1000 0000 = -127
     \subsection*{Zweierkomplement}
-    0000 0001 = 1 -> 1111 1111 = -1 //
-    0000 0010 = 2 -> 1111 1110 = -2 //
-    0111 1111 = 127 -> 1000 0001 = -127 
+    0000 0001 = 1 -> 1111 1111 = -1 \\
+    0000 0010 = 2 -> 1111 1110 = -2 \\
+    0111 1111 = 127 -> 1000 0001 = -127
     \subsection*{Bilden des Zweierkomplements}
-    \textbf{Beispiel:} 0111 1111 = 127 //
-    Die Binäre Zahl wird invertiert (1000 0000) und mit 1 addiert. //
-    Das Ergebins lautet: 1000 0001 = -127 //
-    \textbf{Beispiel:} 1000 0000 = 128 (im Komplement) //
-    Die binäre Zahl wird mit 1 subtrahiert (0111 1111) und danach invertiert. //
-    Das Ergebnis lautet: 1000 0000 = 128 = -128 //
+    \textbf{Beispiel:} 0111 1111 = 127 \\
+    Die Binäre Zahl wird invertiert (1000 0000) und mit 1 addiert. \\
+    Das Ergebins lautet: 1000 0001 = -127 \\
+    \textbf{Beispiel:} 1000 0000 = 128 (im Komplement) \\
+    Die binäre Zahl wird mit 1 subtrahiert (0111 1111) und danach invertiert. \\
+    Das Ergebnis lautet: 1000 0000 = 128 = -128 \\
 
     % Bild von Rotation %
 
