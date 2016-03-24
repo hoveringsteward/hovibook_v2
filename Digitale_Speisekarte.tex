@@ -32,24 +32,24 @@ Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Datei
 
     \subsubsection{Apache HTTP Server}
 
-Der Apache HTTP Server ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit man sie anschließend in Web-Browsern aufrufen kann.
+Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit man sie anschließend in Web-Browsern aufrufen kann.
 
     \subsubsection{phpMyAdmin}
     
-phpMyAdmin ist eine Open-Source Webapplikation, welche in PHP programmiert wurde und dazu dient MySQL Daten zu administrieren. Es ermöglicht einige Methoden wie beispielsweise das Löschen, Hinzufügen und Bearbeiten von Daten in einem UserInterface ohne SQL-Anweisungen schreiben zu müssen. phpMyAdmin ist unter der GNU General Public License lizenziert und ist daher in vielen Linux-Distributionen enthalten, weshalb durch MAMP auch damit gearbeitet wurde um gelegentlich Datenbankeinträge zu überprüfen.  
+{phpMyAdmin\cite{phpmyadmin}} ist eine Open-Source Webapplikation, welche in PHP programmiert wurde und dazu dient MySQL Daten zu administrieren. Es ermöglicht einige Methoden wie beispielsweise das Löschen, Hinzufügen und Bearbeiten von Daten in einem UserInterface ohne SQL-Anweisungen schreiben zu müssen. phpMyAdmin ist unter der GNU General Public License lizenziert und ist daher in vielen Linux-Distributionen enthalten, weshalb durch MAMP auch damit gearbeitet wurde um gelegentlich Datenbankeinträge zu überprüfen.  
 
     \subsubsection{MAMP}
 
-MAMP ist eine Distribution von LAMP, welches auf Linux-Basis entwickelt wurde. Es dient dazu dynamische Webseiten zur Verfügung zu stellen. Unter dynamischen Webseiten versteht man, Seiten die auf Funktionen im Backend zugreifen und mithilfe welcher Inhalte meist erst im Moment der Anfrage erzeugt werden, wodurch sie aktuell gehalten werden können. MAMP ist auf das Betriebssystem Mac OS X angepasst. Das Package verwendet den Apache HTTP Server und das Datenbanksystem MySQL, welches bereits im Kaptiel 3 erklärt wurde. Außerdem basieren sie auf der Programmiersprache PHP. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepackets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt.
+{MAMP\cite{mamp}} ist eine Distribution von LAMP, welches auf Linux-Basis entwickelt wurde. Es dient dazu dynamische Webseiten zur Verfügung zu stellen. Unter dynamischen Webseiten versteht man, Seiten die auf Funktionen im Backend zugreifen und mithilfe welcher Inhalte meist erst im Moment der Anfrage erzeugt werden, wodurch sie aktuell gehalten werden können. MAMP ist auf das Betriebssystem Mac OS angepasst. Das Package verwendet den Apache HTTP Server und das Datenbanksystem MySQL, welches bereits im Kaptiel 3 erklärt wurde. Außerdem basieren sie auf der Programmiersprache PHP. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepackets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt.
 
     \subsubsection{Doctrine}
 
-Doctrine ist ein Framework, welches dabei hilft ein objektrelationales Abbild zu erschaffen. Bei objektrelationalen Abbildungen werden Tabellen wie Klassen und Tabellenzeilen wie Objekte behandelt. Das vereinfacht den Zugriff auf verschiedene Datenbanken im Vergleich zu dem Zugriff mittels Plain PHP um ein Vielfaches.
+{Doctrine\cite{doctrine}} ist ein Framework, welches dabei hilft ein objektrelationales Abbild zu erschaffen. Bei objektrelationalen Abbildungen werden Tabellen wie Klassen und Tabellenzeilen wie Objekte behandelt. Das vereinfacht den Zugriff auf verschiedene Datenbanken im Vergleich zu dem Zugriff mittels Plain PHP um ein Vielfaches.
 
     \subsubsection{Symfony}
 
 Da Frameworks, welche auf dem Model-View-Controller Schema beruhen, den Arbeitsaufwand erleichtern und dafür sorgen, dass während dem Programmieren eine ordentliche Struktur im Code beibehalten wird, wurde eines als Grundgerüst für die Entwicklung der Applikation verwendet. Nachdem eine Speisekarte viele Informationen enthält, welche in einer Datenbank verwaltet werden sollten, wurde ein PHP-Framework gewählt, welches den Zugriff darauf objektrelational regelt.
-Symfony ist ein Open Source Web Application Framework, welches sowohl das Model-View-Controller Schema nützt als auch den Datenbankzugriff mittels einem objektrelationalen Abbild regelt, weshalb es die ideale Wahl für die Umsetzung der digitalen Speisekarte und des Adminbereichs ist. 
+{Symfony\cite{symfony}} ist ein Open Source Web Application Framework, welches sowohl das Model-View-Controller Schema nützt als auch den Datenbankzugriff mittels einem objektrelationalen Abbild regelt, weshalb es die ideale Wahl für die Umsetzung der digitalen Speisekarte und des Adminbereichs ist. 
 Wie bereits erwähnt, ergibt sich durch die Einteilung in Model, View und Controller während dem Entwicklungsprozess eine strukturierte Ordnung im Code.
 Dies liegt daran, dass jeder dieser Schichten eine genaue Aufgabe zugeschrieben ist.
 \begin{itemize}
@@ -351,19 +351,19 @@ php app/console cache:clear -e prod
 
     \subsubsection{Bower}
 
-Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwaltungstool Bower verwendet. Bower ist ein freies Kommandozeilenprogramm und wird daher über den Terminal gesteuert. Das heißt, dass Bower dazu verwendet werden konnte alle Packages, welche für die Gestaltung des Frontends benötigt wurden, über die Konsole zu installieren.
+Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwaltungstool {Bower\cite{bower}} verwendet. Bower ist ein freies Kommandozeilenprogramm und wird daher über den Terminal gesteuert. Das heißt, dass Bower dazu verwendet werden konnte alle Packages, welche für die Gestaltung des Frontends benötigt wurden, über die Konsole zu installieren.
 
     \subsubsection{Sass}
 
-Damit die Designelemente von Bootstrap mit wenigen Handgriffen angepasst werden konnten, wurde die Stylesheet-Sprache Sass(Syntactically Awesome Stylesheets) verwendet. Sass ermöglicht es Variablen zu erstellen, was es erleichtert konstante Werte mehreren Klassen zuzuschreiben. Außerdem bietet Sass die Möglichkeit an den Stylecode so zu verschachteln, dass man beispielweise nur einmal definieren muss aus welcher Klasse bestimmte Unterobjekte angesprochen werden sollen. Dies wird bewerkstelligt indem man einmal die Klasse aufschreibt und anschließend die jeweiligen Children einrückt und ihnen anschließend Styleelemente zuweist.
+Damit die Designelemente von Bootstrap mit wenigen Handgriffen angepasst werden konnten, wurde die Stylesheet-Sprache {Sass\cite{sass}}(Syntactically Awesome Stylesheets) verwendet. Sass ermöglicht es Variablen zu erstellen, was es erleichtert konstante Werte mehreren Klassen zuzuschreiben. Außerdem bietet Sass die Möglichkeit an den Stylecode so zu verschachteln, dass man beispielweise nur einmal definieren muss aus welcher Klasse bestimmte Unterobjekte angesprochen werden sollen. Dies wird bewerkstelligt indem man einmal die Klasse aufschreibt und anschließend die jeweiligen Children einrückt und ihnen anschließend Styleelemente zuweist.
 
     \subsubsection{Gulp}
 
-Zum kompilieren der Sass Dateien wurde der TaskRunner Gulp verwendet, welcher als build system die Automatisierung routinemäßiger Aufgaben beim Erstellen von Webapplikationen bewerkstelligt. Dies hilft dabei den Fokus während dem Arbeiten an einer Webseite auf die wesentlichen Aufgaben zu legen. Neben dem kompilieren von Sass und Less, können mithilfe von Gulp auch CSS Dateien zusammengefasst und minimiert werden. Davon wurde im Zuge der Diplomarbeit ebenfalls profitiert.
+Zum kompilieren der Sass Dateien wurde der TaskRunner {Gulp\cite{gulp}} verwendet, welcher als build system die Automatisierung routinemäßiger Aufgaben beim Erstellen von Webapplikationen bewerkstelligt. Dies hilft dabei den Fokus während dem Arbeiten an einer Webseite auf die wesentlichen Aufgaben zu legen. Neben dem kompilieren von Sass und Less, können mithilfe von Gulp auch CSS Dateien zusammengefasst und minimiert werden. Davon wurde im Zuge der Diplomarbeit ebenfalls profitiert.
 
     \subsubsection{Twig}
 
-Um Variablen vom Controller ohne Umwege im Frontend aufrufen zu können empfahl es sich die Template Engine Twig zu verwenden, welche seit dem Jahr 2009 einen festen Bestandteil des Symfony-Frameworks ausmacht. Ein Template dient, wie die englische Bezeichnung bereits vermuten lässt, als Vorlage. Sobald die Web-App am Client angezeigt wird, werden Platzhalter der Templates durch Daten ersetzt. 
+Um Variablen vom Controller ohne Umwege im Frontend aufrufen zu können empfahl es sich die Template Engine {Twig\cite{twig}} zu verwenden, welche seit dem Jahr 2009 einen festen Bestandteil des Symfony-Frameworks ausmacht. Ein Template dient, wie die englische Bezeichnung bereits vermuten lässt, als Vorlage. Sobald die Web-App am Client angezeigt wird, werden Platzhalter der Templates durch Daten ersetzt. 
 Um erstellte Templates samt Variablen einzubinden, muss man nur folgende Codezeile angeben:
 	\lstset{language = php}
   	\begin{lstlisting}
@@ -404,11 +404,11 @@ Außerdem kann man mithilfe von Twig auf Pfade von Action Funktionen verweisen u
 
     \subsubsection{DOM}
 
-DOM(Document Object Model) ist ein vom W3-Konsortium standardiesiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchieschen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes bezeichnet man als Knoten beziehungsweise als „nodes“.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was irrsinnig praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces verwendet.
+{DOM\cite{dom}}(Document Object Model) ist ein vom W3-Konsortium standardiesiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchieschen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes bezeichnet man als Knoten beziehungsweise als „nodes“.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was irrsinnig praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces verwendet.
 
     \subsubsection{Ajax}
 
-Ajax(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte Ajax den regelmäßigen Aufruf der Seite, damit die  Daten auf den Screens am aktuellen Stand sein konnten.
+{Ajax\cite{ajax}}(Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte Ajax den regelmäßigen Aufruf der Seite, damit die  Daten auf den Screens am aktuellen Stand sein konnten.
 
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden MockUps angfertigt, welche dazu dienen festzulegen welche Buttons und Felder sich wo befinden.
