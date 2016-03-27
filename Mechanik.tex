@@ -9,12 +9,12 @@
 
 		Die Technologie des 3D-Druckens hat in den letzten Jahren immer mehr an Popularität gewonnen.
 		Mit Hilfe des 3D-Druckers kann man fast alle vorstellbaren Formen anfertigen.
-		Es gibt verschiedenste Verfahren wie man ein Werkstück anfertigen kann: Laser Sintern, Stereolithographie, Drucken mit flüssigen Materialien, etc.
+		Es gibt verschiedenste Verfahren wie man ein Werkstück anfertigen kann: Laser- Sintern, Stereolithographie, Drucken mit flüssigen Materialien, etc.
 		In diesem Projekt wird nur die Variante des Druckens mit flüssigem Material verwendet.
-		Diese ist kostengünstig \bzw genau genug für die Teile. Wie der Name schon sagt, wird Material in einem Druckkopf geschmolzen und dann Schicht für Schicht auf der Druckplatte aufgetragen.
+		Diese ist kostengünstig \bzw genau genug für Teile. Wie der Name schon sagt, wird Material in einem Druckkopf geschmolzen und dann Schicht für Schicht auf der Druckplatte aufgetragen.
 		Der Druckkopf fährt nur in X- und Y- Richtung, die Höhe wird mit die Druckplatte selbst eingestellt.
 
-		Meist werden Drucker über einen Maschinencode gesteuert, den sogenannten „G-Code“. In diesem Code werden die Punkte (Koordinaten) definiert, die der Extruder (Druckkopf) abfahren muss.
+		Meist werden Drucker über einen Maschinencode gesteuert, den sogenannten “G-Code“. In diesem Code werden die Punkte (Koordinaten) definiert, die der Extruder (Druckkopf) abfahren muss.
 		Die folgende Abbildung zeigt ein Beispiel eines Maschinencodes.
 
 			\begin{figure}[tbh]
@@ -42,16 +42,16 @@
 		Sehr genaue Teile kann man am besten in einem Drucker produzieren, der einen geschlossenen Druckraum \bzw eine beheizte Druckplatte hat.
 		Besonders an dünnen Platten merkt man das.
 		Wenn der Druckraum nach \bzw während des Druckvorgangs warm ist, kühlt das Werkstück an jeder Stelle fast gleich ab.
-		Ist der Druckraum offen, kühlt das Werkstück in der Mitte schneller ab, kühles Material zieht sich zusammen, daher biegt sich das Material am Rand auf.
+		Ist der Druckraum offen, kühlt das Werkstück außen schneller ab, kühles Material zieht sich zusammen, daher biegt sich das Material am Rand auf.
 
 		Manchmal ist es unumgeänglich, ein Teil so drucken zu lassen, dass es nicht komplett auf der Druckplatte aufliegt zum Beispiel ein Steg,
-		der „in der Luft“ liegt oder eine Bohrung im Werkstück, die horizontal gedruckt werden muss.
+		der “in der Luft“ liegt oder eine Bohrung im Werkstück, die horizontal gedruckt werden muss.
 		In solchen Fällen, druckt der Drucker unter diesem Steg Stützmaterial. Basierend auf diesem Stützmaterial, wird dann die gewünschte Form gedruckt.
 		Das Stützmaterial ist so strukturiert, dass man es leicht entfernen kann, ohne Rückstände zu hinterlassen.
 
 		\subsubsection{Von der Idee zur Anfertigung}
 
-		Die größte Hürde an der Realisierung einer Idee ist, eine CAD-Zeichnung zu erstellen. In 3D-CAD-Programmen wie Creo, SolidWorks, etc. kann man ein Teil konstruieren und dann als STL (Standard Triangulation Language) File abspeichern.
+		Die größte Hürde an der Realisierung einer Idee ist, eine CAD-Zeichnung zu erstellen. In 3D- CAD- Programmen wie Creo, SolidWorks, etc. kann man ein Teil konstruieren und dann als STL (Standard Triangulation Language) File abspeichern.
 		Dieses Format gibt dann nur mehr Informationen über die Oberfläche und Struktur an.
 		Die Sehnenhöhe gibt an, wie genau die Oberfläche gedruckt werden muss, die Winkelsteuerung gibt die Genauigkeit der Radien und Kanten des Teiles an (siehe Abbildung \ref{stl_file_optionen}).
 
@@ -67,7 +67,7 @@
 		Mit diesem File kann man anschließend in Programmen wie Slic3r den gewünschten Maschinencode generieren lassen.
 		In diesen Programmen gibt man die Lage des Werkstückes an \bzw in genaueren Einstellungen auch die Temperatur des Druckbettes, die Geschwindigkeiten und ähnliche Konfigurationen.
 
-		Am häufigsten haben die Drucker eine USB-Schnittstelle, \bzw verfügen über einen SD-Karten-Slot.
+		Am häufigsten haben die Drucker eine USB-Schnittstelle, \bzw verfügen über einen SD- Karten-Slot.
 		Der Maschinencode wird auf diesen Speichermedien gespeichert und einfach auf den Drucker überspielt.
 
 				\newpage
@@ -202,7 +202,7 @@
 	Die Stütze wird direkt an dem Motor angeschraubt, samt dem Arm des Hexacopters, da die Schrauben der Centerplate und des Motors zu kurz sind, werden passende Zylinderkopfschrauben verwendet.
 	Besonders bei dem Motor ist es wichtig, dass diese nicht zu lang sind, da sich der Motor sonst nicht mehr bewegen könnte.
 
-	Durch die Gewichtsbegrenzung \bzw die Form des Propellerschutzes, bot es sich an, diesen in einem 3D-Drucker anzufertigen.
+	Durch die Gewichtsbegrenzung \bzw die Form des Propellerschutzes, bot es sich an, diesen in einem 3D- Drucker anzufertigen.
 	Dazu wurde der Ring in zwei Hälften unterteilt, in eine Ober,- und Unterseite.
 	Der Ring hat einen ungefähren Innendurchmesser von 270 mm, das Druckbett eine maximale Abmessung von 270x210 mm.
 	Beide Hälften mussten noch in weitere, für den Drucker passende Teile unterteilt werden.
@@ -227,19 +227,19 @@
 	Die einzelnen Hälften  werden mit Sekundenkleber zusammengefügt, die Klebestellen wurden daher mit Nuten versehen,
 	um eine größere Klebefläche zu gewährleisten (siehe Abbildung \ref{propellerschutz_klebestellen}).
 	Die geklebten Hälften werden dann mit Durchgangsschrauben und Sechskantmuttern miteinander verschraubt (siehe Abbildung  \ref{propellerschutz_mitte_unterteilung}),
-	der kleine Absatz an der unteren Hälfte wird extra angefertigt da der Drucker kein Stützmaterial drucken müsste.
+	der kleine Absatz an der unteren Hälfte wird extra angefertigt damit der Drucker kein Stützmaterial drucken müsste.
 
 	\subsection{Herausforderungen und Lösungen}
 
 	Eines der größten Probleme war es, den Rotorschutz so zu konstruieren, dass er stabil, aber auch sehr leicht ist.
 	Im Falle eines Absturzes, würden hohe Kräfte auf den Propellerschutz wirken, daher muss dieser sehr robust gefertigt sein.
-	Der Vorteil von ABS \bzw 3D-Druckteilen ist, dass diese sehr elastisch sind, es ist daher nicht notwendig die Wand des Ringes zu dick zu konstruieren.
+	Der Vorteil von ABS \bzw 3D- Druckteilen ist, dass diese sehr elastisch sind, es ist daher nicht notwendig die Wand des Ringes zu dick zu konstruieren.
  	Aufgrund dieser Eigenschaft kann man einiges an Gewicht einsparen, das Problem besteht aber trotzdem noch darin, dass der Ring enorme Dimensionen hat.
 	Eine komplette Zusammenstellung (Ring, Stütze und Schrauben) hat ein Gewicht von etwa 90 g.
 	Auf sechs Propeller aufgerechnet mehr als ein halbes Kilogramm, der Hexacopter kann das zwar noch tragen, jedoch schränkt das die hardwaremäßige Erweiterung stark ein.
 
 	Eine weitere Herausforderung war es, den Ring anzufertigen. Wie schon in dem oberen Punkt erklärt wurde, musste der Ring in sieben Teile unterteilt werden.
-	Die Herausforderung lag darin, die Stücke so zu gliedern, dass sie im 3D-Drucker fertigbar sind und nicht zu viel Druckzeit auf sich nehmen.
+	Die Herausforderung lag darin, die Stücke so zu gliedern, dass sie im 3D- Drucker fertigbar sind und nicht zu viel Druckzeit auf sich nehmen.
 	Die Druckzeit wurde zwar schon optimiert durch die Gliederung, jedoch braucht es trotzdem noch etwa 14 Stunden alle Teile für einen Rotorschutz zu drucken.
 
 	\subsection{Implementierung}
@@ -263,7 +263,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Damit der Sensor genaue Werte messen kann, muss er fest auf dem Multicopter befestigt werden.
 	Um das gewährleisten zu können, musste eine Halterung entworfen werden, die den Ultraschallsensor optimal mit dem Hexacopter verbindet.
 	Die Anforderungen an die Halterung begrenzen sich auf ein geringes Gewicht \bzw eine einfache Montagemöglichkeit.
-	Der Sensor hat an jeder Ecke eine kleine Bohrung von 1.5 mm vorgesehen, das erschwert die Befestigungsmöglichkeit des Sensors an der Halterung, da es keine gängigen Schrauben in dieser Größe gibt.
+	Die Sensorplatine hat an jeder Ecke eine kleine Bohrung von 1.5 mm vorgesehen, das erschwert die Befestigungsmöglichkeit des Sensors an der Halterung, da es keine gängigen Schrauben in dieser Größe gibt.
 
 	\subsection{Umsetzung}
 
@@ -280,7 +280,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 	Das Gewicht spielte, analog zu den anderen Konstruktionen, eine wichtige Rolle.
 	Materialien wie Stahl oder Aluminium wären selbst bei diesen kleinen Teil (51x46x10 mm) zu schwer geworden.
-	Um das zu verhindern wurde diese Haltevorrichtung, wie auch der Propellerschutz, in einem 3D-Drucker angefertigt.
+	Um das zu verhindern wurde diese Haltevorrichtung, wie auch der Propellerschutz, in einem 3D- Drucker angefertigt.
 	Das Teil wiegt durch die Fertigungsmethode etwa 5.5 g, das entspricht etwa dem Gewicht einer 20-Cent-Münze.
 
 	Die Halterung wird an der unteren Centerplate befestigt, da wie schon erwähnt, der Sensor von dem Boden aus misst.
@@ -298,7 +298,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Die Nut ist so groß dimensioniert worden, dass sie leicht auf die Platte geschoben werden kann, sich aber nur minimal bewegen lässt.
 
 	Der zweite Teil der Halterung wurde so konstruiert, dass die vier Ecken der Sensorplatine gleichmäßig aufliegen können.
-	Auf dem Ultraschallsensor selbst befinden sich jedoch vier Anschlussstifte, die es nicht ermöglichen, die Platine direkt auf der „Gabel“ zu befestigen.
+	Auf dem Ultraschallsensor selbst befinden sich jedoch vier Anschlussstifte, die es nicht ermöglichen, die Platine direkt auf der “Gabel“ zu befestigen.
 	Um Kabel trotzdem problemlos anschließen zu können, wurde der Sensor mittels vier Stutzen 5 mm höher gelegt.
 
 	Geplant wurde, dass der Sensor an den Stutzen mit vier Blechschrauben befestigt wird, die Durchmesser der Bohrungen sind aber so klein, dass keine gängigen Schraubendurchmesser verwendet werden können.
@@ -308,7 +308,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 	\subsection{Herausforderungen und Lösungen}
 
-	Das Klammersystem hat die meiste Zeit auf sich genommen.
+	Das Klammersystem hat die meiste Zeit in Anspruch genommen.
 	Die erste Version der Halterung hat gezeigt, dass die angenommenen Dimensionen nicht umgesetzt werden konnten.
 	Das Problem lag darin, dass die Halterung nicht hochkant, sondern vertikal gedruckt werden musste.
 	Damit die Haltevorrichtung gedruckt werden kann, hat der Drucker Stützmaterial in die Nut gedruckt.
@@ -317,7 +317,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 	\subsection{Berechnungen}
 
-	Die Halterung des Ultraschallsensor wurde so dimensioniert, dass der Ultraschallsensor, \bzw im Falle eines Absturzes auch noch die auftretenden Kräfte getragen werden können.
+	Die Halterung des Ultraschallsensor wurde so dimensioniert, dass dieser und im Falle eines Absturzes auch noch die auftretenden Kräfte getragen werden können.
 	Es ist trotzdem wichtig zu wissen, wie viel die Halterung maximal tragen kann.
 	Sollte sich herausstellen, dass das Werkstück nicht richtig konstruiert wurde, müssen Maßnahmen getroffen werden um die Belastbarkeit zu steigern.
 
@@ -360,9 +360,10 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 			\label{auswahl_creo}
 			\end{figure}
 
-	Unter dem Menü „Verschiebung“ wird die gewünschte Lagerung definiert, man kann eine Fläche, einen Punkt oder eine Kante auswählen,
+	Unter dem Menü “Verschiebung“ wird die gewünschte Lagerung definiert, man kann eine Fläche, einen Punkt oder eine Kante auswählen,
 	je nachdem wie das Prüfwerkstück gelagert werden soll und in welche Richtung dieses verschiebbar ist.
-	In dem Menü „Kraft/Moment“ gibt man dann an welche Belastung, in welcher Fläche/Punkt/Kante auf das Werkstück wirkt. Der Auswahlpunkt „Analysen und Studien“ startet die Simulation.
+	In dem Menü “Kraft/Moment“ gibt man dann an welche Belastung, in welcher Fläche, Punkt oder Kante auf das Werkstück wirkt.
+	Der Auswahlpunkt “Analysen und Studien“ startet die Simulation.
 
 	Der Sensor wird so montiert, dass er die Halterung nach unten zieht, die Folge ist, dass sich die Halterung, grob angenommen,
 	mit zwei Kanten an der Platte verkeilt (siehe Abbildung \ref{lager_darstellung_1} und \ref{lager_darstellung_2}).
@@ -471,11 +472,11 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 	Abbildung \ref{spannungsverteilung_ohne_kerbe} zeigt die Spannungsverteilung in einem Zug,- \bzw Biegestab ohne Querschnittsbeeinflussungen.
 	Im Vergleich dazu wird in der Abbildung \ref{spannungsverteilung_mit_kerbe}, die Spannungsverteilung mit dem Einfluss einer Kerbe dargestellt.
-	Für weitere Erklärungen wird der erste Stab „A“ und der zweite „B“ genannt.
+	Für weitere Erklärungen wird der erste Stab “A“ und der zweite “B“ genannt.
 
-	Beansprucht man „A“ mit einer Kraft oder einem Moment, verteilt sich die Spannung gleichmäßig über das Werkstück.
-	Wird „B“, auf Zug oder Biegung beansprucht, kann man erkennen, dass sich die Spannung nur unter dem Kerbengrund verteilt.
-	Die Spannung „A“ wird in der Regel mit $\sigma_{n}$ bezeichnet und die maximale Spannung in „B“ mit $\sigma_{max}$.
+	Beansprucht man “A“ mit einer Kraft oder einem Moment, verteilt sich die Spannung gleichmäßig über das Werkstück.
+	Wird “B“, auf Zug oder Biegung beansprucht, kann man erkennen, dass sich die Spannung nur unter dem Kerbengrund verteilt.
+	Die Spannung “A“ wird in der Regel mit $\sigma_{n}$ bezeichnet und die maximale Spannung in “B“ mit $\sigma_{max}$.
 	Bildet man die Division zwischen $\sigma_{n}$ und $\sigma_{max}$, erhält man die Formzahl $\alpha_{k}$.
 	$\alpha_{k}$ kann niemals kleiner als 1 werden, das würde bedeuten, dass die Kerbe als Stärkung des Querschnitts gelten würde.
 
@@ -515,9 +516,9 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Hexacopter soll dem Gast sein gewünschtes Dessert bringen, der Weg zu dem Gast wird über Farbcodes am Boden vorgegeben.
 	Um dem Farbcode folgen zu können, wird eine PIXY CMU cam5 verwendet (genaueres siehe Kapitel Sensoren).
 
-	Die Halterung soll so konstruiert werden, dass die Kamera während des Fluges nicht wackelt, das verhindert ungenaue \bzw falsche Messwerte.
-	Besonders zu beachten ist, dass die PIXY Cam immer in die Flugrichtung ausgerichtet sein muss.
-	Der Flightcontroller gibt dem Hexacopter eine fixe Orientierung vor, würde die Kamera nicht in diese Richtung messen, könnte es zu Fehlmessung kommen und den Multicopter falsch navigieren.
+	Die Halterung soll so konstruiert werden, dass die Kamera während des Fluges nicht wackelt, damit keine ungenaue \bzw falsche Messwerte entstehen.
+	Zu beachten ist, dass die PIXY Cam immer in die Flugrichtung ausgerichtet sein muss.
+	Der Flightcontroller gibt dem Hexacopter eine fixe Orientierung vor, würde die Kamera nicht in diese Richtung messen, würde es zu Fehlmessung kommen und den Multicopter falsch navigieren.
 
 	\subsection{Umsetzung}
 
@@ -526,17 +527,17 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 			\begin{figure}[thb]
 				\begin{centering}
-					\subfigure[CAD-Konstruktion PIXY Cam-Halterung\label{halterung_pixy_creo}]{\includegraphics[width = 0.3\textwidth]{Bilder/halterung_pixy_creo}}
-					\subfigure[Gefertigte PIXY Cam-Halterung\label{halterung_pixy}]{\includegraphics[width = 0.4\textwidth]{Bilder/halterung_pixy}}
+					\subfigure[CAD-Konstruktion PIXY Cam- Halterung\label{halterung_pixy_creo}]{\includegraphics[width = 0.3\textwidth]{Bilder/halterung_pixy_creo}}
+					\subfigure[Gefertigte PIXY Cam- Halterung\label{halterung_pixy}]{\includegraphics[width = 0.4\textwidth]{Bilder/halterung_pixy}}
 				\par\end{centering}
 				\caption{Halterung PIXY Cam}
 				\label{Halterung_PIXY}
 			\end{figure}
 
-	Aus Gewichtsgründen wurde die Halterung in einem 3D-Drucker angefertigt.
+	Aus Gewichtsgründen wurde die Halterung in einem 3D- Drucker angefertigt.
 	Diese wiegt etwa 5.2 g, ist also etwas leichter als die Ultraschallsensorhalterung.
 	Um den Hexacopter, selbst bei so geringen Massen besser ausgleichen zu können, wurden beide Befestigungsmöglichkeiten gegenüber voneinander platziert.
-	Da die PIXY Cam-Halterung auf der unteren Centerplate platziert wird, konnte wieder das eigens entwickelte Klammersystem verwendet werden.
+	Da die PIXY Cam- Halterung auf der unteren Centerplate platziert wird, konnte wieder das eigens entwickelte Klammersystem verwendet werden.
 	Das garantiert auch in diesem Fall eine gute Passgenauigkeit, um den Sensor optimal zu fixieren.
 
 	Die Kamera hat an der unteren Leiste der Platine zwei Bohrungen vorgesehen, diese wurden genutzt um den Sensor mit der Halterung zu verbinden.
@@ -584,7 +585,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Ist jedoch keine Sicherung in der Firmware des Copters vorgesehen, fliegt dieser unkontrollierbar und stürzt früher oder später ab.
 
 	In diesem Projekt ist das Problem während eines Testfluges zur Testung der Höhenbestimmung durch den Ultraschallsensor aufgetreten.
-	Um dies zu verhindern, musste eine Hardwaremäßige Vorrichtung entwickelt werden, die im Falle eines unvorhergesehenen Funkabbruches den Hexacopter sicher auf den Boden sinken lässt.
+	Um dies zu verhindern, musste eine hardwaremäßige Vorrichtung entwickelt werden, die im Falle eines unvorhergesehenen Funkabbruches den Hexacopter sicher auf den Boden sinken lässt.
 
 	\subsection{Umsetzung}
 
@@ -602,11 +603,11 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Prinzipiell werden zwei Gleitbuchsen gegenüberliegend am Hexacopter montiert, der Copter wird dann auf zwei langen Stangen aufgefädelt und kann sich dadurch nur mehr nach oben und unten bewegen.
 	Das soll verhindern, dass der Hexacopter nicht nach links, rechts, vorne oder hinten abdriften kann.
 	Auf beiden Buchsen wird das spezielle Klammersystem verwendet, um sie einfach und fest montieren zu können.
-	Die Führungen wurden diesmal auf beide Centerplates befestigt, das bedeutet die obere Spange musste an die Centerplate angepasst werden.
+	Die Führungen wurden diesmal auf beide Centerplates befestigt, das bedeutet die obere Spange musste an die obere Centerplate angepasst werden.
 	Die Centerplates haben komplett verschiedene Ausnehmungen vorgesehen, das erschwerte die Anpassung des Klippsystems um ein Vielfaches.
 	Um diese Herausforderung trotzdem lösen zu können, wurden die Platten in Creo ausgemessen und dann auf die Halterungen übertragen.
 
-	Gefertigt wurden beide Teile in dem 3D-Drucker der Schule, da die Form der Gleitbuchsen händisch sehr aufwändig zu fertigen wäre, zudem wird sehr viel Gewicht durch diese Fertigungsmethode eingespart.
+	Gefertigt wurden beide Teile in dem 3D- Drucker der Schule, da die Form der Gleitbuchsen händisch sehr aufwändig zu fertigen wäre, zudem wird sehr viel Gewicht durch diese Fertigungsmethode eingespart.
 	Zu beachten war beim Konstruieren wiederum, dass der Drucker grobe Toleranzen hat und diese miteingerechnet werden mussten.
 
 	Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter leicht auf und ab fliegen kann, ohne zu stark zu verkanten.
@@ -634,27 +635,27 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	\subsection{Arbeiten im allgemeinen}
 
 	Die Vorgangsweise zur Umsetzung eines Teiles war meist die gleiche: Eine Idee, eine Konstruktion in Creo und die Fertigung im 3D-Drucker.
-	Im Laufe des Projektes hat sich herausgestellt, dass die Planung \bzw die Anhaltspunkte zur Konstruktion am wichtigsten waren.
+	Im Laufe des Projektes hat sich herausgestellt, dass die Planung und die Anhaltspunkte zur Konstruktion am wichtigsten waren.
 	Das hat sich beim Entwickeln des Rotorschutzes gezeigt, die Planung wurde vernachlässigt und in Creo blind angefangen zu zeichnen.
 	Die Folge war, dass dieses Ziel ins Stocken kam und immer mehr Zeit auf sich genommen hat.
 	Nachdem der Rotorschutz nahezu aussichtslos schien, begann ich mich mit den Halterungen für die Sensoren zu beschäftigen.
 	Nach dem Abschluss haben sich neue Ideen zur Optimierung des Propellerschutzes ergeben, welche dann auch zur entgültigen Fertigstellung führten.
 
-	\subsection{Arbeiten mit dem 3D-Drucker}
+	\subsection{Arbeiten mit dem 3D- Drucker}
 
-	Der 3D-Drucker der Schule ist eine faszinierende Maschine, es kann fast jedes Teil präzise angefertigt werden, egal welche Form es hat.
+	Der 3D- Drucker der Schule ist eine faszinierende Maschine, es kann fast jedes Teil präzise angefertigt werden, egal welche Form es hat.
 	Wir hatten das Glück diesen Drucker verwenden zu dürfen \bzw wurden sogar von EVO-tech mit Druckmaterial unterstützt.
 	Es war besonders komfortabel die Halerungen drucken zu dürfen, da uns der Drucker eine Menge abgenommen hat.
 	Das Klammersystem könnte nur sehr mühsam gefertigt werden, es müsste sogar eine andere Lösung gefunden werden.
 
-	Man muss sich an jede Maschine die man verwendet erst gewöhnen, man lernt wie man sie bedienen muss, ihre Probleme und Makeln.
+	Man muss sich an jede Maschine die man verwendet erst gewöhnen, man lernt wie man sie bedienen muss, mit all ihren Problemen.
 	Der Evolizer ist ein hoch entwickeltes Produkt, jedoch muss man auch hier die richtige Bedienung kennenlernen.
 	Es hat sich zum Beispiel herausgestellt, dass der Drucker erst eine gewisse Temperatur braucht, bis das Filament auf der Platte haftet, oder dass der Abstand zwischen der Platte und Düse sehr genau eingestellt gehört.
-	Durch solche Probleme lernt man, wie man mit der Maschine umgehen muss und wie man sie optimal bedient, diese Erfahrung kann im weiteren Berufsleben sehr essenziel sein.
+	Durch solche Probleme lernt man, wie man mit der Maschine umgehen muss und wie man sie optimal bedient, diese Erfahrung kann im weiteren Berufsleben sehr hilfreich sein.
 
 	\subsection{Zusammenfassung}
 
-	Zusammenfassend ist zu sagen, dass die Diplomarbeit eine sehr wichtige Erfahrung und Lehre ist.
+	Zusammenfassend ist zu sagen, dass die Diplomarbeit eine sehr wichtige Erfahrung und Lehre war.
 	Man lernt so viel Neues kennen, mit dem man gar nicht rechnen würde, zum Beispiel neue Programme zum optimierten und leichteren Arbeiten oder Managementmethoden die die Planung übersichtlicher und trotzdem detailliert gestalten.
 
  	In unserem Fall war es noch so, dass wir uns fast kaum kannten und dennoch erstaunliche Erfolge feiern konnten,
