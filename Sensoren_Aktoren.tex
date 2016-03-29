@@ -254,7 +254,7 @@ void SendDebugInfo(unsigned int debug_info) {
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
   Dem Empfängermodul, einem Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
     \begin{centering}
       \includegraphics[width = \textwidth]{Bilder/bor_copter_funk}
     \par\end{centering}
@@ -279,7 +279,7 @@ void SendDebugInfo(unsigned int debug_info) {
 
   Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die roten unten.
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
         \includegraphics[width = \textwidth]{Bilder/bor_copter_konfig}
       \par\end{centering}
@@ -330,7 +330,13 @@ void SendDebugInfo(unsigned int debug_info) {
         \item \textbf{U: 2/3-position switch channel} ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. \cite{positionswitch}
       \end{itemize}
 
-    % BILD Fernsteuerung%
+    \begin{figure}[H]
+      \begin{centering}
+        \includegraphics[width = \textwidth]{Bilder/bor_fernbedienung}
+      \par\end{centering}
+      \caption{Fernsteuerung mit den Steuerbefehlen}
+      \label{Fernsteuerung}
+    \end{figure}
 
   \subsection{Umsetzung}
   Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.
