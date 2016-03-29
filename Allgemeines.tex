@@ -11,7 +11,7 @@ ein konkreteres Fomulieren der Ziele und zum anderen eine einheitliche Vision in
 Der innovative Aspekt des Projekts wird insofern abgedeckt, dass die Entwicklung des Systems so durchgeführt wird,
 dass es auch in anderwärtigen Bereichen der Logistik, wie beispielsweise der Lagerverwaltung eingesetzt werden kann.
 
-Das System setzt sich aus den drei Komponenten
+Das System setzt sich aus den folgenden drei Komponenten zusammen:
 
 \begin{itemize}
   \item Multicopter
@@ -19,13 +19,21 @@ Das System setzt sich aus den drei Komponenten
   \item Digitale Speisekarte
 \end{itemize}
 
-zusammen.
+\begin{figure}[H]
+  \begin{centering}
+  \includegraphics[width = 0.9\textwidth]{Bilder/systemblockbild.jpg}
+  \par\end{centering}
+  \caption{Systemblockbild}
+  \label{Systemblockbild}
+\end{figure}
 
-Der Multicopter ist die zentrale Komponente des Projekts. Sie ist für den selbstständigen Transport von Objekten zuständig,
-und muss somit flugfähig, und im Stande Unfälle zu verhindern sein.
+Der Multicopter ist die zentrale Komponente des Projekts. Er ist für den selbstständigen Transport von Objekten zuständig,
+und muss somit flugfähig, und im Stande sein Unfälle zu verhindern. Sensoren, die mittels eigens angefertigter Halterungen
+am Multicopter befestigt sind, kommunizieren mit der Firmware.
 
 Die Firmware regelt alle logischen Prozesse des Systems. Sowohl die Steuerung des Multicopters, als auch der
-Austausch von Daten fällt unter diese Kategorie.
+Austausch von Daten fällt unter diese Kategorie. Befehle erhält sie unter anderem von der Speisekarte, mit der sie über
+einen Server, beziehungsweise einer weiteren Anwendung kommuniziert.
 
 Die digitale Speisekarte ist indirekt die externe Steuereinheit des Multicopters, und zugleich die Komponente,
 die das System für den Einsatz in der Gastronomie auszeichnet. Sie automatisiert Vorgänge eines gastronomischen
@@ -82,6 +90,41 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
       \item \textbf{iTray}
       iTray, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
       Die Drohnen werden über ein Remote-Wi-Fi-System gesteuert.
+
+  \end{itemize}
+
+<<<<<<< HEAD
+  \subsection*{Multicopter Projekte}
+  \begin{itemize}
+      \item \textbf{ETH Flying Machine Arena}
+
+      Die {"Flying Machine Arena"\cite{eth}} ist ein portables System, welches einen virtuellen Raum mit den Maßen 10x10x10 Meter aufbaut, in welchem
+      Objekte mit hoher Präzision erkannt und verfolgt werden können. Das System ist für Experimente mit autonom fliegenden Hexacoptern
+      gedacht, die sich in diesem virtuellen Raum über drahtlose Kommunikation orientieren können.
+
+      \item \textbf{Lily}
+
+      {Lily\cite{lily}} ist eine selbstständig fliegende Drohne mit eingebauter Kamera. Ihr Zweck ist, dass sie den Benutzer auf seinem Weg verfolgt.
+      Sie wird dafür einfach in die Luft geworfen, worauf sie sich stabilisiert. Danach folgt sie dem Benutzer in einem festgelegten Abstand, solange dieser ein, für Lily
+      vorgesehenes Armband trägt und filmt mit einer HD Kamera alles mit.
+
+      \item \textbf{DHL Paketcopter}
+
+      Der {DHL Paketcopter\cite{dhl}} ist ein Innovationsprojekt der DHL, bei dem ein Paket per Drohne zugestellt wird. Die Drohne ist in der Lage große Strecken zu fliegen,
+      und somit auch zu schwer erreichbaren Orten zu gelangen, wenn Menschen dazu keine Möglichkeit mehr haben. Auf der Insel Juist wird sie beispielsweise als
+      Medikamentenversorger verwendet, da am Wochenende keine Lieferungen per Schiff auf die Insel zugestellt werden.
+
+      \item \textbf{Ambulance Drone}
+
+      Die {Ambulance Drohne\cite{ambulancedrone}} ist ein Projekt, welches auf der TU Delft entwickelt wird. Das Besondere an dieser Drohne ist, dass sie einen eingebauten Defibrillator hat, welcher
+      sich per Fernverbindung von einem Rettungshelfer bedienen lässt, obwohl dieser nicht anwesend ist. Die Ambulance Drohne fliegt mit einer Höchstgeschwindigkeit von bis zu
+      100 Stundenkilometer und kann somit, in einem Notfall, schnell die Unfallstelle erreichen.
+
+      \item \textbf{Gimball}
+
+      {Gimball\cite{gimball}} ist der weltweit erste fliegende Roboter, der immun gegen Kollistionen ist. Seine Konstruktion besteht aus einem kugelförmigen Gerüst, in dem die Drohne
+      aufgehängt ist, und sich anhand von Gelenken trotzdem frei darin bewegen kann. Die Kugel fängt Stöße ab, wodurch die Drohne ungehindert an schwer erreichbare
+      Orte gelangt.
 
   \end{itemize}
 
