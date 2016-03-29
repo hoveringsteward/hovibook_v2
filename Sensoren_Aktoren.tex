@@ -25,33 +25,6 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
 \end{figure}
 
 \needspace{2cm}
-  \subsection{Technische Planung}
-  % in Positionierung.tex ANFANG
-    \subsubsection{Mögliche Verfahren zur Positionserkennung}
-    Hier muss grundsätzlich zwischen zwei Messmethoden unterschieden werden:
-    \begin{itemize}
-      \item \textbf{Absolute Positionsmessung}\\
-      Hier wird die Position von einem gleichbleibenden Punkt aus gemessen. Dabei ist ein konstanter Referenzpunkt wichtig.
-      Verändert sich dieser oder kann die Distanz nicht genau gemessen werden ist die Messung unbrauchbar.
-
-      Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an,
-      diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung.
-      Für die Triangulation können die unterschiedlichsten Signale verwendet werden, am gängigsten sind jedoch jene die mit elektromagnetischen Wellen arbeiten,
-      \zB WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten.
-
-      Bei einer Messung derart schneller Signale muss ein hoher Aufwand betrieben werden um eine Messgenauigkeit von einigen cm zu erzielen.
-      Eine weitere Herausforderung sind Mauern \bzw Hindernisse. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
-      \item \textbf{Relative Positionsmessung}\\
-      Hier wird die Position von einem wechselnden Punkt aus gemessen. Um hier eine Positionierung im Raum ermöglichen zu können,
-      ist es erforderlich immer zu einem bestimmten Punkt zu messen. Ein Wechsel dieses Punktes ist jedoch möglich,
-      deshalb muss auch die Position der Punkte im Raum bekannt sein. Ist die Zielposition im Raum bekannt kann zu dieser hin navigiert werden.
-      Auch hier muss wie bei einer absoluten Positionsmessung auf Hindernisse geachtet werden.
-
-      Die zweite Alternative ist, dass eine bestimmte Route bekannt ist und sich das zu positionierende Objekt nur in einem bestimmten Bereich um diese Route bewegt.
-      Wird bei der Positionierung der Route bereits auf Hindernisse geachtet müssen diese im Anschluss nicht mehr zwingend beachtet werden.
-    \end{itemize}
-
-  % in Positionierung.tex ENDE
 
   \subsection{Umsetzung}
   Durch die PIXY CMUcam5 lässt sich eine relative Positionsmessung vergleichsweise einfach verwirklichen.
