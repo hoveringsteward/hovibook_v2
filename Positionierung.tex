@@ -9,7 +9,7 @@
     Um eine Positionsbestimmung durchzuführen, wird ein Trackingsystem benötigt.
     Es gibt mehrere Verfahren, um ein Objekt zu tracken: \cite{PositionAllg}
     \begin{itemize}
-    \item Mechanische Systeme, umgesetzt mit einer physikalischen Verbindung
+    \item Mechanische Systeme, umgesetzt mit einer mechanischen Verbindung
     \item Elektromagnetische Tracking, umgesetzt mit elektromagnetischen Wellen
     \item Akustisches Tracking, umgesetzt mit akustischen Wellen
     \item Optisches Tracking, umgesetzt mit elektromagnetischen Wellen
@@ -26,8 +26,8 @@
     Ein Positionierungssystem kann verschiedene Arten von Informationsdaten aufweisen. \cite{pos_eigenschaften}
 
     \subsection*{Physische und symbolische Positionierung}
-    Die physische Positionierung ist eine exakte Position, die zum Beispiel in einem Koordination, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.\\
-    Symbolische Positionierung ist die abstrakte Beschreibung eines Ortes, sie wird sprachlich beschrieben, beispielsweise Küche, Garten, Dachboden.\\
+    Die \textbf{physische Positionierung} ist eine exakte Position, die zum Beispiel in einem Koordinatensystem, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.\\
+    \textbf{Symbolische Positionierung} ist die abstrakte Beschreibung eines Ortes, sie wird sprachlich beschrieben, beispielsweise Küche, Garten, Dachboden.\\
     Eine physikalische Position kann auch symbolisch beschrieben werden.
 
     \subsection*{Relative und absolute Positionierung}
@@ -37,13 +37,12 @@
     Hier wird die Position von einem gleichbleibenden Bezugspunkt aus gemessen. Dabei ist ein konstanter Referenzpunkt wichtig.
     Verändert sich dieser oder kann die Distanz nicht genau gemessen werden ist die Messung unbrauchbar.
 
-    Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an,
-    diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung.
+    Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an, diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung.
     Für die Triangulation können die unterschiedlichsten Signale verwendet werden, am gängigsten sind jedoch jene die mit elektromagnetischen Wellen arbeiten,
     \zB WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten.
 
     Bei einer Messung derart schneller Signale muss ein hoher Aufwand betrieben werden um eine Messgenauigkeit von einigen cm zu erzielen.
-    Eine weitere Herausforderung sind Mauern \bzw Hindernisse. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
+    Eine weitere Herausforderung sind Hindernisse wie Mauern. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
 
     \textbf{Relative Positionsmessung}\\
     Hier wird die Position von einem wechselnden Punkt aus gemessen. Um hier eine Positionierung im Raum ermöglichen zu können,
@@ -52,13 +51,13 @@
     Auch hier muss wie bei einer absoluten Positionsmessung auf Hindernisse geachtet werden.
 
     Die zweite Möglichkeit ist, dass eine bestimmte Route bekannt ist und sich das zu positionierende Objekt nur in einem bestimmten Bereich um diese Route bewegt.
-    Wird bei der Positionierung der Route bereits auf Hindernisse geachtet müssen diese im Anschluss nicht mehr zwingend beachtet werden.
+    Wird bei der Positionierung der Route bereits auf Hindernisse geachtetm müssen diese im Anschluss nicht mehr zwingend beachtet werden.
 
     \subsection*{Selbst- und fernortende Lokalisierungstechniken}
     Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
     Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
     Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
-    % BILD %
+    
 
     \subsection*{Genauigkeit}
     Die Genauigkeit gibt an, wie sehr sich gemessene und tatsächliche Position unterscheiden.
@@ -82,15 +81,15 @@
     Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
     Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung.
     Um schlussendlich die Position zu bestimmen, werden drei Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die drei Entfernungen kann mittels Trilateration die Position berechnet werden.
-    \\ % BILD %
+    
     \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung.
     Die mobile Station sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
-    \\ % BILD %
+    
     \subsection*{Angulation}
     Bei der Angulation wird die Position durch die Bestimmung von Winkeln ermittelt. \\
     \textbf{AOA} (Angel of Arrival) wird mittels Berechnung des Einfallswinkels auf ein Antennenarray umgesetzt. Bei dieser Technik werden mindestens 2 Basisstationen benötigt. Mit den Einfallswinkeln der empfangenen Signale kann die Position durch Triangulation festgestellt werden. Die Winkelbeziehungen eines Dreiecks werden dafür verwendet.
     Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware.
-    \\ % BILD %
+    
     \subsection*{Scene Analysis}
     Bei der Szenenanalyse werden Umgebungsparameter erfasst und ausgewertet.\\
     Für die Technik \textbf{Fingerprint} werden Signalstärken gemessen und als Fingerprint in einer Datenbank abgespeichert. Die Position wird dann durch den Vergleich von Fingerprints mit der Signalstärke, die bei der aktuellen Position gemessen wird, herausgefunden.
@@ -98,7 +97,6 @@
     Für das Verfahren Proximity wird die physische Nähe genutzt.
     Hier gibt es die Technik COO (cell of origin). \\
     Bei \textbf{COO} gibt es Basisstationen, mit bekannter Position. Die mobile Station verbindet sich mit der nächstgelegenen Basisistation. Wenn die mobile Station von mehreren Basisstationen erkannt wird, wird die Signalstärke beachtet. Diese Methode ist sehr ungenau.
-    \\ % BILD %
 
     \subsection{Elektromagnetische Technologien}
     \subsection*{GPS (Global Positioning System)}
@@ -124,7 +122,7 @@
     Für einen Menschen ist es einfach, Objekte auf einem Bild zu erkennen, für Computer besteht ein Bild jedoch aus Daten, die die Graustufe beziehungsweise Farbe jedes einzelnen Pixels angeben, was die Möglichkeit des "Bildverstehens" erschwert.
     Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen. \cite{machinevision} \cite{machinevision2}
 
-    Es wird zwischen Objekt Erkennung (detection) und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, dass in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
+    Es wird zwischen Objekt Erkennung (detection) und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, das in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
     \cite{obj_det_trak}
 
     \subsubsection{Bildverarbeitung}
@@ -142,8 +140,8 @@
     \subsection*{Pixelorienterte Segmentierung}
     Pixelorientierte Segmentierung wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte \cite{Seg_punkt}
 
-    \textbf{Treshholding}\\
-    Beim Treshholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelnen Pixel angewendet wird, gehört es zur pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
+    \textbf{Thresholding}\\
+    Beim Thresholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelnen Pixel angewendet wird, gehört es zur pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
     \subsection*{Modellbasierte Segmentierung}
     Modelle, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. \cite{Seg_modell}
@@ -175,7 +173,7 @@
     Das Verfahren besteht grundsätzlich aus 3 Schritten:
     \begin{itemize}
         \item Um den Itensitätsgradienten zu erzeugen, wird eine Maske angewendet.
-        \item Nennenswerte Gradienten werden mittels Trashholding selektiert.
+        \item Nennenswerte Gradienten werden mittels Thresholding selektiert.
         \item Durch verschiedene Operationen und Algorithmen entstehen, mittels errechneter Daten, Kanten.
     \end{itemize}
     Die Verfahren können in zwei Kategorien eingeteilt werden.
@@ -196,7 +194,7 @@
     Die Pixy CMUcam5 ist ein optisches Trackingsystem. Das Kameramodul ist in der Lage, Objekte in 7 verschiedenen Farben zu scannen, diese zu speichern und wiederzuerkennen. Daten über die Höhe und die Breite, sowie die x- und y-Position des getrackten Objektes innerhalb des Frames werden ausgegeben. Bei sogenannten Colorcodes, die sich aus zwei oder mehrfarbigen Objekten ergeben, kann die Rotation des Objektes ebenfalls ermittelt werden.
 
     \textbf{CMVision}\\
-    Color Machine Vision, ist ähnlich dem Algorithmus der Pixy. Es ist ein echtzeit System, das mit dem Farbmodell YUV umgesetzt wird. Das Y steht für die Lichstärke pro Fläche, U und V geben den Farbanteil an. Der Vorgang beginnt mit einer Farbraumtransformation. Als Segmentierungsmethode wird Treshholding angewendet. Regionen werden verbunden und entnommen. Am Ende werden die Regionenzusammengefasst. \cite{Pixy} \cite{Pixy_Verfahren} \cite{Pixy_Verfahren2}
+    Color Machine Vision, ist ähnlich dem Algorithmus der Pixy. Es ist ein echtzeit System, das mit dem Farbmodell YUV umgesetzt wird. Das Y steht für die Lichstärke pro Fläche, U und V geben den Farbanteil an. Der Vorgang beginnt mit einer Farbraumtransformation. Als Segmentierungsmethode wird Thresholding angewendet. Regionen werden verbunden und entnommen. Am Ende werden die Regionenzusammengefasst. \cite{Pixy} \cite{Pixy_Verfahren} \cite{Pixy_Verfahren2}
 
     \subsection*{Vicon}
     Vicon ist ein System, das mit dem Trackingverfahren Motion Capture (Bewegungserfassung) arbeitet.
@@ -232,8 +230,6 @@
       Beim Lösen der Gleichung erhält man 2 Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen 3er verschmolzener Kugeln 2 Schnittpunkte haben.
       Wenn die Pseudolites am Boden angebracht werden, liegt eine der beiden Lösungen oberhalb und die 2. Lösung unterhalb des Bodens, womit man einfacherweise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
 
-      % NAVIBILD MIT PSEUDOLITES
-
     \subsection{Optisches Tracking: Fernortend}
     Aufgrund der Komplexität signalbasierter Verfahren, die ihre Position mittels elektromagnetischer Wellen bestimmen, werden hier Konzepte, die durch eine oder mehrere Kameras umgesetzt werden können, näher beschrieben. Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen.
 
@@ -241,8 +237,6 @@
   Bei einem Raum, in dem Kameras verteilt sind, spricht man von einem fernortenden Positionierungssystem.
   Sowohl Tische und Kreuzungen als auch der Hexacopter sind mit Markern versehen. Die einzelnen Komponenten werden vom Kamerasystem erfasst und anschließend wird eine Karte erstellt. Diese Karte besitzt, wie ein Koordinatensystem Längen und Breitengrade.
   Um den Weg vom Stützpunkt zum gewünschten Tisch zu finden, muss der Hexacopter eine Route wählen. Diese bestimmt er mithilfe der Daten, wodurch er sich selbst, Kreuzungen und Tische findet. Da das Trackingsystem die Position des Hexacopters trackt, kann kontrolliert werden, ob er sich auf dem richtigen Weg befindet. Die Position der einzelnen Komponenten kann, wie bei signalbasierten Verfahren, mittels Triangulation berechnet werden.
-
-  % NAVIBILD MIT KAMERAS IM RAUM
 
   \subsection{Optisches Tracking: Selbstortend}
   Selbstortende, optische Positionierungssysteme sind vergleichsweise kostengünstig. Der Anschaffungspreis beschränkt sich auf eine Kamera, einen Mikrocontroller und Farbobjekte. Die Auswertung erfolgt am Hexacopter, weswegen kein extra Netzwerk benötigt wird.
@@ -252,21 +246,31 @@
   Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.
   Vorteile dieser Version ist, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
 
-  % NAVI BILD MIT LINIEN
-
   \subsection*{Ein Farbcode pro Wegabschnitt}
   Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben aufweisen, zu scannen.
   Das Kamerasystem besitzt die Fähigkeit 7 unterschiedliche Farben zu erkennen, diese können vom Administrator selbst festgelegt werden. Da die Lichtverhältnisse sich nicht stark ändern sollten, ist es optimal, die Farben in dem Raum, in dem das System verwendet wird, abzuspeichern.
 
   Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand. Hierbei kann es aber zu Komlikationen führen. Der Hexacopter erkennt beispielsweise einen der bereits passierten Farbcodes und bezieht die Position auf diesen. Die relative Position beschränkt sich bei dieser Variante auf den Wegabschnitt.
 
-  % NAVI BILD TEIL 1
+    \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = 0.5\textwidth]{Bilder/bor_var1}
+      \par\end{centering}
+      \caption{Variante: Ein Farbcode pro Wegabschnitt}
+      \label{Variante1}
+    \end{figure}
 
   \subsection*{Farbcodes variieren}
   Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt, der unterschied zum vorigen System liegt in der Variation der Farbcodes. Es dürfen keine gleichen Farbcodes nebeneinander liegen, da die relative Position auf diese Weise besser bestimmt werden kann. Es besteht keine Verwechslungsgefahr mit einem anderen Farbcode. Außerdem kann durch die Anzahl der Farbcodes jeder Farbcode genau zugeordnet werden, der letzte Farbcode kann so einfach erkannt werden und das erleichtert den Landevorgang.
   Ein Nachteil des Systems ist der Mehraufwand im jeweiligen Restaurant, da die Farbcodes in einer bestimmten Reihenfolge aufgelegt werden.
 
-  % NAVI BILD TEIL 2
+      \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = 0.5\textwidth]{Bilder/bor_var2}
+      \par\end{centering}
+      \caption{Variante: Farbcodes variieren}
+      \label{Variante2}
+    \end{figure}
 
   \subsection*{Tracking mittels Infrarot}
   Um das System auch ohne entsprechende Lichtverhältnisse durchführen zu können, besteht die Möglichkeit einen Infrarotfilter an der Pixycam anzubringen und die Wegpunkte mittels Infrarotlampen zu makieren. Das System kann dadurch auch im Dunkeln angewendet werden, aktive Marker benötigen dafür einen Stromanschluss, da sie infrarotes Licht an den Empfänger senden. Bei passiven Markern, werden Infrarotlampen am Hexacopter benötigt, um das Licht reflektierender Marker zu empfangen.

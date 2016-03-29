@@ -8,7 +8,13 @@
   \subsection{Konvention}
   In der Arbeit wird folgende Konvention festgelegt. Die z-Achse ist die Höhe, die y-Achse ist vorwärts und rückwärts und die x-Achse ist seitwärts.
 
-  % BILD %
+  \begin{figure}[tbh]
+    \begin{centering}
+      \includegraphics[width = 0.5\textwidth]{Bilder/bor_konvention}
+    \par\end{centering}
+    \caption{Konvention}
+    \label{Konvention}
+  \end{figure}
 
   \subsection{Tischplan}
   Das Konzept Tischplan beschreibt den Aufbau des Restaurants, also welche Komponenten benötigt werden und wo diese platziert sind.
@@ -27,7 +33,13 @@
   Auf einem Tisch befindet sich, wie in der Küche, eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses erhält jeder Tisch seine eigene ID und die dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden.
   Die Tische können wie in jedem normalen Restaurant beliebig platziert werden, da der Hexacopter durch die Rotation der Farbobjekte auch Kurven fliegen kann. Dabei darf ein Teil des Tisches nicht besetzt sein, da die Drohne nicht über Menschen fliegen soll.
 
-  % Bild vom Ablauf %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{figure}[tbh]
+  \begin{centering}
+    \includegraphics[width = \textwidth]{Bilder/bor_ablaufbild}
+  \par\end{centering}
+  \caption{Symbolische Positionierung des Tischplans}
+  \label{Ultraschallsensor}
+\end{figure}
 
   \subsection{Flussdiagramme}
   Für einen besseren Überblick über die einzelnen Programme und deren geforderten Funktionen wurden einzelne Flussdiagramme des gesamten Prozesses erstellt.
@@ -281,24 +293,24 @@ Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von 
 %\centering
 \begin{longtable}{|p{0.4cm}|p{3.0cm}|p{3.1cm}|p{3.1cm}|p{0.4cm}|p{0.4cm}|p{0.4cm}|p{0.8cm}|}
 
-\hline \#   & Bezeichnung                                                                                               & Fehler                                                                                                                & Beschreibung                                                                                                                    & A   & B   & E   & RPZ \\
+\hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  1          & Mensch in unmittelbarer Nähe                                                                              & Mensch wird verletzt, da Hexacopter nicht ausweicht                                                                   & Eine Person steht auf dem Weg und wird vom Hexacopter als Hindernis erkannt                                                     & 5   & 10  & 10  & 500 \\
-\hline -    & Vermeidung                                                                                                & Maßnahme nach Eintritt                                                                                                & Mögliche Softwarelösung                                                                                                         & A   & B   & E   & RPZ \\
+\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  -          & Wege absperren, Menschen darauf hinweisen, sich nicht in unmittelbarer Nähe des Hexacopters aufzuhalten.  & Hexacopter landet auf der Stelle um die Sicherheit der Person zu gewährleisten.                                       & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Menschen erkannt, er landet daraufhin.             & 2   & 10  & 5   & 100 \\\hline
 
-\hline \#   & Bezeichnung                                                                                               & Fehler                                                                                                                & Beschreibung                                                                                                                    & A   & B   & E   & RPZ \\
+\hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  2          & Ein unbewegliches Hindernis befindet sich in unmittelbarer Nähe.                                          & Hexacopter fliegt gegen ein unbewegliches Hindernis und stürzt ab.                                                    & Eine Wand oder ein ähnliches unbewegliches Hindernis befindet sich in unmittelbarer Nähe.                                       & 5   & 7   & 9   & 315 \\
-\hline -    & Vermeidung                                                                                                & Maßnahme nach Eintritt                                                                                                & Mögliche Softwarelösung                                                                                                         & A   & B   & E   & RPZ \\
+\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  -          & Farbcodes werden nicht in der Nähe von unbeweglichen Hindernissen platziert.                              & Der Hexacopter landet, da er nicht zwischen Mensch, beweglichen und unbeweglichen Hindernissen unterscheiden kann.    & Der Hexacopter darf nur über Farbcodes fliegen, dadurch wird vermieden, dass der Hexacopter in die Nähe dieser Objekte kommt.   & 1   & 7   & 5   & 35  \\\hline
 
-\hline \#   & Bezeichnung                                                                                               & Fehler                                                                                                                & Beschreibung                                                                                                                    & A   & B   & E   & RPZ \\
+\hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  3          & Bewegliches Hindernis wird erkannt                                                                        & Hexacopter fliegt gegen ein Hindernis und stürzt ab                                                                   & Eine Hindernis wird erkannt.                                                                                                    & 3   & 6   & 10  & 180 \\
-\hline -    & Vermeidung                                                                                                & Maßnahme nach Eintritt                                                                                                & Mögliche Softwarelösung                                                                                                         & A   & B   & E   & RPZ \\
+\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & A   & B   & E   & RPZ \\
  -          & Bewegliche Hindernisse werden wenn möglich aus dem Weg geräumt.                                           & Hexacopter probiert dem Hindernis auszuweichen und seinen Weg weiter zu meistern.                                     & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Hindernisse erkannt, er landet daraufhin           & 2   & 6   & 5   & 60  \\\hline
 
-\hline \#   & Bezeichnung                                                                                               & Fehler                                                                                                                & Beschreibung                                                                                                                    & A   & B   & E   & RPZ \\
+\hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  4          & Hände in der Nähe von den Propellern                                                                      & Person hat seine Hände beim fliegenden Hexacopter und verletzt sich                                                   & Eine Person greift in die Propeller.                                                                                            & 7   & 10  & 10  & 700 \\
-\hline -    & Vermeidung                                                                                                & Maßnahme nach Eintritt                                                                                                & Mögliche Softwarelösung                                                                                                         & A   & B   & E   & RPZ \\
+\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  -          & Hexacopter wartet lang genug, dass man den Cupcake runternehmen kann. Propellerschutz ist angebracht.     & Hexacopter gibt über Display / LED / Ton aus, dass er wegfliegt.                                                      & Display / LED / Ton werden programmiert um Menschen beim Start zu warnen.                                                       & 1   & 10  & 5   & 50  \\\hline
  \caption{Fehlt noch}
 \end{longtable}
@@ -341,6 +353,7 @@ Das Konzept Systemausfall beschreibt die Maßnahmen, wenn der Hexacopter seine A
 \hline Ausfall von Sensoren (Pixy / Ultraschall / …) & Fehlermeldung, Manueller Flug\\
 \hline Hackerangriff & Durch den WLAN Standard (wpa2) ist die Übertragung sicher genug\\
 \hline Funkstörung bei manuellem Flug & Pilot muss verstehen, in welchem Frequenzband die Fernsteuerung arbeitet, Störquellen vermeiden und abschalten (sonstiges WLAN, Bluetooth, andere Fernsteuerungen im Umfeld) -> saubere Vorbereitung - Analyse von möglichen Störquellen\\
+\hline
 \end{tabular}
 \caption{Fehlt noch}
 \end{table}

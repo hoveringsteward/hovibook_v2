@@ -325,7 +325,13 @@ void SendDebugInfo(unsigned int debug_info) {
         \item \textbf{U: 2/3-position switch channel} ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. \cite{positionswitch}
       \end{itemize}
 
-    % BILD Fernsteuerung%
+    \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = \textwidth]{Bilder/bor_fernbedienung}
+      \par\end{centering}
+      \caption{Fernsteuerung mit den Steuerbefehlen}
+      \label{Fernsteuerung}
+    \end{figure}
 
   \subsection{Umsetzung}
   Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.
