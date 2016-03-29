@@ -10,7 +10,7 @@
     Es gibt mehrere Verfahren, um ein Objekt zu tracken: \cite{PositionAllg}
     \begin{itemize}
     \item Mechanische Systeme, umgesetzt mit einer mechanischen Verbindung
-    \item Elektromagnetische Tracking, umgesetzt mit elektromagnetischen Wellen
+    \item Elektromagnetisches Tracking, umgesetzt mit elektromagnetischen Wellen
     \item Akustisches Tracking, umgesetzt mit akustischen Wellen
     \item Optisches Tracking, umgesetzt mit elektromagnetischen Wellen
     \item Inertial Tracking, umgesetzt mit Beschleunigungsmessern und Gyroskopen
@@ -90,7 +90,7 @@
     Bei der Lateration wird die Position mit Hilfe der Entfernungsmessung bestimmt.
     Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
     Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung.
-    Um schlussendlich die Position zu bestimmen, werden drei Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die drei Entfernungen kann mittels Trilateration die Position berechnet werden.
+    Um schlussendlich die Position zu bestimmen, werden drei Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die drei Entfernungen kann mittels Trilateration die Position berechnet werden. Meist ist eine 4.Basisstation nötig um die Synchronisation der Uhr der mobilen Station mit jener der Basisstationen zu ermöglichen.
 
     \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung.
     Die mobile Station sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
@@ -219,7 +219,7 @@
     \subsection{Elektromagnetisches Tracking: Fernortend}
 
       \subsection*{Tracking mittels Time of Arival}
-      Mithilfe der Laufzeitmessung können Objekte, die mit einem Empfänger ausgestattet sind, geortet werden. Dafür wird die Zeit die ein Signal vom Sender zum Empfänger benötigt gemessen. Das Signal ist eine elektromagnetische Welle, die sich im Vakuum in Lichtgeschwindigkeit ausbreitet. Die gemessene Laufzeit wird mit der Lichtgeschwindigkeit multipliziert, damit kann die Entfernung berechnet werden.
+      Mithilfe der Laufzeitmessung können Objekte, die mit einem Empfänger ausgestattet sind, geortet werden. Dafür wird die Zeit die ein Signal vom Sender zum Empfänger benötigt gemessen. Das Signal ist eine elektromagnetische Welle, die sich im Vakuum in Lichtgeschwindigkeit ausbreitet. Die gemessene Laufzeit wird mit der Lichtgeschwindigkeit multipliziert, damit kann die Entfernung berechnet werden. Für diese Variante bennötigt man eine sehr hohe Zeit-Messgenauigkeit.
 
       Bei diesem Konzept, soll durch die Benützung sogenannter Pseudolites (Gefälschte Sateliten) eine Art lokales GPS erschaffen werden.
 
