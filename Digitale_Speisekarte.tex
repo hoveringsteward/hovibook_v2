@@ -177,30 +177,10 @@ Um eine ID als Primary Key zu definieren wurde folgende Annotation verwendet:
   	\end{lstlisting}
 Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
 Bei einem Eintrag mit Kommazahlen musste der Spaltentyp einfach nur auf "float" eingestellt werden. Für einen Booleaneintrag wurde zwar als Anmerkung der Typ "boolean" definiert, jedoch ändert das Datenbanksystem MySQL diese Annotation automatisch in das Datenformat "tinyint".
-Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Anzahl der Zeichen definiert werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-/**
-* @ORM\Column(type="string", length=ANZAHL_DER_ZEICHEN)
-*/
-  	\end{lstlisting}
-Damit ein Zeitstempel erstellt werden konnte, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, musste die folgende Anmerkung hinzugefügt werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-/** @ORM\Column(type="datetime", nullable=false ) */
-protected $zeitstempel;
-  	\end{lstlisting}
+Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Anzahl der Zeichen definiert werden.\\
+Damit ein Zeitstempel erstellt werden konnte, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, mussten als Anmerkungen der Typ "datetime" und der Parameter "nullable=false" angegeben werden.
 Mithilfe von "nullable=false" wurde festgelegt, dass der Zeitstempel niemals leer sein darf.
-Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-public function __construct(){
-	$this->zeitstempel = new \DateTime();
-}
-\end{lstlisting}
+Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden.\\ \\
 Damit eine ManyToOne beziehungsweise eine OneToMany Verbindung erstellt werden konnte, musste dies ebenfalls mithilfe von Anmerkungen festgelegt werden.
 Auf der ManyToOne Seite sieht die Annotation dafür folgendermaßen aus:
 	
@@ -224,48 +204,11 @@ mappedBy="NAME_DER_AKTUELLEN_TABELLE")
 **/
   	\end{lstlisting}
 Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollectiob gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-public function __construct() {
-	$this->speiseeintraege = new ArrayCollection();
-}
-  	\end{lstlisting}
+\\ \\
 Um im Anschluss im Controller auf die Daten zugreifen zu können, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden, welche dazu verwendet werden konnten Datenbankinhalte zu bekommen und neue zu setzen. Diese können mit einem Rechtsklick über die Menüpunkte "Generate…" und "Getters and Setters…" automatisch erstellt werden.
 Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der "config.yml"-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben werden auf welche Datenbank zugegriffen werden soll.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-imports:
-- { resource: parameters.yml }
-...
-doctrine:
-	dbal: 
-		driver: pdo_mysql
-		host: "%database_host%"
-		port: "%database_port%"
-		dbname: "%database_name%"
-		user: "%database_user%"
-		password: "%database_password%"
-		unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
-		charset: UTF8
-  	\end{lstlisting}
 Um MySQL als Datenbankmodell zu definieren, wurde es dem Treiber als Wert geliefert. Zusätzlich musste auch angegeben werden wo sich die Datenbank befindet und mit welchem Benutzerkonto auf die Datenbank zugegriffen werden kann.
-Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Resssource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert:
-	\lstset{language=php}
-  	\begin{lstlisting}
-parameters:
-    database_host: IP-ADRESSE
-    database_port: DATENBANKPORT
-    database_name: DATENBANKNAME
-    database_user: USERNAME
-    database_password: PASSWORT
-    mailer_transport: smtp
-    mailer_host: IP-ADRESSE
-    mailer_user: USERNAME
-    mailer_password: PASSWORT
-    secret: GEHEIMCODE
-  	\end{lstlisting}
+Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Resssource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert.
 Für den Datenbankhost musste die IP-Adresse des Servers angeben werden. Falls sich die Datenbank auf einem lokalen Server befindet, wie es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Prot "3306" angegeben. Dieser Wert konnte allerdings auch verändert werden, indem er in der jeweiligen LAMP-Distribution unter den Einstellungen anders definiert wurde. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten konnten über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermittelt werden. Der Geheimcode kann automatisch generiert werden.
 Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
 Anschließend konnte die Datenbank bereits über das Terminal in MySQL erstellt werden:
@@ -282,12 +225,8 @@ Mit diesen Schritten wurde die Datenbank der digitalen Speisekarte erfolgreich m
 
     \subsubsection{Datenzugriff}
 
-Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden:
-	\lstset{language=php}
-  	\begin{lstlisting}
-$repository = $this->getDoctrine()
-    ->getRepository('AppBundle:TABELLENNAME');
-  	\end{lstlisting}
+Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden.
+\\
 Mithilfe der Befehle "findAll()", "findAllByTABELLENSPALTE(WERT" und "findOneByTABELLENSPALTE(WERT)" konnten die benötigten Werte aufgerufen werden.
 Diese konnten anschließend einfach in der render()-Funktion, welche die auszugebende Seite generiert, in einem Array mitgegeben werden, damit sie im Nachhinein im Frontend angezeigt werden:
 	\lstset{language=php}
@@ -299,17 +238,6 @@ return $this->render("DATEIBEZEICHNUNG.html.twig"
 );
   	\end{lstlisting}
 Um Operationen in der Datenbank vorzunehmen, wurde zuerst ein Datenbankmanager erstellt. Anschließend konnte entweder mit "remove()" ein Datenbankeintrag gelöscht, mit "persist()" ein neuer Datenbankeintrag hinzugefügt oder mit "merge()" ein Datenbankeintrag upgedatet werden. Mit dem Befehl "flush()" werden davor definierte Methoden ausgeführt beziehungsweise als Operatoren an die Datenbank geschickt.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-$em = $this->getDoctrine()->getManager();
-$em->remove($DATENBANKEINTRAG);
-//oder
-$em->persist($DATENBANKEINTRAG);
-//oder
-$em->merge(DATENBANKEINTRAG->setSPALTENBEZEICHNUNG(NEUER_SPALTENEINTRAG));
-$em->flush();
-  	\end{lstlisting}
 	
 
     \subsubsection{Formulargenerierung}
@@ -324,22 +252,10 @@ $FORMULAR_BEZEICHNUNG = $this->createFormBuilder($REPOSITORY)
     ->getForm();
   	\end{lstlisting}
 Dank der Funktion "createFormBuilder()" ist es möglich, das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der "add()" Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden, ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion "getForm()" übergibt das Formular der Variable "FORMULAR\_BEZEICHNUNG".
-Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden:
-	\lstset{language=php}
-  	\begin{lstlisting}
-if($FORMULAR_BEZEICHNUNG->isSubmitted() && $FORMULAR_BEZEICHNUNG->isValid())
-{...}
-  	\end{lstlisting}
+Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden.
 Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
-Damit das Formular im Frontend angezeigt werden konnte, wurde das Formular in der "render()"-Funktion des Return-Statements im Array mitgeliefert:
-	\lstset{language=php}
-  	\begin{lstlisting}
-return $this->render('DATEIBEZEICHNUNG.html.twig'
-    ,array(
-    	'FORMULAR_BEZEICHNUNG' => $FORMULAR_BEZEICHNUNG->createView()
-    )
-);
-  	\end{lstlisting}
+\\ \\
+Damit das Formular in der View-Ebene verwaltet konnte, wurde das Formular in der "render()"-Funktion des Return-Statements im Array mitgeliefert.
 Um das Formular visuell darstellen zu können, wurde noch die Funktion "createView()" an die Formularvariable angehängt.
 Mithilfe dieser Variante wurden der Speiseverwaltungsscreen, der Farbcodeverwaltungsscreen und die Anmeldescreens des Administrators erstellt.
 
@@ -388,12 +304,6 @@ Um erstellte Templates samt Variablen einzubinden, muss nur folgende Codezeile a
 with {'BELIEBIGE_BEZEICHNUNG': VARIABLEN_BEZEICHNUNG } %}
   	\end{lstlisting}
 Twig bietet zusätzlich auch die Möglichkeit den Inhalt einer Vorlagen-Datei in einzelne Blöcke zu unterteilen. Dadurch können andere Files nur von diesen Blöcken erben und müssen nicht von Grund auf das komplette Layout der Vorlagen-Datei übernehmen.
-	\lstset{language = php}
-  	\begin{lstlisting}
-{% block BLOCK_BEZEICNHNUNG%}
-...
-{% endblock %}
-	\end{lstlisting}
 Zusätzlich vereinfacht Twig den Programmieraufwand noch mit einigen, weiteren Features. Die geläufigsten darunter sind folgende:
 \begin{itemize}
     \item \textbf{Kommentare}\\
@@ -425,7 +335,7 @@ Außerdem kann mithilfe von Twig auf Pfade von Action Funktionen verwiesen und d
 
     \subsubsection{Ajax}
 
-{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte Ajax den regelmäßigen Aufruf der Seite, damit die  Daten auf den Screens am aktuellen Stand sein konnten.
+{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte es Ajax, dass die Daten der digitalen Speisekarte regelmäßig aktualisiert wurden und somit immer auf dem neuesten Stand angezeigt wurden.
 
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angfertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
@@ -502,17 +412,10 @@ Hierfür muss der Admin das jeweilige Formular ausfüllen und anschließend auf 
 
     \subsubsection{Layout}
 
-Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe des Befehls "npm install -g bower" global über das Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete werden mithilfe dieses Managers in der Datei "bower.json" dokumentiert, welche mit folgenden Kommandozeileneingaben generiert wurde:
-	\lstset{language = bash}
-  	\begin{lstlisting}
-  	bower init
-  	\end{lstlisting}
+Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe des Befehls "npm install -g bower" global über das Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete, werden mithilfe dieses Managers in der Datei "bower.json" dokumentiert, welche mit der Kommandozeileneingaben "bower init" erstellt wurde.
 Nachdem Bower in dem Projektverzeichnis installiert wurde, konnten alle notwendigen Bibliotheken über das Terminal installiert werden. Außerdem wurden die Abhängigkeiten in der Bower-Datei festgelegt. Dies war vor allem für "Bootstrap 4 alpha" wichtig, da es sonst nicht möglich gewesen wäre die neueste Version zu verwenden. Die Bibliothek jQuery wurde automatisch mitinstalliert, da Bootstrap als Abhängigkeit definiert wurde. Für die Installation von Gulp wurden einige weitere Bibliotheken benötigt, welche mithilfe von Bower einfach heruntergeladen werden konnten.
 Durch die Kombination von Bootstrap und Sass konnten die Bootstrap Style-Attribute, welche in den herkömmlichen Bootstrapklassen verwendet werden, in der Sass-Datei wie Variablen behandelt werden. Das bedeutet, dass beispielsweise die Schriftart mit der Zuweisung einer einzigen Variable sogleich für alle Seiten übernommen wurde.
-	\lstset{language = html}
-  	\begin{lstlisting}
-  	$font-family-sans-serif:	'PT Sans', sans-serif;
-  	\end{lstlisting}
+\\ \\
 Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald der Gulp-Befehl im Terminal eingegeben wird. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
 Nachdem die dadurch generierte CSS-Datei, im Header der Template-Files aufgerufen wurde, konnten die Bootstrap Klassen verwendet werden, indem sie in den class-Attributen der jeweiligen Elemente deklariert wurden. 
 Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angwendet:
@@ -591,10 +494,6 @@ Wie bereits zuvor erwähnt wurde, ermöglicht die Template Engine Twig einen ver
 \end{lstlisting}
 Hierbei kann über den beliebig gewählten Namen, welchen man beim Rückgabewert der Action-Funktion mitgeliefert hat, auf die Variable zugegriffen werden. 
 Falls die Variable mit einem herkömmlichen String verbunden werden soll, wird eine Tilde als Verknüpfungszeichen benötigt. 
-\lstset{language = php}
-  	\begin{lstlisting}
-var STRING_BEZEICHNUNG= {{ VARIABLEN_BEZEICHNUNG }}~"TEXT";
-	\end{lstlisting}
 Die Variable kann allerdings auch problemlos in einer von Twig zur Verfügung gestellten IF-Anweisung verwendet werden.
 Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die von Twig mitgelieferte Art Schleifen zu generieren verwendet. Damit die Tabellenspalten einzeln angezeigt werden konnten, musste an die Bezeichnung des aktuellen Tabelleneintrags einfach die Spaltenbezeichnung angehängt werden. 
 \lstset{language = php}
@@ -604,18 +503,8 @@ Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die v
 {% endfor %}
 	\end{lstlisting}
 Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie zum Beispiel beim Zugriff auf die Speiseeinträge der jeweiligen Kategorien, musste im Aufruf ebenfalls auf diese verwiesen werden, bevor der auszugebende Wert von ihr geholt werden konnte.
-\lstset{language = php}
-  	\begin{lstlisting}
-{% for AKTUELLER_TABELLENEINTRAG in BEZEICHNUNG_DER_DATENBANKTABELLE %}
-{{ AKTUELLER_TABELLENEINTRAG.VERLINKTE_TABELLE.SPALTENBEZEICHNUNG }}
-{% endfor %}
-	\end{lstlisting}
 Bei Werten, welche auf diese Art und Weise von der Datenbank geholt werden, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies wird am besten mit einer JSON-Kodierung bewerkstelligt.
-\lstset{language = php}
-  	\begin{lstlisting}
-var VARIABLEN_BEZEICHNUNG = 
-{{ AKTUELLER_TABELLENEINTRAG.SPALTENBEZEICHNUNG|json_encode|raw  }};
-	\end{lstlisting}
+\\ \\
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frontend der Applikation angezeigt werden.
 
     \subsubsection{Formulargenerierung}
