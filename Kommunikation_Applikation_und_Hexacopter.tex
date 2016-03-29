@@ -6,7 +6,7 @@ abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
-In der Planung wurde eine unkomplizierte und verlässliche Lösung für beide Kommunikationspartner gesucht. Da Bluetooth kaum noch standardmäßig verbaut wird hier wiederum
+In der Planung wurde eine unkomplizierte und verlässliche Lösung für beide Kommunikationspartner gesucht. Da Bluetooth kaum noch standardmäßig verbaut ist, wird hier wiederum
 Serverseitig eine externe Hardware benötigt, um dies zu vermeiden wurde WLAN ins Auge gefasst.
 
 WLAN stellte sich folglich als ideale Schnittstelle heraus,
@@ -36,7 +36,7 @@ Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss übe
     \label{RN171_EK}
   \end{figure}
 
-  Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host verbindet sind einige Schritte notwendig:
+Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host verbindet sind einige Schritte notwendig:
   \begin{itemize}
     \item \textbf{\$\$\$}\\
     Öffnet den Commandmode, nun können die Einstellungen vorgenommen werden
@@ -88,18 +88,14 @@ Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss übe
 \section{Schnittstelle Applikation}
 
   \subsection{Technische Planung}
-  
-      \subsubsection{Eclipse}
-    
-Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Eclipse Foundation entwickelt. Das Programm kann verwendet werden, um in mehreren Programmiersprachen Software zu entwicklen. Besonders gut geeignet ist Eclipse für die Entwicklung von Java-Programmen, da es sowohl Auto-Completion ermöglicht als auch Syntax- Highlighting.
 
 	   \subsubsection{JDBC}
 
-Die Java Datenbankschnittstelle JDBC ist ein Industriestandard für datenbankunabhängige Verbindungen zwischen Java Programmen, SQL Datenbanken und sämtlichen anderen tabellenbasierten Datenbankmodellen. Zu den Aufgaben von JDBC gehört es, Datenbankverbindungen aufzubauen und diese zu verwalten. Außerdem kann JDBC  SQL-Anfragen an die Datenbank weiterleiten, Ergebnisse in eine für Java nutzbare Form umwandeln und diese dem Programm zur Verfügung stellen.
+Die Java Datenbankschnittstelle {JDBC\cite{jdbc}} ist ein Industriestandard für datenbankunabhängige Verbindungen zwischen Java Programmen, SQL Datenbanken und sämtlichen anderen tabellenbasierten Datenbankmodellen. Zu den Aufgaben von JDBC gehört es, Datenbankverbindungen aufzubauen und diese zu verwalten. Außerdem kann JDBC  SQL-Anfragen an die Datenbank weiterleiten, Ergebnisse in eine für Java nutzbare Form umwandeln und diese dem Programm zur Verfügung stellen.
 
 	   \subsubsection{Zusammenspiel mit der Applikation und dem WLAN-Modul}
-Das Java-Programm und die Applikation kommunizieren nur indirekt miteinander, da beide nur auf die Datenbank zugreifen um deren Inhalt zu überprüfen und Einträge updaten beziehungsweise erstellen.
-Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert. Dieses wird nämlich als Thread etabliert und direkt in den Javaklassen verwaltet.
+Das Java-Programm und die Applikation kommunizieren nur indirekt miteinander, da beide nur auf die Datenbank zugreifen, um deren Inhalt zu überprüfen und Einträge upzudaten beziehungsweise zu erstellen.
+Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert.
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_java.jpg}
@@ -107,33 +103,107 @@ Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert. Dieses wird näm
 			\caption{neue MockUps - Admininterface}
 			\label{neue MockUps - Admininterface}
 			\end{figure}
+			
+      \subsubsection{Eclipse}
+
+Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Eclipse Foundation entwickelt. Das Programm kann verwendet werden, um in mehreren Programmiersprachen Software zu entwicklen. Besonders gut geeignet ist Eclipse für die Entwicklung von Java-Programmen, da es sowohl Auto-Completion ermöglicht als auch Syntax-Hervorhebung.
+
+      \subsubsection{Kommunikationsschema}
+Für die Kommunikation zwischen dem Hexacopter und dem Server wurde folgendes Schema festgelegt:
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{0.5cm}|p{2cm}|p{7cm}|p{2cm}|p{2cm}|} 
+\hline \textbf{ID} \textbf{Wer/Was?} & \textbf{Was?} & \textbf{Wann?} & \textbf{An was/wen?} \\\hline
+\hline 1 & WLAN-Modul & 1 & wenn er in der Basis ist bzw. bereit ist eine Speise auszuliefern & Server \\\hline
+\hline 2 & Server & 2 & alle zwei Sekunden & WLAN-Modul \\\hline
+\hline 3 & Server & Tischroute & sobald er eine Nachricht mit dem Inhalt "1" erhält & WLAN-Modul \\\hline
+
+\begin{itemize}
+    \item \textbf{ID 1}\\
+Damit der Server weiß, wann der Hexacopter sich in der Basis befindet und dadurch bereit ist eine Speise auszuliefern, schickt der Hexacopter ihm einen Einser.
+    \item \textbf{ID 2}\\
+Damit kontrolliert werden kann, ob die Verbindung zu dem Hexacopter in Takt ist, wird im alle zwei Minuten ein Zweier geschickt. 
+    \item \textbf{ID 3}\\
+Sobald der Server einen Einser von dem Hexacopter geschickt bekommt, sendet er ihm automatisch die Tischroute des Gastes, welcher als nächstes seine Bestellung erhalten soll.
+Die Tischroute ist mit folgendem Schema aufgebaut: \\
+"<<...Farbcode'GS'...Farbcode'GS'---Farbcode>>" \\
+Die Zeichen "<<" zeigen dem WLAN-Modul, dass eine Nachricht beginnt. 
+Anschließend werden drei Punkte geschickt, welche ein Zeichen dafür sind, dass sich der folgende Farbcode auf dem Boden befindet.
+Der Farbcode wird als Binärzahl mitgeschickt. Das Kürzel "GS" steht für "Group seperator" und hilft dem Modul die unterschiedlichen Farbcodes zu unterteilen.
+Die drei Striche deuten darauf hin, dass sich der Farbcode auf einem Tisch befindet.
+Am Ende der Tischroute werden dem Hexacopter noch die Zeichen ">>" geschickt, damit er weiß, dass die Route fertig gesendet wurde.
+ 
+  \end{itemize}
+
+\end{tabular}
+\caption{Testfälle der Applikation und des Java Programms}
+\end{table}
+
   \subsection{Umsetzung}
 Für die Umsetzung des Javaprogramms wurden drei verschiedene Klassen erstellt:
 \begin{itemize}
     \item \textbf{SQL Reader}\\
 Diese Klasse wurde dazu programmiert, alle Datenbankzugriffe zu regeln.
-Um den Zugriff auf Datenbanken zu bewerkstelligen wurde JDBC verwendet. 
-Damit das Programm mit JDBC arbeiten kann muss man es erst einmal von Oracle downloaden und anschließend mit einem Rechtsklick auf das Javaprojekt unter dem Menüpunkt "Properties" als Bibliothek angeben.
-Wie auch bei Doctrine müssen der Datenbank Host, der Datenbank Port und die Benutzerdaten angegeben werden, damit die Verbindung hergestellt werden kann.
-Als Treiber wird hier jedoch statt MySQL auf JDBC verwiesen. 
-Um die Verbindung herzustellen wurde auf die Funktion DriverManager.getConnection() aufgerufen. Als Parameter musste ihr der Pfad zur Datenbank und die Benutzerdaten mitgeschickt werden.
-\\
-Damit die Tischdaten angezeigt werden konnten, wurde die "showTischdaten()"-Funktion erstellt. Um die ID, die Tischroute und die Tischnummer zu erhalten musste jeweils ein SQL-Statement, welches die Tischdaten ausliest, denen die Bestellung zugewiesen ist, verfasst werden, welches anschließend ausgeführt wurde.
-Die Ergebnisse wurden in ein ResultSet gespeichert. Danach wurden sie in einer Schleife iteriert und der aktuelle Wert aus dem ResultSet als String umgewandelt. Nun konnte die Route als Rückgabewert angegeben werden. Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefert wurde, wurde mit SQL ein Update-Statement erzeugt und mit der "executeUpdate()"-Funktion ausgeführt.
-\\
-Um in einer extra Datenbanktabelle den Verbindungsstatus zwischen dem Hexacopter und dem Server überprüfen zu können, wurde bei jeder Statusänderung die "erstelleDBEintrag()"-Funktion aufgerufen. Das Einfügen von Datenbankeinträgen kann mit einem Insert-Statement erledigt werden. Dieses muss im Anschluss ebenfalls mit der "executeUpdate()"-Methode durchgeführt werden.
+Um den {Zugriff auf Datenbanken zu bewerkstelligen wurde JDBC\cite{jdbctutorial}} verwendet.
+Damit das Programm mit JDBC arbeiten kann musste es zuerst von Oracle gedownloadet und anschließend mit einem Rechtsklick auf das Javaprojekt unter dem Menüpunkt "Properties" als Bibliothek angeben werden.
+\\ \\
+Wie auch bei Doctrine müssen der Datenbank-Host, der Datenbank-Port und die Benutzerdaten angegeben werden, damit die Verbindung hergestellt werden kann.
+Als Treiber wird hier jedoch statt MySQL auf JDBC verwiesen.
+Um die Verbindung herzustellen wurde auf die Funktion DriverManager.getConnection() aufgerufen. Als Parameter mussten ihr der Pfad zur Datenbank und die Benutzerdaten mitgeschickt werden.
+\lstset{language = java}
+  	\begin{lstlisting}
+private String db_host = "localhost";
+private String db_port = "3306";
+private String db_user = "root";
+private String db_pass = "root";
+private String db_base = "DbSpeisekarte";
+private static final String DRIVER = "com.mysql.jdbc.Driver";
+
+//...
+
+String mySqlUrl = "jdbc:mysql://" + db_host + ":" + db_port + "/"
++ db_base;
+
+verbindung = DriverManager.getConnection(mySqlUrl, db_user, db_pass);
+	\end{lstlisting}
+  \end{itemize}  
+Damit die Tischdaten angezeigt werden konnten, wurde die "showTischdaten()"-Funktion erstellt. Um die ID, die Tischroute und die Tischnummer zu erhalten musste jeweils ein SQL-Statement verfasst werden. In diesem SQL-Statement wurden nur die Tischdaten, welche einer Bestellung zugeordnet sind ausgelesen.
+Um das Statement anschließend auszuführen, wurde es der vordefinierte Methode "executeQuery()" als Parameter mitgeschickt.
+Dieser Vorgang wird beispielsweise folgendermaßen bewerkstelligt:
+\lstset{language = java}
+  	\begin{lstlisting}
+String querytischid = "SELECT t.id  FROM tischdaten t JOIN bestellungen b ON (b.fk_tischnr = t.id) WHERE ausliefern = 1 && serviert = 0";
+Statement stmttischid = connection.createStatement();
+ResultSet rstischid = stmttischid.executeQuery(querytischid);
+	\end{lstlisting}
+  \end{itemize}  
+\\ \\
+Die Ergebnisse werden in ein ResultSet gespeichert. Danach werden sie in einer Schleife iteriert und der aktuelle Wert aus dem Set als String umgewandelt. Nun konnte die Route als Rückgabewert angegeben werden. 
+\\ \\
+Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefert wurde, wurde mit SQL ein Update-Statement erzeugt und mit der vordefinierten "executeUpdate()"-Funktion ausgeführt.
+\\ \\
+Um in einer extra Datenbanktabelle den Verbindungsstatus zwischen dem Hexacopter und dem Server überprüfen zu können, wird bei jeder Statusänderung die "erstelleDBEintrag()"-Funktion aufgerufen. Das Einfügen von Datenbankeinträgen kann mit einem Insert-Statement erledigt werden. Dieses muss im Anschluss ebenfalls mit der "executeUpdate()"-Methode durchgeführt werden.
     \item \textbf{Komm Manager}\\
-Um die Threads zu managen wurde eine die "Komm Manager" Klasse programmiert.
-Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt sie von dieser. Dies wird ganz oben bei der Klassendefinierung mithilfe dem Befehl "extends" gehandhabt. 
-Als globale Variable wird ein Hashset, welches die Teilnehmer beeinhaltet, erstellt. 
-Anschließend wird ein Server Socket erstellt, welchem später ein geeigneter Port zugewiesen wurde.
-Mithilfe eines Timers wird regelmäßig überprüft ob ein Teilnehmer vorhanden ist. Wenn das der Fall ist, wird auf eine  Methode verwiesen, in welcher die Verbindung hergestellt wird und daher auch die SQl Readerfunktion aufgerufen wird, welche den Verbindungsstatus erneuert. Außerdem bekommt der Teilnehmer daraufhin durchgehend eine Nachricht zugeschickt.
-Um zu überprüfen ob der Hexacopter in der Basis ist und somit bereit dazu ist eine Speise auszuliefern, wartet der Server darauf, dass eine bestimmte Nachricht geschickt wird. Sobald diese bestimmte Nachricht ankommt, liefert die Funktion "true" zurück.
+Um die Verbindung mit dem Hexacopter zu managen wurde die "Komm Manager" Klasse programmiert.
+Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt sie von dieser. Dies wird ganz oben bei der Klassendefinierung mithilfe des Befehls "extends" gehandhabt.
+\\ \\
+Als globale Variable wird ein Hashset, welches die Teilnehmer beeinhaltet, erstellt.
+Anschließend wird ein Server Socket erstellt, welchem später ein geeigneter Port zugewiesen wird.
+\\ \\
+Mithilfe eines Timers wird alle zwei Sekunden überprüft ob ein Teilnehmer vorhanden ist. Wenn das der Fall ist, wird auf eine Methode verwiesen, in welcher die Verbindung hergestellt und daher auch die SQl-Readerfunktion, welche einen neuen Datenbankeintrag erstellt, aufgerufen wird. Diese SQL-Readerfunktion erneuert daraufhin den Verbindungsstatus. 
+\\
+Sobald ein Teilnehmer beitritt wird ihm mithilfe des Timers regelmäßig eine Nachricht, mit dem Inhalt "2", geschickt.
+\\ \\
+Um zu überprüfen, ob der Hexacopter in der Basis und somit bereit dazu ist, eine Speise auszuliefern, wartet der Server darauf, dass die Nachricht "1" geschickt wird. Sobald diese Nachricht ankommt, liefert die Funktion den Wert "true" zurück. Außerdem wird mithilfe der SQL-Readerfunktion in der Datenbank vermerk, dass sich der Hexacopter zu diesem Zeitpunkt in der Basis befindet.
     \item \textbf{Komm Teilnehmer}\\
 Die "Komm Teilnehmer" Klasse wurde dafür entwickelt, die einzelnen Verbindungen zum Hexacopter zu verwalten.
-Dem Teilnehmer Thread wird sowohl der Manager als auch der Server Socket als Parameter mitgeliefert. Über diese kann im Anschluss das Senden und Empfangen der Nachrichten geregelt werden. 
-In dieser Klasse wird die Nachricht des Hexacopters an die Manager Funktion geschickt, welche überprüft ob die Nachricht aussagt, dass sich der Multicopter in der Basis befindet. Wenn das der Fall ist, wird automatisch die Tischnummer der auszuliefernden Bestellung an den Teilnehmer geschickt.
+\\
+Dem Teilnehmer Thread wird sowohl der Manager als auch der Server Socket als Parameter mitgeliefert. Über diese kann im Anschluss das Senden und Empfangen der Nachrichten geregelt werden.
+\\ \\
+In dieser Klasse wird die Nachricht des Hexacopters an die Manager Funktion geschickt, welche überprüft ob die Nachricht aussagt, dass sich der Multicopter in der Basis befindet. 
+\\
+Wenn das der Fall ist, wird automatisch die Tischnummer der auszuliefernden Bestellung über die "showTischdaten()"-Funktion der SQL-Reader Klasse abgerufen und an den Hexacopter geschickt.
   \end{itemize}
 
   \subsection{Herausforderungen und Lösungen}
-Hierbei kam ab und zu das Problem auf, dass bei den SQL-Statements vergessen wurde einen Zeilenabstand zu machen nachdem eine Variable eingebunden wurde. Dies waren jedoch nur kleine Fehler die in der Eile entstanden und relativ schnell erörtert und ausgebessert werden konnten.
+Beim Abruf der einzelnen Tischdaten kam ab und zu das Problem auf, dass bei den SQL-Statements vergessen wurde, einen Zeilenabstand zu machen, nachdem eine Variable eingebunden wurde. Dies waren jedoch nur kleine Fehler, die in der Eile entstanden und relativ schnell erörtert und ausgebessert werden konnten.

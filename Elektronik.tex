@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
 Für die Umsetzung eines autonomen Fluges sind diverse Sensoren sowie eine entsprechende Auswertung der gelieferten Daten notwendig.
-Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, aus diesen können schließlich die notwendigen Flugparameter ermittelt werden.
+Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, aus ihnen können schließlich die notwendigen Flugparameter ermittelt werden.
 
   \subsection{Benötigte Elemente}
   Eine eigens entwickelte Ansteuerung der einzelnen Rotoren gestaltet sich als sehr umfangreich, deshalb wird ein fertiger Flight-Controller verwendet.
@@ -35,7 +35,7 @@ Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, a
     \end{figure}
 
     \subsubsection{WLAN}
-    Das WLAN-Modul RN171 von welches von Microchip verkauft wird bietet die Schnittstelle zwischen Server und Hexacopter. Die Daten können entweder vom Server gesendet
+    Das WLAN-Modul RN171, welches von Microchip verkauft wird, bietet die Schnittstelle zwischen Server und Hexacopter. Die Daten können entweder vom Server gesendet
     und vom PIC empfangen werden oder umgekehrt.
     Das WLAM-Modul wird mit einer UART-Schnittstelle betrieben. Für eine Kommunikation sind also nur 2 Leitungen notwendig.
     Es bietet die Möglichkeit über eine Anwendung wie TeraTerm oder HTerm eingestellt zu werden, zusätzlich wird aber auch ein Webinterface angeboten, dieses muss jedoch zuvor
@@ -49,7 +49,7 @@ Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, a
       \label{RN171}
     \end{figure}
 
-    Die Datenübertragung findet dabei für den Nutzer sehr unproblematisch dar. Einerseits sind konfigurierbare Pins vorhanden um die Verbindung zu steuern und zu überwachen,
+    Die Datenübertragung gestaltet sich dabei für den Nutzer sehr unproblematisch. Einerseits sind konfigurierbare Pins vorhanden um die Verbindung zu steuern und zu überwachen,
     andererseits braucht man sich nicht mehr um das Verpacken der Datenpakete kümmern.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,8 +65,8 @@ weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins 
 \end{figure}
 
   \subsection{Hauptplatine}
-  Die Hauptplatine dient als zentrales Kommunikationselement. Auf dieser befindet sich der PIC welcher für sämtliche Berechnungen und Auswertungen zuständig ist.
-  Um ein ausreichendes Maß an Kommunikationsfähigkeit zu ermöglichen befinden sich auf ihr folgende Anschlüsse:
+  Die Hauptplatine dient als zentrales Kommunikationselement. Auf ihr befindet sich der PIC welcher für sämtliche Berechnungen und Auswertungen zuständig ist.
+  Um ein ausreichendes Maß an Kommunikationsfähigkeit zu ermöglichen, befinden sich auf ihr folgende Anschlüsse:
   \begin{itemize}
     \item $+\SI{5}{\volt}$ Spannungsversorgung
     \item Eingänge des Fernsteuerungsempfängers (5 Pins)
@@ -103,7 +103,8 @@ weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins 
   um eine Kompatibilität mit den anderen Komponenten zu gewährleisten.
 
     \subsubsection{Technische Planung}
-    In der Planung war die Versorgungsspannung des WLAN-Modul das Hauptaugenmerk. Für den Betrieb sind $\SI{3.3}{\volt}$ notwendig, eine $\SI{5}{\volt}$ Toleranz ist nicht gegeben.
+    In der Planung war die Versorgungsspannung des WLAN-Modul das Hauptaugenmerk. Für den Betrieb sind $\SI{3.3}{\volt}$ notwendig, die Versorgungsspannungstoleranz
+    des WLAN-Moduls ist nicht groß genug, um dieses mit $\SI{5}{\volt}$ versorgen zu können.
     Aufgrund der fehlenden Toleranz müssen alle Leitungen die zur Kommunikation dienen entweder auf $\SI{5}{\volt}$ angehoben oder auf $\SI{3.3}{\volt}$ abgesenkt werden,
     andernfalls kann es zu Datenverlust oder sogar einer Beschädigung eines Moduls kommen.
 

@@ -59,7 +59,7 @@
     Anhand des aktuell getrackte Colorcodes wird die seitliche Position korrigiert. Solange sich der Hexacopter nicht im angegeben Bereich befindet, wird die Fluggeschwindigkeit in die jeweilige Richtung erhöht.
 
     \subsection*{Elevator}
-    Durch den getrackten Colorcode, wird die Vorwärts- beziehungsweise Rückwärtsbewegung eingestellt. Die Position des Markers soll sich, wie bei der Bewegung nach Links und Rechts, in einem vorgegebenen Bereich befinden. 
+    Durch den getrackten Colorcode, wird die Vorwärts- beziehungsweise Rückwärtsbewegung eingestellt. Die Position des Markers soll sich, wie bei der Bewegung nach Links und Rechts, in einem vorgegebenen Bereich befinden.
     Das Kamerasystem trackt den ersten Marker, bis er sich im richtigen Bereich befindet und der zweite Marker erkannt wird, dieser wird ebenfalls verfolgt, danach kommt der dritte. Diese Routine läuft, bis der letzte Colorcode erreicht ist. Im Idealfall muss die Rückwärtsbewegung während des Fluges gar nicht durchgeführt werden. Die Rückwärtsbewegung findet ihre Anwendung nur, wenn der Hexacopter beim letzten Farbcode angekommen ist und über sein Ziel hinausfliegt, oder, wenn kein nächster Farbcode gefunden wird. Welcher Marker der Zielmarker ist, kann durch die Größe des Arrays, in dem die Marker gespeichert werden, herausgefunden werden. Dieses wird mit den Daten, die im Admin-Interface hinterlegt sind und im Endeffekt vom Wlan-Modul empfangen werden, befüllt.
 
     \subsection*{Rudder}
@@ -245,13 +245,16 @@ void SignalOut(void) {
     Die Delay-Funktion stellt die Compare-Einheit so ein, dass nach der gewünschten Pulsdauer des Ausgangs ein Interrupt hervorgerufen wird.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Objekterkennung}
+\section{Objekterkennung Lucas}
+Die Objekterkennung ist für den Hexacopter notwendig um eine zuverlässige Positionierung zu ermöglichen. Dazu werden bestimmte Objekte im Raum erkannt und als Orientierung
+genutzt oder es muss ihnen ausgewichen werden \bzw eine Kollision vermieden werden.
 
-  %\subsection{Technische Planung}
+  \subsection{Technische Planung}
+  In der Planung war es wichtig einerseits die notwendige Rechenleistung gering zu halten, andererseits auch alle notwendigen Objekte erkennen zu können.
 
-  %\subsection{Umsetzung}
+  \subsection{Umsetzung}
 
-  %\subsection{Herausforderungen und Lösungen}
+  \subsection{Herausforderungen und Lösungen}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sicherheit}
