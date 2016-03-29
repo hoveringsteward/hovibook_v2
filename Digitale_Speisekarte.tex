@@ -42,7 +42,7 @@ Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche 
 MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache {Perl\cite{perl}}, welche in erster Linie bei der Verwaltung von Textdateien behilflich ist. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt.
     \item \textbf{XAMPP}\\
 Das XAMPP-Paket wird aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
-  \end{itemize}  
+  \end{itemize}
 Sowohl MAMP als auch XAMPP bieten daher effiziente Pakete, welche beim Entwickeln von dynamischen Webseiten sehr zu empfehlen sind. Für die Erstellung der digitalen Speisekarte fiel die Entscheidung letztendlich auf MAMP, da nur auf den Betriebssystemen Windows und OS X entwickelt wurde. Außerdem ist das Interface dieses Pakets einfacher gehalten und dadurch übersichtlicher für den Anwender. Ein weiterer Vorteil von MAMP ist, dass auf dem Startverzeichnis unter den Einstellungen ein favorisierter Link gespeichert werden konnte, welcher daraufhin auf der Startseite aufgerufen werden kann. Diese Eigenschaft ermöglichte es die digitale Speisekarte schneller aufzurufen.
 
     \subsubsection{Doctrine}
@@ -463,8 +463,9 @@ Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zu
     \item \textbf{Speisekartenscreen}\\
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen.
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton.
-Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wurde.
-Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung bestellt wurde. Nun kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wird.
+Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Meldung, die ihn darauf hinweist, dass die Bestellung getätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+
   \end{itemize}
 \textbf{Funktionalitäten des Adminbereichs}
 \begin{itemize}
@@ -472,10 +473,10 @@ Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn da
 Der Loginscreen des Admininterface hat nahezu dieselben Funktionalitäten wie der, der digitalen Speisekarte. Der einzige Unterschied besteht darin, dass sich nach dem Klick auf den Loginbutton der Hauptscreen des Admininterfaces öffnet.
     \item \textbf{Hauptscreen}\\
 Der Hauptscreen des Admininterfaces bietet in einer Liste den Überblick über alle Bestellungen, die noch nicht serviert wurden.
-Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden müssen.
-Links im Header befindet sich ein Button, damit der Administrator sich jederzeit ausloggen kann.
-Auf der rechten Seite ist ein Einstellungssymbol abgebildet. Dieses verlinkt auf den Einstellungsübersichts-Screen.
-Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese wird grün angezeigt, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
+Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden sollen.
+Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann. Weiters befindet sich im Header ein Button mit einem Einstellungssymbol, welches auf den Einstellungsübersichts-Screen verlinkt.
+Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese erscheint grün, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
+
     \item \textbf{Einstellungsübersicht-Screen}\\
 Der Einstellungsübersichtsscreen verweist in einer div-Box mit zwei Buttons auf den Tischverwaltungsscreen und den Speise- und Kategorienverwaltungsscreen.
 Oben im Header ermöglicht er es dem Admin wieder zurück zum Hauptscreen navigieren zu können.
@@ -518,8 +519,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 \textbf{Screens der digitalen Speisekarte}
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_login}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_tnr}
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_login} }
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_tnr} }
 			\par\end{centering}
 			\caption{Screens: Loginscreen / Tischnummernauswahl}
 			\label{Screens: Loginscreen / Tischnummernauswahl}
@@ -527,8 +528,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_speisekarte}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_status}
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_speisekarte} }
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_status} }
 			\par\end{centering}
 			\caption{Screens: Speisekarte / Bestellungsüberblick}
 			\label{Screens: Speisekarte / Bestellungsüberblick}
@@ -635,23 +636,17 @@ Für die Testphase wurden präzise Testfälle erstellt, welche abgesehen von TC-
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-\hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Erzieltes Ergebnis} \\\hline
-\hline TC-1 & Adminlogin - Admininterface & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Hauptscreen des Admininterfaces soll angezeigt werden & Hauptscreen des Admininterfaces wird angezeigt \\\hline
-\hline TC-2 & Adminlogin - Speisekarte & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Der Admin soll auf den Tischnummernauswahlscreen weitergeleitet werden & Der Admin wird auf den Tischnummernauswahlscreen weitergeleitet \\\hline
-\hline TC-3 & Speisebestellung & Der Gast bestellt eine Speise & Ein neuer Bestellungseintrag soll erstellt werden und in der Bestellliste erscheinen & Ein neuer Bestellungseintrag wird erstellt und erscheint in der Bestellliste, nachdem in einer Alertbox die Bestellung bestätigt wurde \\\hline
-\hline TC-4 & "Ausliefern"-Wert ändern & Der Admin klickt auf den "Ausliefern"-Button & Der "ausliefern"-Wert der Speise soll auf 1 gesetzt werden & Der "ausliefern"-Wert der Speise wird auf 1 gesetzt \\\hline
-\hline TC-5 & Tischroute schicken & Der Hexacopter schickt eine bestimmte Nachricht an den Server & Die Tischroute soll geschickt werden & Die Tischroute wird geschickt \\\hline
-\end{tabular}
-\end{table}
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-\hline TC-6 & Speiseeintrag hinzufügen & Der Admin gibt neue Speisedaten in das Formular ein und klickt auf "Speiseeintrag hinzufügen" & Ein neuer Speiseeintrag soll in der Datenbank angelegt werden & Ein neuer Speiseeintrag wird in der Datenbank angelegt \\\hline
-\hline TC-7 & Kategorie hinzufügen & Der Admin gibt eine neue Kategoriebezeichnung in das Formular ein und klickt auf "Kategorie hinzufügen” & Eine neue Kategorie soll in der Datenbank angelegt werden & Eine neue Kategorie wird in der Datenbank angelegt \\\hline
-\hline TC-8 & Speiseeintrag löschen & Der Admin wählt einen Speiseeintrag aus und klickt auf den "Speiseeintrag Löschen"-Button & Der ausgewählte Speiseeintrag soll gelöscht werden & Der ausgewählte Speiseeintrag wird gelöscht \\\hline
-\hline TC-9 & Kategorie löschen & Der Admin wählt eine Kategorie aus und klickt auf den "Kategorie Löschen"-Button & Die ausgewählte Kategorie soll gelöscht werden & Die ausgewählte Kategorie wird gelöscht \\\hline
-\hline TC-10 & Tischroute verändern & Der Admin wählt eine Tischnummer aus und gibt eine Tischroute in das Formularfeld ein & Die Tischroute des Tisches mit der ausgewählten Tischnummer soll geändert werden & Die Tischroute des Tisches mit der ausgewählten Tischnummer wird geändert \\\hline
+\begin{tabular}{|p{0.5cm}|p{3cm}|p{4.5cm}|p{4cm}|p{2cm}|}
+\hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis erreicht?} \\\hline
+\hline 1 & Adminlogin & Admin meldet sich mit \newline richtigen Anmeldedaten \newline an & Hauptscreen des \newline Admininterfaces wird \newline angezeigt & Ja \\\hline
+\hline 2 & Speisebestellung & eine Speise wird bestellt & neuer Bestellungseintrag wird erstellt und in \newline Bestellliste angezeigt & Ja \\\hline
+\hline 3 & "Ausliefern"-Wert \newline ändern & Admin klickt auf "Ausliefern"-Button & "ausliefern"-Wert der Speise wird auf 1 gesetzt & Ja \\\hline
+\hline 4 & Tischroute \newline schicken & Hexacopter schickt \newline bestimmte Nachricht an Server & Server schickt \newline Tischnummer zurück & Ja \\\hline
+\hline 5 & Speiseeintrag \newline hinzufügen & Admin gibt neue \newline Speisedaten ins Formular ein und klickt auf \newline "Speiseeintrag hinzufügen" & neuer Speiseeintrag wird in Datenbank angelegt & Ja \\\hline
+\hline 6 & Kategorie \newline hinzufügen & Admin gibt neue \newline Kategoriebezeichnung ins \newline Formular ein und klickt auf \newline "Kategorie hinzufügen” & neue Kategorie wird in Datenbank angelegt & Ja \\\hline
+\hline 7 & Speiseeintrag \newline löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter \newline Speiseeintrag wird \newline gelöscht & Ja \\\hline
+\hline 8 & Kategorie \newline löschen & Admin wählt Kategorie aus und klickt auf "Kategorie Löschen"-Button & ausgewählte Kategorie wird gelöscht & Ja \\\hline
+\hline 9 & Tischroute \newline verändern & Admin wählt Tischnummer aus und gibt Tischroute ins Formularfeld ein & Tischroute des Tisches wird geändert & Ja \\\hline
 \end{tabular}
 \caption{Testfälle der Applikation und des Java Programms}
 \end{table}
