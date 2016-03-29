@@ -4,26 +4,39 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
-
-  \subsection{PhpStorm}
-    
-PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben an. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
+  \subsection{Allgemein}
+  
+Um das Kellnersystem so weit wie möglich zu Automatisieren entstand die Idee, eine digitale Speisekarte zu entwickeln. 
+Die Grundidee der digitalen Speisekarte ist es, dem Gast die Möglichkeit zu bieten, Speisen auf einem Tablet zu bestellen, welches sich auf jedem Tisch im Restaurant befinden soll.
+Die Speisekarte soll es dem Gast ermöglichen die Wartezeit auf einen Kellner, welcher normalerweise die Bestellung entgegen nimmt, zu ersparen. Sobald er das Lokal betritt soll er sich bereits zum Tisch setzen und seine Wunschspeisen auf dem Tablet auswählen können.
+Die Bediensteten im Lokal sollen ebenfalls von der digitalen Speisekarte profitieren, da ihnen dadurch ein Teil ihrer Arbeit abgenommen werden soll.
+Wie jede herkömmliche Speisekarte, soll auch die digitale Speisekarte dem Gast die genauen Speiseinformationen anzeigen.
+Außerdem soll die digitale Speisekarte dem Hexacopter die Tischroute des Tisches, von welchem die Speise bestellt wurde, schicken, sobald sie bereit ist ausgeliefert zu werden. Dies soll dadurch bewerkstelligt werden, dass ein Administrator in einer Liste, in welcher ihm eine Übersicht von den bestellten Speisen geboten wird, neben der fertigen Speise auf einen "Ausliefern"-Button klickt.
+Mithilfe der digitalen Speisekarte soll somit das Kellnersystem nahezu vollkommen automatisiert werden.
   
   \subsection{Zusammenspiel der Komponenten}
 
-Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten. 
-Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in der Entwicklungsumgebung PhpStorm programmiert, da diese einen guten Überblick über die Ordnerstruktur bietet.
-Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann. In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, wofür MySQL gewählt wurde, kommuniziert.
-Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. 
-Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden. 
-Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ 
+Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten.\\ \\
+Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in der Entwicklungsumgebung PhpStorm programmiert, da diese einen guten Überblick über die Ordnerstruktur bietet.\\ \\
+Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann.
+In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, wofür MySQL gewählt wurde, kommuniziert.\\ \\
+Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. Auf dieser Ebene wurde in der Programmiersprache PHP programmiert.\\ \\
+Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit "Bootstrap 4 alpha" gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden. 
+Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
+Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen werden. \\ \\
+Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel 11 genauer erklärt.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation.jpg}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation}
 			\par\end{centering}
 			\caption{Zusammenspiel der Komponenten}
 			\label{Zusammenspiel der Komponenten}
 			\end{figure}
+			
+  \subsection{PhpStorm}
+    
+PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben an. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
+
 			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Backend}
@@ -39,7 +52,7 @@ Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche 
 {MAMP\cite{mamp}} und {XAMPP\cite{xampp}} sind Pakete, welche freie Software enthalten, die dazu dient dynamische Webseiten zur Verfügung zu stellen. Unter dynamischen Webseiten versteht man, Seiten die auf Funktionen im Backend zugreifen und mithilfe welcher Inhalte meist erst im Moment der Anfrage erzeugt werden, wodurch sie aktuell gehalten werden können.
 \begin{itemize}
     \item \textbf{MAMP}\\
-MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache {Perl\cite{perl}}, welche in erster Linie bei der Verwaltung von Textdateien behilflich ist. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt. 
+MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache Perl. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt. 
     \item \textbf{XAMPP}\\ 
 Das XAMPP-Paket wird aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
   \end{itemize}  
@@ -69,7 +82,7 @@ Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch
 Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc.png}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc}
 			\par\end{centering}
 			\caption{MVC-Erklärung}
 			\label{MVC-Erklärung}
@@ -80,7 +93,7 @@ Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er si
 Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können. Ein ERM dient dazu die Verknüpfungen zwischen zwei relationalen Tabellen visuell darzustellen. Die Verbindung wird dadurch gewährleistet, dass die zwei Tabellen über Foreign Keys verbunden werden, welche meist auf den Primary Key, also die ID der Tabelle, verweisen. Bei der Verknüpfung gilt es zu entscheiden ob es sich um eine ManyToMany oder um eine ManyToOne beziehungsweise OneToMany handelt. Eine ManyToMany Verbindung wird dann benötigt, wenn eine Tabelle auf viele Tabelleneinträge einer anderen Tabelle verweist und diese ebenfalls auf mehrere Einträge verlinkt. Die ManyToOne und OneToMany Verbindungsvariante wird verwendet, wenn von einem einzigen Eintrag auf mehrere einer anderen Tabelle verwiesen werden soll.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM.png}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM}
 			\par\end{centering}
 			\caption{ERM der digitalen Speisekarte}
 			\label{ERM der digitalen Speisekarte}
@@ -98,7 +111,7 @@ Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, wa
 
     \subsubsection{Framework einrichten}
 
-Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
+Auf der {Webseite von Smyfony\cite{symfony}} wird eine große Dokumentation angeboten, welche Einsteigern dabei hilft sich damit zurechtzufinden. Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
 	\lstset{language = bash}
   	\begin{lstlisting}
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
@@ -127,6 +140,7 @@ Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funk
 * @Route("/ROUTE", name="ROUTENBEZEICHNUNG")
 */
   	\end{lstlisting}
+Solche Anmerkungen werden zwar in Form eines Kommentars geschrieben und haben dadurch keine Auswirkung auf den Quelltext, werden jedoch trotzdem beachtet und nicht wie herkömmliche Kommentare ignoriert.
 Damit die erstellte Seite anschließend mit dem Package MAMP im Browser aufgerufen werden konnte, musste einfach der folgende Link in der Adresszeile eingeben werden:\\
 http://IP-ADRESSE:PORT/PROJEKTNAME/web/ROUTE
 
@@ -163,30 +177,10 @@ Um eine ID als Primary Key zu definieren wurde folgende Annotation verwendet:
   	\end{lstlisting}
 Die erste Zeile legt den Datentyp als Ganzzahl fest und die zweite Zeile sagt aus, dass es sich um den Primärschlüssel handelt. Mit der letzten Zeile wird dafür gesorgt, dass der Wert automatisch generiert wird, sobald eine neue Tabellenzeile erstellt wird.
 Bei einem Eintrag mit Kommazahlen musste der Spaltentyp einfach nur auf "float" eingestellt werden. Für einen Booleaneintrag wurde zwar als Anmerkung der Typ "boolean" definiert, jedoch ändert das Datenbanksystem MySQL diese Annotation automatisch in das Datenformat "tinyint".
-Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Anzahl der Zeichen definiert werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-/**
-* @ORM\Column(type="string", length=ANZAHL_DER_ZEICHEN)
-*/
-  	\end{lstlisting}
-Damit ein Zeitstempel erstellt werden konnte, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, musste die folgende Anmerkung hinzugefügt werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-/** @ORM\Column(type="datetime", nullable=false ) */
-protected $zeitstempel;
-  	\end{lstlisting}
+Um einen Texteintrag zu definieren musste sowohl der Datentyp als auch die Anzahl der Zeichen definiert werden.\\
+Damit ein Zeitstempel erstellt werden konnte, was vor allem für die Bestellungen und die Dokumentation des Datenaustausches mit dem Hexacopter wichtig war, mussten als Anmerkungen der Typ "datetime" und der Parameter "nullable=false" angegeben werden.
 Mithilfe von "nullable=false" wurde festgelegt, dass der Zeitstempel niemals leer sein darf.
-Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden:
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-public function __construct(){
-	$this->zeitstempel = new \DateTime();
-}
-\end{lstlisting}
+Um das Datum generieren zu können, musste eine Konstruktorfunktion dafür geschrieben werden.\\ \\
 Damit eine ManyToOne beziehungsweise eine OneToMany Verbindung erstellt werden konnte, musste dies ebenfalls mithilfe von Anmerkungen festgelegt werden.
 Auf der ManyToOne Seite sieht die Annotation dafür folgendermaßen aus:
 	
@@ -210,48 +204,11 @@ mappedBy="NAME_DER_AKTUELLEN_TABELLE")
 **/
   	\end{lstlisting}
 Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollectiob gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-public function __construct() {
-	$this->speiseeintraege = new ArrayCollection();
-}
-  	\end{lstlisting}
+\\ \\
 Um im Anschluss im Controller auf die Daten zugreifen zu können, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden, welche dazu verwendet werden konnten Datenbankinhalte zu bekommen und neue zu setzen. Diese können mit einem Rechtsklick über die Menüpunkte "Generate…" und "Getters and Setters…" automatisch erstellt werden.
 Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der "config.yml"-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben werden auf welche Datenbank zugegriffen werden soll.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-imports:
-- { resource: parameters.yml }
-...
-doctrine:
-	dbal: 
-		driver: pdo_mysql
-		host: "%database_host%"
-		port: "%database_port%"
-		dbname: "%database_name%"
-		user: "%database_user%"
-		password: "%database_password%"
-		unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
-		charset: UTF8
-  	\end{lstlisting}
 Um MySQL als Datenbankmodell zu definieren, wurde es dem Treiber als Wert geliefert. Zusätzlich musste auch angegeben werden wo sich die Datenbank befindet und mit welchem Benutzerkonto auf die Datenbank zugegriffen werden kann.
-Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Resssource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert:
-	\lstset{language=php}
-  	\begin{lstlisting}
-parameters:
-    database_host: IP-ADRESSE
-    database_port: DATENBANKPORT
-    database_name: DATENBANKNAME
-    database_user: USERNAME
-    database_password: PASSWORT
-    mailer_transport: smtp
-    mailer_host: IP-ADRESSE
-    mailer_user: USERNAME
-    mailer_password: PASSWORT
-    secret: GEHEIMCODE
-  	\end{lstlisting}
+Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Resssource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert.
 Für den Datenbankhost musste die IP-Adresse des Servers angeben werden. Falls sich die Datenbank auf einem lokalen Server befindet, wie es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Prot "3306" angegeben. Dieser Wert konnte allerdings auch verändert werden, indem er in der jeweiligen LAMP-Distribution unter den Einstellungen anders definiert wurde. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten konnten über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermittelt werden. Der Geheimcode kann automatisch generiert werden.
 Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
 Anschließend konnte die Datenbank bereits über das Terminal in MySQL erstellt werden:
@@ -264,16 +221,12 @@ Um Änderungen in der Datenbank von der PHP-Datei zu übernehmen, musste einfach
   	\begin{lstlisting}
 php app/console doctrine:schema:update -force
   	\end{lstlisting}
-Mit diesen Schritten wurde die Datenbank der digitalen Speisekarte erfolgreich generiert.
+Mit diesen Schritten wurde die Datenbank der digitalen Speisekarte erfolgreich mit einem objektrelationalen Abbild generiert, wodurch im Anschluss vereinfacht auf die Datenbankinhalte zugegriffen werden konnte.
 
     \subsubsection{Datenzugriff}
 
-Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden:
-	\lstset{language=php}
-  	\begin{lstlisting}
-$repository = $this->getDoctrine()
-    ->getRepository('AppBundle:TABELLENNAME');
-  	\end{lstlisting}
+Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden.
+\\
 Mithilfe der Befehle "findAll()", "findAllByTABELLENSPALTE(WERT" und "findOneByTABELLENSPALTE(WERT)" konnten die benötigten Werte aufgerufen werden.
 Diese konnten anschließend einfach in der render()-Funktion, welche die auszugebende Seite generiert, in einem Array mitgegeben werden, damit sie im Nachhinein im Frontend angezeigt werden:
 	\lstset{language=php}
@@ -285,17 +238,6 @@ return $this->render("DATEIBEZEICHNUNG.html.twig"
 );
   	\end{lstlisting}
 Um Operationen in der Datenbank vorzunehmen, wurde zuerst ein Datenbankmanager erstellt. Anschließend konnte entweder mit "remove()" ein Datenbankeintrag gelöscht, mit "persist()" ein neuer Datenbankeintrag hinzugefügt oder mit "merge()" ein Datenbankeintrag upgedatet werden. Mit dem Befehl "flush()" werden davor definierte Methoden ausgeführt beziehungsweise als Operatoren an die Datenbank geschickt.
-	
-	\lstset{language=php}
-  	\begin{lstlisting}
-$em = $this->getDoctrine()->getManager();
-$em->remove($DATENBANKEINTRAG);
-//oder
-$em->persist($DATENBANKEINTRAG);
-//oder
-$em->merge(DATENBANKEINTRAG->setSPALTENBEZEICHNUNG(NEUER_SPALTENEINTRAG));
-$em->flush();
-  	\end{lstlisting}
 	
 
     \subsubsection{Formulargenerierung}
@@ -310,22 +252,10 @@ $FORMULAR_BEZEICHNUNG = $this->createFormBuilder($REPOSITORY)
     ->getForm();
   	\end{lstlisting}
 Dank der Funktion "createFormBuilder()" ist es möglich, das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der "add()" Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden, ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion "getForm()" übergibt das Formular der Variable "FORMULAR\_BEZEICHNUNG".
-Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden:
-	\lstset{language=php}
-  	\begin{lstlisting}
-if($FORMULAR_BEZEICHNUNG->isSubmitted() && $FORMULAR_BEZEICHNUNG->isValid())
-{...}
-  	\end{lstlisting}
+Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden.
 Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
-Damit das Formular im Frontend angezeigt werden konnte, wurde das Formular in der "render()"-Funktion des Return-Statements im Array mitgeliefert:
-	\lstset{language=php}
-  	\begin{lstlisting}
-return $this->render('DATEIBEZEICHNUNG.html.twig'
-    ,array(
-    	'FORMULAR_BEZEICHNUNG' => $FORMULAR_BEZEICHNUNG->createView()
-    )
-);
-  	\end{lstlisting}
+\\ \\
+Damit das Formular in der View-Ebene verwaltet konnte, wurde das Formular in der "render()"-Funktion des Return-Statements im Array mitgeliefert.
 Um das Formular visuell darstellen zu können, wurde noch die Funktion "createView()" an die Formularvariable angehängt.
 Mithilfe dieser Variante wurden der Speiseverwaltungsscreen, der Farbcodeverwaltungsscreen und die Anmeldescreens des Administrators erstellt.
 
@@ -358,7 +288,7 @@ Zum Installieren der layoutspezifischen Komponenten wurde das freie Paketverwalt
 
     \subsubsection{Sass}
 
-Damit die Designelemente von Bootstrap mit wenigen Handgriffen angepasst werden konnten, wurde die Stylesheet-Sprache {Sass\cite{sass}} (Syntactically Awesome Stylesheets) verwendet. Sass ermöglicht es Variablen zu erstellen, was es erleichtert konstante Werte mehreren Klassen zuzuschreiben. Außerdem bietet Sass die Möglichkeit an, den Stylecode so zu verschachteln, dass beispielsweise nur einmal definiert werden muss aus welcher Klasse bestimmte Unterobjekte angesprochen werden sollen. Dies wird bewerkstelligt indem einmal die Klasse aufgeschrieben, die jeweiligen Unterelemente eingerückt und ihnen anschließend Styleelemente zugewiesen wurden.
+Damit die Designelemente von Bootstrap mit wenigen Handgriffen angepasst werden konnten, wurde die Stylesheet-Sprache {Sass\cite{sass}} (Syntactically Awesome Stylesheets) verwendet. Sass ermöglicht es Variablen zu erstellen, was es erleichtert konstante Werte mehreren Klassen zuzuschreiben. Außerdem bietet Sass die Möglichkeit an, den Stylecode so zu verschachteln, dass beispielsweise nur einmal definiert werden muss aus welcher Klasse bestimmte Unterelemente angesprochen werden sollen. Dies wird bewerkstelligt indem einmal die Klasse aufgeschrieben, die jeweiligen Unterelemente eingerückt und ihnen anschließend Styleelemente zugewiesen wurden.
 
     \subsubsection{Gulp}
 
@@ -373,13 +303,7 @@ Um erstellte Templates samt Variablen einzubinden, muss nur folgende Codezeile a
 {% include "TEMPLATE_BEZEICHNUNG.html.twig" 
 with {'BELIEBIGE_BEZEICHNUNG': VARIABLEN_BEZEICHNUNG } %}
   	\end{lstlisting}
-  	Twig bietet zusätzlich auch die Möglichkeit an bestimmte Blöcke zu definieren, die im File, welches das Layout und die dort vorhandenen Variablen erben soll, welche überschrieben werden können.
-	\lstset{language = php}
-  	\begin{lstlisting}
-{% block BLOCK_BEZEICNHNUNG%}
-...
-{% endblock %}
-	\end{lstlisting}
+Twig bietet zusätzlich auch die Möglichkeit den Inhalt einer Vorlagen-Datei in einzelne Blöcke zu unterteilen. Dadurch können andere Files nur von diesen Blöcken erben und müssen nicht von Grund auf das komplette Layout der Vorlagen-Datei übernehmen.
 Zusätzlich vereinfacht Twig den Programmieraufwand noch mit einigen, weiteren Features. Die geläufigsten darunter sind folgende:
 \begin{itemize}
     \item \textbf{Kommentare}\\
@@ -411,7 +335,7 @@ Außerdem kann mithilfe von Twig auf Pfade von Action Funktionen verwiesen und d
 
     \subsubsection{Ajax}
 
-{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte Ajax den regelmäßigen Aufruf der Seite, damit die  Daten auf den Screens am aktuellen Stand sein konnten.
+{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte es Ajax, dass die Daten der digitalen Speisekarte regelmäßig aktualisiert wurden und somit immer auf dem neuesten Stand angezeigt wurden.
 
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angfertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
@@ -455,16 +379,16 @@ Diese sind, wie in den neuen Mockups festgelegt, folgende:\\ \\
 \textbf{Funktionalitäten der digitalen Speisekarte}
 \begin{itemize}
     \item \textbf{Loginscreen}\\
-Der Loginscreen beeinhaltet sowohl ein Eingabefeld für den Administratornamen als auch für das Administratorpasswort und einen Loginbutton.
+Der Loginscreen beinhaltet sowohl ein Eingabefeld für den Administratornamen als auch für das Administratorpasswort und einen Loginbutton.
 Falls die Anmeldedaten falsch eingegeben werden, wird eine Fehlermeldung in rot angezeigt, die den Admin darauf hinweist, dass die Anmeldedaten falsch eingegeben wurden.
-Wenn das Anmeldeformular richtig ausgefüllt wurde, wird der Tischnummernauswahlscreen geöffnet.
+Wenn das Anmeldeformular richtig ausgefüllt wird, öffnet sich der Tischnummernauswahlscreen.
     \item \textbf{Tischnummernauswahlscreen}\\
-Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zur Auswahl angezeigt werden und ein Button mit dem Label "Speisekarte öffnen". Nachdem auf diesen Button geklickt wurde, öffnet sich die Speisekarte mit dem Parameter der ausgewählten Tischnummer.
+Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zur Auswahl angezeigt werden und ein Button mit dem Label "Speisekarte öffnen". Nachdem auf diesen Button geklickt wird, öffnet sich die Speisekarte mit dem Parameter der ausgewählten Tischnummer.
     \item \textbf{Speisekartenscreen}\\
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen. 
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton. 
-Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wurde.
-Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung bestellt wurde. Nun kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wird.
+Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung betätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
   \end{itemize}
 \textbf{Funktionalitäten des Adminbereichs} 
 \begin{itemize}
@@ -472,10 +396,9 @@ Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn da
 Der Loginscreen des Admininterface hat nahezu dieselben Funktionalitäten wie der, der digitalen Speisekarte. Der einzige Unterschied besteht darin, dass sich nach dem Klick auf den Loginbutton der Hauptscreen des Admininterfaces öffnet.
     \item \textbf{Hauptscreen}\\
 Der Hauptscreen des Admininterfaces bietet in einer Liste den Überblick über alle Bestellungen, die noch nicht serviert wurden. 
-Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden müssen.
-Links im Header befindet sich ein Button, damit der Administrator sich jederzeit ausloggen kann.
-Auf der rechten Seite ist ein Einstellungssymbol abgebildet. Dieses verlinkt auf den Einstellungsübersichts-Screen.
-Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese wird grün angezeigt, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
+Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden sollen.
+Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann, als auch ein Button mit einem Einstellungssymbol abgebildet, welches auf den Einstellungsübersichts-Screen verlinkt.
+Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese erscheint grün, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
     \item \textbf{Einstellungsübersicht-Screen}\\
 Der Einstellungsübersichtsscreen verweist in einer div-Box mit zwei Buttons auf den Tischverwaltungsscreen und den Speise- und Kategorienverwaltungsscreen.
 Oben im Header ermöglicht er es dem Admin wieder zurück zum Hauptscreen navigieren zu können.
@@ -489,17 +412,10 @@ Hierfür muss der Admin das jeweilige Formular ausfüllen und anschließend auf 
 
     \subsubsection{Layout}
 
-Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe des Befehls "npm install -g bower" global über das Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete werden mithilfe dieses Managers in der Datei "bower.json" dokumentiert, welche mit folgenden Kommandozeileneingaben generiert wurde:
-	\lstset{language = bash}
-  	\begin{lstlisting}
-  	bower init
-  	\end{lstlisting}
+Zu Beginn der Umsetzung des Layouts wurde der Package Manager Bower mithilfe des Befehls "npm install -g bower" global über das Terminal installiert, damit im weiteren Vorgehen die benötigten Pakete verwaltet werden konnten. Alle relevanten Informationen, der zu verwaltenden Pakete, werden mithilfe dieses Managers in der Datei "bower.json" dokumentiert, welche mit der Kommandozeileneingaben "bower init" erstellt wurde.
 Nachdem Bower in dem Projektverzeichnis installiert wurde, konnten alle notwendigen Bibliotheken über das Terminal installiert werden. Außerdem wurden die Abhängigkeiten in der Bower-Datei festgelegt. Dies war vor allem für "Bootstrap 4 alpha" wichtig, da es sonst nicht möglich gewesen wäre die neueste Version zu verwenden. Die Bibliothek jQuery wurde automatisch mitinstalliert, da Bootstrap als Abhängigkeit definiert wurde. Für die Installation von Gulp wurden einige weitere Bibliotheken benötigt, welche mithilfe von Bower einfach heruntergeladen werden konnten.
 Durch die Kombination von Bootstrap und Sass konnten die Bootstrap Style-Attribute, welche in den herkömmlichen Bootstrapklassen verwendet werden, in der Sass-Datei wie Variablen behandelt werden. Das bedeutet, dass beispielsweise die Schriftart mit der Zuweisung einer einzigen Variable sogleich für alle Seiten übernommen wurde.
-	\lstset{language = html}
-  	\begin{lstlisting}
-  	$font-family-sans-serif:	'PT Sans', sans-serif;
-  	\end{lstlisting}
+\\ \\
 Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald der Gulp-Befehl im Terminal eingegeben wird. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
 Nachdem die dadurch generierte CSS-Datei, im Header der Template-Files aufgerufen wurde, konnten die Bootstrap Klassen verwendet werden, indem sie in den class-Attributen der jeweiligen Elemente deklariert wurden. 
 Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angwendet:
@@ -509,9 +425,9 @@ Für diese Screens wurde lediglich eine div-Box benötigt, welche sich in der Mi
 	\item \textbf{Speisekarten und Einstellungsscreens}\\
 Bei diesen Screens wurde ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name der Herrsteller angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden. 
     \item \textbf{Hauptscreen des Admininterfaces}\\ 
-Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen links und rechts vom Titel in Form von Icons befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
+Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen unter dem Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
   \end{itemize}
-Das Design der Screens ist dem des Blogs sehr ähnlich, da diese aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
+Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
 Das finale Layout der Screens sieht daher folgendermaßen aus:\\ 
 \\ 
@@ -578,10 +494,6 @@ Wie bereits zuvor erwähnt wurde, ermöglicht die Template Engine Twig einen ver
 \end{lstlisting}
 Hierbei kann über den beliebig gewählten Namen, welchen man beim Rückgabewert der Action-Funktion mitgeliefert hat, auf die Variable zugegriffen werden. 
 Falls die Variable mit einem herkömmlichen String verbunden werden soll, wird eine Tilde als Verknüpfungszeichen benötigt. 
-\lstset{language = php}
-  	\begin{lstlisting}
-var STRING_BEZEICHNUNG= {{ VARIABLEN_BEZEICHNUNG }}~"TEXT";
-	\end{lstlisting}
 Die Variable kann allerdings auch problemlos in einer von Twig zur Verfügung gestellten IF-Anweisung verwendet werden.
 Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die von Twig mitgelieferte Art Schleifen zu generieren verwendet. Damit die Tabellenspalten einzeln angezeigt werden konnten, musste an die Bezeichnung des aktuellen Tabelleneintrags einfach die Spaltenbezeichnung angehängt werden. 
 \lstset{language = php}
@@ -591,18 +503,11 @@ Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die v
 {% endfor %}
 	\end{lstlisting}
 Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie zum Beispiel beim Zugriff auf die Speiseeinträge der jeweiligen Kategorien, musste im Aufruf ebenfalls auf diese verwiesen werden, bevor der auszugebende Wert von ihr geholt werden konnte.
-\lstset{language = php}
-  	\begin{lstlisting}
-{% for AKTUELLER_TABELLENEINTRAG in BEZEICHNUNG_DER_DATENBANKTABELLE %}
-{{ AKTUELLER_TABELLENEINTRAG.VERLINKTE_TABELLE.SPALTENBEZEICHNUNG }}
-{% endfor %}
-	\end{lstlisting}
 Bei Werten, welche auf diese Art und Weise von der Datenbank geholt werden, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies wird am besten mit einer JSON-Kodierung bewerkstelligt.
-\lstset{language = php}
-  	\begin{lstlisting}
-var VARIABLEN_BEZEICHNUNG = 
-{{ AKTUELLER_TABELLENEINTRAG.SPALTENBEZEICHNUNG|json_encode|raw  }};
-	\end{lstlisting}
+\\ \\
+Damit die Werte immer am aktuellsten Stand angezeigt werden, wurden im Controller Funktionen erstellt, welche aus den Datenbankinhalten JSON-Rückmeldungen erstellen.
+In den HTML-Dateien wird regelmäßig in Javascript mithilfe von Ajax auf die JSON-Funktionen zugegriffen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
+\\ \\
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frontend der Applikation angezeigt werden.
 
     \subsubsection{Formulargenerierung}
@@ -618,6 +523,7 @@ Um das Formular, welches über den Controller übermittelt wurde, anzeigen zu k�
 	\end{lstlisting}
 Um dem Template mitzuteilen, dass die Generierung eines Formulars gestartet werden soll, musste die "start()"-Funktion aufgerufen und ihr die Bezeichnung des Formulars, welche im Rückgabewert der Actionfunktion im Controller definiert wurde, als Parameter mitgeschickt werden. 
 Anschließend kann auf alle Felder und Labels des Formulars zugegriffen werden. Es empfiehlt sich zuerst das Label mit der "label()"-Methode, welche sowohl die Bezeichnung des Formulars als auch die des Eingabefelds übergeben werden sollen, und anschließend erst das Eingabefeld mit der "widget()"-Funktion, der dieselben Parameter übermittelt werden sollen, abzurufen. Es gibt die Möglichkeit jedem Label und Eingabefeld Attribute zuzuteilen um sie beliebig zu gestalten. Im Frontend werden alle Formularelemente gleich behandelt, da bereits im Controller die spezifischen Funktionalitäten zugewiesen wurden. Das heißt die Generierung eines Buttons in einer Twig-Datei unterscheidet sich nicht von der eines Texteingabefeldes.
+\\ \\
 Mit diesem Codeschema wurden alle Login-, Speisen- und Tischdatenverwaltungsformulare visuell dargestellt.
 
   \subsection{Herausforderungen und Lösungen}
@@ -635,38 +541,32 @@ Für die Testphase wurden präzise Testfälle erstellt, welche abgesehen von TC-
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
-\hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Erzieltes Ergebnis} \\\hline
-\hline TC-1 & Adminlogin - Admininterface & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Hauptscreen des Admininterfaces soll angezeigt werden & Hauptscreen des Admininterfaces wird angezeigt \\\hline
-\hline TC-2 & Adminlogin - Speisekarte & Der Admin meldet sich im Adminbereich mit dem richtigen Passwort und Namen an & Der Admin soll auf den Tischnummernauswahlscreen weitergeleitet werden & Der Admin wird auf den Tischnummernauswahlscreen weitergeleitet \\\hline
-\hline TC-3 & Speisebestellung & Der Gast bestellt eine Speise & Ein neuer Bestellungseintrag soll erstellt werden und in der Bestellliste erscheinen & Ein neuer Bestellungseintrag wird erstellt und erscheint in der Bestellliste, nachdem in einer Alertbox die Bestellung bestätigt wurde \\\hline
-\hline TC-4 & "Ausliefern"-Wert ändern & Der Admin klickt auf den "Ausliefern"-Button & Der "ausliefern"-Wert der Speise soll auf 1 gesetzt werden & Der "ausliefern"-Wert der Speise wird auf 1 gesetzt \\\hline
-\hline TC-5 & Tischroute schicken & Der Hexacopter schickt eine bestimmte Nachricht an den Server & Die Tischroute soll geschickt werden & Die Tischroute wird geschickt \\\hline
-\end{tabular}
-\end{table}
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
-\hline TC-6 & Speiseeintrag hinzufügen & Der Admin gibt neue Speisedaten in das Formular ein und klickt auf "Speiseeintrag hinzufügen" & Ein neuer Speiseeintrag soll in der Datenbank angelegt werden & Ein neuer Speiseeintrag wird in der Datenbank angelegt \\\hline
-\hline TC-7 & Kategorie hinzufügen & Der Admin gibt eine neue Kategoriebezeichnung in das Formular ein und klickt auf "Kategorie hinzufügen” & Eine neue Kategorie soll in der Datenbank angelegt werden & Eine neue Kategorie wird in der Datenbank angelegt \\\hline
-\hline TC-8 & Speiseeintrag löschen & Der Admin wählt einen Speiseeintrag aus und klickt auf den "Speiseeintrag Löschen"-Button & Der ausgewählte Speiseeintrag soll gelöscht werden & Der ausgewählte Speiseeintrag wird gelöscht \\\hline
-\hline TC-9 & Kategorie löschen & Der Admin wählt eine Kategorie aus und klickt auf den "Kategorie Löschen"-Button & Die ausgewählte Kategorie soll gelöscht werden & Die ausgewählte Kategorie wird gelöscht \\\hline
-\hline TC-10 & Tischroute verändern & Der Admin wählt eine Tischnummer aus und gibt eine Tischroute in das Formularfeld ein & Die Tischroute des Tisches mit der ausgewählten Tischnummer soll geändert werden & Die Tischroute des Tisches mit der ausgewählten Tischnummer wird geändert \\\hline
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{4cm}|p{4cm}|p{1.5cm}|} 
+\hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis erreicht?} \\\hline
+\hline 1 & Adminlogin & Admin meldet sich mit richtigen Anmeldedaten an & Hauptscreen des Admininterfaces wird angezeigt & Ja \\\hline
+\hline 2 & Speisebestellung & eine Speise wird bestellt & neuer Bestellungseintrag wird erstellt und in Bestellliste angezeigt & Ja \\\hline
+\hline 3 & "Ausliefern"-Wert ändern & Admin klickt auf "Ausliefern"-Button & "ausliefern"-Wert der Speise wird auf 1 gesetzt & Ja \\\hline
+\hline 4 & Tischroute schicken & Hexacopter schickt bestimmte Nachricht an Server & Server schickt Tischnummer zurück & Ja \\\hline
+\hline 5 & Speiseeintrag hinzufügen & Admin gibt neue Speisedaten ins Formular ein und klickt auf "Speiseeintrag hinzufügen" & neuer Speiseeintrag wird in Datenbank angelegt & Ja \\\hline
+\hline 6 & Kategorie hinzufügen & Admin gibt neue Kategoriebezeichnung ins Formular ein und klickt auf "Kategorie hinzufügen” & neue Kategorie wird in Datenbank angelegt & Ja \\\hline
+\hline 7 & Speiseeintrag löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter Speiseeintrag wird gelöscht & Ja \\\hline
+\hline 8 & Kategorie löschen & Admin wählt Kategorie aus und klickt auf "Kategorie Löschen"-Button & ausgewählte Kategorie wird gelöscht & Ja \\\hline
+\hline 9 & Tischroute verändern & Admin wählt Tischnummer aus und gibt Tischroute ins Formularfeld ein & Tischroute des Tisches wird geändert & Ja \\\hline
 \end{tabular}
 \caption{Testfälle der Applikation und des Java Programms}
 \end{table}
 
 \section{Persönliche Erfahrungen}
-Da ich zuvor kaum mit einer der hierfür verwendeten Technologien gearbeitet habe, konnte ich mir dank der Diplomarbeit einige neue Fähigkeiten erlernen.
+Da ich zuvor kaum mit einer der hierfür verwendeten Technologien gearbeitet habe, konnte ich, dank der Diplomarbeit einige neue Fähigkeiten erlernen.
 Zwar habe ich bereits in der vierten Klasse die Grundlagen eines MVC-Frameworks gelernt, doch war mir damals trotzdem kaum klar, wie es genau funktioniert und wie viele positive Eigenschaften es eigentlich mit sich bringt.
-Zuerst dachte ich, dass es mehr Aufwand mit sich bringen würde, da ich mich nicht gut damit auskannte, doch mittlerweile ist die Verwendung von Symfony für mich kaum noch wegzudenken. Ohne diesem Framework, hätte ich mich vermutlich kaum in meiner Codestruktur zurechtgefunden.
-So ging es mir jedoch nicht nur mit Symfony sondern nahezu mit jeder anderen Technologie die verwendet wurde auch. 
+Zuerst dachte ich, dass es mehr Aufwand mit sich bringen würde, da ich mich nicht gut damit auskannte, doch mittlerweile ist die Verwendung von Symfony für mich kaum noch wegzudenken. Ohne dieses Framework, hätte ich mich vermutlich kaum in meiner Codestruktur zurechtgefunden.
+So ging es mir jedoch nicht nur mit Symfony sondern nahezu mit jeder anderen Technologie die verwendet wurde. 
 Ich habe zwar ziemlich viel Zeit dafür aufgebracht mit Doctrine zurechtzukommen, doch dies hat sich auf jeden Fall ausgezahlt. Dadurch konnte ich nämlich Änderungen in der Datenbank ohne großen Aufwand vornehmen. 
-Ich bin wirklich froh darüber, dass ich mit der Template Engine Twig gearbeitet habe, da ich dadurch keinen aufwendigen Code in den Dateien für die visuelle Darstellung zur Ausgabe von Variablen eingeben musste, sondern lediglich wenige Zeilen mit dem Twig-Syntax angeben konnte.
+Ich bin wirklich froh darüber, dass ich mit der Template Engine Twig gearbeitet habe, da ich dadurch keinen aufwendigen Code in den Dateien für die visuelle Darstellung zur Ausgabe von Variablen eingeben musste, sondern lediglich wenige Zeilen mit Twig-Syntax angeben konnte.
 \\
-Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, führten wir Coachings ein, welche regelmäßig stattfanden. In diesen wurde der Fokus neben der Planung des Projekts auch immer wieder auf das Zusammenschweißen der Teammitglieder gelegt. Dadurch kann ich mittlerweile wirklich behaupten, dass wir fünf uns nun prima miteinander verstehen und auch längere Zeit miteinander auskommen ohne dass es zu Streitigkeiten kommt. Wir können alle offen miteinander über Probleme reden und uns darauf verlassen, dass jeder dem anderen bei Schwierigkeiten mit Rat oder Motivation zur Seite steht.
+Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, führten wir Coachings ein, welche regelmäßig stattfanden. In diesen wurde der Fokus neben der Planung des Projekts auch immer wieder auf das Zusammenschweißen der Teammitglieder gelegt. Dadurch kann ich mittlerweile wirklich behaupten, dass wir fünf uns nun prima miteinander verstehen und auch längere Zeit miteinander auskommen, ohne dass es zu Streitigkeiten kommt. Wir können alle offen miteinander über Probleme reden und uns darauf verlassen, dass jeder dem anderen bei Schwierigkeiten mit Rat oder Motivation zur Seite steht.
 \\
-Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, dass meine sozialen Kompetenzen davon profitiert haben. 
+Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, meine sozialen Kompetenzen davon profitiert haben. 
 
 \section{Ergebnisse}
 Sowohl die Screens der digitalen Speisekarte als auch die des Admininterfaces sind funktionstüchtig.
