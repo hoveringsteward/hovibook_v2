@@ -1,6 +1,6 @@
 % !TEX root = diplomarbeit.tex
 \chapter{Firmware}
-\renewcommand{\kapitelautor}{Autor: Christina Bornberg, Lucas Ullrich}
+\renewcommand{\kapitelautor}{Autor: Christina Bornberg}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
@@ -89,7 +89,13 @@
     Das Ergebnis lautet: 0110 1000 = 104 \\
     \end{itemize}
 
-    % Bild von Rotation %
+    \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = 0.5\textwidth]{Bilder/bor_rot_beschr2}
+      \par\end{centering}
+      \caption{Rotation mittels binärem Zahlensystem}
+      \label{Rotation_Beschreibung}
+    \end{figure}
 
     \subsection*{Throttle}
     Über den Ultraschallsensor erfährt der Hexacopter, wie hoch er fliegt. Beim Erreichen der maximalen Flughöhe, wird seine Antriebskraft gesenkt. Dadurch korrigiert er seine Höhe bei jedem Aufruf der Funktion und eine Änderung des Gewichts, kann ausgeglichen werden. Der entnommene Cupcake und die damit verbundene Gewichtsveränderung stellt daher kein Problem dar.
@@ -145,6 +151,14 @@
     \subsubsection{Überprüfen von Rudder}
     Rudder beschreibt die Rotation um seine eigene Hochachse. Dafür wird zunächst unterschieden, ob sich der Hexacopter am Hin- oder Rückflug befindet, da die Rotation der Colorcodes beim Rückflug um 180 Grad gedreht werden muss.
 
+    \begin{figure} [tbh]
+      \begin{centering}
+        \includegraphics[width = 0.7\textwidth]{Bilder/bor_rotation}
+      \par\end{centering}
+      \caption{Rotation von Farbcodes beim Hinflug}
+      \label{Rotation_Farbcode}
+    \end{figure}
+
     Die optimale Rotation befindet sich beim Hinflug zwischen -5 und 5 Grad.
     Bei einem zu niedrigen oder zu hohen Wert wird kontrolliert, ob sich der Hexacopter bereits in die richtige Richtung dreht.
     Sollte dies nicht der Fall sein, wird die Änderungsrate an die dazugehörige Funktion geschickt, die dem Flightcontroller die Information zur Beschleunigung gibt.
@@ -153,10 +167,21 @@
     Beim Rückflug soll die Rotation des Colorcodes größer als 175 oder kleiner als -175 sein.
 
     \subsubsection{Throttle anhand des Ultraschallsensors}
-    Der Hexacopter steht auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokusiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
+    Throttle reguliert die Höhe mithilfe eines Ultraschallsensors, ist also für die z-Achse zuständig.
 
-    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung der Änderungsrate, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat.
-    zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von $\SI{120}{\centi\metre}$ erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über $\SI{120}{\centi\metre}$ kommt, wird die Beschleunigung reduziert. Der Hexacopter pendelt sich zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ ein.
+    Der Hexacopter steht zunächst auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokusiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
+
+    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren. 
+    
+    Zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von $\SI{120}{\centi\metre}$ erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über $\SI{120}{\centi\metre}$ kommt, wird die Beschleunigung reduziert. Der Hexacopter pendelt sich zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ ein.
+
+    \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = 0.7\textwidth]{Bilder/bor_hoehenregelung}
+      \par\end{centering}
+      \caption{Höhenregelung}
+      \label{Throttle}
+    \end{figure}
 
     Nun wird berechnet, ob er sich noch über dem Tisch oder schon über dem Boden befindet. Dies stellt er fest, wenn zwei hintereinanderliegende Messungen einen Höhenunterschied von $\SI{50}{\centi\metre}$ aufweisen. Die zweite Messung ist erforderlich, um mögliche Fehlmessungen auszuschließen.
 
