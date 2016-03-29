@@ -227,8 +227,8 @@
       x1, y1, ... z2, z3 ... sind die staatischen Koordinaten der Pseudolites \\
       x, y, z ... werden durch die Lösung dieses quadratischen Gleichungssystems ermittelt \\
 
-      Beim Lösen der Gleichung erhält man 2 Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen 3er verschmolzener Kugeln 2 Schnittpunkte haben.
-      Wenn die Pseudolites am Boden angebracht werden, liegt eine der beiden Lösungen oberhalb und die 2. Lösung unterhalb des Bodens, womit man einfacherweise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
+      Beim Lösen der Gleichung erhält man zwei Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen dreier verschmolzener Kugeln zwei Schnittpunkte haben.
+      Wenn die Pseudolites am Boden angebracht werden, liegt eine der beiden Lösungen oberhalb und die zweite Lösung unterhalb des Bodens, womit man einfacher Weise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
 
     \subsection{Optisches Tracking: Fernortend}
     Aufgrund der Komplexität signalbasierter Verfahren, die ihre Position mittels elektromagnetischer Wellen bestimmen, werden hier Konzepte, die durch eine oder mehrere Kameras umgesetzt werden können, näher beschrieben. Beim optischen Tracking mit Markern wird mit Kameras gearbeitet, welche aktive (Signal emittierende) oder passive Marker an den zu erfassenden Personen oder Gegenständen verfolgen.
@@ -236,15 +236,14 @@
   \subsection*{Kamerasystem im Raum}
   Bei einem Raum, in dem Kameras verteilt sind, spricht man von einem fernortenden Positionierungssystem.
   Sowohl Tische und Kreuzungen als auch der Hexacopter sind mit Markern versehen. Die einzelnen Komponenten werden vom Kamerasystem erfasst und anschließend wird eine Karte erstellt. Diese Karte besitzt, wie ein Koordinatensystem Längen und Breitengrade.
-  Um den Weg vom Stützpunkt zum gewünschten Tisch zu finden, muss der Hexacopter eine Route wählen. Diese bestimmt er mithilfe der Daten, wodurch er sich selbst, Kreuzungen und Tische findet. Da das Trackingsystem die Position des Hexacopters trackt, kann kontrolliert werden, ob er sich auf dem richtigen Weg befindet. Die Position der einzelnen Komponenten kann, wie bei signalbasierten Verfahren, mittels Triangulation berechnet werden.
+  Um den Weg vom Stützpunkt zum gewünschten Tisch zu finden, muss der Hexacopter eine Route wählen. Diese bestimmt er mithilfe der Daten, wodurch er sich selbst, Kreuzungen und Tische findet. Da das Trackingsystem die Position des Hexacopters trackt, kann kontrolliert werden, ob dieser sich auf dem richtigen Weg befindet. Die Position der einzelnen Komponenten kann, wie bei signalbasierten Verfahren, mittels Triangulation berechnet werden.
 
   \subsection{Optisches Tracking: Selbstortend}
   Selbstortende, optische Positionierungssysteme sind vergleichsweise kostengünstig. Der Anschaffungspreis beschränkt sich auf eine Kamera, einen Mikrocontroller und Farbobjekte. Die Auswertung erfolgt am Hexacopter, weswegen kein extra Netzwerk benötigt wird.
 
   \subsection*{Linien}
   Bei einem selbstortenden Positionierungssystem sind Sensoren auf dem sich bewegenden Objekt angebracht.
-  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden.
-  Vorteile dieser Version ist, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
+  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden. Der Vorteil dieser Strategie ist es, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
 
   \subsection*{Ein Farbcode pro Wegabschnitt}
   Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben aufweisen, zu scannen.
@@ -252,9 +251,9 @@
 
   Bei diesem Konzept bekommt der Mikrocontroller Informationen zu den Farbobjekten pro Wegabschnitt. Vom Start bis zur ersten Kreuzung verwendet er eine Farbinformation, die aus einem Colorcode besteht. Jedes Farbobjekt auf diesem Weg, hat die selben 2 Farben. Durch diese Technik hat der Administrator des Systems weniger Aufwand. Hierbei kann es aber zu Komlikationen führen. Der Hexacopter erkennt beispielsweise einen der bereits passierten Farbcodes und bezieht die Position auf diesen. Die relative Position beschränkt sich bei dieser Variante auf den Wegabschnitt.
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
-        \includegraphics[width = 0.5\textwidth]{Bilder/bor_var1}
+        \includegraphics[width = \textwidth]{Bilder/bor_var1}
       \par\end{centering}
       \caption{Variante: Ein Farbcode pro Wegabschnitt}
       \label{Variante1}
@@ -264,9 +263,9 @@
   Das gewählte System wird ebenfalls mittels 2-farbiger Codes umgesetzt, der unterschied zum vorigen System liegt in der Variation der Farbcodes. Es dürfen keine gleichen Farbcodes nebeneinander liegen, da die relative Position auf diese Weise besser bestimmt werden kann. Es besteht keine Verwechslungsgefahr mit einem anderen Farbcode. Außerdem kann durch die Anzahl der Farbcodes jeder Farbcode genau zugeordnet werden, der letzte Farbcode kann so einfach erkannt werden und das erleichtert den Landevorgang.
   Ein Nachteil des Systems ist der Mehraufwand im jeweiligen Restaurant, da die Farbcodes in einer bestimmten Reihenfolge aufgelegt werden.
 
-      \begin{figure}[tbh]
+      \begin{figure}[H]
       \begin{centering}
-        \includegraphics[width = 0.5\textwidth]{Bilder/bor_var2}
+        \includegraphics[width = \textwidth]{Bilder/bor_var2}
       \par\end{centering}
       \caption{Variante: Farbcodes variieren}
       \label{Variante2}
