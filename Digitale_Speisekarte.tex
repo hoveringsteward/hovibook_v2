@@ -27,7 +27,7 @@ Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen
 Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel 11 genauer erklärt.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation.jpg}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation}
 			\par\end{centering}
 			\caption{Zusammenspiel der Komponenten}
 			\label{Zusammenspiel der Komponenten}
@@ -82,7 +82,7 @@ Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch
 Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc.png}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc}
 			\par\end{centering}
 			\caption{MVC-Erklärung}
 			\label{MVC-Erklärung}
@@ -93,7 +93,7 @@ Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er si
 Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können. Ein ERM dient dazu die Verknüpfungen zwischen zwei relationalen Tabellen visuell darzustellen. Die Verbindung wird dadurch gewährleistet, dass die zwei Tabellen über Foreign Keys verbunden werden, welche meist auf den Primary Key, also die ID der Tabelle, verweisen. Bei der Verknüpfung gilt es zu entscheiden ob es sich um eine ManyToMany oder um eine ManyToOne beziehungsweise OneToMany handelt. Eine ManyToMany Verbindung wird dann benötigt, wenn eine Tabelle auf viele Tabelleneinträge einer anderen Tabelle verweist und diese ebenfalls auf mehrere Einträge verlinkt. Die ManyToOne und OneToMany Verbindungsvariante wird verwendet, wenn von einem einzigen Eintrag auf mehrere einer anderen Tabelle verwiesen werden soll.
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM.png}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM}
 			\par\end{centering}
 			\caption{ERM der digitalen Speisekarte}
 			\label{ERM der digitalen Speisekarte}
@@ -505,6 +505,9 @@ Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die v
 Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie zum Beispiel beim Zugriff auf die Speiseeinträge der jeweiligen Kategorien, musste im Aufruf ebenfalls auf diese verwiesen werden, bevor der auszugebende Wert von ihr geholt werden konnte.
 Bei Werten, welche auf diese Art und Weise von der Datenbank geholt werden, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies wird am besten mit einer JSON-Kodierung bewerkstelligt.
 \\ \\
+Damit die Werte immer am aktuellsten Stand angezeigt werden, wurden im Controller Funktionen erstellt, welche aus den Datenbankinhalten JSON-Rückmeldungen erstellen.
+In den HTML-Dateien wird regelmäßig in Javascript mithilfe von Ajax auf die JSON-Funktionen zugegriffen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
+\\ \\
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frontend der Applikation angezeigt werden.
 
     \subsubsection{Formulargenerierung}
@@ -520,6 +523,7 @@ Um das Formular, welches über den Controller übermittelt wurde, anzeigen zu k�
 	\end{lstlisting}
 Um dem Template mitzuteilen, dass die Generierung eines Formulars gestartet werden soll, musste die "start()"-Funktion aufgerufen und ihr die Bezeichnung des Formulars, welche im Rückgabewert der Actionfunktion im Controller definiert wurde, als Parameter mitgeschickt werden. 
 Anschließend kann auf alle Felder und Labels des Formulars zugegriffen werden. Es empfiehlt sich zuerst das Label mit der "label()"-Methode, welche sowohl die Bezeichnung des Formulars als auch die des Eingabefelds übergeben werden sollen, und anschließend erst das Eingabefeld mit der "widget()"-Funktion, der dieselben Parameter übermittelt werden sollen, abzurufen. Es gibt die Möglichkeit jedem Label und Eingabefeld Attribute zuzuteilen um sie beliebig zu gestalten. Im Frontend werden alle Formularelemente gleich behandelt, da bereits im Controller die spezifischen Funktionalitäten zugewiesen wurden. Das heißt die Generierung eines Buttons in einer Twig-Datei unterscheidet sich nicht von der eines Texteingabefeldes.
+\\ \\
 Mit diesem Codeschema wurden alle Login-, Speisen- und Tischdatenverwaltungsformulare visuell dargestellt.
 
   \subsection{Herausforderungen und Lösungen}
