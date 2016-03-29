@@ -55,7 +55,7 @@
     Wird bei der Positionierung der Route bereits auf Hindernisse geachtetm müssen diese im Anschluss nicht mehr zwingend beachtet werden.
 
     \subsection*{Selbst- und fernortende Lokalisierungstechniken}
-    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
+    Lokalisierungstechniken können weiter als selbstortend oder fernortend (self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
     Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
     Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
 
@@ -109,10 +109,11 @@
 
     \subsection{Akustische Verfahren}
     \subsection*{Puls-Echo-Methode}
-    Die Puls-Echo-Methode ist auch als Time of flight bekannt.
-    Das Messprinzip erweist sich als sehr einfach. Ein Ultraschallsensor sendet einen, durch einen kurzen Spannungsimpuls erzeugte, Wellenzug aus, der daraufhin von einem Objekt reflektiert wird und schlussendlich zum Sender des Sensor gelangt. Die Entfernung, zwischen Sensor und zu erkennendem Objekt, kann nun aus der Laufzeit des Ultraschallsignals berechnet werden. \cite{akustischeverfahren}
+    Die Puls-Echo-Methode\cite{akustischeverfahren} ist auch als Time of flight bekannt.
+    Ein Ultraschallsensor sendet einen, durch einen kurzen Spannungsimpuls erzeugte, Wellenzug aus, der daraufhin von einem Objekt reflektiert und vom Sensor empfangen wird. Die Entfernung, zwischen Sensor und zu erkennendem Objekt, kann daraufhin aus der Laufzeit des Ultraschallsignals berechnet werden. 
+
     \subsection*{Phasenverschiebung}
-    Bei der Phasenverschiebung wird ein kontinuierliches Ultraschallsignal gesendet. Nachdem die Welle reflektiert wurde, wird sie ebenfalls von einem Empfänger aufgenommen. Die Phasenverschiebung kann nun zwischen gesendetem Referenzsignal und empfangenem Signal gemessen werden. Mithilfe dieser Information ist es möglich Laufzeit und zurückgelegte Distanz abzuleiten. \cite{akustischeverfahren}
+    Bei der Phasenverschiebung\cite{akustischeverfahren} wird ein kontinuierliches Ultraschallsignal gesendet. Nachdem die Welle reflektiert wurde, wird sie ebenfalls von einem Empfänger aufgenommen. Die Phasenverschiebung kann nun zwischen gesendetem und empfangenem Signal gemessen werden. Mithilfe dieser Information ist es möglich Laufzeit und zurückgelegte Distanz abzuleiten. 
 
     \subsubsection{Akustische Technologien}
     \subsection*{Ultraschall}
@@ -148,10 +149,10 @@
     Modelle\cite{Seg_modell}, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. 
 
     \textbf{Templatematching}\\
-    Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
+    Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes\cite{Seg_modell}, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
 
     \textbf{Hough-Transformation}\\
-    Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvollsltändige oder teils verdeckte Objekte erkennt.
+    Durch die Hough-Transformation\cite{Seg_modell} können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvollsltändige oder teils verdeckte Objekte erkennt.
 
     \subsection*{Regionenorientierte Segmentierung}
     Hier werden benachbarte Pixel\cite{Seg_region} auf Gleichheit zum Startpixel geprüft.
