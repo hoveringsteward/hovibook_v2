@@ -64,8 +64,9 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
     Wird dieser Wert nicht variabel angenommen, kann es dazu kommen, dass fälschlicher Weise angenommen wird, dass die Übertragung korrekt ist. Dies kann durch externe Faktoren wie
     Pull-Up-Widerstände oder Default-Status einer Leitung geschehen, in beiden Fällen würde je nach Schnittstelle "1" oder "0" übertragen werden, dies wäre falsch.
 
-    Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an. Die beeinträchtigt bisher jedoch nicht die Funktion
-    und wird daher nicht näher untersucht. Anhand der Ätzvorlagen konnte jedoch festgestellt werden, dass eine parallele Verlegung nicht gegeben ist.
+    Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an (siehe rote Linie Abbildung\ref{SPI-Ausgang}).
+    Die beeinträchtigt bisher jedoch nicht die Funktion und wird daher nicht näher untersucht. Anhand der Ätzvorlagen konnte jedoch festgestellt werden, dass eine
+    parallele Verlegung nicht gegeben ist.
 
     \subsubsection{Erkennen und Auswerten eines Bildes}
     Die Kamera schickt der Reihe nach die einzelnen Daten eines Objekts. Darunter ist auch ein Startwort welches ein neues Bild markiert.
