@@ -7,7 +7,7 @@
 
     \subsection{Allgemein}
     Um eine Positionsbestimmung durchzuführen, wird ein Trackingsystem benötigt.
-    Es gibt mehrere Verfahren\cite{PositionAllg}, um ein Objekt zu tracken: 
+    Es gibt mehrere Verfahren, um ein Objekt zu tracken: \cite{PositionAllg}
     \begin{itemize}
     \item Mechanische Systeme, umgesetzt mit einer mechanischen Verbindung
     \item Elektromagnetische Tracking, umgesetzt mit elektromagnetischen Wellen
@@ -19,11 +19,11 @@
     Elektromagnetische, optische und akustische Verfahren werden in späteren Abschnitten genauer behandelt.
 
     \subsection{Anwendung}
-    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete\cite{posAnwendung} gibt, werden unterschiedliche Methoden verwendet.
+    Indoor Positionierungssysteme werden derzeit vor allem zur Objekterkennung, im Umweltmonitoring, über das Detektieren von Bränden in Gebäuden, bis hin zum Einsatz in der Logistik, verwendet. Da es sehr viele unterschiedliche Anwendungsgebiete gibt, werden unterschiedliche Methoden verwendet. \cite{posAnwendung}
 
     \subsection{Eigenschaften der Positionsbestimmung}
 
-    Ein Positionierungssystem kann verschiedene Arten von Informationsdaten\cite{pos_eigenschaften} aufweisen. 
+    Ein Positionierungssystem kann verschiedene Arten von Informationsdaten aufweisen. \cite{pos_eigenschaften}
 
     \subsection*{Physische und symbolische Positionierung}
     Die \textbf{physische Positionierung} ist eine exakte Position, die zum Beispiel in einem Koordinatensystem, meist in 2-D oder 3-D Karten, bestimmt wird. Längen- und Breitengrade spielen dabei eine wichtige Rolle.\\
@@ -55,7 +55,7 @@
     Wird bei der Positionierung der Route bereits auf Hindernisse geachtetm müssen diese im Anschluss nicht mehr zwingend beachtet werden.
 
     \subsection*{Selbst- und fernortende Lokalisierungstechniken}
-    Lokalisierungstechniken können weiter als selbstortend oder fernortend (self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
+    Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
     Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
     Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
 
@@ -84,7 +84,7 @@
     \subsection{Elektromagnetische Verfahren}
     Elektromagnetische Wellen bestehen aus einer Kombination von elektrischen und magnetischen Wellen. Das für das menschliche Auge sichtbare Spektrum nennt man Licht. Optische Verfahren sind in einem der folgenden Abschnitte erklärt. Weitere Beispiele sind Ultraviolett, Infrarot, Radiowellen, Mikrowellen und Röngtenstrahlung.
 
-    Verfahren zur Positionsbestimmung mittels Signal\cite{pos_signal_2} \cite{pos_signal_4}:
+    Verfahren zur Positionsbestimmung mittels Signal: \cite{pos_signal_2} \cite{pos_signal_4}
 
     \subsection*{Lateration}
     Bei der Lateration wird die Position mit Hilfe der Entfernungsmessung bestimmt.
@@ -118,27 +118,26 @@
 
     \subsection{Akustische Verfahren}
     \subsection*{Puls-Echo-Methode}
-    Die Puls-Echo-Methode\cite{akustischeverfahren} ist auch als Time of flight bekannt.
-    Ein Ultraschallsensor sendet einen, durch einen kurzen Spannungsimpuls erzeugte, Wellenzug aus, der daraufhin von einem Objekt reflektiert und vom Sensor empfangen wird. Die Entfernung, zwischen Sensor und zu erkennendem Objekt, kann daraufhin aus der Laufzeit des Ultraschallsignals berechnet werden. 
-
+    Die Puls-Echo-Methode ist auch als Time of flight bekannt.
+    Das Messprinzip erweist sich als sehr einfach. Ein Ultraschallsensor sendet einen, durch einen kurzen Spannungsimpuls erzeugte, Wellenzug aus, der daraufhin von einem Objekt reflektiert wird und schlussendlich zum Sender des Sensor gelangt. Die Entfernung, zwischen Sensor und zu erkennendem Objekt, kann nun aus der Laufzeit des Ultraschallsignals berechnet werden. \cite{akustischeverfahren}
     \subsection*{Phasenverschiebung}
-    Bei der Phasenverschiebung\cite{akustischeverfahren} wird ein kontinuierliches Ultraschallsignal gesendet. Nachdem die Welle reflektiert wurde, wird sie ebenfalls von einem Empfänger aufgenommen. Die Phasenverschiebung kann nun zwischen gesendetem und empfangenem Signal gemessen werden. Mithilfe dieser Information ist es möglich Laufzeit und zurückgelegte Distanz abzuleiten. 
+    Bei der Phasenverschiebung wird ein kontinuierliches Ultraschallsignal gesendet. Nachdem die Welle reflektiert wurde, wird sie ebenfalls von einem Empfänger aufgenommen. Die Phasenverschiebung kann nun zwischen gesendetem Referenzsignal und empfangenem Signal gemessen werden. Mithilfe dieser Information ist es möglich Laufzeit und zurückgelegte Distanz abzuleiten. \cite{akustischeverfahren}
 
     \subsubsection{Akustische Technologien}
     \subsection*{Ultraschall}
     Ein Ultraschallsensor ist Sender und Empfänger in einem. Das System basiert auf der Zeitdifferenzmessung. Er sendet ein Signal, dieses wird reflektiert und anschließend empfängt der Sensor sein eigenes Echo. Mithilfe der Ausbreitungsgeschwindigkeit akustischer Wellen, ist es möglich Entfernungen zu messen. Die Zeit, die ein Signal zum zu messenden Objekt und wieder zurück braucht, nennt man Laufzeit, da die Strecke doppelt gemessen wird, wird die Zeit halbiert.
 
     \subsection{Optische Verfahren}
-    Maschinelles Sehen (machine vision)cite{machinevision} \cite{machinevision2} beschreibt die Fähigkeit eines Computers zu sehen.
+    Maschinelles Sehen (machine vision) beschreibt die Fähigkeit eines Computers zu sehen.
     Für einen Menschen ist es einfach, Objekte auf einem Bild zu erkennen, für Computer besteht ein Bild jedoch aus Daten, die die Graustufe beziehungsweise Farbe jedes einzelnen Pixels angeben, was die Möglichkeit des "Bildverstehens" erschwert.
-    Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen.
+    Die Auswertung erfolgt mathematisch, weswegen die Stärken von maschinellem Sehen im Bereich der Bestimmung von Farben und Graustufen, sowie der Entfernungsmessung liegen. Weiters können Maschinen, im Gegensatz zum menschlichen Auge, Infrarotlicht, Ultraviolettes Licht und Röngtenstrahlen wahrnehmen. \cite{machinevision} \cite{machinevision2}
 
-    Es wird zwischen Objekt Erkennung (detection) \cite{obj_det_trak} und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, das in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
-    
+    Es wird zwischen Objekt Erkennung (detection) und Verfolgung (tracking) unterschieden. Erkennung bezieht sich auf ein einzelnes Objekt, das in einem Bild erkannt wird. Bei der Verfolgung werden ein oder mehrere Objekte über eine Sequenz von Bildern erkannt und somit verfolgt.
+    \cite{obj_det_trak}
 
     \subsubsection{Bildverarbeitung}
-    Die Bildverarbeitung\cite{Bildverarbeitung}\cite{Bildverarbeitung2} besteht aus einer Reihe von Schritten, je nach Anwendung werden dabei manche ausgelassen.
-    Der Beginn besteht aus der Bildvorverarbeitung, bei der das Bild optisch verbessert wird. Daraufhin folgt die Bildanalyse, die aus den Schritten besteht:
+    Die Bildverarbeitung besteht aus einer Reihe von Schritten, je nach Anwendung werden dabei manche ausgelassen.
+    Der Beginn besteht aus der Bildvorverarbeitung, bei der das Bild optisch verbessert wird. Daraufhin folgt die Bildanalyse, die aus den Schritten besteht: \cite{Bildverarbeitung} \cite{Bildverarbeitung2}
     \begin{itemize}
     \item Segmentierung, in der das Bild in Bereiche aufgeteilt wird
     \item Merkmalsextraktion, bei der beispielsweise Kanten erkannt werden
@@ -149,31 +148,31 @@
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.
 
     \subsection*{Pixelorienterte Segmentierung}
-    Pixelorientierte Segmentierung\cite{Seg_punkt} wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte 
+    Pixelorientierte Segmentierung wird auch Punktorientierte Segmentierung genannt. Sie basiert auf den lokalen Pixelinformationen, in Abhängigkeit der Grauwerte \cite{Seg_punkt}
 
     \textbf{Thresholding}\\
     Beim Thresholding, auch Schwellenwertverfahren genannt, werden Bildpunkte verschiedenen Gruppen zugeordnet. Da es eine histogrammbasierte Segmentierung wird das zu segmentierende Bild binärisiert, das bedeutet, dass jedes Pixel entweder schwarz oder weiß eingefärbt wird. Dies wird durch den Vergleich des Grauwerts oder einem anderen eindimensionalen Merkmal mit einem Schwellwert, erreicht. Der Grauwert bezieht sich nur auf die Helligkeit der Pixel, Informationen zur Farbe werden dabei ignoriert. Da dieses Verfahren bei jedem einzelnen Pixel angewendet wird, gehört es zur pixelorientierten Segmentierung. Diese Technik benötigt wenig Rechenleistung, weshalb es in Echtzeitsystemen angewendet werden kann.
 
     \subsection*{Modellbasierte Segmentierung}
-    Modelle\cite{Seg_modell}, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. 
+    Modelle, bestehend aus Pixelgruppen, werden auf Instanzen geprüft. Einfache Modelle werden mittels Template Matching oder der Hough-Transformation analysiert. \cite{Seg_modell}
 
     \textbf{Templatematching}\\
-    Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes\cite{Seg_modell}, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
+    Um Objekte in Bildern zu finden, müssen Information zu Struktur, Form oder Farbe vorliegen. Tempaltes, in denen diese Informationen enthalten sind, werden mit dem Bild verglichen. Anschließend wird die Region im Bild gesucht, die die größte Ähnlichkeit aufweist.
 
     \textbf{Hough-Transformation}\\
-    Durch die Hough-Transformation\cite{Seg_modell} können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvollsltändige oder teils verdeckte Objekte erkennt.
+    Durch die Hough-Transformation können anhand der Anzahl der Pixel, die von der gesuchten Form überdeckt werden, geometrische Objekte wie beispielsweise Kreise erkannt werden. Dieses Verfahren ist sehr robust, da es auch auf verrauschten Bildern unvollsltändige oder teils verdeckte Objekte erkennt.
 
     \subsection*{Regionenorientierte Segmentierung}
-    Hier werden benachbarte Pixel\cite{Seg_region} auf Gleichheit zum Startpixel geprüft.
+    Hier werden benachbarte Pixel auf Gleichheit zum Startpixel geprüft. \cite{Seg_region}
 
     \textbf{Region Growing}\\
     Bei diesem Verfahren geht man von einem Startpixel, beziehungsweise Seed-Point aus, dieses kann entweder vom Menschen selbst oder vom Computer gewählt werden. Dieses wird mit benachbarten Pixel auf ähnliche Eigenschaften verglichen. Wenn diese Pixel genügend Ähnlichkeit aufweisen, werden sie zu einer sogenannten Region hinzugefügt, andernfalls wird das jeweilige Pixel ignoriert. Die Technologie kann in verrauschten Bildern angewendet werden.
 
     \subsection*{Texturorientierte Segmentierung}
-    Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren dies als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung\cite{Seg_textur} wird meist zur unterstützung anderer Methoden verwendet.
+    Da sich Objekte oft durch eine einheitliche Struktur auszeichnen, versucht dieses Verfahren dies als Homogenitätskriterium zu verwenden. Texturorientierte Segmentierung wird meist zur unterstützung anderer Methoden verwendet. \cite{Seg_textur}
 
     \textbf{Co-Occurrence-Matrizen}
-    Um eine Texturanalyse durchzuführen, kann die Cooccurrence-Matrix\cite{seg_coocc}, auch Grauwertübergangsmatrix genannt, verwendet werden. 
+    Um eine Texturanalyse durchzuführen, kann die Cooccurrence-Matrix, auch Grauwertübergangsmatrix genannt, verwendet werden. \cite{seg_coocc}
     Bei dieser Matrix werden die Grauwertverhältnisse der Umgebung eines Pixels beschrieben.
 
     \subsubsection{Merkmalsextraktion}
@@ -181,7 +180,7 @@
 
     \textbf{Kantendetektion}\\
     Im menschlichen Sehen, haben Kanten eine wichtige Bedeutung, durch sie kann ein Bild beinahe vollständig nachgebildet werden. Es gibt einige Verfahren um die Erkennung der Objektgrenzen durchzuführen. Es wird dabei zwischen physikalischen Kanten, die durch inhomogene Intensitätswerte bei Verläufen erkannt werden und Pseudokanten, die durch Schatten Kanten erzeugen, die nicht existieren, unterschieden.
-    Das Verfahren besteht grundsätzlich aus 3 Schritten\cite{Bildverarbeitung}:
+    Das Verfahren besteht grundsätzlich aus 3 Schritten:
     \begin{itemize}
         \item Um den Itensitätsgradienten zu erzeugen, wird eine Maske angewendet.
         \item Nennenswerte Gradienten werden mittels Thresholding selektiert.
@@ -195,22 +194,22 @@
         Für die 2. Ableitung kommt beispielsweise der Sombrerofilter, auch Laplace of Gaussian Operator oder Marr-Hildreth-Operator genannt, zum Einsatz.
     \end{itemize}
     \textbf{Eckendetektion}\\
-    Ecken sind Punkte, in denen zwei Kanten enden und sind somit Objektabschlüsse. Sie sind ebenfalls wichtige Merkmale in einem Bild und können durch Gradienten oder Morphologie erkannt werden. Um die Eckendetektion durchzuführen, können beispielsweise Moravec´s Corner Detector und Harris Corner Detector verwendet werden. 
+    Ecken sind Punkte, in denen zwei Kanten enden und sind somit Objektabschlüsse. Sie sind ebenfalls wichtige Merkmale in einem Bild und können durch Gradienten oder Morphologie erkannt werden. Um die Eckendetektion durchzuführen, können beispielsweise Moravec´s Corner Detector und Harris Corner Detector verwendet werden. \cite{Bildverarbeitung}
 
     \subsubsection{Klassifikation}
-    Klassifizieren\cite{Bildverarbeitung} ist das Zusammenfassen von Objekten zu einer Gruppe, Klasse beziehungsweise Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. 
+    Klassifizieren ist das Zusammenfassen von Objekten zu einer Gruppe, Klasse beziehungsweise Kategorie. Hier gibt es beispielsweise die Klassifikation nach Farbe, Kontrast, Segmentgröße, Form oder Textur. Durch die Klassifikation soll das Erkennen von Zusammenhängen verbessert werden. Ein Objekt, bei dem alle relevanten Eigenschaften vorliegen, kann korrekt klassifiziert werden. Da in den meisten Fällen nicht alle Informationen vorliegen, wird eine Klassifizierung anhand eines Merkmalvektors, der aus einer Reihe passender Merkmale entsteht, durchgeführt. \cite{Bildverarbeitung}
 
     \subsection{Optische Technologien}
     \subsection*{Pixy CMUcam5}
-    Die Pixy CMUcam5\cite{Pixy} ist ein optisches Trackingsystem. Das Kameramodul ist in der Lage, Objekte in 7 verschiedenen Farben zu scannen, diese zu speichern und wiederzuerkennen. Daten über die Höhe und die Breite, sowie die x- und y-Position des getrackten Objektes innerhalb des Frames werden ausgegeben. Bei sogenannten Colorcodes, die sich aus zwei oder mehrfarbigen Objekten ergeben, kann die Rotation des Objektes ebenfalls ermittelt werden.
+    Die Pixy CMUcam5 ist ein optisches Trackingsystem. Das Kameramodul ist in der Lage, Objekte in 7 verschiedenen Farben zu scannen, diese zu speichern und wiederzuerkennen. Daten über die Höhe und die Breite, sowie die x- und y-Position des getrackten Objektes innerhalb des Frames werden ausgegeben. Bei sogenannten Colorcodes, die sich aus zwei oder mehrfarbigen Objekten ergeben, kann die Rotation des Objektes ebenfalls ermittelt werden.
 
     \textbf{CMVision}\\
-    Color Machine Vision\cite{Pixy_Verfahren} \cite{Pixy_Verfahren2}, ist ähnlich dem Algorithmus der Pixy. Es ist ein echtzeit System, das mit dem Farbmodell YUV umgesetzt wird. Das Y steht für die Lichstärke pro Fläche, U und V geben den Farbanteil an. Der Vorgang beginnt mit einer Farbraumtransformation. Als Segmentierungsmethode wird Thresholding angewendet. Regionen werden verbunden und entnommen. Am Ende werden die Regionenzusammengefasst.  
+    Color Machine Vision, ist ähnlich dem Algorithmus der Pixy. Es ist ein echtzeit System, das mit dem Farbmodell YUV umgesetzt wird. Das Y steht für die Lichstärke pro Fläche, U und V geben den Farbanteil an. Der Vorgang beginnt mit einer Farbraumtransformation. Als Segmentierungsmethode wird Thresholding angewendet. Regionen werden verbunden und entnommen. Am Ende werden die Regionenzusammengefasst. \cite{Pixy} \cite{Pixy_Verfahren} \cite{Pixy_Verfahren2}
 
     \subsection*{Vicon}
-    Vicon\cite{Vicon} ist ein System, das mit dem Trackingverfahren Motion Capture (Bewegungserfassung) arbeitet.
+    Vicon ist ein System, das mit dem Trackingverfahren Motion Capture (Bewegungserfassung) arbeitet.
     Mehrere Kameras werden in einem Raum verteilt. Jede Kamera besitzt einen Infrarotfilter und Infrarot-LEDs. Die Lampen senden infrarotes Licht aus, dieses wird an Markern, die sich auf dem zu trackenden Objekt befinden, reflektiert. Mithilfe einer Software kann dadurch eine dreidimensionale Karte erstellt werden.
-    
+    \cite{Vicon}
 
   \section{Konzepte}
 
@@ -308,7 +307,7 @@
   \subsection*{Skalierung}
   Das System ist beliebig skalierbar, da es auf Farbcodes basiert. Es besteht die Möglichkeit, beliebig viele Farbcodes dem Weg hinzuzufügen oder wieder wegzunehmen. Die Routen sind im Adminbereich hinterlegt und müssen, je nach dem, wie der Administrator die Farbcodes legt, diese auch mitverändern. Im System gibt es aus Testgründen eine Grenze von 20 Farbcodes, diese kann aber einfach verändert werden.
 
-  Die Pixy CMUcam5 ist in der Lage 135 Objekte pro Frame\cite{PIXY_Porting_Examplecode} zu tracken. Unser System ist selbstortend, dewegen interessiert sich der Hexacopter nur für ein Objekt pro Frame. 
+  Die Pixy CMUcam5 ist in der Lage 135 Objekte pro Frame zu tracken. Unser System ist selbstortend, dewegen interessiert sich der Hexacopter nur für ein Objekt pro Frame. \cite{PIXY_Porting_Examplecode}
 
   Das System ist, wegen des Ultraschallsensors auf eine Höhe von 3 Metern begrenzt. Im System ist eine Maximalhöhe von $\SI{220}{\centi\metre}$ über dem Boden und $\SI{120}{\centi\metre}$ über einem Tisch hinterlegt.
 
@@ -316,11 +315,11 @@
   Da  die Positionierung auf einer Kamera mit Farbcodes, einem Ultraschallsensor, einem Mikcrocontroller und einem WLAN-Modul sowie einem WLAN fähigen Gerät, als Admin-Interface, basiert, sind die Kosten sehr gering.
 
   \subsection*{Limitierung}
-  Da die Pixy CMUcam5\cite{Pixy} ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.
-  Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. 
+  Da die Pixy CMUcam5 ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.
+  Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. \cite{Pixy}
 
   Das System kann sowohl Indoor als auch Outdoor angewendet werden. Da die Farbobjekte am Boden positioniert werden, werden keine Wände, Decken oder sonstige Räumlichkeiten benötigt. Die gennannten Objekte würden die Positionsbestimmung aber auch nicht negativ beeinträchtigen.
 
-  Der Ultraschallsensor\cite{Ultrasonic} eignet sich für den Bereich zwischen 2cm und 3m. Bei der Entfernungsmessung muss man die Schallgeschwindigkeit berücksichtigen. Da diese Temperaturabhängig ist, muss man darauf achten, dass die Temperaturdifferenz gering zur gewählten Geschwindigkeit ist. Bei 20 Grad Celsius beträgt diese 343m/S. Wenn die Abweichung 20 Grad Celsius, in diesem Beispiel eine Temperatur von etwa 0 oder 40 Grad Celsius beträgt, kann ein Fehler von 3,4 Prozent erwartet werden.
+  Der Ultraschallsensor eignet sich für den Bereich zwischen 2cm und 3m. Bei der Entfernungsmessung muss man die Schallgeschwindigkeit berücksichtigen. Da diese Temperaturabhängig ist, muss man darauf achten, dass die Temperaturdifferenz gering zur gewählten Geschwindigkeit ist. Bei 20 Grad Celsius beträgt diese 343m/S. Wenn die Abweichung 20 Grad Celsius, in diesem Beispiel eine Temperatur von etwa 0 oder 40 Grad Celsius beträgt, kann ein Fehler von 3,4 Prozent erwartet werden.
   Bei der Reflektion auf glatten und ebenen Flächen erzeugt das beste Messergebnis, bei Distanzen unter 1m erweisen sich beide Faktoren als unkritisch.
-  Weiters muss der Winkel des Sensors beachtet werden, dabei spielt die Entfernung eine Rolle. Unter 1m kann der Sensor bis zu 45 Grad geneigt sein, bei der maximalen Höhe von 3m sind höchstens 15 Grad möglich. 
+  Weiters muss der Winkel des Sensors beachtet werden, dabei spielt die Entfernung eine Rolle. Unter 1m kann der Sensor bis zu 45 Grad geneigt sein, bei der maximalen Höhe von 3m sind höchstens 15 Grad möglich. \cite{Ultrasonic}
