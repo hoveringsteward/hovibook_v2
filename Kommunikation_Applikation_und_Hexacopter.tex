@@ -174,7 +174,7 @@ Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefe
 \\ \\
 Um in einer extra Datenbanktabelle den Verbindungsstatus zwischen dem Hexacopter und dem Server überprüfen zu können, wird bei jeder Statusänderung die "erstelleDBEintrag()"-Funktion aufgerufen. Das Einfügen von Datenbankeinträgen kann mit einem Insert-Statement erledigt werden. Dieses muss im Anschluss ebenfalls mit der "executeUpdate()"-Methode durchgeführt werden.
 \\ \\
-\textbf{Komm Manager}\\
+\subsubsection*{Komm Manager}
 Um die Verbindung mit dem Hexacopter zu managen wurde die "Komm Manager" Klasse programmiert.
 Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt sie von dieser. Dies wird ganz oben bei der Klassendefinierung mithilfe des Befehls "extends" gehandhabt.
 \\ \\
@@ -187,7 +187,7 @@ Sobald ein Teilnehmer beitritt wird ihm mithilfe des Timers regelmäßig eine Na
 \\ \\
 Um zu überprüfen, ob der Hexacopter in der Basis und somit bereit dazu ist, eine Speise auszuliefern, wartet der Server darauf, dass die Nachricht "1" geschickt wird. Sobald diese Nachricht ankommt, liefert die Funktion den Wert "true" zurück. Außerdem wird mithilfe der SQL-Readerfunktion in der Datenbank vermerk, dass sich der Hexacopter zu diesem Zeitpunkt in der Basis befindet.
 \\ \\
-\textbf{Komm Teilnehmer}\\
+\subsubsection*{Komm Teilnehmer}
 Die "Komm Teilnehmer" Klasse wurde dafür entwickelt, die einzelnen Verbindungen zum Hexacopter zu verwalten.
 \\
 Dem Teilnehmer Thread wird sowohl der Manager als auch der Server Socket als Parameter mitgeliefert. Über diese kann im Anschluss das Senden und Empfangen der Nachrichten geregelt werden.
