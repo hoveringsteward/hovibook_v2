@@ -25,33 +25,6 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
 \end{figure}
 
 \needspace{2cm}
-  \subsection{Technische Planung}
-  % in Positionierung.tex ANFANG
-    \subsubsection{Mögliche Verfahren zur Positionserkennung}
-    Hier muss grundsätzlich zwischen zwei Messmethoden unterschieden werden:
-    \begin{itemize}
-      \item \textbf{Absolute Positionsmessung}\\
-      Hier wird die Position von einem gleichbleibenden Punkt aus gemessen. Dabei ist ein konstanter Referenzpunkt wichtig.
-      Verändert sich dieser oder kann die Distanz nicht genau gemessen werden ist die Messung unbrauchbar.
-
-      Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an,
-      diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung.
-      Für die Triangulation können die unterschiedlichsten Signale verwendet werden, am gängigsten sind jedoch jene die mit elektromagnetischen Wellen arbeiten,
-      \zB WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten.
-
-      Bei einer Messung derart schneller Signale muss ein hoher Aufwand betrieben werden um eine Messgenauigkeit von einigen cm zu erzielen.
-      Eine weitere Herausforderung sind Mauern \bzw Hindernisse. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
-      \item \textbf{Relative Positionsmessung}\\
-      Hier wird die Position von einem wechselnden Punkt aus gemessen. Um hier eine Positionierung im Raum ermöglichen zu können,
-      ist es erforderlich immer zu einem bestimmten Punkt zu messen. Ein Wechsel dieses Punktes ist jedoch möglich,
-      deshalb muss auch die Position der Punkte im Raum bekannt sein. Ist die Zielposition im Raum bekannt kann zu dieser hin navigiert werden.
-      Auch hier muss wie bei einer absoluten Positionsmessung auf Hindernisse geachtet werden.
-
-      Die zweite Alternative ist, dass eine bestimmte Route bekannt ist und sich das zu positionierende Objekt nur in einem bestimmten Bereich um diese Route bewegt.
-      Wird bei der Positionierung der Route bereits auf Hindernisse geachtet müssen diese im Anschluss nicht mehr zwingend beachtet werden.
-    \end{itemize}
-
-  % in Positionierung.tex ENDE
 
   \subsection{Umsetzung}
   Durch die PIXY CMUcam5 lässt sich eine relative Positionsmessung vergleichsweise einfach verwirklichen.
@@ -71,8 +44,8 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
     Die SPI-Schnittstelle ist bei der Kamera besonders ausfallsicher. Hier wird ein Synchronisationsbyte gefordert, wird dieses nicht erkannt,
     \zB aufgrund eines Fehlers in der Datenübertragung, schickt die Kamera keine Daten.
 
-    \paragraph{Überprüfen der SPI-Schnittstelle}
-    Um zu überprüfen ob die SPI-Schnittstelle auch korrekt arbeitet wird bei der ersten Inbetriebnahme der Output überprüft.
+    \subsubsection*{Überprüfen der SPI-Schnittstelle}
+    Um zu überprüfen ob die SPI-Schnittstelle auch korrekt arbeitet, wird bei der ersten Inbetriebnahme der Output überprüft.
     Hierzu wird der Zustand der 3 Leitungen mit einem Oszilloskop betrachtet.
     \begin{itemize}
       \item \textcolor{blue}{Taktleitung}
@@ -89,12 +62,14 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
       \label{SPI-Ausgang}
     \end{figure}
 
-    Der Wert mit dem diese Überprüfung durchgeführt wird sollte möglichst variabel sein, hier wird 0xAA (1010 1010) verwendet.
-    Wird dieser Wert nicht variabel angenommen kann es dazu kommen, dass fälschlicher Weise angenommen wird, dass die Übertragung korrekt ist.
+    Der Wert mit dem diese Überprüfung durchgeführt wird, sollte möglichst variabel sein, hier wird 0xAA (1010 1010) verwendet.
+    Wird dieser Wert nicht variabel angenommen, kann es dazu kommen, dass fälschlicher Weise angenommen wird, dass die Übertragung korrekt ist. Dies kann durch externe Faktoren wie
+    Pull-Up-Widerstände oder Default-Status einer Leitung geschehen, in beiden Fällen würde je nach Schnittstelle "1" oder "0" übertragen werden, dies wäre falsch.
+
     Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an.
 
     \subsubsection{Erkennen und Auswerten eines Bildes}
-    Die Kamera schickt der Reihe nach die einzelnen Daten eines Objekts. Darunter ist auch eine Startbedingung welche ein neues Bild markiert.
+    Die Kamera schickt der Reihe nach die einzelnen Daten eines Objekts. Darunter ist auch ein Startwort welches ein neues Bild markiert.
     Mit den diversen Informationen zum Objekt ergeben sich folgende Daten:
     \begin{itemize}
       \item Neues Bild 0xAA55
@@ -110,11 +85,11 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
     Dabei ist die Objektnummer von den im Objekt oder Farbcode vorkommenden Farben abhängig, zusätzlich ist zu beachten, dass sie oktal dargestellt wird.
     Ein übermittelter Wert von dezimal 10, also oktal 12, bedeutet, dass die Farben 1 und 2 erkannt wurden.
 
-    Will man nun ein neues Bild finden muss man so lange nach 0xAA55 suchen bis man diese Daten gesendet bekommt.
+    Will man nun ein neues Bild finden, muss man so lange nach 0xAA55 suchen bis man diese Daten gesendet bekommt.
     Anschließend gilt es noch festzustellen ob man einen Farbcode oder ein Objekt betrachtet,
     es muss also direkt darauf 0xAA56 oder nochmals 0xAA55 erkannt werden. Ist dies nicht der Fall, wurde kein neues Bild erkannt und man betrachtet ein normales Objekt.
 
-    Betrachtet man nun die bis zum Erkennen eines neuen Bildes gesendeten Daten als gegenstandslos ergibt sich eine vergleichsweise einfache Schleife um ein Bild zu erkennen.
+    Betrachtet man nun die bis zum Erkennen eines neuen Bildes gesendeten Daten als gegenstandslos, ergibt sich eine vergleichsweise einfache Schleife um ein Bild zu erkennen.
 
     \lstset{language = c}
     \begin{lstlisting}
@@ -144,16 +119,16 @@ while(frame == 0) {
     Die weiteren Werte eines Objekts werden der Reihe nach in einer \gls{Struktur} abgespeichert, hier ist nichts Besonderes mehr zu beachten.
 
   \subsection{Herausforderungen und Lösungen}
-  Besonders das Beispielprogramm\cite{PIXY_Porting_Examplecode} für eine Bildauswertung stellte einige Herausforderungen dar. Hier sind unterschiedliche Codeschnippsel in einem
-  großen Beispiel zusammengefasst. Das ist besonders bei durch die ähnlichen Funktionen des Codes schwer auseinander zu halten. So steht eine Funktion für die Erkennung eines
+  Insbesondere das Beispielprogramm\cite{PIXY_Porting_Examplecode} für eine Bildauswertung stellte einige Herausforderungen dar. Hier sind unterschiedliche Codeschnippsel in einem
+  großen Beispiel zusammengefasst. Die große Ähnlichkeit verschiedener Funktionen erschweren die Lesbarkeit des Codes erheblich. So steht eine Funktion für die Erkennung eines
   neuen Bildes, diese zählt aber nur Bilder pro Sekunde, eine andere ist dann für die gesamte Auswertung und sucht dafür erneut nach einem Bild.
 
   Diese Zusammenhänge konnten durch einige Überlegungen erkannt werden und darauffolgend die eigene Firmware geschrieben werden.
 
-  Ein weiteres Problem stellt die Empfindlichkeit der Kamera bei wechselnden Lichtverhältnissen dar. Da diese über die Farbsignatur eines Objektes arbeitet werden bereits
+  Ein weiteres Problem stellt die Empfindlichkeit der Kamera bei wechselnden Lichtverhältnissen dar. Da diese über die Farbsignatur eines Objektes arbeitet, werden bereits
   sehr kleine Differenzen unterschieden um verschiedene Objekte erkennen zu können \bzw keine Störungen durch den Hintergrund zu erhalten. Dies wird jedoch ebenso in der
   anderen Richtung zu einem Problem. Wechselt das Licht ein wenig kann ein Farbcode oft nicht mehr zuverlässig erkannt werden und die Kamera muss über einen Computer nachkalibriert
-  werden. Eine mögliche Lösung ist das konstante Beleuchten der Farbcodes mit einer sehr bestimmten Leuchtstärke, hier kann es leicht zu Überbelichtungen kommen, besonders bei
+  werden. Eine mögliche Lösung ist das konstante Beleuchten der Farbcodes mit einer sehr bestimmten Leuchtstärke, hier kann es leicht zu Überbelichtungen kommen, sowohl bei
   dunklen Verhältnissen, als auch die Umrüstung auf einen \gls{Infrarot}-Kit. Bei einem Infrarot-Kit fällt jedoch die Individualität jedes einzelnen Markers weg.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +147,7 @@ die Messgröße wird dabei als laufzeitabhängiger Impuls retourniert.
   \subsection{Technische Planung}
   Für die Steuerung des Hexacopter ist es notwendig die aktuelle Flughöhe zu wissen.
   Es ist mit einer bekannten Objektgröße und den von der Kamera vorliegenden Daten zwar möglich die aktuelle Flughöhe rechnerisch zu bestimmen,
-  jedoch gestaltet sich dies sehr rechenaufwändig. Um die Höhe möglichst einfach messen zu können bietet sich daher eine vergleichsweise langsame Messung,
+  jedoch gestaltet sich dies sehr rechenaufwändig \bzw ungenau. Um die Höhe möglichst einfach messen zu können bietet sich daher eine vergleichsweise langsame Messung,
   wie jene mit einem Ultraschallsignal an.
   Bei einer Schallgeschwindigkeit von $\SI{343}{\meter\per\second}$ entstehen bei einer zu messenden Distanz von $\SI{2}{\meter}$,
   Laufzeiten des Ultraschallsignals von \ca $\SI{12}{\milli\second}$ (Distanz mal 2 da das Signal wieder zurückkehren muss).
@@ -214,44 +189,100 @@ void ReadHeight(void) {
   Auf eine Berechnung der genauen Höhe in m wird zu Gunsten der Verarbeitungszeit verzichtet, auf die spätere Auswertung der Flugdaten hat dies keinen Einfluss.
 
   \subsection{Herausforderungen und Lösungen}
-  \textcolor{red}{to be continued after realtime measurements}
+  Bei der Verwendung des Ultraschallsensors traten einige Herausforderungen auf. So war bei einem der Testflüge ersichtlich, dass Throttle von der Firmware auf der Hardware nicht mehr
+  zurück genommen wird, in der Simulation hingegen schon. Der erste Verdacht fiel auf eine verfälschte Messung im Betrieb, deshalb wurde in das Programm ein Teil implementiert, der
+  es ermöglicht die gemessenen Werte über WLAN auf einen Computer zu übertragen.
+  \lstset{language = c}
+  \begin{lstlisting}
+#ifdef DEBUG
+void SendDebugInfo(unsigned int debug_info) {
+    for(unsigned char debug_info_counter = 0;
+      debug_info_counter < 5; debug_info_counter++) {
+        send_info[debug_info_counter] = debug_info % 10;
+        debug_info = ( debug_info - send_info[debug_info_counter]) / 10;
+    }
+    for(signed char debug_send_counter = 4;
+      debug_send_counter >= 0; debug_send_counter--) {
+        unsigned char send = send_info[debug_send_counter];
+        UartSendAscii(send);
+    }
+    UartSend(';');
+}
+#endif
+  \end{lstlisting}
+
+  Um dieses nach der Verwendung wieder einfach aus dem Code entfernen zu können wurde das Übermitteln dieser Information an die Definition der $DEBUG$-Variable geknüpft.
+
+  In der Übertragung war es wichtig auf die Auswertung des Computers zu achten, desshalb mussten ASCII-Zeichen übertragen werden.
+
+  Die erste Messung bestätigte die Erwartungen:
+  \begin{figure}[H]
+    \begin{centering}
+      \includegraphics[width = 0.8\textwidth]{Bilder/Hoehenmessung}
+    \par\end{centering}
+    \caption{Höhenmessung während einem Flugvorgang}
+    \label{Hoehenmessung}
+  \end{figure}
+  Die Messung wurde während einem manuellen Flug gestartet, die Gasstellung war auf mehr als Schwebeflug, und wurde mit einer Landung beendet. Der Hexacopter wurde dabei ständig
+  auf der selben Höhe gehalten, die Messwerte änderten sich dennoch und zeigten eine Änderung der Flughöhe an.
+
+  Als Grund wurden erst Störungen des Ultraschallsensors durch Geräusche des Hexacopters vermutet, dies konnte jedoch nicht bestätigt werden, hingegen dessen führten Vibrationen
+  zu den falschen Messwerten. Um die Vibrationen nahezu vollständig zu beseitigen wurde der Sensor gedämpft gelagert und ebenso das Kabel anders verlegt.
+  \begin{figure}[H]
+    \begin{centering}
+      \includegraphics[width = 0.8\textwidth]{Bilder/Hoehenmessung_gedaempft}
+    \par\end{centering}
+    \caption{Gedämpfte Höhenmessung während einem Flugvorgang}
+    \label{Hoehenmessung_gedaempft}
+  \end{figure}
+  Das Ergebnis zeigt, während einem Flug, deutlich stabilere Werte, eine Annäherung zum Boden wird ebenso sehr zuverlässig erkannt. Lediglich bei der Messung der Distanz in einer Flughöhe
+  von \ca $\SI{1.3}{\meter}$ (Ausgangsposition für die Messungen) zeigen sich starke Schwankungen.
 
 \chapter{Aktoren}
-\renewcommand{\kapitelautor}{Autor: Christina Bornberg, Lucas Ullrich}
+\renewcommand{\kapitelautor}{Autor: Christina Bornberg}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Multicopter Chrisy}
+\section{Multicopter}
   Multicopter gehören zu der Luftfahrzeuggattung Hubschrauber. Sie starten senkrecht und können durch den Antrieb der Rotoren Neigung erzeugen. Durch diese Neigung kann der Hexacopter nach vorne, zurück, nach links und nach rechts fliegen. Durch die Rotoren, bei denen sich abwechselnd einer nach links und einer nach rechts dreht, kann sich der Hexacopter zusätzlich um seine Hochachse drehen.
 
-  \subsection{Funktion Chrisy}
+  \subsection{Funktion}
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
-  Dem Empfängermodul, dem DJI NAZA-M Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Höhe bzw. entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+  Dem Empfängermodul, einem Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
 
-  % BILD Funktion Blockschaltbild (Dokument) %
+    \begin{figure}[tbh]
+    \begin{centering}
+      \includegraphics[width = \textwidth]{Bilder/bor_copter_funk}
+    \par\end{centering}
+    \caption{Aufbau eines einfachen Multicopters}
+    \label{Funktion_Multicopter}
+  \end{figure}
 
-  \subsection{Erweiterte Funktion Chrisy}
-  Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: Pixycam, Ultraschallsensor, WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
 
-  % BILD %
-
-  \subsection{Multicopter Arten Chrisy}
+  \subsection{Multicopter Arten}
   Es gibt verschiedene Arten von Multicoptern. 
+
   Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
   Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
 
   Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
 
-  \subsection{Konfiguration Chrisy}
+  \subsection{Konfiguration}
   Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
-  Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage. 
+  Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
-  Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die Roten unten.
+  Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die roten unten.
 
-  % BILD mit 4, 6, 8 in + bzw x %
+    \begin{figure}[tbh]
+      \begin{centering}
+        \includegraphics[width = \textwidth]{Bilder/bor_copter_konfig}
+      \par\end{centering}
+      \caption{Konfigurationsarten von Multicoptern}
+      \label{Flussdiragramm}
+    \end{figure}
 
-  \subsection{Mögliche Anwendungsgebiete Chrisy}
+  \subsection{Mögliche Anwendungsgebiete}
   Multicopter finden in vielen Bereichen Anwendung. \cite{copterAnwendung}
   \begin{itemize}
     \item Fotographie und Videos / Filmindustrie / Anfertigen von hoch aufgelösten Luftbildkarten
@@ -263,13 +294,13 @@ void ReadHeight(void) {
     \item Unbemannter Aufklärer bei Spezialeinheiten
     \item Kontrolle, Inspektion und Dokumentation von Brücken, Gebäuden, Gräben
     \item Militärische Anwendung: Spionagedrohne zur Aufklärung, Kampfdrohne zur Zerstörung, Rettungungsdrohne für Hilfsaktionen
-  \end{itemize}  
-  
+  \end{itemize}
+
 
 \section{Rotoren}
 
-  \subsection{Technische Planung Lucas}
-
+  \subsection{Technische Planung}
+  Autor: Lucas Ullrich\\
   Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
   Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von $\SI{20}{\milli\second}$ gesendet.
   Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
@@ -278,14 +309,15 @@ void ReadHeight(void) {
   \textcolor{red}{OSZIBILD: min, max Impuls}
 
 
-    \subsubsection{Steuerungsarten Chrisy}
+    \subsubsection{Steuerungsarten}
+    AUtor: Christina Bornberg\\
     Der Flightcontroller DJI NAZA-M lite wird über die Befehle Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. \cite{GrundlagenMulticopter}
 
       \begin{itemize}
         \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
         Um diese auszuführen, werden bei der Beschleunigung nach links, die rechten Propeller stärker betrieben, umgekehrt drehen sich die auf der linken Seite befindlichen Propeller beim Flug nach rechts schneller. Durch die entstehende Neigung, fliegt der Hexacopter in die gewünschte Richtung.
         \item \textbf{E: Elevator} auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
-        Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen. 
+        Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen.
         \item \textbf{R: Rudder} auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
         Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
         \item \textbf{T: Throttle} reguliert die Höhe.
@@ -297,5 +329,3 @@ void ReadHeight(void) {
 
   \subsection{Umsetzung}
   Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.
-
-  \subsection{Herausforderungen und Lösungen}
