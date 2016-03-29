@@ -402,7 +402,7 @@ Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zu
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen. 
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton. 
 Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wird.
-Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung betätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Meldung, die ihn darauf hinweist, dass die Bestellung getätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
   \end{itemize}
 \textbf{Funktionalitäten des Adminbereichs} 
 \begin{itemize}
@@ -411,7 +411,7 @@ Der Loginscreen des Admininterface hat nahezu dieselben Funktionalitäten wie de
     \item \textbf{Hauptscreen}\\
 Der Hauptscreen des Admininterfaces bietet in einer Liste den Überblick über alle Bestellungen, die noch nicht serviert wurden. 
 Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden sollen.
-Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann, als auch ein Button mit einem Einstellungssymbol abgebildet, welches auf den Einstellungsübersichts-Screen verlinkt.
+Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann. Weiters befindet sich im Header ein Button mit einem Einstellungssymbol, welches auf den Einstellungsübersichts-Screen verlinkt.
 Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese erscheint grün, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
     \item \textbf{Einstellungsübersicht-Screen}\\
 Der Einstellungsübersichtsscreen verweist in einer div-Box mit zwei Buttons auf den Tischverwaltungsscreen und den Speise- und Kategorienverwaltungsscreen.
