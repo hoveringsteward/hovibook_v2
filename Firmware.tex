@@ -121,7 +121,7 @@
   \subsection{Umsetzung}
 
     \subsubsection{Vergleichen der Frames}
-    Für den Vergleich des aktuellen Frames mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} \cite{Structs} verwendet, die über folgende Mitglieder verfügt. 
+    Für den Vergleich des aktuellen Frames mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} \cite{Structs} verwendet, die über folgende Mitglieder verfügt.
     \begin{itemize}
       \item \textbf{num} ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
       \item \textbf{pos\_x} ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
@@ -190,8 +190,8 @@
 
     Der Hexacopter steht zunächst auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokusiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
 
-    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren. 
-    
+    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren.
+
     Zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von $\SI{120}{\centi\metre}$ erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über $\SI{120}{\centi\metre}$ kommt, wird die Beschleunigung reduziert. Der Hexacopter pendelt sich zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ ein.
 
     \begin{figure}[H]
@@ -229,12 +229,14 @@
     \begin{lstlisting}
 interrupt void Isr() {
   if(CCP1IF == 1) {
+  /*Output of following signals after shutdown-timer ends*/
     CCP1IF = 0;
     T1CONbits.TMR1ON = 0;
     SignalOut();
     NOP();
   }
   if(TMR3GIF == 1) {
+  /*Output of signals started by Gear-Pin*/
     TMR3GIF = 0;
     ModeCheck();
     SignalOut();    /* initial call after remaining break to 20 ms
@@ -247,16 +249,16 @@ interrupt void Isr() {
 
 void SignalOut(void) {
   switch(pin_out) {
-    case 'A': {
-      A = 1;
-      Delay(a_actors[0].aile);
-      pin_out = 'E';
+    case 'A': {   //Output of Aileron
+      A = 1;      //Switching output on
+      Delay(a_actors[0].aile);  //Activating shutdown-timer
+      pin_out = 'E';  //Preparing for next output
       break;
-    }case 'E': {
-      A = 0;
-      E = 1;
-      Delay(a_actors[0].elev);
-      pin_out = 'T';
+    }case 'E': {  //Output of Elevator
+      A = 0;      //Switching previous output off
+      E = 1;      //Switching output on
+      Delay(a_actors[0].elev);  //Activating shutdown-timer
+      pin_out = 'T';  //Preparing for next output
       break;
     }
     \end{lstlisting}
@@ -307,23 +309,23 @@ Beim Konzept Sicherheitsmaßnahmen geht es grundsätzlich um die Sicherheit von 
 
 \hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  1          & Mensch in unmittelbarer Nähe                                                                              & Mensch wird verletzt, da Hexacopter nicht ausweicht                                                                   & Eine Person steht auf dem Weg und wird vom Hexacopter als Hindernis erkannt                                                     & 5   & 10  & 10  & 500 \\
-\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
- -          & Wege absperren, Menschen darauf hinweisen, sich nicht in unmittelbarer Nähe des Hexacopters aufzuhalten.  & Hexacopter landet auf der Stelle um die Sicherheit der Person zu gewährleisten.                                       & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Menschen erkannt, er landet daraufhin.             & 2   & 10  & 5   & 100 \\\hline
+\hline     & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
+          & Wege absperren, Menschen darauf hinweisen, sich nicht in unmittelbarer Nähe des Hexacopters aufzuhalten.  & Hexacopter landet auf der Stelle um die Sicherheit der Person zu gewährleisten.                                       & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Menschen erkannt, er landet daraufhin.             & 2   & 10  & 5   & 100 \\\hline
 
 \hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  2          & Ein unbewegliches Hindernis befindet sich in unmittelbarer Nähe.                                          & Hexacopter fliegt gegen ein unbewegliches Hindernis und stürzt ab.                                                    & Eine Wand oder ein ähnliches unbewegliches Hindernis befindet sich in unmittelbarer Nähe.                                       & 5   & 7   & 9   & 315 \\
-\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
- -          & Farbcodes werden nicht in der Nähe von unbeweglichen Hindernissen platziert.                              & Der Hexacopter landet, da er nicht zwischen Mensch, beweglichen und unbeweglichen Hindernissen unterscheiden kann.    & Der Hexacopter darf nur über Farbcodes fliegen, dadurch wird vermieden, dass der Hexacopter in die Nähe dieser Objekte kommt.   & 1   & 7   & 5   & 35  \\\hline
+\hline     & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
+          & Farbcodes werden nicht in der Nähe von unbeweglichen Hindernissen platziert.                              & Der Hexacopter landet, da er nicht zwischen Mensch, beweglichen und unbeweglichen Hindernissen unterscheiden kann.    & Der Hexacopter darf nur über Farbcodes fliegen, dadurch wird vermieden, dass der Hexacopter in die Nähe dieser Objekte kommt.   & 1   & 7   & 5   & 35  \\\hline
 
 \hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  3          & Bewegliches Hindernis wird erkannt                                                                        & Hexacopter fliegt gegen ein Hindernis und stürzt ab                                                                   & Eine Hindernis wird erkannt.                                                                                                    & 3   & 6   & 10  & 180 \\
-\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & A   & B   & E   & RPZ \\
- -          & Bewegliche Hindernisse werden wenn möglich aus dem Weg geräumt.                                           & Hexacopter probiert dem Hindernis auszuweichen und seinen Weg weiter zu meistern.                                     & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Hindernisse erkannt, er landet daraufhin           & 2   & 6   & 5   & 60  \\\hline
+\hline     & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & A   & B   & E   & RPZ \\
+           & Bewegliche Hindernisse werden wenn möglich aus dem Weg geräumt.                                           & Hexacopter probiert dem Hindernis auszuweichen und seinen Weg weiter zu meistern.                                     & Durch 2 Ultraschallsensoren, die vorne am Hexacopter angebracht sind, werden Hindernisse erkannt, er landet daraufhin           & 2   & 6   & 5   & 60  \\\hline
 
 \hline \#   & \textbf{Bezeichnung}                                                                                               & \textbf{Fehler}                                                                                                                & \textbf{Beschreibung}                                                                                                                    & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
  4          & Hände in der Nähe von den Propellern                                                                      & Person hat seine Hände beim fliegenden Hexacopter und verletzt sich                                                   & Eine Person greift in die Propeller.                                                                                            & 7   & 10  & 10  & 700 \\
-\hline -    & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
- -          & Hexacopter wartet lang genug, dass man den Cupcake runternehmen kann. Propellerschutz ist angebracht.     & Hexacopter gibt über Display / LED / Ton aus, dass er wegfliegt.                                                      & Display / LED / Ton werden programmiert um Menschen beim Start zu warnen.                                                       & 1   & 10  & 5   & 50  \\\hline
+\hline     & \textbf{Vermeidung}                                                                                                & \textbf{Maßnahme nach Eintritt}                                                                                                & \textbf{Mögliche Softwarelösung}                                                                                                         & \textbf{A}   & \textbf{B}   & \textbf{E}   & \textbf{RPZ} \\
+           & Hexacopter wartet lang genug, dass man den Cupcake runternehmen kann. Propellerschutz ist angebracht.     & Hexacopter gibt über Display / LED / Ton aus, dass er wegfliegt.                                                      & Display / LED / Ton werden programmiert um Menschen beim Start zu warnen.                                                       & 1   & 10  & 5   & 50  \\\hline
  \caption{Fehlt noch}
 \end{longtable}
 %\end{table}

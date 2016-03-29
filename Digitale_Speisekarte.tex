@@ -55,7 +55,7 @@ Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche 
 MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache Perl gearbeitet werden. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt. 
 \pagebreak
     \item \textbf{XAMPP}\\ 
-Das XAMPP-Paket wird aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
+Das XAMPP-Paket besteht aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
   \end{itemize}  
 Sowohl MAMP als auch XAMPP bieten daher effiziente Pakete, welche beim Entwickeln von dynamischen Webseiten sehr zu empfehlen sind. Für die Erstellung der digitalen Speisekarte fiel die Entscheidung letztendlich auf MAMP, da nur auf den Betriebssystemen Windows und OS X entwickelt wurde. Außerdem ist das Interface dieses Pakets einfacher gehalten und dadurch übersichtlicher für den Anwender. Ein weiterer Vorteil von MAMP ist, dass auf dem Startverzeichnis unter den Einstellungen ein favorisierter Link gespeichert werden konnte, welcher daraufhin auf der Startseite aufgerufen werden kann. Diese Eigenschaft ermöglichte es die digitale Speisekarte schneller aufzurufen.
 
@@ -255,6 +255,7 @@ $FORMULAR_BEZEICHNUNG = $this->createFormBuilder($REPOSITORY)
     ->getForm();
   	\end{lstlisting}
 Dank der Funktion "createFormBuilder()" ist es möglich, das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der "add()" Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden, ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion "getForm()" übergibt das Formular der Variable "FORMULAR\_BEZEICHNUNG".
+\\
 Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden.
 Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
 \\ \\
@@ -401,7 +402,7 @@ Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zu
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen. 
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton. 
 Nachdem der Gast auf einen Bestellbutton klickt, öffnet sich eine Alertbox, welche ihn fragt ob er die ausgewählte Speise kostenpflichtig bestellen möchte. Falls der Anwender auf "Nein" klickt, kommt eine Meldung, dass der Bestellvorgang abgebrochen wird.
-Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Alertmeldung, die ihn darauf hinweist, dass die Bestellung betätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
+Wenn der Gast jedoch auf "Ja" klickt, öffnet sich eine Meldung, die ihn darauf hinweist, dass die Bestellung getätigt wurde. Anschließend kann er sie unter dem Menüpunkt "Bestellungen" ansehen und dort ihren aktuellen Status verfolgen.\\
   \end{itemize}
 \textbf{Funktionalitäten des Adminbereichs} 
 \begin{itemize}
@@ -410,7 +411,7 @@ Der Loginscreen des Admininterface hat nahezu dieselben Funktionalitäten wie de
     \item \textbf{Hauptscreen}\\
 Der Hauptscreen des Admininterfaces bietet in einer Liste den Überblick über alle Bestellungen, die noch nicht serviert wurden. 
 Neben jedem Bestelleintrag gibt es einen "Ausliefern"-Button. Sobald auf diesen geklickt wird, ändert sich der Tinyint-"ausliefern"-Wert in der Datenbank, damit das Javaprogramm weiß, von welcher Bestellung die Tischdaten an den Hexacopter geschickt werden sollen.
-Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann, als auch ein Button mit einem Einstellungssymbol abgebildet, welches auf den Einstellungsübersichts-Screen verlinkt.
+Im Header befindet sich ein Button mit einem Ausloggen-Symbol, damit der Administrator sich jederzeit abmelden kann. Weiters befindet sich im Header ein Button mit einem Einstellungssymbol, welches auf den Einstellungsübersichts-Screen verlinkt.
 Unter der Bestelleintragliste wird eine Alert-Box angezeigt, welche den derzeitigen Verbindungsstatus zum Server anzeigt. Diese erscheint grün, falls die Verbindung steht, und rot sobald, die Verbindung abgebrochen ist.
     \item \textbf{Einstellungsübersicht-Screen}\\
 Der Einstellungsübersichtsscreen verweist in einer div-Box mit zwei Buttons auf den Tischverwaltungsscreen und den Speise- und Kategorienverwaltungsscreen.
@@ -447,8 +448,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 \textbf{Screens der digitalen Speisekarte}
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_login}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_tnr}
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_login} }
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_tnr} }
 			\par\end{centering}
 			\caption{Screens: Loginscreen / Tischnummernauswahl}
 			\label{Screens: Loginscreen / Tischnummernauswahl}
@@ -456,8 +457,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 			
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_speisekarte}
-			\includegraphics[width = 0.49\textwidth]{Bilder/Jok_status}
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_speisekarte} }
+			\fbox{ \includegraphics[width = 0.45\textwidth]{Bilder/Jok_status} }
 			\par\end{centering}
 			\caption{Screens: Speisekarte / Bestellungsüberblick}
 			\label{Screens: Speisekarte / Bestellungsüberblick}
@@ -563,7 +564,7 @@ Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-5 von ein
 \hline 4 & Tischroute \newline schicken & Hexacopter schickt \newline bestimmte Nachricht an Server & Server schickt \newline Tischnummer zurück & Ja \\\hline
 \hline 5 & Speiseeintrag \newline hinzufügen & Admin gibt neue \newline Speisedaten ins Formular ein und klickt auf \newline "Speiseeintrag hinzufügen" & neuer Speiseeintrag wird in Datenbank angelegt & Ja \\\hline
 \hline 6 & Kategorie \newline hinzufügen & Admin gibt neue \newline Kategoriebezeichnung ins \newline Formular ein und klickt auf \newline "Kategorie hinzufügen” & neue Kategorie wird in Datenbank angelegt & Ja \\\hline
-\hline 7 & Speiseeintrag \newline löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter \newline Speiseeintrag wird gelöscht & Ja \\\hline
+\hline 7 & Speiseeintrag \newline löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter \newline Speiseeintrag wird \newline gelöscht & Ja \\\hline
 \hline 8 & Kategorie \newline löschen & Admin wählt Kategorie aus und klickt auf "Kategorie Löschen"-Button & ausgewählte Kategorie wird gelöscht & Ja \\\hline
 \hline 9 & Tischroute \newline verändern & Admin wählt Tischnummer aus und gibt Tischroute ins Formularfeld ein & Tischroute des Tisches wird geändert & Ja \\\hline
 \end{tabular}

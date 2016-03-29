@@ -24,7 +24,7 @@ Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, a
     \subsubsection{DJI NAZA-M lite, Flamewheel F550}
     Der Flightcontroller NAZA-M lite von DJI ist ein bereits mit dem Flamewheel F550 ARF-Kit (Almost Ready to Fly) verkaufter Flugregler.
     Er ist dafür zuständig, dass die ankommenden Steuerimpulse namens Aileron, Elevator, Throttle und Rudder richtig verarbeitet werden.
-    Dabei findet bereits eine automatische Regelung der Fluglage statt, der Hexacopter neigt sich also nicht \zB über einen Winkel von $\SI{45}{\degree}$.
+    Dabei findet bereits eine automatische Regelung der Fluglage statt, der Hexacopter neigt sich also nicht zum Beispiel über einen Winkel von $\SI{45}{\degree}$.
     Ebenso werden die einzelnen Rotoren bereits so angesteuert, dass hier kein externer Eingriff mehr notwendig ist.
     \begin{figure}[H]
       \begin{centering}
@@ -35,9 +35,9 @@ Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, a
     \end{figure}
 
     \subsubsection{WLAN}
-    Das WLAN-Modul RN171, welches von Microchip verkauft wird, bietet die Schnittstelle zwischen Server und Hexacopter. Die Daten können entweder vom Server gesendet
+    Das WLAN-Modul RN171, welches von Microchip verkauft wird, bildet die Schnittstelle zwischen Server und Hexacopter. Die Daten können entweder vom Server gesendet
     und vom PIC empfangen werden oder umgekehrt.
-    Das WLAM-Modul wird mit einer UART-Schnittstelle betrieben. Für eine Kommunikation sind also nur 2 Leitungen notwendig.
+    Das WLAN-Modul wird mit einer UART-Schnittstelle betrieben. Für eine Kommunikation sind also nur 2 Leitungen notwendig.
     Es bietet die Möglichkeit über eine Anwendung wie TeraTerm oder HTerm eingestellt zu werden, zusätzlich wird aber auch ein Webinterface angeboten, dieses muss jedoch zuvor
     aktiviert werden.
 
@@ -54,7 +54,7 @@ Alle Daten müssen an einem zentralen Ort für eine Auswertung zusammenlaufen, a
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Blockschaltbild}
-Die einzelnen Komponenten werden über den Mikrocontroller vereint. Sämtliche Berechnungen und Auswertung finden auf diesem statt und werden über diesen ausgegeben \bzw
+Die einzelnen Komponenten werden über den Mikrocontroller vereint. Sämtliche Berechnungen und Auswertung finden in diesem statt und werden über diesen ausgegeben beziehungsweise
 weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins angeschlossen.
 \begin{figure}[H]
   \begin{centering}
@@ -77,11 +77,11 @@ weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins 
   \end{itemize}
 
     \subsubsection{Technische Planung}
-    Das Hauptkriterium für die Hauptplatine war es alle notwendigen Komponenten für einen autonomen Flug zu enthalten. Wichtig waren hier vor allem die Kamera,
+    Das Hauptkriterium für die Hauptplatine war es, alle notwendigen Komponenten für einen autonomen Flug zu enthalten. Wichtig waren hier vor allem die Kamera,
     der Ultraschallsensor sowie die Möglichkeit auf einen manuellen Flug zu wechseln.
 
     \subsubsection{Umsetzung}
-    Für die Umsetzung wurden die einzelnen Komponenten entsprechend ihrer Funktion im Schalplan verbunden und aus diesem ein Platinen-Layout erstellt.
+    Für die Umsetzung wurden die einzelnen Komponenten entsprechend ihrer Funktion im Schaltplan verbunden und aus diesem ein Platinen-Layout erstellt.
     Das Platinen-Layout wurde schließlich mit einem Fräsplotter auf das Rohmaterial übertragen.
 
     \begin{figure}[tbh]
@@ -94,22 +94,22 @@ weitergeleitet. Der Flightcontroller NAZA-M lite wird an die A, E, R und T Pins 
     \end{figure}
 
     \subsubsection{Herausforderungen und Lösungen}
-    Eine Herausforderung stellte die geringe Deckkraft des schwarzen Toners beim ätzen der Platine dar. Durch zu wenig Toner auf der Belichtungsvorlage sind
-    angeätzte Masseflächen entstanden. Um dennoch eine ordentliche Platine zu haben wurde diese schließlich gefräst. Dies hat auch viel Arbeit beim Bohren der
-    Löcher erspart.
+    Nachdem in der Schule die Platinen standardmäßig geätzt werden, stellte die geringe Deckkraft des schwarzen Toners eine Herausforderung dar. Durch zu wenig Toner auf der
+    Belichtungsvorlage sind angeätzte Masseflächen entstanden. Um dennoch eine ordentliche Platine zu haben wurde diese schließlich gefräst. Dies hat auch viel Arbeit beim
+    Bohren der Löcher erspart.
 
   \subsection{WLAN-Modul}
-  Das WLAN-Modul dient als Schnittstelle zwischen Hauptplatine und Server. Auf dieser Platine befinden sich das WLAN-Modul RN171 sowie ein Spannungsregler und Level-Shifter
-  um eine Kompatibilität mit den anderen Komponenten zu gewährleisten.
+  Das WLAN-Modul dient als Schnittstelle zwischen Hauptplatine und Server. Auf der Kommunikations-Platine befinden sich das WLAN-Modul RN171 sowie ein Spannungsregler und
+  Level-Shifter um eine Kompatibilität mit den anderen Komponenten zu gewährleisten.
 
     \subsubsection{Technische Planung}
     In der Planung war die Versorgungsspannung des WLAN-Modul das Hauptaugenmerk. Für den Betrieb sind $\SI{3.3}{\volt}$ notwendig, die Versorgungsspannungstoleranz
     des WLAN-Moduls ist nicht groß genug, um dieses mit $\SI{5}{\volt}$ versorgen zu können.
-    Aufgrund der fehlenden Toleranz müssen alle Leitungen die zur Kommunikation dienen entweder auf $\SI{5}{\volt}$ angehoben oder auf $\SI{3.3}{\volt}$ abgesenkt werden,
+    Aufgrund der fehlenden Toleranz mussten alle Leitungen die zur Kommunikation dienen entweder auf $\SI{5}{\volt}$ angehoben oder auf $\SI{3.3}{\volt}$ abgesenkt werden,
     andernfalls kann es zu Datenverlust oder sogar einer Beschädigung eines Moduls kommen.
 
     \subsubsection{Umsetzung}
-    Auch für diese Platine wurde ein Schaltplan und Layout erstellt. Anschließend wurde das Layout wieder mit einem Fräsplotter auf das Rohmaterial übertragen.
+    Auch für die Kommunikations-Platine wurde ein Schaltplan und Layout erstellt. Anschließend wurde das Layout wieder mit einem Fräsplotter auf das Rohmaterial übertragen.
 
     \begin{figure}[tbh]
       \begin{centering}
