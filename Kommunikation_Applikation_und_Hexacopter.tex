@@ -2,7 +2,7 @@
 \chapter{Kommunikation Applikation und Hexacopter}
 \renewcommand{\kapitelautor}{Autor: Katharina Joksch, Lucas Ullrich}
 Um zwischen dem Hexacopter und dem Server eine Verbindung herzustellen wird eine Kommunikationsschnittstelle benötigt. Diese muss Drahtlos arbeiten und einen größeren Bereich
-abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu zählen \zB die Route, \bzw der Name des Gastes.
+abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu zählen zum Beispiel die Route, beziehungsweise der Name des Gastes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
@@ -18,7 +18,7 @@ ob die Verbindung noch aufrecht ist.
 Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss über eine der Schnittstellen des Mikrocontrollers ansprechbar sein.
 
   \subsection{Technische Planung}
-  Bei der Planung wurde darauf geachtet ein WLAN-Modul zu wählen welches bekannter maßen funktioniert \bzw ein entsprechender Support zur Verfügung steht.
+  Bei der Planung wurde darauf geachtet ein WLAN-Modul zu wählen welches bekannter maßen funktioniert beziehungsweise ein entsprechender Support zur Verfügung steht.
   So fiel die Wahl auf das WLAN-Modul RN171, vertrieben durch Microchip, hergestellt von Roving Networks.
 
   Das gewählte WLAN-Modul wird über eine UART-Schnittstelle angesteuert und verfügt über einige frei konfigurierbare Pins, diese werden schließlich zum Überwachen der
@@ -61,11 +61,11 @@ Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss übe
     \item \textbf{reboot}\\
     Erzeugt einen Neustart bei dem die Standardeinstellungen geladen werden
   \end{itemize}
-  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mirkocontroller verbunden werden, die Verbidnung kann über einzelne Pins kontrolliert
+  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mirkocontroller verbunden werden, die Verbindung kann über einzelne Pins kontrolliert
   werden.
 
   \subsection{Herausforderungen und Lösungen}
-  Eine Herausforderung stellte die Frage dar wie genau die Verbindung hergstellt wird. Das Datenblatt des WLAN-Moduls mit über 100 Seiten bietet viele potentielle Möglichkeiten.
+  Eine Herausforderung stellte die Frage dar wie genau die Verbindung hergestellt wird. Das Datenblatt des WLAN-Moduls mit über 100 Seiten bietet viele potentielle Möglichkeiten.
   Die erste Wahl fiel auf das Auslesen einer Website, auf den ersten Anblick funktionierte das auch, jedoch musste festgestellt werden, dass unabhängig von der Website sehr ähnliche
   Daten verarbeitet werden, jedoch nicht der eigentliche Inhalt der Website sondern Providerinformationen.
 
