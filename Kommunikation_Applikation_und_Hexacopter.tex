@@ -149,7 +149,7 @@ Damit das Programm mit JDBC arbeiten kann musste es zuerst von Oracle gedownload
 \\ \\
 Wie auch bei Doctrine müssen der Datenbank-Host, der Datenbank-Port und die Benutzerdaten angegeben werden, damit die Verbindung hergestellt werden kann.
 Als Treiber wird hier jedoch statt MySQL auf JDBC verwiesen.
-Um die Verbindung herzustellen wurde auf die Funktion DriverManager.getConnection() aufgerufen. Als Parameter mussten ihr der Pfad zur Datenbank und die Benutzerdaten mitgeschickt werden.
+Um die Verbindung herzustellen wurde die Funktion DriverManager.getConnection() aufgerufen. Als Parameter mussten ihr der Pfad zur Datenbank und die Benutzerdaten mitgeschickt werden.
 \lstset{language = java}
   	\begin{lstlisting}
 private String db_host = "localhost";
@@ -167,14 +167,14 @@ String mySqlUrl = "jdbc:mysql://" + db_host + ":" + db_port + "/"
 verbindung = DriverManager.getConnection(mySqlUrl, db_user, db_pass);
 	\end{lstlisting}
 Damit die Tischdaten angezeigt werden konnten, wurde die "showTischdaten()"-Funktion erstellt. Um die ID, die Tischroute und die Tischnummer zu erhalten musste jeweils ein SQL-Statement verfasst werden. In diesem SQL-Statement wurden nur die Tischdaten, welche einer Bestellung zugeordnet sind ausgelesen.
-Um das Statement anschließend auszuführen, wurde es der vordefinierte Methode "executeQuery()" als Parameter mitgeschickt.
+Um das Statement anschließend auszuführen, wurde es der vordefinierten Methode "executeQuery()" als Parameter mitgeschickt.
 Die Ergebnisse werden in ein ResultSet gespeichert. Danach werden sie in einer Schleife iteriert und der aktuelle Wert aus dem Set als String umgewandelt. Nun konnte die Route als Rückgabewert angegeben werden.
 \\ \\
-Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefert wurde, wurde mit SQL ein Update-Statement erzeugt und mit der vordefinierten "executeUpdate()"-Funktion ausgeführt.
+Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefert wurde, wird mit SQL ein Update-Statement erzeugt und mit der vordefinierten "executeUpdate()"-Funktion ausgeführt.
 \\ \\
 Um in einer extra Datenbanktabelle den Verbindungsstatus zwischen dem Hexacopter und dem Server überprüfen zu können, wird bei jeder Statusänderung die "erstelleDBEintrag()"-Funktion aufgerufen. Das Einfügen von Datenbankeinträgen kann mit einem Insert-Statement erledigt werden. Dieses muss im Anschluss ebenfalls mit der "executeUpdate()"-Methode durchgeführt werden.
 \\ \\
-\textbf{Komm Manager}\\
+\subsubsection*{Komm Manager}
 Um die Verbindung mit dem Hexacopter zu managen wurde die "Komm Manager" Klasse programmiert.
 Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt sie von dieser. Dies wird ganz oben bei der Klassendefinierung mithilfe des Befehls "extends" gehandhabt.
 \\ \\
@@ -187,7 +187,7 @@ Sobald ein Teilnehmer beitritt wird ihm mithilfe des Timers regelmäßig eine Na
 \\ \\
 Um zu überprüfen, ob der Hexacopter in der Basis und somit bereit dazu ist, eine Speise auszuliefern, wartet der Server darauf, dass die Nachricht "1" geschickt wird. Sobald diese Nachricht ankommt, liefert die Funktion den Wert "true" zurück. Außerdem wird mithilfe der SQL-Readerfunktion in der Datenbank vermerk, dass sich der Hexacopter zu diesem Zeitpunkt in der Basis befindet.
 \\ \\
-\textbf{Komm Teilnehmer}\\
+\subsubsection*{Komm Teilnehmer}
 Die "Komm Teilnehmer" Klasse wurde dafür entwickelt, die einzelnen Verbindungen zum Hexacopter zu verwalten.
 \\
 Dem Teilnehmer Thread wird sowohl der Manager als auch der Server Socket als Parameter mitgeliefert. Über diese kann im Anschluss das Senden und Empfangen der Nachrichten geregelt werden.
