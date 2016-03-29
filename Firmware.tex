@@ -27,7 +27,7 @@
   Das Admin Interface und der Server stehen ebenfalls in der Küche, über diese Komponenten bekommt der Hexacopter Befehle. Die Routen zu jedem Tisch sind im Admin Interface hinterlegt.
 
   \subsection*{Weg}
-  Der Weg besteht, aus sich abwechselnden zweifarbigen Codes. Die Bereiche zwischen Tischen und Kreuzungen, werden als Wegabschnitt bezeichnet. Die ColorCodes müssen von jedem Restaurant eigenständig eingescannt und die Routen zum jeweiligen Tisch in das Admin Interface eingetragen werden.
+  Der Weg besteht aus sich abwechselnden zweifarbigen Codes. Die Bereiche zwischen Tischen und Kreuzungen, werden als Wegabschnitt bezeichnet. Die Colorcodes müssen von jedem Restaurant eigenständig eingescannt und die Routen zum jeweiligen Tisch in das Admin Interface eingetragen werden.
 
   \subsection*{Tisch}
   Auf einem Tisch befindet sich, wie in der Küche, eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses erhält jeder Tisch seine eigene ID und die dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden.
@@ -65,7 +65,13 @@
 
     Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen im Frame. Die Differenz entsteht aus den unterschiedlichen Positionen des Objektes im alten und neuem Frame. Das Objekt soll in den Bereich zwischen X\_MIN und X\_MAX, beziehungsweise Y\_MIN und Y\_MAX gelangen.
 
-    % BILD VON LUCAS %
+              \begin{figure}[H]
+      \begin{centering}
+        \includegraphics[width = \textwidth]{Bilder/pixy_bild}
+      \par\end{centering}
+      \caption{Alter und neuer Frame}
+      \label{PixyBild}
+    \end{figure}
 
     \subsection*{Aileron}
     Anhand des aktuell getrackte Colorcodes wird die seitliche Position korrigiert. Solange sich der Hexacopter nicht im angegeben Bereich befindet, wird die Fluggeschwindigkeit in die jeweilige Richtung erhöht.
@@ -115,7 +121,7 @@
   \subsection{Umsetzung}
 
     \subsubsection{Vergleichen der Frames}
-    Für den Vergleich des aktuellen Frames mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} verwendet, die über folgende Mitglieder verfügt. \cite{Structs}
+    Für den Vergleich des aktuellen Frames mit dem letzten Frame, werden zwei \glslink{Struktur}{Strukturen} \cite{Structs} verwendet, die über folgende Mitglieder verfügt.
     \begin{itemize}
       \item \textbf{num} ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
       \item \textbf{pos\_x} ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
@@ -128,6 +134,7 @@
     Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und in einer weiteren Strunktur gespeichert. Dieses wird bei den folgenden Funktionen verwendet, um anhand der Änderung zwischen zwei Frames zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
 
     \subsubsection{Aileron, Elevator und Rudder anhand der Kameradaten}
+    Autor: Lucas Ullrich \\
     Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden anschließend die Flugparameter verändert.
 
     \begin{figure} [H]
@@ -138,7 +145,7 @@
       \label{Farbcode_erkannt}
     \end{figure}
     Die Position wird anhand solcher Farbcodes erkannt, im Tischkonzept ist hinterlegt in welcher Reihenfolge der Hexacopter die Farbcodes suchen muss.
-    Er fliegt anschließend so lange, bis er über dem aktuellen Farbcode ist, dieser also mittig im Bild ist und sucht darauf den nächsten.
+    Er fliegt anschließend so lange, bis er über dem aktuellen Farbcode ist, dieser also mittig im Bild ist und sucht daraufhin den nächsten.
 
     \subsubsection{Überprüfen von Aileron}
     Beim Vergleichen von Aileron wird die Veränderung an der x-Achse überprüft.
@@ -183,8 +190,8 @@
 
     Der Hexacopter steht zunächst auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokusiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
 
-    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren. 
-    
+    Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren.
+
     Zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von $\SI{120}{\centi\metre}$ erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über $\SI{120}{\centi\metre}$ kommt, wird die Beschleunigung reduziert. Der Hexacopter pendelt sich zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ ein.
 
     \begin{figure}[H]
@@ -259,7 +266,8 @@ void SignalOut(void) {
     Die Delay-Funktion stellt die Compare-Einheit so ein, dass nach der gewünschten Pulsdauer des Ausgangs ein Interrupt hervorgerufen wird.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Objekterkennung Lucas}
+\section{Objekterkennung}
+Autor: Lucas Ullrich\\
 Die Objekterkennung ist für den Hexacopter notwendig um eine zuverlässige Positionierung zu ermöglichen. Dazu werden bestimmte Objekte im Raum erkannt und als Orientierung
 genutzt oder es muss ihnen ausgewichen werden beziehungsweise eine Kollision vermieden werden.
 

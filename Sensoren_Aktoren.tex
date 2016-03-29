@@ -252,9 +252,13 @@ void SendDebugInfo(unsigned int debug_info) {
 
   \subsection{Funktion}
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
-  Dem Empfängermodul, einem Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+  \begin{itemize}
+  \item Das \textbf{Empfängermodul} des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+  \item Der \textbf{Flightcontroller} ist der zentrale Regler und steuert die einzelnen Rotoren an.
+  \item Die \textbf{Multicopterhardware} besteht aus Rotoren, Motoren, einem Gestell und der Leistungselektronik. 
+  \end{itemize}
 
-    \begin{figure}[H]
+  \begin{figure}[H]
     \begin{centering}
       \includegraphics[width = \textwidth]{Bilder/bor_copter_funk}
     \par\end{centering}
@@ -306,13 +310,11 @@ void SendDebugInfo(unsigned int debug_info) {
 
   \subsection{Technische Planung}
   Autor: Lucas Ullrich\\
+
   Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
   Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von $\SI{20}{\milli\second}$ gesendet.
   Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
   und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
-
-  \textcolor{red}{OSZIBILD: min, max Impuls}
-
 
     \subsubsection{Steuerungsarten}
     AUtor: Christina Bornberg\\
@@ -322,7 +324,7 @@ void SendDebugInfo(unsigned int debug_info) {
         \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
         Um diese auszuführen, werden bei der Beschleunigung nach links, die rechten Propeller stärker betrieben, umgekehrt drehen sich die auf der linken Seite befindlichen Propeller beim Flug nach rechts schneller. Durch die entstehende Neigung, fliegt der Hexacopter in die gewünschte Richtung.
         \item \textbf{E: Elevator} auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
-        Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen.
+        Beim nach vorne und nach hinten fliegen, werden ebenfalls die Rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen.
         \item \textbf{R: Rudder} auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
         Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
         \item \textbf{T: Throttle} reguliert die Höhe.
