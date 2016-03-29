@@ -8,7 +8,7 @@
   \subsection{Konvention}
   In der Arbeit wird folgende Konvention festgelegt. Die z-Achse ist die Höhe, die y-Achse ist vorwärts und rückwärts und die x-Achse ist seitwärts.
 
-  \begin{figure}[tbh]
+  \begin{figure}[H]
     \begin{centering}
       \includegraphics[width = 0.5\textwidth]{Bilder/bor_konvention}
     \par\end{centering}
@@ -33,7 +33,7 @@
   Auf einem Tisch befindet sich, wie in der Küche, eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses erhält jeder Tisch seine eigene ID und die dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden.
   Die Tische können wie in jedem normalen Restaurant beliebig platziert werden, da der Hexacopter durch die Rotation der Farbobjekte auch Kurven fliegen kann. Dabei darf ein Teil des Tisches nicht besetzt sein, da die Drohne nicht über Menschen fliegen soll.
 
-  \begin{figure}[tbh]
+  \begin{figure}[H]
   \begin{centering}
     \includegraphics[width = \textwidth]{Bilder/bor_ablaufbild}
   \par\end{centering}
@@ -45,7 +45,7 @@
   Für einen besseren Überblick über die einzelnen Programme und deren geforderten Funktionen wurden einzelne Flussdiagramme des gesamten Prozesses erstellt.
   Diese dienen nachfolgend als Orientierung beim Programmieren der einzelnen Funktionen.
 
-  \begin{figure}[tbh]
+  \begin{figure}[H]
     \begin{centering}
       \includegraphics[width = \textwidth]{Bilder/Flussdiagramm}
     \par\end{centering}
@@ -101,7 +101,7 @@
     Das Ergebnis lautet: 0110 1000 = 104 \\
     \end{itemize}
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
         \includegraphics[width = 0.5\textwidth]{Bilder/bor_rot_beschr2}
       \par\end{centering}
@@ -130,7 +130,7 @@
     \subsubsection{Aileron, Elevator und Rudder anhand der Kameradaten}
     Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden anschließend die Flugparameter verändert.
 
-    \begin{figure} [tbh]
+    \begin{figure} [H]
       \begin{centering}
         \includegraphics[width = \textwidth]{Bilder/Farbcode_erkannt}
       \par\end{centering}
@@ -163,7 +163,7 @@
     \subsubsection{Überprüfen von Rudder}
     Rudder beschreibt die Rotation um seine eigene Hochachse. Dafür wird zunächst unterschieden, ob sich der Hexacopter am Hin- oder Rückflug befindet, da die Rotation der Colorcodes beim Rückflug um 180 Grad gedreht werden muss.
 
-    \begin{figure} [tbh]
+    \begin{figure} [H]
       \begin{centering}
         \includegraphics[width = 0.7\textwidth]{Bilder/bor_rotation}
       \par\end{centering}
@@ -187,7 +187,7 @@
     
     Zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ bleibt die Beschleunigung gleich, das führt jedoch dazu, dass der Hexacopter den oberen Rand von $\SI{120}{\centi\metre}$ erreichen wird, da er bis jetzt nicht gebremst wird. Sobald er über $\SI{120}{\centi\metre}$ kommt, wird die Beschleunigung reduziert. Der Hexacopter pendelt sich zwischen $\SI{80}{\centi\metre}$ und $\SI{120}{\centi\metre}$ ein.
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
         \includegraphics[width = 0.7\textwidth]{Bilder/bor_hoehenregelung}
       \par\end{centering}
