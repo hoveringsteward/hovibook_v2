@@ -24,7 +24,7 @@ Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten 
 Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit "Bootstrap 4 alpha" gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden. 
 Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
 Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen werden. \\ \\
-Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel 11 genauer erklärt.
+Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel "Kommunikation Applikation und Hexacopter" genauer erklärt.
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation}
@@ -53,6 +53,7 @@ Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche 
 \begin{itemize}
     \item \textbf{MAMP}\\
 MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache Perl. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt. 
+\pagebreak
     \item \textbf{XAMPP}\\ 
 Das XAMPP-Paket wird aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
   \end{itemize}  
@@ -73,6 +74,7 @@ Dies liegt daran, dass jeder dieser Schichten eine genaue Aufgabe zugeschrieben 
 Die Model-Schicht dient dazu Daten zur Verfügung zu stellen. 
     \item \textbf{View(Präsentationsschicht)}\\
 In der View-Ebene werden Daten visualisiert. Diese Ebene deckt somit den Frontend Bereich der Applikation ab.
+\pagebreak
     \item \textbf{Controller(Steuerungsschicht)}\\ 
 Der Controller fungiert als Schnittstelle zwischen der Model- und der View-Ebene. Er leitet die Daten von der Model-Schicht in die View-Schicht weiter, damit diese dort ausgegeben werden können. Außerdem nimmt er Benutzeraktionen im Frontend entgegen, wertet diese aus und behandelt sie entsprechend.
   \end{itemize}  
@@ -103,6 +105,7 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien gewechselt werden kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
     \item \textbf{Bestellungen und Speiseeinträge}\\
 Damit der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
+\pagebreak
     \item \textbf{Bestellungen und Tischdaten}\\ 
 Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, war es wichtig zwischen diesen zwei Tabellen eine Verbindung herzustellen. Da mehrere Bestellungseinträge auf dieselben Tischdaten verweisen können musste auf der Bestellungen Seite eine OneToMany und auf der Tischdaten Seite eine ManyToOne Verknüpfung erschaffen werden.
   \end{itemize}  
@@ -268,6 +271,7 @@ Aus diesem Grund muss in der "php.ini"-Datei der LAMP-Distribution eine Zeitzone
   	\begin{lstlisting}
 date.timezone = "ZEITZONE"
   	\end{lstlisting}
+\pagebreak
 \textbf{Symfony Cache}\\
 Symfony hat einen eigenen Cache, welcher gelegentlich gelöscht werden muss, damit es auf die aktuellen Einstellungen und Daten zugreifen kann.
 Dieses Problem kam erstmals beim Verbindungsaufbau zur Datenbank auf, da hierbei immer auf die veralteten Daten in der "config.yml"-Datei zugegriffen wurde.
@@ -340,8 +344,10 @@ Außerdem kann mithilfe von Twig auf Pfade von Action Funktionen verwiesen und d
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angfertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
 Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
-\\ \\
-\textbf{alte Mockups}\\
+\\
+\pagebreak
+
+\textbf{alte Mockups:}\\
 \textbf{Speisekarte}\\
 			\begin{figure}[H]
 			\begin{centering}
@@ -349,16 +355,20 @@ Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen an
 			\par\end{centering}
 			\caption{alte Mockups - Speisekarte}
 			\label{alte Mockups - Speisekarte}
-			\end{figure}\textbf{Admininterface}\\
+			\end{figure}
+\pagebreak
+\textbf{Admininterface}\\
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_alte_mockups_admin}
 			\par\end{centering}
 			\caption{alte Mockups - Admininterface}
 			\label{alte Mockups}
-			\end{figure}Während der Umsetzungsphase wurde jedoch realisiert, dass dies nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen. Das Konzept des Admininterfaces wurde im Laufe der Zeit ebenfalls etwas überarbeitet. Beispielsweise wurde eine Alert-Box auf dem Hauptscreen eingefügt, um den Verbindungsstatus zwischen dem Hexacopter und dem Server anzuzeigen.
-\\ \\
-\textbf{neue Mockups}\\
+			\end{figure}Während der Umsetzungsphase wurde jedoch realisiert, dass dieses Aufbauschema nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen. Das Konzept des Admininterfaces wurde im Laufe der Zeit ebenfalls etwas überarbeitet. Beispielsweise wurde eine Alert-Box auf dem Hauptscreen eingefügt, um den Verbindungsstatus zwischen dem Hexacopter und dem Server anzuzeigen. \\
+
+\pagebreak
+
+\textbf{neue Mockups:}\\
 \textbf{Speisekarte}\\
 			\begin{figure}[H]
 			\begin{centering}
@@ -366,7 +376,9 @@ Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen an
 			\par\end{centering}
 			\caption{neue Mockups - Speisekarte}
 			\label{neue Mockups - Speisekarte}
-			\end{figure}\textbf{Admininterface}\\
+			\end{figure}
+\pagebreak
+\textbf{Admininterface}\\
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_neue_mockups_admin}
@@ -384,6 +396,7 @@ Falls die Anmeldedaten falsch eingegeben werden, wird eine Fehlermeldung in rot 
 Wenn das Anmeldeformular richtig ausgefüllt wird, öffnet sich der Tischnummernauswahlscreen.
     \item \textbf{Tischnummernauswahlscreen}\\
 Auf diesem Screen befinden sich ein Dropdownmenü in welchem die Tischnummern zur Auswahl angezeigt werden und ein Button mit dem Label "Speisekarte öffnen". Nachdem auf diesen Button geklickt wird, öffnet sich die Speisekarte mit dem Parameter der ausgewählten Tischnummer.
+\pagebreak
     \item \textbf{Speisekartenscreen}\\
 Auf dem Speisekartenscreen kann sich der Gast oben im Header sowohl durch die Kategorien klicken, als auch seine bisher getätigten Bestellungen einsehen. 
 Sobald auf eine Kategorie geklickt wird, werden die dazugehörigen Speiseeinträge samt Informationen angezeigt. Zu jedem Speiseeintrag gibt es einen Bestellbutton. 
@@ -484,7 +497,8 @@ Das finale Layout der Screens sieht daher folgendermaßen aus:\\
 			\par\end{centering}
 			\caption{Screen: Tischdatenverwaltung}
 			\label{Screen: Tischdatenverwaltung}
-			\end{figure}  				
+			\end{figure} 
+\pagebreak 				
     \subsubsection{Datenausgabe}
 
 Wie bereits zuvor erwähnt wurde, ermöglicht die Template Engine Twig einen vereinfachten Zugriff auf die Variablen, welche vom Controller übergeben wurden. Um eine einzige Variable aufzurufen, musste diese lediglich mit zwei geschwungenen Klammern umhüllt werden. 
@@ -535,27 +549,28 @@ Damit die Applikation über den Apache HTTP Server im Frontend angezeigt werden 
 $kernel = newAppKernel('prod', true);
   	\end{lstlisting}
 Der Wert "prod" steht hierbei für "production environment", also für die Produktionsumgebung.
-
+\pagebreak
 \section{Testphase}
-Für die Testphase wurden präzise Testfälle erstellt, welche abgesehen von TC-5 von einer externen Person getestet wurden.
+Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-5 von einer externen Person getestet wurden.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{1.5cm}|p{3cm}|p{4cm}|p{4cm}|p{1.5cm}|} 
+\begin{tabular}{|p{0.5cm}|p{3cm}|p{4.5cm}|p{4cm}|p{2cm}|} 
 \hline \textbf{ID} & \textbf{Bezeichnung} & \textbf{Testszenario} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis erreicht?} \\\hline
-\hline 1 & Adminlogin & Admin meldet sich mit richtigen Anmeldedaten an & Hauptscreen des Admininterfaces wird angezeigt & Ja \\\hline
-\hline 2 & Speisebestellung & eine Speise wird bestellt & neuer Bestellungseintrag wird erstellt und in Bestellliste angezeigt & Ja \\\hline
-\hline 3 & "Ausliefern"-Wert ändern & Admin klickt auf "Ausliefern"-Button & "ausliefern"-Wert der Speise wird auf 1 gesetzt & Ja \\\hline
-\hline 4 & Tischroute schicken & Hexacopter schickt bestimmte Nachricht an Server & Server schickt Tischnummer zurück & Ja \\\hline
-\hline 5 & Speiseeintrag hinzufügen & Admin gibt neue Speisedaten ins Formular ein und klickt auf "Speiseeintrag hinzufügen" & neuer Speiseeintrag wird in Datenbank angelegt & Ja \\\hline
-\hline 6 & Kategorie hinzufügen & Admin gibt neue Kategoriebezeichnung ins Formular ein und klickt auf "Kategorie hinzufügen” & neue Kategorie wird in Datenbank angelegt & Ja \\\hline
-\hline 7 & Speiseeintrag löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter Speiseeintrag wird gelöscht & Ja \\\hline
-\hline 8 & Kategorie löschen & Admin wählt Kategorie aus und klickt auf "Kategorie Löschen"-Button & ausgewählte Kategorie wird gelöscht & Ja \\\hline
-\hline 9 & Tischroute verändern & Admin wählt Tischnummer aus und gibt Tischroute ins Formularfeld ein & Tischroute des Tisches wird geändert & Ja \\\hline
+\hline 1 & Adminlogin & Admin meldet sich mit \newline richtigen Anmeldedaten \newline an & Hauptscreen des \newline Admininterfaces wird \newline angezeigt & Ja \\\hline
+\hline 2 & Speisebestellung & eine Speise wird bestellt & neuer Bestellungseintrag wird erstellt und in \newline Bestellliste angezeigt & Ja \\\hline
+\hline 3 & "Ausliefern"-Wert \newline ändern & Admin klickt auf "Ausliefern"-Button & "ausliefern"-Wert der Speise wird auf 1 gesetzt & Ja \\\hline
+\hline 4 & Tischroute \newline schicken & Hexacopter schickt \newline bestimmte Nachricht an Server & Server schickt \newline Tischnummer zurück & Ja \\\hline
+\hline 5 & Speiseeintrag \newline hinzufügen & Admin gibt neue \newline Speisedaten ins Formular ein und klickt auf \newline "Speiseeintrag hinzufügen" & neuer Speiseeintrag wird in Datenbank angelegt & Ja \\\hline
+\hline 6 & Kategorie \newline hinzufügen & Admin gibt neue \newline Kategoriebezeichnung ins \newline Formular ein und klickt auf \newline "Kategorie hinzufügen” & neue Kategorie wird in Datenbank angelegt & Ja \\\hline
+\hline 7 & Speiseeintrag \newline löschen & Admin wählt Speiseeintrag aus und klickt auf "Speiseeintrag Löschen"-Button & ausgewählter \newline Speiseeintrag wird gelöscht & Ja \\\hline
+\hline 8 & Kategorie \newline löschen & Admin wählt Kategorie aus und klickt auf "Kategorie Löschen"-Button & ausgewählte Kategorie wird gelöscht & Ja \\\hline
+\hline 9 & Tischroute \newline verändern & Admin wählt Tischnummer aus und gibt Tischroute ins Formularfeld ein & Tischroute des Tisches wird geändert & Ja \\\hline
 \end{tabular}
 \caption{Testfälle der Applikation und des Java Programms}
 \end{table}
 
+\pagebreak
 \section{Persönliche Erfahrungen}
 Da ich zuvor kaum mit einer der hierfür verwendeten Technologien gearbeitet habe, konnte ich, dank der Diplomarbeit einige neue Fähigkeiten erlernen.
 Zwar habe ich bereits in der vierten Klasse die Grundlagen eines MVC-Frameworks gelernt, doch war mir damals trotzdem kaum klar, wie es genau funktioniert und wie viele positive Eigenschaften es eigentlich mit sich bringt.
