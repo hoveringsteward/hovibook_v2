@@ -1,13 +1,10 @@
 % !TEX root = diplomarbeit.tex
-Aus Gründen der besseren Lesbarkeit wird auf die gleichzeitige Verwendung männlicher und weiblicher Sprachformen verzichtet.
-Sämtliche Personenbezeichnungen gelten gleichwohl für beiderlei Geschlecht.
-
 \chapter{Einleitung}
 \renewcommand{\kapitelautor}{Autor: Markus Kaiser}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Projektidee}
-Die Idee des Projektes, ist die Entwicklung einer Konzeptstudie für ein innovatives Logistiksystem, das sich durch die Verwendung eines Multicopters auszeichnet.
+Die Idee des Projekts, ist die Entwicklung einer Konzeptstudie für ein innovatives Logistiksystem, das sich durch die Verwendung eines Multicopters auszeichnet.
 Für den Entwicklungsprozess im Zuge der Diplomarbeit wurde die Gastronomie als Einsatzbereich gewählt. Diese Wahl ermöglicht zum einen
 ein konkreteres Fomulieren der Ziele und zum anderen eine einheitliche Vision innerhalb des Teams.
 
@@ -31,10 +28,12 @@ Das System setzt sich aus den folgenden drei Komponenten zusammen:
 \end{figure}
 
 Der Multicopter ist die zentrale Komponente des Projekts. Sie ist für den selbstständigen Transport von Objekten zuständig,
-und muss somit flugfähig, und im Stande sein Unfälle zu verhindern.
+und muss somit flugfähig, und im Stande sein Unfälle zu verhindern. Sensoren, die mittels eigens angefertigter Halterungen
+am Multicopter befestigt sind, kommunizieren mit der Firmware.
 
 Die Firmware regelt alle logischen Prozesse des Systems. Sowohl die Steuerung des Multicopters, als auch der
-Austausch von Daten fällt unter diese Kategorie.
+Austausch von Daten fällt unter diese Kategorie. Befehle erhält sie unter anderem von der Speisekarte, mit der er über
+einen Server, beziehungsweise einer weiteren Anwendung kommuniziert.
 
 Die digitale Speisekarte ist indirekt die externe Steuereinheit des Multicopters, und zugleich die Komponente,
 die das System für den Einsatz in der Gastronomie auszeichnet. Sie automatisiert Vorgänge eines gastronomischen
@@ -44,14 +43,14 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
 \section{Ausgangssituation}
   In den folgenden Absätzen wird beschrieben, wie die Idee von Hovering Steward, dem autonom fliegenden Kellner
   entstanden ist, und womit sich die ersten Recherchen zu Begin des Projektes beschäftigt, beziehungsweise
-  welche Ergebnisse diese herausgebracht haben.
+  welche Ergebnisse diese hervorgebracht haben.
 
   \subsection{Ideenfindung}
   Ihren Anfang fand die Idee im Projektmanagement Unterricht. Klasseninterne Teams mussten ein fiktives Projekt erfinden, um auf Basis dieses
   Projektmanagementpläne zu erstellen. Es entstand "Fluorescent Bakery", eine Bäckerei, die fluoreszierende Cupcakes verkauft.
   Der technische Teil ergab sich später, bei dem Gedanken diese Idee für die Diplomarbeit weiterzuverwenden. Der Ansatz hierfür war,
   einen nicht menschlichen Kellner zu erschaffen, der selbst programmiert, die Aufgaben einer Bedienung in einem Restaurant übernimmt.
-  So entstand "Hovering Steward - der autonom fliegende Kellner", ein dreidimensionales Tracking-System, welches eine Drohne in einem Raum die Aufgaben eines Kellners durchführen lässt.
+  So entstand "Hovering Steward - der autonom fliegende Kellner", ein dreidimensionales "Tracking-System", welches eine Drohne in einem Raum die Aufgaben eines Kellners durchführen lässt.
   Das Projekt erhielt später noch eine weitere Komponente, nämlich eine digitale Speisekarte, um das System in einem Restaurant um einen weiteren Schritt zu automatisieren.
 
   \subsection{Stand der Technik}
@@ -59,31 +58,31 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
   \begin{itemize}
     \item \textbf{Disaster Café}
 
-    Das Themenrestaurant Disaster Café in Spanien bietet Gästen die Erfahrung, ihr Essen bei einem Erdbeben
+    Das Themenrestaurant {Disaster Café\cite{disastercafe}} in Spanien bietet Gästen die Erfahrung, ihr Essen bei einem Erdbeben
     der Stärke 7.8 zu sich zu nehmen.
 
     \item \textbf{Das stille Örtchen - Modern Toilet}
 
-    Eingerichtet wie eine Toilette, können Gäste des Modern Toilet in Japan ihre Speisen in einem gewohnten Umfeld genießen.
+    Eingerichtet wie eine Toilette, können Gäste des {Modern Toilet\cite{moderntoilet}} in Japan ihre Speisen in einem gewohnten Umfeld genießen.
 
     \item \textbf{Affen-Kellner}
 
-    Die kleine Taverne in Japan besitzt zwei kleine Affen, die Tätigkeiten wie das Servieren von Getränken oder Handtüchern
+    {Eine kleine Taverne in Japan\cite{affenkellner}} besitzt zwei kleine Affen, die Tätigkeiten wie das Servieren von Getränken oder Handtüchern
     für den Inhaber übernehmen. Sie verstehen sogar, welche Getränke ein Gast bestellt.
 
     \item \textbf{The Royal Dragon}
 
-    Neben Rollschuh fahrenden Kellnern verfügt das weltweit größte Restaurant für Meeresfrüchte eine
+    Neben Rollschuh fahrenden Kellnern verfügt das weltweit größte {Restaurant für Meeresfrüchte\cite{royaldragon}} eine
     Art Seilbahn, mithilfe welcher ein Kellner "fliegend" das Essen serviert.
 
     \item \textbf{Dinner in the Sky}
 
-    Bei Dinner in the Sky werden die Gäste samt Tisch und kleiner Küche von einem Kran 50 Meter
+    Bei {Dinner in the Sky\cite{dinnerinthesky}} werden die Gäste samt Tisch und kleiner Küche von einem Kran 50 Meter
     in die Luft gezogen, wo dann gespeist wird.
 
     \item \textbf{Dinner in the Dark}
 
-    In diesem Themenrestaurant verbringen die Gäste ihren Aufenthalt im Dunkeln. Einzig und allein die
+    In diesem {Themenrestaurant\cite{dinnerinthedark}} verbringen die Gäste ihren Aufenthalt im Dunkeln. Einzig und allein die
     Kellner können mittels Nachtsichtbrille etwas sehen.
   \end{itemize}
 
@@ -92,11 +91,11 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
       \item \textbf{Infinium-Serve}
 
       Das Unternehmen Infinium-Robotics hat ein System entwickelt, welches Gästen eines Restaurants
-      das Essen mittels Hexacopter serviert.
+      das Essen mittels Hexacopter serviert.{\cite{infiniumserve}}
 
       \item \textbf{iTray}
 
-      iTray, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
+      {iTray\cite{itray}}, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
       Die Drohnen werden über ein Remote-Wi-Fi-System gesteuert.
 
   \end{itemize}

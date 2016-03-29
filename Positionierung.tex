@@ -39,9 +39,10 @@
 
     Für eine absolute Positionsmessung bieten sich diverse Triangulationsverfahren an, diese sind ausgesprochen rechenaufwändig und benötigen meist eine sehr genaue Laufzeitmessung.
     Für die Triangulation können die unterschiedlichsten Signale verwendet werden, am gängigsten sind jedoch jene die mit elektromagnetischen Wellen arbeiten,
-    \zB WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten.
+    zum Beispiel WLAN, Bluetooth. Dies bedeutet, dass sich die Signale mit Lichtgeschwindigkeit ausbreiten.
 
     Bei einer Messung derart schneller Signale muss ein hoher Aufwand betrieben werden um eine Messgenauigkeit von einigen cm zu erzielen.
+
     Eine weitere Herausforderung sind Hindernisse wie Mauern. Hier muss ständig berücksichtigt werden wo ein Objekt steht und ob der geplante Weg überhaupt frei ist.
 
     \textbf{Relative Positionsmessung}\\
@@ -57,7 +58,7 @@
     Lokalisierungstechniken können weiter als selbstortend oder fernortend (engl. self­positioning/remote­positioning) klassifiziert werden. Beim optischen Tracking werden die beiden Varianten Inside-out und Outside-in genannt.\\
     Beim selbstortenden Positionierungssystem bekommt der mobile, bewegliche Empfänger die Daten von verschiedenen Sendern, die sich auf bekannten Positionen befinden. Die Lokalisation des Empfängers wird durch die gemessenen Signale ermittelt. Das Objekt kann sich selbst orten, es ist kein Netzwerk notwendig.\\
     Ein fernortendes Positionierungssystem besteht aus einem mobilen, beweglichen Sender und stationären, unbeweglichen Empfängern. Die Messdaten aller Empfänger werden gesammelt und die Position des Senders wird in der Zentrale berechnet. Hier ist ein Netzwerk notwendig, sämtliche Berechnungen werden durch eine zentrale Instanz ausgeführt.
-    
+
 
     \subsection*{Genauigkeit}
     Die Genauigkeit gibt an, wie sehr sich gemessene und tatsächliche Position unterscheiden.
@@ -81,15 +82,15 @@
     Techniken der Lateration sind TOA (time of arrival) und TDOA (time difference of arrival).\\
     Bei \textbf{TOA} werden Signale in Laufzeit gemessen. Durch die Zeitdifferenz zwischen Sender und Empfänger, kann die Entfernung mithilfe der Information, wie schnell sich das Signal fortbewegt, errechnet werden. Da sich elektromagnetische Wellen in Lichtgeschwindigkeit ausbreiten, ist die zu messende Laufzeit sehr gering. Ultraschallsignale bewegen sich vergleichsweise langsam, dies vereinfacht die Zeitmessung.
     Um schlussendlich die Position zu bestimmen, werden drei Basisstationen benötigt, die jeweils eine Entfernungsmessung zum mobilen Objekt durchführen. Durch die drei Entfernungen kann mittels Trilateration die Position berechnet werden.
-    
+
     \textbf{TDOA} basiert auf der Laufzeitdifferenzmessung.
     Die mobile Station sendet einen Zeitstempel an drei Basisstationen. Durch die Differenz der Laufzeiten, kann die Position ebenfalls mittels Trilateration bestimmt werden.
-    
+
     \subsection*{Angulation}
     Bei der Angulation wird die Position durch die Bestimmung von Winkeln ermittelt. \\
     \textbf{AOA} (Angel of Arrival) wird mittels Berechnung des Einfallswinkels auf ein Antennenarray umgesetzt. Bei dieser Technik werden mindestens 2 Basisstationen benötigt. Mit den Einfallswinkeln der empfangenen Signale kann die Position durch Triangulation festgestellt werden. Die Winkelbeziehungen eines Dreiecks werden dafür verwendet.
     Bei dieser Technik muss keine Synchronisation durchgeführt werden. Der Nachteil ist die benötigte komplexe Hardware.
-    
+
     \subsection*{Scene Analysis}
     Bei der Szenenanalyse werden Umgebungsparameter erfasst und ausgewertet.\\
     Für die Technik \textbf{Fingerprint} werden Signalstärken gemessen und als Fingerprint in einer Datenbank abgespeichert. Die Position wird dann durch den Vergleich von Fingerprints mit der Signalstärke, die bei der aktuellen Position gemessen wird, herausgefunden.
@@ -132,7 +133,7 @@
     \item Segmentierung, in der das Bild in Bereiche aufgeteilt wird
     \item Merkmalsextraktion, bei der beispielsweise Kanten erkannt werden
     \item Klassifizierung, bei der das Bild Klassen zugewiesen wird.
-    \end{itemize} 
+    \end{itemize}
 
     \subsubsection{Segmentierung}
     Beim Segmentieren teilt man ein Bild in Segmente mit gleichen Merkmalen auf.

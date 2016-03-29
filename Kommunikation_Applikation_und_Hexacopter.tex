@@ -1,23 +1,23 @@
 % !TEX root = diplomarbeit.tex
 \chapter{Kommunikation Applikation und Hexacopter}
 \renewcommand{\kapitelautor}{Autor: Katharina Joksch, Lucas Ullrich}
-Um zwischen dem Hexacopter und dem Server eine Verbindung herzustellen wird eine Kommunikationsschnittstelle benötigt. Diese muss Drahtlos arbeiten und einen größeren Bereich
-abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu zählen \zB die Route, \bzw der Name des Gastes.
+Um zwischen dem Hexacopter und dem Server eine Verbindung herzustellen wird eine Kommunikationsschnittstelle benötigt. Diese muss drahtlos arbeiten und einen größeren Bereich
+abdecken. Über diese werden anschließend die diversen Daten übertragen, dazu zählen zum Beispiel die Route, beziehungsweise der Name des Gastes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
 In der Planung wurde eine unkomplizierte und verlässliche Lösung für beide Kommunikationspartner gesucht. Da Bluetooth kaum noch standardmäßig verbaut ist, wird hier wiederum
-Serverseitig eine externe Hardware benötigt, um dies zu vermeiden wurde WLAN ins Auge gefasst.
+serverseitig eine externe Hardware benötigt, um dies zu vermeiden wurde WLAN ins Auge gefasst.
 
 WLAN stellte sich folglich als ideale Schnittstelle heraus,
-es gibt die Möglichkeit zu Handover in sehr großen Bereichen, es ist nach einmaligem Setup vergleichsweise unkompliziert und es bietet diverse Möglichkeiten um festzustellen
-ob die Verbindung noch aufrecht ist.
+es gibt die Möglichkeit für ein Handover (Verbindungsübergabe) in sehr großen Bereichen, es ist nach einmaligem Setup vergleichsweise unkompliziert und es bietet diverse
+Möglichkeiten, festzustellen ob die Verbindung noch aufrecht ist.
 
       \subsection{Kommunikationsschema}
 Für die Kommunikation zwischen dem Hexacopter und dem Server wurde folgendes Schema festgelegt:
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{0.5cm}|p{2cm}|p{2cm}|p{5.5cm}|p{2cm}|} 
+\begin{tabular}{|p{0.5cm}|p{2cm}|p{2cm}|p{5.5cm}|p{2cm}|}
 \hline \textbf{ID} & \textbf{Von wem?} & \textbf{Was?} & \textbf{Wann?} & \textbf{An wen?} \\\hline
 \hline 1 & WLAN-Modul & 1 & wenn er in der Basis ist bzw. \newline bereit ist eine Speise auszuliefern & Server \\\hline
 \hline 2 & Server & 2 & alle zwei Sekunden & WLAN-Modul \\\hline
@@ -28,37 +28,36 @@ Für die Kommunikation zwischen dem Hexacopter und dem Server wurde folgendes Sc
 
 \begin{itemize}
     \item \textbf{ID 1}\\
-Damit der Server weiß, wann der Hexacopter sich in der Basis befindet und dadurch bereit ist eine Speise auszuliefern, schickt das WLAN-Modul ihm einen Einser.
+Damit der Server weiß, wann der Hexacopter sich in der Basis befindet und dadurch bereit ist eine Speise auszuliefern, schickt der Mikroprozessor über WLAN einen Einser.
 
     \item \textbf{ID 2}\\
-Damit kontrolliert werden kann, ob die Verbindung zu dem Hexacopter in Takt ist, wird im alle zwei Minuten ein Zweier geschickt. 
+Damit kontrolliert werden kann, ob die Verbindung zu dem Hexacopter in Takt ist, wird im alle zwei Minuten ein Zweier geschickt.
 
     \item \textbf{ID 3}\\
 Sobald der Server einen Einser von dem Hexacopter geschickt bekommt, sendet er ihm automatisch die Tischroute des Gastes, welcher als nächstes seine Bestellung erhalten soll.
 Die Tischroute ist mit folgendem Schema aufgebaut: \\
-"<<...FarbcodeGS...FarbcodeGS---Farbcode>>" \\
-Die Zeichen "<<" zeigen dem WLAN-Modul, dass eine Nachricht beginnt. 
-Anschließend werden drei Punkte geschickt, welche ein Zeichen dafür sind, dass sich der folgende Farbcode auf dem Boden befindet.
-Das Kürzel "GS" steht für "Group seperator" und hilft dem Modul die unterschiedlichen Farbcodes zu unterteilen.
-Die drei Striche deuten darauf hin, dass sich der Farbcode auf einem Tisch befindet.
-Am Ende der Tischroute werden dem Hexacopter noch die Zeichen ">>" geschickt, damit er weiß, dass die Route fertig gesendet wurde.
-Die einzelnen Zeichen werden dem WLAN-Modul in der ASCII-Codierung übermittelt.
-  \end{itemize}  
-  
+"$<<$ Farbcode Farbcode GS Farbcode $>>$" \\
+Die Zeichen "$<<$" zeigen dem WLAN-Modul, dass eine Nachricht beginnt.
+Anschließend werden die Farbcodes welche sich auf dem Bodenbefinden versendet.
+Das Kürzel "GS" steht für "Group seperator" und hilft dem Modul die Farbcodes zwischen Boden und Tisch zu unterteilen.
+Am Ende der Tischroute werden dem Hexacopter noch die Zeichen "$>>$" geschickt, damit er weiß, dass die Route fertig gesendet wurde.
+Die einzelnen Zeichen werden dem WLAN-Modul in der ASCII-Codierung übermittelt, die Leerzeichen vernachlässigt.
+  \end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Schnittstelle Hexacopter}
 Seitens des Hexacopters wird ein zusätzliches Modul benötigt, dieses muss über eine der Schnittstellen des Mikrocontrollers ansprechbar sein.
 
   \subsection{Technische Planung}
-  Bei der Planung wurde darauf geachtet ein WLAN-Modul zu wählen welches bekannter maßen funktioniert \bzw ein entsprechender Support zur Verfügung steht.
+  Bei der Planung wurde darauf geachtet ein WLAN-Modul zu wählen, welches bekanntermaßen funktioniert beziehungsweise ein entsprechender Support zur Verfügung steht.
   So fiel die Wahl auf das WLAN-Modul RN171, vertrieben durch Microchip, hergestellt von Roving Networks.
 
   Das gewählte WLAN-Modul wird über eine UART-Schnittstelle angesteuert und verfügt über einige frei konfigurierbare Pins, diese werden schließlich zum Überwachen der
   Verbindung verwendet.
 
   \subsection{Umsetzung}
-  Bei der Umsetzung stand für die anfänglichen Tests ein Evaluation-Kit zur Verfügung. Dieses kann ohne weitere Hardware direkt über ein USB-Kabel mit einem PC verbunden werden.
-  So ist es möglich die nötigen Konfigurationen des Moduls auszutesten bevor dieses in der Hardware implementiert wird.
+  Bei der Umsetzung stand, für die anfänglichen Tests, ein Evaluation-Kit zur Verfügung. Dieses kann ohne weitere Hardware direkt über ein USB-Kabel mit einem PC verbunden werden.
+  So ist es möglich, die nötigen Konfigurationen des Moduls auszutesten, bevor dieses in der Hardware implementiert wird.
 
   \begin{figure}[H]
     \begin{centering}
@@ -93,18 +92,18 @@ Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host ver
     \item \textbf{reboot}\\
     Erzeugt einen Neustart bei dem die Standardeinstellungen geladen werden
   \end{itemize}
-  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mirkocontroller verbunden werden, die Verbidnung kann über einzelne Pins kontrolliert
+  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mirkocontroller verbunden werden, die Verbindung kann über einzelne Pins kontrolliert
   werden.
 
   \subsection{Herausforderungen und Lösungen}
-  Eine Herausforderung stellte die Frage dar wie genau die Verbindung hergstellt wird. Das Datenblatt des WLAN-Moduls mit über 100 Seiten bietet viele potentielle Möglichkeiten.
+  Eine Herausforderung stellte die Frage dar, wie genau die Verbindung hergestellt wird. Das Datenblatt des WLAN-Moduls, mit über 100 Seiten, bietet viele potentielle Möglichkeiten.
   Die erste Wahl fiel auf das Auslesen einer Website, auf den ersten Anblick funktionierte das auch, jedoch musste festgestellt werden, dass unabhängig von der Website sehr ähnliche
   Daten verarbeitet werden, jedoch nicht der eigentliche Inhalt der Website sondern Providerinformationen.
 
-  Die zweite Wahl fiel auf eine TCP/IP Verbindung, lediglich die genaue Umsetzung dieser ließ viele Möglichkeiten offen. Einerseits besteht die Möglichkeit eine Verbindung direkt
+  Die zweite Wahl fiel auf eine TCP/IP Verbindung, lediglich die genaue Umsetzung dieser, ließ viele Möglichkeiten offen. Einerseits besteht die Möglichkeit eine Verbindung direkt
   über die Eingabe "open" im Commandmode zu öffnen, andererseits jedoch auch über die Pins als auch automatische Timeouts.
 
-  Aufgrund der Einfachheit und vollen Kontrolle viel die Wahl auf die Ansteuerung über die Pins.
+  Aufgrund der Einfachheit und vollen Kontrolle fiel die Wahl auf die Ansteuerung über die Pins.
   Dazu stehen 3 unterschiedliche Pins zur Verfügung:
   \begin{itemize}
     \item \textbf{Associated}\\
@@ -114,7 +113,7 @@ Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host ver
     \item \textbf{Connected}\\
     Die Verbindung zum Host ist hergestellt
   \end{itemize}
-  Die Statusinformationen Associated als auch Connected werden von dem WLAN-Modul geliefert, die Anweisung eine Verbindung herzustellen von dem Mirkocontroller.
+  Die Statusinformationen "Associated" als auch "Connected" werden von dem WLAN-Modul geliefert, die Anweisung eine Verbindung herzustellen von dem Mirkocontroller.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
@@ -136,7 +135,7 @@ Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert.
 			\caption{neue MockUps - Admininterface}
 			\label{neue MockUps - Admininterface}
 			\end{figure}
-			
+
       \subsubsection{Eclipse}
 
 Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Eclipse Foundation entwickelt. Das Programm kann verwendet werden, um in mehreren Programmiersprachen Software zu entwicklen. Besonders gut geeignet ist Eclipse für die Entwicklung von Java-Programmen, da es sowohl Auto-Completion ermöglicht als auch Syntax-Hervorhebung.
@@ -169,7 +168,7 @@ verbindung = DriverManager.getConnection(mySqlUrl, db_user, db_pass);
 	\end{lstlisting}
 Damit die Tischdaten angezeigt werden konnten, wurde die "showTischdaten()"-Funktion erstellt. Um die ID, die Tischroute und die Tischnummer zu erhalten musste jeweils ein SQL-Statement verfasst werden. In diesem SQL-Statement wurden nur die Tischdaten, welche einer Bestellung zugeordnet sind ausgelesen.
 Um das Statement anschließend auszuführen, wurde es der vordefinierte Methode "executeQuery()" als Parameter mitgeschickt.
-Die Ergebnisse werden in ein ResultSet gespeichert. Danach werden sie in einer Schleife iteriert und der aktuelle Wert aus dem Set als String umgewandelt. Nun konnte die Route als Rückgabewert angegeben werden. 
+Die Ergebnisse werden in ein ResultSet gespeichert. Danach werden sie in einer Schleife iteriert und der aktuelle Wert aus dem Set als String umgewandelt. Nun konnte die Route als Rückgabewert angegeben werden.
 \\ \\
 Damit in der Bestellungen-Tabelle angemerkt wird, wann die Bestellung ausgeliefert wurde, wurde mit SQL ein Update-Statement erzeugt und mit der vordefinierten "executeUpdate()"-Funktion ausgeführt.
 \\ \\
@@ -182,7 +181,7 @@ Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt s
 Als globale Variable wird ein Hashset, welches die Teilnehmer beeinhaltet, erstellt.
 Anschließend wird ein Server Socket erstellt, welchem später ein geeigneter Port zugewiesen wird.
 \\ \\
-Mithilfe eines Timers wird alle zwei Sekunden überprüft ob ein Teilnehmer vorhanden ist. Wenn das der Fall ist, wird auf eine Methode verwiesen, in welcher die Verbindung hergestellt und daher auch die SQl-Readerfunktion, welche einen neuen Datenbankeintrag erstellt, aufgerufen wird. Diese SQL-Readerfunktion erneuert daraufhin den Verbindungsstatus. 
+Mithilfe eines Timers wird alle zwei Sekunden überprüft ob ein Teilnehmer vorhanden ist. Wenn das der Fall ist, wird auf eine Methode verwiesen, in welcher die Verbindung hergestellt und daher auch die SQl-Readerfunktion, welche einen neuen Datenbankeintrag erstellt, aufgerufen wird. Diese SQL-Readerfunktion erneuert daraufhin den Verbindungsstatus.
 \\
 Sobald ein Teilnehmer beitritt wird ihm mithilfe des Timers regelmäßig eine Nachricht, mit dem Inhalt "2", geschickt.
 \\ \\
@@ -193,7 +192,7 @@ Die "Komm Teilnehmer" Klasse wurde dafür entwickelt, die einzelnen Verbindungen
 \\
 Dem Teilnehmer Thread wird sowohl der Manager als auch der Server Socket als Parameter mitgeliefert. Über diese kann im Anschluss das Senden und Empfangen der Nachrichten geregelt werden.
 \\ \\
-In dieser Klasse wird die Nachricht des Hexacopters an die Manager Funktion geschickt, welche überprüft ob die Nachricht aussagt, dass sich der Multicopter in der Basis befindet. 
+In dieser Klasse wird die Nachricht des Hexacopters an die Manager Funktion geschickt, welche überprüft ob die Nachricht aussagt, dass sich der Multicopter in der Basis befindet.
 \\
 Wenn das der Fall ist, wird automatisch die Tischnummer der auszuliefernden Bestellung über die "showTischdaten()"-Funktion der SQL-Reader Klasse abgerufen und an den Hexacopter geschickt.
 
