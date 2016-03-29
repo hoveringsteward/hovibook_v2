@@ -237,7 +237,7 @@
       x1, y1, ... z2, z3 ... sind die staatischen Koordinaten der Pseudolites \\
       x, y, z ... werden durch die Lösung dieses quadratischen Gleichungssystems ermittelt \\
 
-      Beim Lösen der Gleichung erhält man zwei Schnittpunken. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen dreier verschmolzener Kugeln zwei Schnittpunkte haben.
+      Beim Lösen der Gleichung erhält man zwei Schnittpunkte. Dies ergibt sich aus der logischen Schlussfolgerung, dass die Oberflächen dreier verschmolzener Kugeln zwei Schnittpunkte haben.
       Wenn die Pseudolites am Boden angebracht werden, liegt eine der beiden Lösungen oberhalb und die zweite Lösung unterhalb des Bodens, womit man einfacher Weise, die Lösung mit der negativen Z-Koordinate ausschließen kann.
 
     \subsection{Optisches Tracking: Fernortend}
@@ -253,7 +253,7 @@
 
   \subsection*{Linien}
   Bei einem selbstortenden Positionierungssystem sind Sensoren auf dem sich bewegenden Objekt angebracht.
-  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe, die nächste Linie zu finden, um seinen Weg zum Ziel zu finden. Der Vorteil dieser Strategie ist es, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
+  Eine am Hexacopter angebrachte Kamera trackt Linien, die sich am Boden befinden. Der Hexacopter soll einer einfarbigen Linie folgen, bis er zu einer Kreuzung kommt, nun ist seine Aufgabe jeweils die nächste Linie bis zum Erreichen des Ziels zu finden. Der Vorteil dieser Strategie ist es, dass der Hexacopter eine Linie eher schwer verlieren wird, das gewählte Kamerasystem Pixy, kann jedoch nur Farbobjekte tracken.
 
   \subsection*{Ein Farbcode pro Wegabschnitt}
   Durch die Verwendung der Pixy CMUCam5 ergibt sich die Möglichkeit, Farbobjekte, die eine oder mehrere Farben aufweisen, zu scannen.
@@ -286,13 +286,13 @@
 
   \subsection{Das gewählte Konzept}
   Das gewählte Konzept ist eine hybride Methode zwischen optischen Trackings und einer Laufzeitmessung mit akustischen Wellen.
-  Durch die Pixy CMUcam5 werden am Boden liegende Farbcodes getrackt. Diese variieren um die relative Position besser zu bestimmen. Mit der Information, über welchem Farbcode sich der Hexacopter befindet, kann die Position im zweidimensionalen Raum herausgefunden werden. Da der Hexacopter fliegt, muss das System dreidimensional sein. Die z-Koordinate, beziehungsweise die Höhe, wird deswegen mit einem Ultraschallsensor über eine Laufzeitmessung bestimmt.
+  Durch die Pixy CMUcam5 werden am Boden liegende Farbcodes getrackt. Diese variieren, um die relative Position besser bestimmen zu können. Mit der Information, über welchem Farbcode sich der Hexacopter befindet, kann die Position im zweidimensionalen Raum herausgefunden werden. Da der Hexacopter fliegt, muss das System dreidimensional sein. Die z-Koordinate, beziehungsweise die Höhe, wird deswegen mit einem Ultraschallsensor über eine Laufzeitmessung bestimmt.
 
   Das System wurde auf die oben erklärten Eigenschaften analysiert:
 
   \subsection*{Physische und symbolische Positionierung}
   Die Positionierung erfolgt physisch. Durch die Pixy kann die tatsächliche Position ermittelt werden.
-  Zum besseren Verständnis, wird die Positionen ebenfalls symbolisch beschrieben. Es werden die Namen Base, für die Küche beziehungsweise den Stützpunkt, Weg für die Route aus Colorcodes und Tisch, für die Landeplattform, auf der der Hexacopter landen soll, verwendet.
+  Zum besseren Verständnis, werden die Positionen ebenfalls symbolisch beschrieben. Es werden die Namen Base, für die Küche beziehungsweise den Stützpunkt, Weg für die Route aus Colorcodes und Tisch, für die Landeplattform, auf der der Hexacopter landen soll, verwendet.
 
   \subsection*{Relative Positionierung}
   Das gewählte System gestaltet sich relativ, da der Hexacopter seine Position relativ zu Farbobjekten bestimmt.
@@ -318,8 +318,8 @@
   Da die Pixy CMUcam5 ein optisches Trackingsystem ist, muss Sichtkontakt zwischen der Kamera und dem zu trackenden Objekt bestehen. Weiters müssen zuvor gespeicherte Farben wiedererkannt werden, die Lichtverhältnisse dürfen sich daher nicht verändern.
   Objekte müssen eine Mindestensgröße von 4x1 Pixel in einem Frame ausmachen. Die Pixycam kann Objeke, laut Angaben der Website, über Kilometer tracken, wenn diese groß genug sind. Beispielsweise kann ein Objekt in Ping-Pong Ball Größe aus einer Entfernung von etwa 3 Metern gescannt werden. \cite{Pixy}
 
-  Das System kann sowohl Indoor als auch Outdoor angewendet werden. Da die Farbobjekte am Boden positioniert werden, werden keine Wände, Decken oder sonstige Räumlichkeiten benötigt. Die gennannten Objekte würden die Positionsbestimmung aber auch nicht negativ beeinträchtigen.
+  Das System kann sowohl Indoor als auch Outdoor angewendet werden. Da die Farbobjekte am Boden positioniert werden, werden keine Wände, Decken oder sonstige Räumlichkeiten benötigt. Die genannten Objekte würden die Positionsbestimmung aber auch nicht beeinträchtigen.
 
-  Der Ultraschallsensor eignet sich für den Bereich zwischen 2cm und 3m. Bei der Entfernungsmessung muss man die Schallgeschwindigkeit berücksichtigen. Da diese Temperaturabhängig ist, muss man darauf achten, dass die Temperaturdifferenz gering zur gewählten Geschwindigkeit ist. Bei 20 Grad Celsius beträgt diese 343m/S. Wenn die Abweichung 20 Grad Celsius, in diesem Beispiel eine Temperatur von etwa 0 oder 40 Grad Celsius beträgt, kann ein Fehler von 3,4 Prozent erwartet werden.
+  Der Ultraschallsensor eignet sich für den Bereich zwischen 2cm und 3m. Bei der Entfernungsmessung muss man die Schallgeschwindigkeit berücksichtigen. Da diese temperaturabhängig \cite{Ultrasonic} ist, muss darauf geachtet werden, dass die Raumtemperatur in etwa der für die Entfernungsberechnung im Mikrocontroller verwendeten Temperaturkonstante entspricht. Bei 20 Grad Celsius beträgt diese 343m/S. Wenn die Abweichung 20 Grad Celsius, in diesem Beispiel eine Temperatur von etwa 0 oder 40 Grad Celsius beträgt, kann ein Fehler von 3,4 Prozent erwartet werden.
   Bei der Reflektion auf glatten und ebenen Flächen erzeugt das beste Messergebnis, bei Distanzen unter 1m erweisen sich beide Faktoren als unkritisch.
-  Weiters muss der Winkel des Sensors beachtet werden, dabei spielt die Entfernung eine Rolle. Unter 1m kann der Sensor bis zu 45 Grad geneigt sein, bei der maximalen Höhe von 3m sind höchstens 15 Grad möglich. \cite{Ultrasonic}
+  Weiters muss der Winkel des Sensors beachtet werden, dabei spielt die Entfernung eine Rolle. Unter 1m kann der Sensor bis zu 45 Grad geneigt sein, bei der maximalen Höhe von 3m sind höchstens 15 Grad möglich.

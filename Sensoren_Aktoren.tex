@@ -262,6 +262,9 @@ void SendDebugInfo(unsigned int debug_info) {
     \label{Funktion_Multicopter}
   \end{figure}
 
+  \subsection{Erweiterte Funktion}
+  Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: eine Pixy CUMcam5, ein Ultraschallsensor, ein WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor
+sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des Hexacopters zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
 
   \subsection{Multicopter Arten}
   Es gibt verschiedene Arten von Multicoptern.
@@ -311,11 +314,8 @@ void SendDebugInfo(unsigned int debug_info) {
   Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
   und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
 
-  \textcolor{red}{OSZIBILD: min, max Impuls}
-
-
     \subsubsection{Steuerungsarten}
-    AUtor: Christina Bornberg\\
+    Autor: Christina Bornberg\\
     Der Flightcontroller DJI NAZA-M lite wird über die Befehle Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. \cite{GrundlagenMulticopter}
 
       \begin{itemize}
