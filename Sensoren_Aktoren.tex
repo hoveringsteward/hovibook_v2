@@ -252,7 +252,12 @@ void SendDebugInfo(unsigned int debug_info) {
 
   \subsection{Funktion}
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
-  Dem Empfängermodul, einem Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+    \begin{itemize}
+   \item Das \textbf{Empfängermodul} des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+   \item Der \textbf{Flightcontroller} ist der zentrale Regler und steuert die einzelnen Rotoren an.
+   \item Die \textbf{Multicopterhardware} besteht aus Rotoren, Motoren, einem Gestell und der Leistungselektronik. 
+   \end{itemize}
+
 
     \begin{figure}[H]
     \begin{centering}
