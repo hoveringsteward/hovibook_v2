@@ -295,26 +295,26 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems b
 
       Beispiel JavaScript:
 
-      \lstset{language=html}
-    	\begin{lstlisting}
-      /**
-       * Liefert alle <li> Elemente, die sich in einem Element
-       * mit der ID "navbar-list" befinden.
-      **/
-      var list = document.getElementById("navbar-list");
-      var items = list.querySelectorAll("li");
-      \end{lstlisting}
+\lstset{language= html }
+\begin{lstlisting}
+/**
+* Liefert alle <li> Elemente, die sich in einem Element
+* mit der ID "navbar-list" befinden.
+**/
+var list = document.getElementById("navbar-list");
+var items = list.querySelectorAll("li");
+\end{lstlisting}
 
       Beispiel: jQuery:
 
-      \lstset{language=html}
-    	\begin{lstlisting}
-      /**
-       * Liefert alle <li> Elemente, die sich in einem Element
-       * mit der ID "navbar-list" befinden.
-      **/
-      var items = $("#navbar-list li");
-    	\end{lstlisting}
+\lstset{ language=html }
+\begin{lstlisting}
+/**
+* Liefert alle <li> Elemente, die sich in einem Element
+* mit der ID "navbar-list" befinden.
+**/
+var items = $("#navbar-list li");
+\end{lstlisting}
 
       Eine derzeit sehr aktuelles JavaScript Framework ist {AngularJS\cite{angular}}. Die Intention dieses Frameworks ist die Automatisierung von oft verwendeten Vorgängen durch
       Datenbindungen und Direktiven. Der Programmierer erspart sich dadurch Codezeilen und Zeit. Zu den sinnvollen Einsatzgebieten von Angular zählen Webseiten mit großteils dynamisch generiertem
@@ -395,33 +395,34 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems b
 
         und sieht wie folgt aus:
 
-        \lstset{language=html}
-      	\begin{lstlisting}
-        <!DOCTYPE html>
-        <html lang="de">
-        <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Titel</title>
-        </head>
-        <body>
-        </body>
-        </html>
-        \end{lstlisting}
+\lstset{language = html}
+\begin{lstlisting}
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel</title>
+  </head>
+  <body>
+  </body>
+</html>
+\end{lstlisting}
 
         Ganz oben im Dokument wird der Dokumenttyp deklariert. Dieser gibt die verwendete HTML Version an. Im Falle von HTML 5 würde dieser wie folgt aussehen:
 
-        \lstset{language=html}
-        \begin{lstlisting}
-        <!DOCTYPE html>
-        \end{lstlisting}
+\lstset{language = html}
+\begin{lstlisting}
+<!DOCTYPE html>
+\end{lstlisting}
 
         Der Dokumenttyp für HTML 4.01 Strict hingegen wurde wie folgt angegeben:
 
-        \lstset{language=html}
-        \begin{lstlisting}
-        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-        \end{lstlisting}
+\lstset{language = html}
+\begin{lstlisting}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+\end{lstlisting}
 
         Im \textless head \textgreater Bereich werden \textless meta \textgreater Tags angegeben, in denen allgemeine und technische Informationen zur Website, wie Zeichensatz
         und Skalierung bei mobiler Version, oder Keywords und Beschreibung gespeichert werden.
