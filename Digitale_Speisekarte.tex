@@ -4,6 +4,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
+
   \subsection{Allgemein}
 
 Um das Kellnersystem so weit wie möglich zu Automatisieren entstand die Idee, eine digitale Speisekarte zu entwickeln.
@@ -16,6 +17,13 @@ Mithilfe der digitalen Speisekarte soll somit das Kellnersystem nahezu vollkomme
 
   \subsection{Zusammenspiel der Komponenten}
 
+Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten.
+Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in der Entwicklungsumgebung PhpStorm programmiert, da diese einen guten Überblick über die Ordnerstruktur bietet.
+Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann. In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, wofür MySQL gewählt wurde, kommuniziert.
+Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her.
+Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit Bootstrap 4 alpha gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden.
+Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\
+
 Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten.\\ \\
 Die Applikation, also die digitale Speisekarte und das Admininterface, wurden in der Entwicklungsumgebung PhpStorm programmiert, da diese einen guten Überblick über die Ordnerstruktur bietet.\\ \\
 Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und Controller unterteilt, damit durchgehend eine ordentliche Struktur beibehalten werden kann.
@@ -25,6 +33,7 @@ Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Sp
 Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
 Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen werden. \\ \\
 Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel "Kommunikation Applikation und Hexacopter" genauer erklärt.
+
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_zusammenspiel_applikation}
@@ -37,6 +46,9 @@ Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sonder
 
 PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben an. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
 
+  \subsection{PhpStorm}
+
+PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben an. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Backend}
@@ -52,11 +64,19 @@ Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche 
 {MAMP\cite{mamp}} und {XAMPP\cite{xampp}} sind Pakete, welche freie Software enthalten, die dazu dient dynamische Webseiten zur Verfügung zu stellen. Unter dynamischen Webseiten versteht man, Seiten die auf Funktionen im Backend zugreifen und mithilfe welcher Inhalte meist erst im Moment der Anfrage erzeugt werden, wodurch sie aktuell gehalten werden können.
 \begin{itemize}
     \item \textbf{MAMP}\\
+<<<<<<< HEAD
 MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache Perl gearbeitet werden. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt.
 \pagebreak
     \item \textbf{XAMPP}\\
 Das XAMPP-Paket besteht aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
   \end{itemize}
+
+MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP Versionen 5.1.6 und 5.5.9. Dadurch ergibt sich auch die Bezeichnung dieses Softwarepakets, da es sich aus den Anfangsbuchstaben der verwendeten Komponenten zusammenstellt. Außerdem beinhaltet es eine aktuelle {Python\cite{python}} Version, welche als objektorientierte Programmiersprache dazu dient schneller Programme zu entwickeln, als es mit sämtlichen anderen Programmiersprachen möglich ist. Zusätzlich kann in dem Paket auch mit der Programmiersprache Perl gearbeitet werden. MAMP ist unter der "{GNU\cite{gnu}} (General Public License)" lizenziert, was bedeutet, dass es frei verändert und verbreitet werden darf. Das Paket wird von den Betriebssystemen Windows und OS X unterstützt.
+\pagebreak
+    \item \textbf{XAMPP}\\
+Das XAMPP-Paket besteht aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
+  \end{itemize}
+
 Sowohl MAMP als auch XAMPP bieten daher effiziente Pakete, welche beim Entwickeln von dynamischen Webseiten sehr zu empfehlen sind. Für die Erstellung der digitalen Speisekarte fiel die Entscheidung letztendlich auf MAMP, da nur auf den Betriebssystemen Windows und OS X entwickelt wurde. Außerdem ist das Interface dieses Pakets einfacher gehalten und dadurch übersichtlicher für den Anwender. Ein weiterer Vorteil von MAMP ist, dass auf dem Startverzeichnis unter den Einstellungen ein favorisierter Link gespeichert werden konnte, welcher daraufhin auf der Startseite aufgerufen werden kann. Diese Eigenschaft ermöglichte es die digitale Speisekarte schneller aufzurufen.
 
     \subsubsection{Doctrine}
@@ -74,8 +94,12 @@ Dies liegt daran, dass jeder dieser Schichten eine genaue Aufgabe zugeschrieben 
 Die Model-Schicht dient dazu Daten zur Verfügung zu stellen.
     \item \textbf{View(Präsentationsschicht)}\\
 In der View-Ebene werden Daten visualisiert. Diese Ebene deckt somit den Frontend Bereich der Applikation ab.
+
 \pagebreak
     \item \textbf{Controller(Steuerungsschicht)}\\
+\pagebreak
+    \item \textbf{Controller(Steuerungsschicht)}\\
+
 Der Controller fungiert als Schnittstelle zwischen der Model- und der View-Ebene. Er leitet die Daten von der Model-Schicht in die View-Schicht weiter, damit diese dort ausgegeben werden können. Außerdem nimmt er Benutzeraktionen im Frontend entgegen, wertet diese aus und behandelt sie entsprechend.
   \end{itemize}
 Um diese Funktionalitäten anhand eines Szenarios zu veranschaulichen, kann auch folgendes vorgestellt werden:
@@ -104,9 +128,15 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
     \item \textbf{Speiseinträge und Kategorien}\\
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien gewechselt werden kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
     \item \textbf{Bestellungen und Speiseeinträge}\\
+
 Damit der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde.
 \pagebreak
     \item \textbf{Bestellungen und Tischdaten}\\
+
+Damit der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde.
+\pagebreak
+    \item \textbf{Bestellungen und Tischdaten}\\
+
 Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, war es wichtig zwischen diesen zwei Tabellen eine Verbindung herzustellen. Da mehrere Bestellungseinträge auf dieselben Tischdaten verweisen können musste auf der Bestellungen Seite eine OneToMany und auf der Tischdaten Seite eine ManyToOne Verknüpfung erschaffen werden.
   \end{itemize}
 
@@ -242,6 +272,16 @@ return $this->render("DATEIBEZEICHNUNG.html.twig"
   	\end{lstlisting}
 Um Operationen in der Datenbank vorzunehmen, wurde zuerst ein Datenbankmanager erstellt. Anschließend konnte entweder mit "remove()" ein Datenbankeintrag gelöscht, mit "persist()" ein neuer Datenbankeintrag hinzugefügt oder mit "merge()" ein Datenbankeintrag upgedatet werden. Mit dem Befehl "flush()" werden davor definierte Methoden ausgeführt beziehungsweise als Operatoren an die Datenbank geschickt.
 
+	\lstset{language=php}
+  	\begin{lstlisting}
+$em = $this->getDoctrine()->getManager();
+$em->remove($DATENBANKEINTRAG);
+//oder
+$em->persist($DATENBANKEINTRAG);
+//oder
+$em->merge(DATENBANKEINTRAG->setSPALTENBEZEICHNUNG(NEUER_SPALTENEINTRAG));
+$em->flush();
+  	\end{lstlisting}
 
     \subsubsection{Formulargenerierung}
 
@@ -437,9 +477,14 @@ Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angwendet:
     \item \textbf{Loginscreens und Tischnummernauswahl-Screen}\\
 Für diese Screens wurde lediglich eine div-Box benötigt, welche sich in der Mitte des Screens befindet. Ihre Seitenränder grenzen an die des Bildschirms. Der Inhalt dieser Box besteht aus dem Anmelde- und Auswahlformular.
 	\item \textbf{Speisekarten und Einstellungsscreens}\\
+
 Bei diesen Screens wurde ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name der Herrsteller angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden.
     \item \textbf{Hauptscreen des Admininterfaces}\\
 Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen unter dem Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
+Bei diesen Screens wurde ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name der Herrsteller angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden.
+    \item \textbf{Hauptscreen des Admininterfaces}\\
+Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen unter dem Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
+
   \end{itemize}
 Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
@@ -507,8 +552,14 @@ Wie bereits zuvor erwähnt wurde, ermöglicht die Template Engine Twig einen ver
   	\begin{lstlisting}
 {{ VARIABLEN_BEZEICHNUNG }}
 \end{lstlisting}
+
 Hierbei kann über den beliebig gewählten Namen, welchen man beim Rückgabewert der Action-Funktion mitgeliefert hat, auf die Variable zugegriffen werden.
 Falls die Variable mit einem herkömmlichen String verbunden werden soll, wird eine Tilde als Verknüpfungszeichen benötigt.
+\lstset{language = php}
+  	\begin{lstlisting}
+var STRING_BEZEICHNUNG= {{ VARIABLEN_BEZEICHNUNG }}~"TEXT";
+	\end{lstlisting}
+
 Die Variable kann allerdings auch problemlos in einer von Twig zur Verfügung gestellten IF-Anweisung verwendet werden.
 Um die Datenbankdaten der digitalen Speisekarte auslesen zu können, wurde die von Twig mitgelieferte Art Schleifen zu generieren verwendet. Damit die Tabellenspalten einzeln angezeigt werden konnten, musste an die Bezeichnung des aktuellen Tabelleneintrags einfach die Spaltenbezeichnung angehängt werden.
 \lstset{language = php}
@@ -575,14 +626,20 @@ Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-5 von ein
 \section{Persönliche Erfahrungen}
 Da ich zuvor kaum mit einer der hierfür verwendeten Technologien gearbeitet habe, konnte ich, dank der Diplomarbeit einige neue Fähigkeiten erlernen.
 Zwar habe ich bereits in der vierten Klasse die Grundlagen eines MVC-Frameworks gelernt, doch war mir damals trotzdem kaum klar, wie es genau funktioniert und wie viele positive Eigenschaften es eigentlich mit sich bringt.
+Zuerst dachte ich, dass es mehr Aufwand mit sich bringen würde, da ich mich nicht gut damit auskannte, doch mittlerweile ist die Verwendung von Symfony für mich kaum noch wegzudenken. Ohne diesem Framework, hätte ich mich vermutlich kaum in meiner Codestruktur zurechtgefunden.
+So ging es mir jedoch nicht nur mit Symfony sondern nahezu mit jeder anderen Technologie die verwendet wurde auch.
+Ich habe zwar ziemlich viel Zeit dafür aufgebracht mit Doctrine zurechtzukommen, doch dies hat sich auf jeden Fall ausgezahlt. Dadurch konnte ich nämlich Änderungen in der Datenbank ohne großen Aufwand vornehmen.
+Ich bin wirklich froh darüber, dass ich mit der Template Engine Twig gearbeitet habe, da ich dadurch keinen aufwendigen Code in den Dateien für die visuelle Darstellung zur Ausgabe von Variablen eingeben musste, sondern lediglich wenige Zeilen mit dem Twig-Syntax angeben konnte.
+
 Zuerst dachte ich, dass es mehr Aufwand mit sich bringen würde, da ich mich nicht gut damit auskannte, doch mittlerweile ist die Verwendung von Symfony für mich kaum noch wegzudenken. Ohne dieses Framework, hätte ich mich vermutlich kaum in meiner Codestruktur zurechtgefunden.
 So ging es mir jedoch nicht nur mit Symfony sondern nahezu mit jeder anderen Technologie die verwendet wurde.
 Ich habe zwar ziemlich viel Zeit dafür aufgebracht mit Doctrine zurechtzukommen, doch dies hat sich auf jeden Fall ausgezahlt. Dadurch konnte ich nämlich Änderungen in der Datenbank ohne großen Aufwand vornehmen.
 Ich bin wirklich froh darüber, dass ich mit der Template Engine Twig gearbeitet habe, da ich dadurch keinen aufwendigen Code in den Dateien für die visuelle Darstellung zur Ausgabe von Variablen eingeben musste, sondern lediglich wenige Zeilen mit Twig-Syntax angeben konnte.
+
 \\
 Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, führten wir Coachings ein, welche regelmäßig stattfanden. In diesen wurde der Fokus neben der Planung des Projekts auch immer wieder auf das Zusammenschweißen der Teammitglieder gelegt. Dadurch kann ich mittlerweile wirklich behaupten, dass wir fünf uns nun prima miteinander verstehen und auch längere Zeit miteinander auskommen, ohne dass es zu Streitigkeiten kommt. Wir können alle offen miteinander über Probleme reden und uns darauf verlassen, dass jeder dem anderen bei Schwierigkeiten mit Rat oder Motivation zur Seite steht.
 \\
-Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, meine sozialen Kompetenzen davon profitiert haben.
+
 
 \section{Ergebnisse}
 Sowohl die Screens der digitalen Speisekarte als auch die des Admininterfaces sind funktionstüchtig.
