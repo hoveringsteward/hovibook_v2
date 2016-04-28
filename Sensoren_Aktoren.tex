@@ -3,7 +3,7 @@
 \renewcommand{\kapitelautor}{Autor: Lucas Ullrich}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{PIXY CMUcam5}
+\section{PIXY CMUcam5}\label{PIXY_Headline}
 Bei der PIXY CMUcam5 handelt es sich um ein Open Source Kameramodul, welches über eine Objekterkennung verfügt.
 Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkennen.
 
@@ -24,12 +24,10 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
   \label{PIXY_Objekte}
 \end{figure}
 
-\needspace{2cm}
-
   \subsection{Umsetzung}
   Durch die PIXY CMUcam5 lässt sich eine relative Positionsmessung vergleichsweise einfach verwirklichen.
   Werden ein oder mehrere Objekte erkannt wird eine bestimmte Nummer (abhängig von der Farbe) sowie die Position am Bild und die Objektgröße übermittelt.
-  Die Kamera arbeitet dabei mit einer Bildwiederholrate von 50 Hz, es ist also alle 20 ms eine Auswertung möglich.
+  Die Kamera arbeitet dabei mit einer Bildwiederholrate von $\SI{50}{\hertz}$, es ist also alle $\SI{20}{\milli\second}$ eine Auswertung des aktuellen Bildmaterials möglich.
 
   Die Kamera wird auf dem Hexacopter befestigt, mehrere Farbcodes kennzeichnen den Weg zu einem Tisch.
   Um an dieser Stelle eine Navigation zu erreichen wird der Hexacopter so gesteuert, dass er, abhängig von der Route,
@@ -38,11 +36,11 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
     \subsubsection{SPI Schnittstelle}
     Als Schnittstelle für die Kommunikation mit der Kamera wird eine SPI-Schnittstelle verwendet.
     Die Kamera selbst unterstützt unter anderem die seriellen Schnittstellen UART, I2C und SPI.
-    Außerdem werden noch ein analoger und digitaler Output unterstütz, diese sind jedoch vergleichsweise beschränkt,
-    da keine näheren Informationen zu dem Objekt übermittelt werden können sondern nur die Position \bzw ob überhaupt ein Objekt erkannt wurde.
+    Außerdem werden noch ein analoger und digitaler Output unterstützt, diese sind jedoch vergleichsweise beschränkt,
+    da keine näheren Informationen zu dem Objekt übermittelt werden können sondern nur die Position beziehungsweise ob überhaupt ein Objekt erkannt wurde.
 
     Die SPI-Schnittstelle ist bei der Kamera besonders ausfallsicher. Hier wird ein Synchronisationsbyte gefordert, wird dieses nicht erkannt,
-    \zB aufgrund eines Fehlers in der Datenübertragung, schickt die Kamera keine Daten.
+    zum Beispiel aufgrund eines Fehlers in der Datenübertragung, schickt die Kamera keine Daten.
 
     \subsubsection*{Überprüfen der SPI-Schnittstelle}
     Um zu überprüfen ob die SPI-Schnittstelle auch korrekt arbeitet, wird bei der ersten Inbetriebnahme der Output überprüft.
@@ -66,7 +64,9 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
     Wird dieser Wert nicht variabel angenommen, kann es dazu kommen, dass fälschlicher Weise angenommen wird, dass die Übertragung korrekt ist. Dies kann durch externe Faktoren wie
     Pull-Up-Widerstände oder Default-Status einer Leitung geschehen, in beiden Fällen würde je nach Schnittstelle "1" oder "0" übertragen werden, dies wäre falsch.
 
-    Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an.
+    Der Dateneingang des PIC, respektive der Ausgang der Kamera, zeigt eine deutliche Störung durch die Taktleitung an (siehe rote Linie Abbildung\ref{SPI-Ausgang}).
+    Die beeinträchtigt bisher jedoch nicht die Funktion und wird daher nicht näher untersucht. Anhand der Ätzvorlagen konnte jedoch festgestellt werden, dass eine
+    parallele Verlegung nicht gegeben ist.
 
     \subsubsection{Erkennen und Auswerten eines Bildes}
     Die Kamera schickt der Reihe nach die einzelnen Daten eines Objekts. Darunter ist auch ein Startwort welches ein neues Bild markiert.
@@ -96,14 +96,17 @@ Mit diesem ist es möglich sogenannte Colorcodes oder einfache Objekte zu erkenn
 while(frame == 0) {
   w = ExchangeSpiWord(PIXY_SYNC, DUMMY);
   if(lw == PIXY_FRAME_OBJ && w == PIXY_FRAME_OBJ) {
+  /*Frame detected, normal Object*/
     frame = 1;
     obj_type = 0;
     a_color[c_obj].type = PIXY_FRAME_OBJ;
   } else if(lw == PIXY_FRAME_OBJ && w == PIXY_COLORCODE) {
+  /*Frame detected, Colorcode-Object*/
     frame = 1;
     obj_type = 1;
     a_color[c_obj].type = PIXY_COLORCODE;
   } else if(w == 0 && lw == 0){
+  /*No frame detected*/
     frame = 0;
   }
   lw = w;
@@ -126,7 +129,7 @@ while(frame == 0) {
   Diese Zusammenhänge konnten durch einige Überlegungen erkannt werden und darauffolgend die eigene Firmware geschrieben werden.
 
   Ein weiteres Problem stellt die Empfindlichkeit der Kamera bei wechselnden Lichtverhältnissen dar. Da diese über die Farbsignatur eines Objektes arbeitet, werden bereits
-  sehr kleine Differenzen unterschieden um verschiedene Objekte erkennen zu können \bzw keine Störungen durch den Hintergrund zu erhalten. Dies wird jedoch ebenso in der
+  sehr kleine Differenzen unterschieden um verschiedene Objekte erkennen zu können beziehungsweise keine Störungen durch den Hintergrund zu erhalten. Dies wird jedoch ebenso in der
   anderen Richtung zu einem Problem. Wechselt das Licht ein wenig kann ein Farbcode oft nicht mehr zuverlässig erkannt werden und die Kamera muss über einen Computer nachkalibriert
   werden. Eine mögliche Lösung ist das konstante Beleuchten der Farbcodes mit einer sehr bestimmten Leuchtstärke, hier kann es leicht zu Überbelichtungen kommen, sowohl bei
   dunklen Verhältnissen, als auch die Umrüstung auf einen \gls{Infrarot}-Kit. Bei einem Infrarot-Kit fällt jedoch die Individualität jedes einzelnen Markers weg.
@@ -147,7 +150,7 @@ die Messgröße wird dabei als laufzeitabhängiger Impuls retourniert.
   \subsection{Technische Planung}
   Für die Steuerung des Hexacopter ist es notwendig die aktuelle Flughöhe zu wissen.
   Es ist mit einer bekannten Objektgröße und den von der Kamera vorliegenden Daten zwar möglich die aktuelle Flughöhe rechnerisch zu bestimmen,
-  jedoch gestaltet sich dies sehr rechenaufwändig \bzw ungenau. Um die Höhe möglichst einfach messen zu können bietet sich daher eine vergleichsweise langsame Messung,
+  jedoch gestaltet sich dies sehr rechenaufwändig beziehungsweise ungenau. Um die Höhe möglichst einfach messen zu können bietet sich daher eine vergleichsweise langsame Messung,
   wie jene mit einem Ultraschallsignal an.
   Bei einer Schallgeschwindigkeit von $\SI{343}{\meter\per\second}$ entstehen bei einer zu messenden Distanz von $\SI{2}{\meter}$,
   Laufzeiten des Ultraschallsignals von \ca $\SI{12}{\milli\second}$ (Distanz mal 2 da das Signal wieder zurückkehren muss).
@@ -163,14 +166,14 @@ die Messgröße wird dabei als laufzeitabhängiger Impuls retourniert.
 void StartHeightMeasure(void) {
   TMR5L = 0;
   TMR5H = 0;
-  Trigger = 0;
+  Trigger = 0;  //Start measurement
 }
 
 void ReadHeight(void) {
-  while(TMR5GIF == 0);
+  while(TMR5GIF == 0);  //Wait for completed measurement
   TMR5GIF = 0;
   time_height = 0;
-  time_height = TMR5H;
+  time_height = TMR5H;  //Store time
   time_height <<= 8;
   time_height |= TMR5L;
   TMR5L = 0;
@@ -197,16 +200,18 @@ void ReadHeight(void) {
 #ifdef DEBUG
 void SendDebugInfo(unsigned int debug_info) {
     for(unsigned char debug_info_counter = 0;
+    /*Split value with modulo for conversion into ASCII*/
       debug_info_counter < 5; debug_info_counter++) {
         send_info[debug_info_counter] = debug_info % 10;
         debug_info = ( debug_info - send_info[debug_info_counter]) / 10;
     }
     for(signed char debug_send_counter = 4;
+    /*Send each character seperately*/
       debug_send_counter >= 0; debug_send_counter--) {
         unsigned char send = send_info[debug_send_counter];
         UartSendAscii(send);
     }
-    UartSend(';');
+    UartSend(';');  //Divider-symbol
 }
 #endif
   \end{lstlisting}
@@ -218,7 +223,7 @@ void SendDebugInfo(unsigned int debug_info) {
   Die erste Messung bestätigte die Erwartungen:
   \begin{figure}[H]
     \begin{centering}
-      \includegraphics[width = 0.8\textwidth]{Bilder/Hoehenmessung}
+      \includegraphics[width = 0.7\textwidth]{Bilder/Hoehenmessung}
     \par\end{centering}
     \caption{Höhenmessung während einem Flugvorgang}
     \label{Hoehenmessung}
@@ -230,7 +235,7 @@ void SendDebugInfo(unsigned int debug_info) {
   zu den falschen Messwerten. Um die Vibrationen nahezu vollständig zu beseitigen wurde der Sensor gedämpft gelagert und ebenso das Kabel anders verlegt.
   \begin{figure}[H]
     \begin{centering}
-      \includegraphics[width = 0.8\textwidth]{Bilder/Hoehenmessung_gedaempft}
+      \includegraphics[width = 0.7\textwidth]{Bilder/Hoehenmessung_gedaempft}
     \par\end{centering}
     \caption{Gedämpfte Höhenmessung während einem Flugvorgang}
     \label{Hoehenmessung_gedaempft}
@@ -247,9 +252,14 @@ void SendDebugInfo(unsigned int debug_info) {
 
   \subsection{Funktion}
   Ein Multicopter besteht im Normalfall aus folgenden Komponenten:
-  Dem Empfängermodul, einem Flightcontroller sowie der Multicopterhardware (Rotoren, Motoren, Gestell und Leistungselektronik). Der Empfänger des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+    \begin{itemize}
+   \item Das \textbf{Empfängermodul} des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
+   \item Der \textbf{Flightcontroller} ist der zentrale Regler und steuert die einzelnen Rotoren an.
+   \item Die \textbf{Multicopterhardware} besteht aus Rotoren, Motoren, einem Gestell und der Leistungselektronik. 
+   \end{itemize}
 
-    \begin{figure}[tbh]
+
+    \begin{figure}[H]
     \begin{centering}
       \includegraphics[width = \textwidth]{Bilder/bor_copter_funk}
     \par\end{centering}
@@ -257,14 +267,17 @@ void SendDebugInfo(unsigned int debug_info) {
     \label{Funktion_Multicopter}
   \end{figure}
 
+   \subsection{Erweiterte Funktion}
+    Im Rahmen dieser Diplomarbeit wurden die üblicherweise verwendeten Teile um vier weitere Komponenten erweitert, um einen automatischen Flug zu gewährleisten: eine Pixy CUMcam5, ein Ultraschallsensor, ein WLAN Modul und ein Mikrocontroller. Pixycam und Ultraschallsensor sind dafür verantwortlich, die Daten für die Berechnung der augenblicklichen Position des Hexacopters zu bestimmen. Im Mikrocontroller läuft ein Algorithmus, der aus diesen empfangen Daten die Position überprüft. Wenn der Wert vom optimalen Bereich abweicht, werden die Steuersignale abgeändert. Durch das Wlan-Modul bekommt der Mikrocontroller die Information, durch wie viele Marker der Weg definiert ist und welcher Farbcode der letzte ist, auf dem die Landung erfolgt.
+
 
   \subsection{Multicopter Arten}
-  Es gibt verschiedene Arten von Multicoptern. 
+  Es gibt verschiedene Arten von Multicoptern\cite{GrundlagenMulticopter}.
 
   Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
-  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren. \cite{GrundlagenMulticopter}
+  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren.
 
-  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. \cite{NAZA_Konfig}
+  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten\cite{NAZA_Konfig} von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. 
 
   \subsection{Konfiguration}
   Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
@@ -272,9 +285,9 @@ void SendDebugInfo(unsigned int debug_info) {
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
-  Wie auf folgender Grafik ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die roten unten.
+  Wie auf folgender Grafik\cite{NAZA_Konfig} ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Würden sich alle in die selbe Richtung drehen, würde sich der Multicopter um die eigene Hochachse drehen. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die roten unten. 
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
         \includegraphics[width = \textwidth]{Bilder/bor_copter_konfig}
       \par\end{centering}
@@ -283,7 +296,7 @@ void SendDebugInfo(unsigned int debug_info) {
     \end{figure}
 
   \subsection{Mögliche Anwendungsgebiete}
-  Multicopter finden in vielen Bereichen Anwendung. \cite{copterAnwendung}
+  Multicopter finden in vielen Bereichen Anwendung\cite{copterAnwendung}. 
   \begin{itemize}
     \item Fotographie und Videos / Filmindustrie / Anfertigen von hoch aufgelösten Luftbildkarten
     \item Multicopter als Hobby / Kunstflug
@@ -306,12 +319,9 @@ void SendDebugInfo(unsigned int debug_info) {
   Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
   und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
 
-  \textcolor{red}{OSZIBILD: min, max Impuls}
-
-
     \subsubsection{Steuerungsarten}
-    AUtor: Christina Bornberg\\
-    Der Flightcontroller DJI NAZA-M lite wird über die Befehle Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. \cite{GrundlagenMulticopter}
+    Autor: Christina Bornberg\\
+    Der Flightcontroller DJI NAZA-M lite wird über die Befehle\cite{GrundlagenMulticopter} Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. 
 
       \begin{itemize}
         \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
@@ -322,10 +332,10 @@ void SendDebugInfo(unsigned int debug_info) {
         Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
         \item \textbf{T: Throttle} reguliert die Höhe.
         Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
-        \item \textbf{U: 2/3-position switch channel} ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. \cite{positionswitch}
+        \item \textbf{U: 2/3-position switch channel}\cite{positionswitch}ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. 
       \end{itemize}
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{centering}
         \includegraphics[width = \textwidth]{Bilder/bor_fernbedienung}
       \par\end{centering}

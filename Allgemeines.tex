@@ -1,14 +1,11 @@
 % !TEX root = diplomarbeit.tex
-Aus Gründen der besseren Lesbarkeit wird auf die gleichzeitige Verwendung männlicher und weiblicher Sprachformen verzichtet.
-Sämtliche Personenbezeichnungen gelten gleichwohl für beiderlei Geschlecht.
-
 \chapter{Einleitung}
 \renewcommand{\kapitelautor}{Autor: Markus Kaiser}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Projektidee}
-Die Idee des Projektes, ist die Entwicklung einer Konzeptstudie für ein innovatives Logistiksystem, das sich durch die Verwendung eines Multicopters auszeichnet.
-Für den Entwicklungsprozess im Zuge der Diplomarbeit wurde die Gastronomie als Einsatzbereich gewählt. Diese Wahl ermöglicht zum einen
+Die Idee des Projektes, ist die Entwicklung einer Konzeptstudie eines innovativen Logistiksystems, das sich durch die Verwendung eines Multicopters auszeichnet.
+Für den Entwicklungsprozess im Zuge der Diplomarbeit wurde die Gastronomie als Einsatzbereich gewählt. Diese Wahl ermöglich zum einen
 ein konkreteres Fomulieren der Ziele und zum anderen eine einheitliche Vision innerhalb des Teams.
 
 Der innovative Aspekt des Projekts wird insofern abgedeckt, dass die Entwicklung des Systems so durchgeführt wird,
@@ -24,17 +21,19 @@ Das System setzt sich aus den folgenden drei Komponenten zusammen:
 
 \begin{figure}[H]
   \begin{centering}
-  \includegraphics[width = 1\textwidth]{Bilder/systemblockbild.jpg}
+  \includegraphics[width = 0.9\textwidth]{Bilder/systemblockbild.jpg}
   \par\end{centering}
   \caption{Systemblockbild}
   \label{Systemblockbild}
 \end{figure}
 
-Der Multicopter ist die zentrale Komponente des Projekts. Sie ist für den selbstständigen Transport von Objekten zuständig,
-und muss somit flugfähig, und im Stande sein Unfälle zu verhindern.
+Der Multicopter ist die zentrale Komponente des Projekts. Er ist für den selbstständigen Transport von Objekten zuständig,
+und muss somit flugfähig, und im Stande sein Unfälle zu verhindern. Sensoren, die mittels eigens angefertigter Halterungen
+am Multicopter befestigt sind, kommunizieren mit der Firmware.
 
 Die Firmware regelt alle logischen Prozesse des Systems. Sowohl die Steuerung des Multicopters, als auch der
-Austausch von Daten fällt unter diese Kategorie.
+Austausch von Daten fällt unter diese Kategorie. Befehle erhält sie unter anderem von der Speisekarte, mit der sie über
+einen Server, beziehungsweise einer weiteren Anwendung kommuniziert.
 
 Die digitale Speisekarte ist indirekt die externe Steuereinheit des Multicopters, und zugleich die Komponente,
 die das System für den Einsatz in der Gastronomie auszeichnet. Sie automatisiert Vorgänge eines gastronomischen
@@ -44,59 +43,61 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
 \section{Ausgangssituation}
   In den folgenden Absätzen wird beschrieben, wie die Idee von Hovering Steward, dem autonom fliegenden Kellner
   entstanden ist, und womit sich die ersten Recherchen zu Begin des Projektes beschäftigt, beziehungsweise
-  welche Ergebnisse diese herausgebracht haben.
+  welche Ergebnisse diese hervorgebracht haben.
 
   \subsection{Ideenfindung}
   Ihren Anfang fand die Idee im Projektmanagement Unterricht. Klasseninterne Teams mussten ein fiktives Projekt erfinden, um auf Basis dieses
   Projektmanagementpläne zu erstellen. Es entstand "Fluorescent Bakery", eine Bäckerei, die fluoreszierende Cupcakes verkauft.
   Der technische Teil ergab sich später, bei dem Gedanken diese Idee für die Diplomarbeit weiterzuverwenden. Der Ansatz hierfür war,
-  einen nicht menschlichen Kellner zu erschaffen, der selbst programmiert, die Aufgaben einer Bedienung in einem Restaurant übernimmt.
-  So entstand "Hovering Steward - der autonom fliegende Kellner", ein dreidimensionales Tracking-System, welches eine Drohne in einem Raum die Aufgaben eines Kellners durchführen lässt.
-  Das Projekt erhielt später noch eine weitere Komponente, nämlich eine digitale Speisekarte, um das System in einem Restaurant um einen weiteren Schritt zu automatisieren.
+  einen nicht menschlichen Kellner zu erschaffen, der selbstprogrammiert, die Aufgaben einer Bedienung in einem Restaurant übernimmt.
+  So entstand "Hovering Steward - der autonom fliegende Kellner", ein dreidimensionales "Tracking-System", welches eine Drohne in einem Raum die Aufgaben eines Kellners durchführen lässt.
+  Das Projekt erhielt später noch eine weitere Komponente, nämlich eine digitale Speisekarte, um das automatische System zu erweitern.
 
   \subsection{Stand der Technik}
   \subsection*{Themenrestaurants}
+
   \begin{itemize}
     \item \textbf{Disaster Café}
 
-    Das Themenrestaurant Disaster Café in Spanien bietet Gästen die Erfahrung, ihr Essen bei einem Erdbeben
+    Das Themenrestaurant {Disaster Café\cite{disastercafe}} in Spanien bietet Gästen die Erfahrung, ihr Essen bei einem Erdbeben
     der Stärke 7.8 zu sich zu nehmen.
 
     \item \textbf{Das stille Örtchen - Modern Toilet}
 
-    Eingerichtet wie eine Toilette, können Gäste des Modern Toilet in Japan ihre Speisen in einem gewohnten Umfeld genießen.
+    Eingerichtet wie eine Toilette, können Gäste des {Modern Toilet\cite{moderntoilet}} in Japan ihre Speisen in einem gewohnten Umfeld genießen.
 
     \item \textbf{Affen-Kellner}
 
-    Die kleine Taverne in Japan besitzt zwei kleine Affen, die Tätigkeiten wie das Servieren von Getränken oder Handtüchern
+    {Eine kleine Taverne in Japan\cite{affenkellner}} besitzt zwei kleine Affen, die Tätigkeiten wie das Servieren von Getränken oder Handtüchern
     für den Inhaber übernehmen. Sie verstehen sogar, welche Getränke ein Gast bestellt.
 
     \item \textbf{The Royal Dragon}
 
-    Neben Rollschuh fahrenden Kellnern verfügt das weltweit größte Restaurant für Meeresfrüchte eine
-    Art Seilbahn, mithilfe welcher ein Kellner "fliegend" das Essen serviert.
+    Neben Rollschuh fahrenden Kellnern verfügt das weltweit größte {Restaurant für Meeresfrüchte\cite{royaldragon}} eine
+    Art Seilbahn, mit der ein Kellner "fliegend" das Essen serviert.
 
     \item \textbf{Dinner in the Sky}
 
-    Bei Dinner in the Sky werden die Gäste samt Tisch und kleiner Küche von einem Kran 50 Meter
+    Bei {Dinner in the Sky\cite{dinnerinthesky}} werden die Gäste samt Tisch und kleiner Küche von einem Kran 50 Meter
     in die Luft gezogen, wo dann gespeist wird.
 
     \item \textbf{Dinner in the Dark}
 
-    In diesem Themenrestaurant verbringen die Gäste ihren Aufenthalt im Dunkeln. Einzig und allein die
+    In diesem {Themenrestaurant\cite{dinnerinthedark}} verbringen die Gäste ihren Aufenthalt im Dunkeln. Einzig und allein die
     Kellner können mittels Nachtsichtbrille etwas sehen.
+
   \end{itemize}
 
   \subsection*{Multicopter in der Gastronomie}
   \begin{itemize}
       \item \textbf{Infinium-Serve}
 
-      Das Unternehmen Infinium-Robotics hat ein System entwickelt, welches Gästen eines Restaurants
+      Das Unternehmen {Infinium-Robotics\cite{infiniumserve}} hat ein System entwickelt, welches Gästen eines Restaurants
       das Essen mittels Hexacopter serviert.
 
       \item \textbf{iTray}
 
-      iTray, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
+      {iTray\cite{itray}}, ein Projekt aus London, nutzt kleine Drohnen um Sushi an die Tische der Gäste zu bringen.
       Die Drohnen werden über ein Remote-Wi-Fi-System gesteuert.
 
   \end{itemize}
@@ -157,8 +158,8 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
   \textbf{Firmware}
 
   Christina Bornberg fungierte als Firmware Entwicklerin des Teams. Durch ihre Interesse an der Programmierung von Drohnen
-  und bereits gesammelten Erfahrung mit der Programmiersprache C konnte sie gemeinsam mit Lucas Ullrich die erarbeiteten Konzepte für
-  den automatisierten Flug der Drohne, in Code realisieren.
+  und bereits gesammelten Erfahrung mit der Programmierung von C konnte sie gemeinsam mit Lucas Ullrich die erarbeiteten Konzepte hinter
+  dem automatisierten Flug der Drohne in Code realisieren.
 
   \subsection*{Katharina Joksch}
   \textbf{Webentwicklung}
@@ -184,7 +185,7 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
 
   \subsection*{DI Herbert Fleck}
   DI Herbert Fleck war Hauptbetreuer der Mechatronik Abteilung unseres Teams. Er koordinierte den Prozess der Diplomarbeit
-  gemeinsam mit Mag. Andreas Fink. Das Team schätzte außerdem sehr das Konstruktive Feedback bei Präsentationen.
+  gemeinsam mit Mag. Andreas Fink. Das Team schätzte außerdem sehr das konstruktive Feedback bei Präsentationen.
   Er betreute nebenbei Lucas Ullrich mit Fachwissen aus dem Bereich der Elektronik.
 
   \subsection*{DI August Hörandl}
@@ -207,7 +208,7 @@ Betriebs und wandelt Nutzereingaben in Befehle für den Muticopter um.
 \section{Partner / Sponsoren}
 
 \subsection*{GRZ IT Center GmbH}
-{GRZ IT Center\cite{grz}} ist eines der größten Rechenzentren Österreichs. Mit dem Fokus auf Bankenservicierung arbeitet das Unternehmen
+{GRZ IT Center\cite{grz}} ist eines der größten Rechenzentren österreichs. Mit dem Fokus auf Bankenservicierung arbeitet das Unternehmen
 mit Partnern wie Raiffeisen zusammen. Auf eine Anfrage für ein Sponsoring der Diplomarbeit erhielten wir die überaschende
 Antwort, dass GRZ das Projekt sehr interessant findet, und uns aus diesen Gründen als Hauptsponsor, mit einem beträchtlichen Betrag
 unterstützen würde.
@@ -226,18 +227,6 @@ Das gesamte für den 3D-Druck benötigte Material wurde gesponsert.
 \subsection*{LivingPhotos}
 {LivingPhotos\cite{livingphotos}} ermöglichte uns, unsere Internetauftritte durch professionelle Teamfotos und Portraits aufzuwerten.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Danksagung}
-In erster Linie möchten wir uns bei unseren beiden Hauptbetreuern Mag. Andreas Fink und DI Herbert Fleck für die
-Betreuung des gesamten Teams bedanken. Sowohl fachbezogene Ratschläge, als auch konstruktives Feedback wurden sehr
-geschätzt und haben viel zur erfolgreichen Umsetzung der Diplomarbeit beigetragen.
-
-Ebenfalls bedanken wir uns bei unseren Individualbetreuern DI August Hörandl, MMag. Florian Weiss und
-DI Franz Temper, die dem Projektteam als Ansprechpersonen für besondere Fragestellungen zur Seite gestanden
-sind.
-
-Nicht zuletzt möchten wir unseren Dank unseren Partnern und Sponsoren, ganz besonders der GRZ IT Center GmbH
-ausdrücken, da wir die Diplomarbeit nicht ohne die Unterstützung in diesem Rahmen umsetzen hätten können.
 
 \chapter{Projektmanagement}
 \renewcommand{\kapitelautor}{Autor: Markus Kaiser}
@@ -245,7 +234,7 @@ ausdrücken, da wir die Diplomarbeit nicht ohne die Unterstützung in diesem Rah
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ziele}
 Im folgenden Abschnitt werden zusammengefasst die Muss-, optionalen und Nicht-Ziele angeführt.
-Die Formulierungen sind aus dem Kontext, der Ziele aus dem Projektantrag entnommen, und für die
+Die Formulierungen sind aus dem Kontext, der Ziele aus dem Projektantrag (vgl. Anhang; Projektmanagement) entnommen, und für die
 Zusammenfassung umformuliert worden.
 
   \subsection{Muss-Ziele}
@@ -279,8 +268,8 @@ Zusammenfassung umformuliert worden.
 
   \textbf{Testen der Konzeptstudien}
 
-  Um festzustellen, ob sich die erarbeiteten Konzepte auch in der Praxis bewähren und sich somit der Einsatz teurer Kameratrackingsysteme rentieren könnte,
-  sind diese umgesetzt. Als Sensoren sind eine Kamera, sowie Ultraschallsensoren verwendet.
+  Um festzustellen, ob sich die erarbeiteten Konzepte auch in der Praxis bewähren und sich somit der Einsatz teurer Kameratrackingsysteme rentieren könnte, sind diese umgesetzt.
+  Als Sensoren sind eine Kamera sowie Ultraschallsensoren verwendet.
 
   \textbf{Speisekarte}
 
@@ -324,7 +313,7 @@ Zusammenfassung umformuliert worden.
 
   \textbf{Erfolgreiche Konzeptstudie}
 
-  Das Ziel der Diplomarbeit ist es, dass das konzeptionierte System
+  Das Ziel der Diplomarbeit ist es, dass das konzeptionierte System zwingend
   funktionsfähig umgesetzt ist.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -333,29 +322,29 @@ Das nachfolgende Kapitel beschäftigt sich mit den wesentlichen Unterschieden
 zweier Projektmanagement-Methoden und der Wahl der Methode für diese Diplomarbeit.
 
   \subsection{Bewährte Methoden}
-    \subsection*{Agile Methoden}
-    Das Kennzeichen agiler Entwicklungsmethoden wie beispielsweise Scrum oder Kanban, sind
-    ein iterativer Arbeitsprozess, Flexibilität, gute und häufige Kommunikation und vorallem
-    Selbstständigkeit. Es wird kurz geplant und fortlaufend angepasst. Da nur bedingt eine Reihenfolge
-    von zu erledigenden Tasks besteht, finden sich diese Methoden oft in der Softwareentwicklung vor.
+  \subsection*{Agile Methoden}
+  Das Kennzeichen agiler Entwicklungsmethoden wie beispielsweise Scrum oder Kanban, sind
+  ein iterativer Arbeitsprozess, Flexibilität, gute und häufige Kommunikation und vorallem
+  Selbstständigkeit. Es wird kurz geplant und fortlaufend angepasst. Da nur bedingt eine Reihenfolge
+  von zu erledigenden Tasks besteht finden sich diese Methoden oft in der Softwareentwicklung vor.
 
-    \subsection*{Klassische Methoden}
-    Klassischen Entwicklungsmethoden zeichnen sich durch eine phasenorientierte Arbeitsweise aus.
-    Ganz besonders die Planungsphasen sind sehr umfangreich, um das Risiko später auftretender Probleme oder
-    Änderungen zu minimieren. Alle Ziele sind klar definiert und Tasks bis in kleinste Details ausformuliert.
+  \subsection*{Klassische Methoden}
+  Klassischen Entwicklungsmethoden zeichnen sich durch eine phasenorientierte Arbeitsweise aus.
+  Ganz besonders die Planungsphasen sind sehr umfangreich, um das Risiko später auftretender Probleme oder
+  Änderungen zu minimieren. Alle Ziele sind klar definiert und Tasks bis in kleinste Details ausformuliert.
 
-  \subsection{Die gewählte Methode}
-  Für die Entwicklung von Hovering Steward, war eine Kombination beider Methoden notwendig. Da,
-  das Projekt sich sowohl aus einigen Software-, als auch Hardwarekomponenten zusammensetzt, war das
-  Ziel sowohl die Vorteile der Flexibilität von agilen Methoden, als auch die ausführliche Planung der klassischen
-  Methoden auszunutzen.
+\subsection{Die gewählte Methode}
+Für die Entwicklung von Hovering Steward, war eine Kombination beider Methoden notwendig. Da,
+das Projekt sich sowohl aus einigen Software-, als auch Hardwarekomponenten zusammensetzt, war das
+Ziel sowohl die Vorteile der Flexibilität von agilen Methoden, als auch die ausführliche Planung der klassischen
+Methoden auszunutzen.
 
-  Es entstand eine Mischung aus der agilen Entwicklungsmethode Scrum und der klassischen Methode Wasserfall.
-  Für die Entwicklung der Firmware des Multicopters, aber auch die der webtechnologischen Komponenten eignete
-  sich die flexible Arbeitsweise von Scrum, da nach Bedarf die einzelnen Module der Software entwickelt, und Schritt
-  für Schritt in das System integriert wurden.
-  Die Fertigung der Halterungen am Multicopter bedarfen jedoch einer genauen Planung der Reihenfolge von Arbeitsschritten,
-  welche mithilfe eines Projektstrukturplans visualisiert wurden.
+Es entstand eine Mischung aus der agilen Entwicklungsmethode Scrum und der klassischen Methode Wasserfall.
+Für die Entwicklung der Firmware des Multicopters, aber auch die der webtechnologischen Komponenten eignete
+sich die flexible Arbeitsweise von Scrum, da nach Bedarf die einzelnen Module der Software entwickelt, und Schritt
+für Schritt in das System integriert wurden.
+Die Fertigung der Halterungen am Multicopter bedarfen jedoch einer genauen Planung der Reihenfolge von Arbeitsschritten,
+welche mithilfe eines Projektstrukturplans visualisiert wurden.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teammanagement / Teambuilding}
@@ -376,8 +365,8 @@ Daher war regelmäßige Kommunikation auch eine Voraussetzung.
   \begin{itemize}
     \item Wenn eine Deadline voraussichtlich nicht erfüllt werden kann, wird dem gesamten Team so früh wie möglich Bescheid gegeben.
     \item Jedes Teammitglied ist ehrlich und offen gegenüber den anderen Teammitgliedern
-    \item Entscheidungen werden nicht nur vom Projektleiter, sondern vom gesamten Team getroffen
-    \item Jedes Team hat immer Zugriff auf projektinterne Dateien und Informationen
+    \item Entscheidungen werden nicht nur vom Projektleiter, sondern vom gesamten Team getroffen.
+    \item Jedes Teammitglied hat immer Zugriff auf projektinterne Dateien und Informationen.
     \item Wichtige e-Mails sind zuerst vom gesamten Team abzusegnen, bevor sie verschickt werden.
     \item Probleme werden nicht als Hindernis, sondern als Chance gesehen.
   \end{itemize}
