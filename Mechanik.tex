@@ -32,7 +32,7 @@
 	    \begin{tabular}{ll}
 	    G1    & Kontrollierte Bewegung \\
 	    X, Y  & Koordinaten in horizontaler und vertikaler Richtung \\
-	    E     & Angabe der Menge des Filaments, dass in den Extruder geschoben werden muss \\
+	    E     & Angabe der Menge des Materials, dass in den Extruder geschoben werden muss \\
 	    F     & Geschwindigkeit, mit der das Material in den Extruder geschoben wird (mm/min) \\
 	    \end{tabular}%
 	  	\label{tab:befehle gcode}%
@@ -148,7 +148,7 @@
 
 	Konstruiert wurde die Halterung mit einem Winkel von 15° um Ungenauigkeiten des Druckers besser kompensieren zu können.
 
-	In der folgenden Abbildung kann man erkennen, dass manche Wände bei den Bohrungen zu dünn sind zum Drucken, es entstehen dadurch Löcher.
+	In der folgenden Abbildung (\ref{halterung_cupcake_fertig_hinweis}) kann man erkennen, dass manche Wände bei den Bohrungen zu dünn sind zum Drucken, es entstehen dadurch Löcher.
 	Dieses Problem könnte man nur lösen, wenn man die Schrauben weiter nach außen legen würde, jedoch ist das in diesem Fall nicht möglich, da die Ausnehmungen zu kurz sind.
 
 
@@ -172,13 +172,13 @@
 	Es gibt diverse Vorrichtungen für Multicopter zu kaufen, die nur die Rotorblätter schützen, jedoch keine, die auch das Eingreifen einer Hand verhindern.
 
 	Der Rotor-, oder auch Propellerschutz genannt, soll wie ein Ring um die Rotorblätter liegen und auch auf der Ober,- und Unterseite Schutz vor Verletzungen bieten.
-	Zu beachten ist jedoch auch, dass sechs Schutzvorrichtungen benötigt werden, daher sollten diese so leicht wie möglich sein, um das maximale Abfluggewicht nicht zu überschreiten.
+	Zu beachten ist jedoch auch, dass sechs Schütze benötigt werden, daher sollten diese so leicht wie möglich sein, um das maximale Abfluggewicht nicht zu überschreiten.
 
 	\subsection{Umsetzung}
 
 	Wie geplant, umrandet der Ring das komplette Rotorblatt, im Falle eines Absturzes kann der Propeller nicht den Boden berühren und wird somit nicht beschädigt.
 	Auf der Ober,- und Unterseite ist ein Gitter vorgesehen, welches Verletzungen an Personen verhindert.
-	Das Gitter an der Oberseite ist etwas feiner gegliedert als an der Unterseite, da man den Cupcake von der oberen Centerplate entnehmen muss.
+	Das Gitter an der Oberseite ist etwas feiner gegliedert als das an der Unterseite, da man den Cupcake von der oberen Centerplate entnehmen muss.
 	An der unteren Hälfte des Ringes ist das Gitter nur gestreift konstruiert, da die Luftströmung nicht zu stark beeinflusst werden darf und die größere Verletzungsgefahr an der Oberseite besteht.
 	Die folgenden Abbildungen zeigen den konstruierten Propellerschutz, an dem Hexacopter montiert.
 
@@ -254,7 +254,7 @@ Besonders beim Verkleben der Teile ist viel Geduld nötig, da auch der Sekundenk
 Es war ebenso wichtig, den richtigen Untergrund zu wählen, eine Holzplatte eignete sich am besten, da keine Rückstände blieben.
 
 Die beiden Hälften wurden dann miteinander verschraubt, samt der Stütze.
-Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Centerplate und dem Arm des Hexacopters befestigt werden.
+Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Centerplate und dem Arm des Hexacopters befestigt werden (siehe Abbildung \ref{propellerschutz_gesamt_oben}).
 
 			\newpage
 
@@ -332,12 +332,12 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Es ist einfacher die Beanspruchungen in Programmen wie Creo simulieren und auswerten zu lassen.
 	Die Ergebnisse der Simulation sind so genau, dass man heutzutage in der Industrie nur mehr sehr selten solche Arten von Analysen händisch vornimmt.
 
-	Die maximalen Belastbarkeiten sind für jeden Kunststoff anders, jede Firma verwendet andere Stoffe um bessere Leistungen erzielen zu können, je nach dem Anwendungsgebiet.
+	Die maximalen Belastbarkeiten sind für jeden Kunststoff anders, jede Firma verwendet andere Stoffe um bessere Konditionen erzielen zu können, je nach dem Anwendungsgebiet.
 	Wollte man die Berechnungen auf die Kommastelle genau vornehmen, müsste man einen Zug,- oder Biegeversuch für den jeweiligen Werkstoff machen,
 	um die tatsächlichen Daten zu ermitteln.
 
-	In diesen Versuchen wird meist ein Stab mit einer vordefinierten Fläche und Länge hergestellt und dann in eine Zugprüfmaschine eingespannt.
-	Die Zugprüfmaschine zieht den Stab langsam auseinander bis dieser reißt. Diese bestimmte Kraft und die Fläche des Stabes ergeben die maximale Streckspannung.
+	In diesen Versuchen wird meist ein Stab mit einem vordefinierten Querschnitt und Länge hergestellt und dann in eine Zugprüfmaschine eingespannt.
+	Die Zugprüfmaschine zieht den Stab langsam auseinander bis dieser reißt. Diese bestimmte Kraft und die Fläche des Stabes ergeben die maximale Zugspannung.
 	Diesen Versuch kann man analog dazu für die Biegung und Torsion machen, man erhält dadurch die maximale Bruch,- beziehungsweise Torsionsspannung.
 
 	Da sich die Werte der einzelnen Hersteller nur minimal voneinander unterscheiden,
@@ -388,7 +388,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Ultraschallsensor wird durch eine Kraft ersetzt, diese kann man variieren, je nachdem wie sehr sich die Halterung belastet werden soll.
 	Nachdem alle Parameter definiert wurden, konnte die Simulation gestartet werden.
 
-	Es wurden zwei Simulationen durchgeführt. In der ersten wurde nur der Ultraschallsensor (8.5 g) als Belastung angenommen und im zweiten Fall  wurde die Halterung mit einer Last von 2 kg beansprucht.
+	Es wurden zwei Simulationen durchgeführt. In der ersten wurde nur der Ultraschallsensor (8.5 g/\ca 0.1N) als Belastung angenommen und im zweiten Fall  wurde die Halterung mit einer Last von 2 kg beansprucht.
 
 	Die Abbildung \ref{max_spannung_f0_1_r0_5} zeigt das Ergebnis der ersten Simulation mit einer Kraft von 0.1 N (0,01 g).
 
@@ -469,7 +469,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Abbildung \ref{max_spannung_f20_r1}, zeigt das Ergebnis mit der gleichen Kraft, aber einem Radius von 1 mm, also doppelt so groß wie in der ersten Simulation.
 	Man kann sehr gut erkennen, dass die Spannung von $40.2 N/mm^{2}$ auf $30.3 N/mm^{2}$ gesunken ist, also um fast das eineinhalbfache.
 
-	Dieses Vorkommen wird in der Mechanik als \textbf{Kerbwirkung} bezeichnet:
+	Dieser Effekt wird in der Mechanik als \textbf{Kerbwirkung} bezeichnet:
 
 			\begin{figure}[H]
 				\begin{centering}
@@ -612,8 +612,8 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Gefertigt wurden beide Teile in dem 3D- Drucker der Schule, da die Form der Gleitbuchsen händisch sehr aufwändig zu fertigen wäre, zudem wird sehr viel Gewicht durch diese Fertigungsmethode eingespart.
 	Zu beachten war beim Konstruieren wiederum, dass der Drucker grobe Toleranzen hat und diese miteingerechnet werden mussten.
 
-	Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter leicht auf und ab fliegen kann, ohne zu stark zu verkanten.
-	Die Phasen bei den Bohrungen oben und unten, lassen den Copter leichter auffädeln, da sich die Stangen leichter in die Bohrungen führen lassen.
+	Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter einfach auf und ab fliegen kann, ohne zu stark zu verkanten.
+	Die Phasen bei den Bohrungen oben und unten, lassen den Copter leichter auffädeln, da sich die Stangen besser in die Bohrungen führen lassen.
 
 	\subsection{Herausforderungen und Lösungen}
 
@@ -621,7 +621,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Hexacopter hob zu Beginn etwas  schief ab, das kann man auch mit sehr großen Bohrungen nicht verhindern.
 	Es musste manuell mit der Fernsteuerung entgegen dieses Neigens gesteuert werden, damit der Multicopter abheben konnte.
 	Nach etwa 5 cm hatte sich der Copter so ausgeglichen, dass nicht mehr entgegen gesteuert werden musste.
-	Die Gleitbuchsen haben sich trotzdem sehr bewährt, da der Multicopter, auch wenn er kein Gas mehr gab, nur auf dem Landesgestell landete und so keine Teile beschädigt wurden.
+	Die Gleitbuchsen haben sich trotzdem sehr bewährt, da der Multicopter, auch wenn sich die Motoren nicht mehr drehten, nur auf dem Landesgestell landete und so keine Teile beschädigt wurden.
 
 			\newpage
 
