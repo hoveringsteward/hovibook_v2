@@ -1,19 +1,13 @@
 % !TEX root = diplomarbeit.tex
 \chapter{Digitale Speisekarte}
 \renewcommand{\kapitelautor}{Autor: Katharina Joksch}
+Um das Kellnersystem so weit wie möglich zu automatisieren wurde eine digitale Speisekarte entwickelt. 
+Die Grundidee der digitalen Speisekarte war es, dem Gast die Möglichkeit zu bieten, Speisen auf einem Tablet zu bestellen.
+Zusätzlich zu den herkömmlichen Funktionalitäten einer Speisekarte soll die digitale Speisekarte dem Hexacopter die Tischroute des Tisches, von welchem die Speise bestellt wurde, schicken. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
-  \subsection{Allgemein}
-  
-Um das Kellnersystem so weit wie möglich zu automatisieren entstand die Idee, eine digitale Speisekarte zu entwickeln. 
-Die Grundidee der digitalen Speisekarte ist es, dem Gast die Möglichkeit zu bieten, Speisen auf einem Tablet zu bestellen, welches sich auf jedem Tisch im Restaurant befinden soll.
-Sobald der Gast das Lokal betritt soll er sich bereits zum Tisch setzen und seine Wunschspeisen einfach auf dem Tablet auswählen können.
-Wie jede herkömmliche Speisekarte, soll auch die digitale Speisekarte dem Gast die genauen Speiseinformationen anzeigen.
-Außerdem soll die digitale Speisekarte dem Hexacopter die Tischroute des Tisches, von welchem die Speise bestellt wurde, schicken, sobald sie bereit ist ausgeliefert zu werden. 
-Dies soll dadurch bewerkstelligt werden, dass ein Administrator in einer Liste, in welcher ihm eine Übersicht von den bestellten Speisen geboten wird, neben der fertigen Speise auf einen "Ausliefern"-Button klickt.
-Mithilfe der digitalen Speisekarte soll somit das Kellnersystem nahezu vollkommen automatisiert werden.
-  
+
   \subsection{Zusammenspiel der Komponenten}
 
 Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten.\\ \\
@@ -108,7 +102,10 @@ Damit der Administrator als auch der Gast die Möglichkeit haben zu überprüfen
 \pagebreak
     \item \textbf{Bestellungen und Tischdaten}\\ 
 Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, war es wichtig zwischen diesen zwei Tabellen eine Verbindung herzustellen. Da mehrere Bestellungseinträge auf dieselben Tischdaten verweisen können musste auf der Bestellungen Seite eine OneToMany und auf der Tischdaten Seite eine ManyToOne Verknüpfung erschaffen werden.
-  \end{itemize}  
+  \end{itemize} 
+Die Tabelle "Admindaten" enthält die Anmeldedaten des Administrators. In dieser Applikation gibt es nicht viele Benutzergruppen, sondern es wird lediglich in "Administrator" und "Nicht-Administrator" unterschieden.\\
+Um den aktuellen Status zwischen dem Server und dem Hexacopter überwachen zu können, gibt es die Tabelle "HCVerbindung". Es werden zwei wesentliche Kriterien bei der Statusänderung beachtet. Einerseits der Verbindungsstatus und andererseits ob sich der Hexacopter in der Basis befindet. Zusätzlich zu den Statusangaben enthält die Tabelle auch einen Zeitstempel, damit überprüft werden kann, wann sich der Status zuletzt geändert hat.\\
+Für die Tabellen "Admindaten" und "HCVerbindung" mussten keine Verbindungen zu einer anderen Tabelle erschaffen werden. 
 
   \subsection{Umsetzung}
 
@@ -125,7 +122,7 @@ Anschließend wurde ein Projekt angelegt. Dafür wurde in das Zielverzeichnis ge
   	\begin{lstlisting}
 symfony new PROJEKTNAME lts
   	\end{lstlisting}
-Der Befehl "lts" legt fest, dass die neueste Version von Symfony verwendet werden soll.
+Der Eingabebefehl "lts" steht dafür, dass es sich bei der Projektversion um eine "Long Term Support"-Version handelt. Das heißt, dass diese Version längere Zeit mit Sicherheitsaktualisierungen versorgt wird.
 
     \subsubsection{Seitenabrufbarkeit}
 
@@ -206,7 +203,7 @@ Um die andere Seite der Verbindung zu generieren, wurde folgende Anmerkung verwe
 mappedBy="NAME_DER_AKTUELLEN_TABELLE")
 **/
   	\end{lstlisting}
-Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollectiob gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
+Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollection gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
 \\ \\
 Um im Anschluss im Controller auf die Daten zugreifen zu können, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden, welche dazu verwendet werden konnten Datenbankinhalte zu bekommen und neue zu setzen. Diese können mit einem Rechtsklick über die Menüpunkte "Generate…" und "Getters and Setters…" automatisch erstellt werden.
 Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der "config.yml"-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben werden auf welche Datenbank zugegriffen werden soll.
@@ -340,7 +337,7 @@ Außerdem kann mithilfe von Twig auf Pfade von Action Funktionen verwiesen und d
 
     \subsubsection{Ajax}
 
-{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte es Ajax, dass die Daten der digitalen Speisekarte regelmäßig aktualisiert wurden und somit immer auf dem neuesten Stand angezeigt wurden.
+{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird und dadurch nur einzelne Teile einer Webseite neu zu laden. Daher wurde Ajax als Hilfsmittel dazu verwendet, die Daten der digitalen Speisekarte auf dem neuesten Stand zu halten. Dies gelang indem damit mithilfe eines Timers regelmäßig auf einen JSON-Pfad verwiesen wurde, von welchem die aktuellen Daten geholt wurden.
 
     \subsubsection{Screenkonzept}
 Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angfertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
@@ -439,7 +436,7 @@ Für diese Screens wurde lediglich eine div-Box benötigt, welche sich in der Mi
 	\item \textbf{Speisekarten und Einstellungsscreens}\\
 Bei diesen Screens wurde ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name der Herrsteller angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden. 
     \item \textbf{Hauptscreen des Admininterfaces}\\ 
-Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen unter dem Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
+Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen links und rechts vom Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
   \end{itemize}
 Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
@@ -521,7 +518,7 @@ Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie zum Beispiel 
 Bei Werten, welche auf diese Art und Weise von der Datenbank geholt werden, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies wird am besten mit einer JSON-Kodierung bewerkstelligt.
 \\ \\
 Damit die Werte immer am aktuellsten Stand angezeigt werden, wurden im Controller Funktionen erstellt, welche aus den Datenbankinhalten JSON-Rückmeldungen erstellen.
-In den HTML-Dateien wird regelmäßig in Javascript mithilfe von Ajax auf die JSON-Funktionen zugegriffen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
+In den HTML-Dateien werden mit einem Timer in Javascript regelmäßig mithilfe von Ajax auf diese JSON-Rückmeldungen zugegriffen und deren Daten ausgelesen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
 \\ \\
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frontend der Applikation angezeigt werden.
 
@@ -585,5 +582,5 @@ Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, f�
 Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, meine sozialen Kompetenzen davon profitiert haben. 
 
 \section{Ergebnisse}
-Sowohl die Screens der digitalen Speisekarte als auch die des Admininterfaces sind funktionstüchtig.
-Das Java Programm bietet ebenfalls wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können.
+Durch den Einsatz von neuesten Technologien ist sowohl die Umsetzung der digitalen Speisekarte als auch die Entwicklung des Admininterfaces gelungen. Beide Anwendungen sind, wie in den Hauptzielen und optionalen Zielen definiert, komplett funktionstüchtig. Darüber hinaus verfügen sie über ein paar Zusatzfunktionen, wie beispielsweise das Anzeigen des Verbindungsstatus mit dem Hexacopter auf dem Admininterface.\\ 
+Das Java Programm bietet wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können. Des weiteren hat das Programm die Funktionalität die Statusänderungen regelmäßig in der Datenbank festzuhalten, damit der Status zwischen dem Server und dem Hexacopter überwacht werden kann.
