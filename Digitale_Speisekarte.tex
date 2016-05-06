@@ -16,7 +16,7 @@ Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und C
 In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, wofür MySQL gewählt wurde, kommuniziert.\\ \\
 Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. Auf dieser Ebene wurde in der Programmiersprache PHP programmiert.\\ \\
 Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit "Bootstrap 4 alpha" gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden. 
-Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
+Um die dadurch entstandene Sass-Datei in den Twig beziehungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
 Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen werden. \\ \\
 Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel "Kommunikation Applikation und Hexacopter" genauer erklärt.
 			\begin{figure}[H]
@@ -29,7 +29,7 @@ Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sonder
 			
   \subsection{PhpStorm}
     
-PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit, sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben dar. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
+PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit, sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlighting übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben dar. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
 
 			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +39,7 @@ PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische
 
     \subsubsection{Apache HTTP Server}
 
-Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit sie anschließend in Web-Browsern aufgerufen werden können.
+Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebssystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit sie anschließend in Web-Browsern aufgerufen werden können.
 
     \subsubsection{MAMP und XAMPP}
 
@@ -111,7 +111,7 @@ Für die beiden Tabellen "Admindaten" und "HCVerbindung" mussten keine Verknüpf
 
     \subsubsection{Framework einrichten}
 
-Auf der {Webseite von Smyfony\cite{symfony}} wird eine große Dokumentation angeboten, welche Einsteigern dabei hilft sich damit zurechtzufinden. Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
+Auf der {Webseite von Smyfony\cite{symfony}} wird eine große Dokumentation angeboten, welche Einsteigern dabei hilft sich damit zurechtzufinden. Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebssystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
 	\lstset{language = bash}
   	\begin{lstlisting}
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
@@ -332,7 +332,7 @@ Außerdem können mithilfe von Twig auf Pfade von Action Funktionen verwiesen un
 
     \subsubsection{DOM}
 
-{DOM\cite{dom}} (Document Object Model) ist ein vom W3-Konsortium standardiesiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchieschen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes werden als Knoten beziehungsweise als "nodes" bezeichnet.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was sehr praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces, verwendet.
+{DOM\cite{dom}} (Document Object Model) ist ein vom W3-Konsortium standardisiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchischen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes werden als Knoten beziehungsweise als "nodes" bezeichnet.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was sehr praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces, verwendet.
 
     \subsubsection{Ajax}
 
@@ -428,7 +428,7 @@ Durch die Kombination von Bootstrap und Sass konnten die Bootstrap Style-Attribu
 \\ \\
 Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald der Gulp-Befehl im Terminal eingegeben wird. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
 Nachdem die dadurch generierte CSS-Datei, im Header der Template-Files aufgerufen wurde, konnten die Bootstrap Klassen verwendet werden, indem sie in den class-Attributen der jeweiligen Elemente deklariert wurden. 
-Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angwendet:
+Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angewendet:
 \begin{itemize}
     \item \textbf{Loginscreens und Tischnummernauswahl-Screen}\\  
 Für diese Screens wurde lediglich eine div-Box benötigt, welche sich in der Mitte des Screens befindet. Ihre Seitenränder grenzen an die des Bildschirms. Der Inhalt dieser Box besteht aus dem Anmelde- und Auswahlformular.
@@ -437,7 +437,7 @@ Bei diesen Screens wird ein Header angezeigt, in welchem sowohl der Titel der Ve
     \item \textbf{Hauptscreen des Admininterfaces}\\ 
 Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen links und rechts vom Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
   \end{itemize}
-Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
+Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergrund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
 Das finale Layout der Screens sieht daher folgendermaßen aus:\\ 
 \\ 
@@ -548,7 +548,7 @@ $kernel = newAppKernel('prod', true);
 Der Wert "prod" steht hierbei für "production environment", also für die Produktionsumgebung.
 \pagebreak
 \section{Testphase}
-Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-4 von externenen Personen getestet wurden.
+Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-4 von externen Personen getestet wurden.
 
 \begin{table}[H]
 \centering
@@ -582,4 +582,4 @@ Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissensho
 
 \section{Ergebnisse}
 Durch den Einsatz von neuesten Technologien ist sowohl die Umsetzung der digitalen Speisekarte als auch die Entwicklung des Admininterfaces gelungen. Beide Anwendungen sind, wie in den Hauptzielen und optionalen Zielen definiert, komplett funktionstüchtig. Darüber hinaus verfügen sie über ein paar Zusatzfunktionen, wie beispielsweise das Anzeigen des Verbindungsstatus mit dem Hexacopter auf dem Admininterface.\\ 
-Das Java Programm bietet wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können. Des weiteren hat das Programm die Funktionalität die Statusänderungen regelmäßig in der Datenbank festzuhalten, damit der Status zwischen dem Server und dem Hexacopter überwacht werden kann.
+Das Java Programm bietet wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können. Des Weiteren hat das Programm die Funktionalität die Statusänderungen regelmäßig in der Datenbank festzuhalten, damit der Status zwischen dem Server und dem Hexacopter überwacht werden kann.
