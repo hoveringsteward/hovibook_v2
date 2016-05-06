@@ -95,7 +95,7 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
 			\label{ERM der digitalen Speisekarte}
 			\end{figure}Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
 \begin{itemize}
-    \item \textbf{Speiseinträge und Kategorien}\\
+    \item \textbf{Speiseeinträge und Kategorien}\\
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien gewechselt werden kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
     \item \textbf{Bestellungen und Speiseeinträge}\\
 Damit sowohl der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
