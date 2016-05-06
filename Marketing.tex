@@ -278,8 +278,8 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems, 
   \subsection{Umsetzung}
 
     \subsection*{Frontend}
-    Das Frontend des Blogs setzt sich aus den drei Technologien HTML, Javascript und CSS zusammen. Aus Gründen von Performance und SEO(vgl. Kapitel 3.3.2) wurden außerdem
-    die Javascript Bibliothek jQuery und das CSS Framework Bootstrap verwendet. Im Folgenden werden diese Technologien näher beschrieben und die daraus
+    Das Frontend des Blogs setzt sich aus den drei Technologien HTML, JavaScript und CSS zusammen. Aus Gründen von Performance und SEO(vgl. Kapitel 3.3.2) wurden außerdem
+    die JavaScript Bibliothek jQuery und das CSS Framework Bootstrap verwendet. Im Folgenden werden diese Technologien näher beschrieben und die daraus
     ersichtlichen Vorteile, die zu Verwendung in diesem Projekt geführt haben, erläutert.
 
       \subsubsection*{HTML}
@@ -289,21 +289,21 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems, 
       bestimmten Schema aufgebaut, die Struktur einer Website ergeben. Die aktuelle Version ist HTML 5. Diese unterstützt zum einen das responsive
       Entwickeln einer Website, und verbessert zum anderen die SEO. Außerdem ist es möglich ohne eines Plugins wie des Adobe Flash Players Audio und Video einzubinden.
 
-      \subsubsection*{Javascript}
-      {Javascript\cite{javascript}} ist eine webbasierende Skriptsprache. Sie ist objektorientiert, was bedeutet, dass modular programmiert werden kann und damit Funktionen oder Eigenschaften
+      \subsubsection*{JavaScript}
+      {JavaScript\cite{javascript}} ist eine webbasierende Skriptsprache. Sie ist objektorientiert, was bedeutet, dass modular programmiert werden kann und damit Funktionen oder Eigenschaften
       durch Vererbung einmal geschrieben und mehrmals wiederverwendet werden können. Die Sprache wird genutzt, um eine Website dynamisch mittels Vorgängen wie Berechnungen oder Animationen auf einer Website durchzuführen.
-      Oft sind diese mit Interaktion des Nutzers verbunden. Javascript greift hierfür auf das Document Object Model des HTML-Dokuments zu, um Elemente und Knoten in diesem hinzuzufügen, zu löschen oder
-      zu ändern. Ein großer Vorteil von Javascript ist, dass durch das Einbinden von auf Javascript basierenden Bibliotheken, ganz leicht eine Vielzahl von zusätzlichen Funktionen
+      Oft sind diese mit Interaktion des Nutzers verbunden. JavaScript greift hierfür auf das Document Object Model des HTML-Dokuments zu, um Elemente und Knoten in diesem hinzuzufügen, zu löschen oder
+      zu ändern. Ein großer Vorteil von JavaScript ist, dass durch das Einbinden von auf JavaScript basierenden Bibliotheken, ganz leicht eine Vielzahl von zusätzlichen Funktionen
       verwendet werden können.
 
-      Javascript ist nach wie vor die am weitesten verbreitetste Skriptsprache für Webanwendungen, die am Client verarbeitet wird. Sie wird stark unterstützt, wodurch auch einfach Hilfestellungen im Netz
-      gefunden werden können. Es gab daher keinen Grund, eine Alternative zu Javascript in Betracht zu ziehen.
+      JavaScript ist nach wie vor die am weitesten verbreitetste Skriptsprache für Webanwendungen, die am Client verarbeitet wird. Sie wird stark unterstützt, wodurch auch einfach Hilfestellungen im Netz
+      gefunden werden können. Es gab daher keinen Grund, eine Alternative zu JavaScript in Betracht zu ziehen.
 
       Ein gutes Beispiel, und zugleich auch eine, für den Blog verwendete Bibliothek ist {jQuery\cite{jquery}}.
-      jQuery ist eine Open-Source Javascript Bibliothek, mit dessen Entwicklung versucht wurde, die Nachteile von Javascript zu beheben. Einer der wesentlichen Vorteile ist
+      jQuery ist eine Open-Source JavaScript Bibliothek, mit dessen Entwicklung versucht wurde, die Nachteile von JavaScript zu beheben. Einer der wesentlichen Vorteile ist
       der vereinfachte Zugriff und die Manipulation von DOM-Elementen.
 
-      Beispiel Javascript:
+      Beispiel JavaScript:
 
 \lstset{language= html }
 \begin{lstlisting}
@@ -328,7 +328,7 @@ var items = list.querySelectorAll("li");
 var items = $("#navbar-list li");
 \end{lstlisting}
 
-      Ein derzeit sehr aktuelles Javascript Framework ist {AngularJS\cite{angular}}. Die Intention dieses Frameworks ist die Automatisierung von oft verwendeten Vorgängen durch
+      Ein derzeit sehr aktuelles JavaScript Framework ist {AngularJS\cite{angular}}. Die Intention dieses Frameworks ist die Automatisierung von oft verwendeten Vorgängen durch
       Datenbindungen und Direktiven. Der Programmierer erspart sich dadurch Codezeilen und Zeit. Zu den sinnvollen Einsatzgebieten von Angular zählen Webseiten mit großteils dynamisch generiertem
       Inhalt oder auch "Single Page Applikations", Webseiten, die einmal geladen werden und dann nur zwischen Inhalten wechseln, ohne diese neu zu laden. Das Framework in Kombination mit dem PHP
       Framework CodeIgniter zu verwenden bedeutete jedoch eine flache Lernkurve. Der Blog war zudem nicht als "Single Page Applikation" geplant, wodurch sich die Verwendung von AngularJS nicht rentiert hätte.
@@ -339,11 +339,11 @@ var items = $("#navbar-list li");
       zugewiesen, über die CSS dann bestimmte Eigenschaften zuweisen kann. Dabei orientiert sich CSS an dem sogenannten Box-Modell. In diesem werden HTML-Elemente
       zwischen Inline-Elementen und Block-Elemente unterschieden. Inline-Elemente passen sich dem Fluss in der Struktur des Dokuments an, Block-Elemente hingegen
       werden für das Layout der Website verwendet. Von einfachen Formatierungen wie der Schriftgröße oder einer Hintergrundfarbe lassen sich mit CSS komplexe Animationen,
-      ohne die Verwendung von Javascript durchführen. Letzteres ist jedoch erst seit der Version CSS3 möglich.
+      ohne die Verwendung von JavaScript durchführen. Letzteres ist jedoch erst seit der Version CSS3 möglich.
 
       Das Open-Source Framework {Twitter Bootstrap\cite{bootstrap}} gilt eigentlich als CSS-Framework, da den Elementen die Eigenschaften über CSS Klassen zugewiesen werden, es basiert jedoch
-      ebenfalls auf HTML und Javascriptcript. Neben dem wesentlichen Vorteil der responsiven Gestaltung einer Website, bietet es durch
-      zahlreiche, vordefinierte Javascript Methoden, die ebenfalls durch die Zuweisung von Klassen an Elemente gebunden werden, die Möglichkeiten, animierte Dropdown-Menüs, Pop-Up-Windows oder Bildergalerien einzubinden.
+      ebenfalls auf HTML und JavaScriptcript. Neben dem wesentlichen Vorteil der responsiven Gestaltung einer Website, bietet es durch
+      zahlreiche, vordefinierte JavaScript Methoden, die ebenfalls durch die Zuweisung von Klassen an Elemente gebunden werden, die Möglichkeiten, animierte Dropdown-Menüs, Pop-Up-Windows oder Bildergalerien einzubinden.
       Weitere wichtige Eigenschaften von Bootstrap sind die weitreichende Browserkompatibilität und das einheitliche Design.
 
       Eine Alternative zu Bootstrap stellt {Foundation\cite{foundation}} dar. Es ist ebenso wie Bootstrap ein CSS Framework, mit dem ein responsives Gestalten einer Website umsetzbar ist.
@@ -355,7 +355,7 @@ var items = $("#navbar-list li");
 
       \subsubsection*{Code}
         \subsubsection*{PHP}
-        {PHP\cite{php}, ausgeschrieben \textbf{P}HP \textbf{H}ypertext \textbf{P}reprocessor, ist genau wie Javascript eine Skriptsprache, mit dem Unterschied, dass der Code nicht auf dem Client, sondern auf dem Server ausgeführt wird
+        {PHP\cite{php}, ausgeschrieben \textbf{P}HP \textbf{H}ypertext \textbf{P}reprocessor, ist genau wie JavaScript eine Skriptsprache, mit dem Unterschied, dass der Code nicht auf dem Client, sondern auf dem Server ausgeführt wird
         und im Anschluss für den Client lesbares HTML generiert. Dies bietet den großen Vorteil, dass für den Client nicht ersichtlich ist, was im Hintergrund an PHP Code ausgeführt
         wird. Um PHP zu programmieren, wird allerdings ein Webserver mit einer PHP-Installation benötigt.
 
@@ -478,7 +478,7 @@ var items = $("#navbar-list li");
 
         Der Robot bewertet ebenfalls die Ladezeit einer Website. Sie ergibt sich aus der Anzahl an Bildern, Videos oder eingebundenen Bibliotheken oder Schriftarten auf der Website.
         Speziell beim Blog war früh klar, dass viele Bilder geladen werden müssen. Den Upload auf eine niedrige Dateigröße einzuschränken hat zu Beginn nicht ausgereicht.
-        Eine Javascript Bibliothek names {YoxView\cite{yoxview}} hat es allerdings ermöglicht, die Bilder erst dann zu laden, wenn ein Nutzer auf einen Thumbnail klickt. Die Größe der Thumbnails betrug bloß
+        Eine JavaScript Bibliothek names {YoxView\cite{yoxview}} hat es allerdings ermöglicht, die Bilder erst dann zu laden, wenn ein Nutzer auf einen Thumbnail klickt. Die Größe der Thumbnails betrug bloß
         ein paar Kilobyte, wodurch die Ladezeit der Website bedeutend verkürzt werden konnte.
 
     \end{itemize}
@@ -500,13 +500,13 @@ var items = $("#navbar-list li");
 
       \subsubsection*{Cross-Site-Scripting}
       Unter Cross-Site-Scripting, kurz genannt XSS versteht man die Injizierung von schadhaftem Code in eine Webapplikation, über eine Schnittstelle, zu der ein Nutzer
-      einfachen Zugang hat. In den meisten Fällen geschieht dies, wenn ein Nutzer gezielt Javascript Code über ein Formular auf einer Website in die Anwendung schleust.
+      einfachen Zugang hat. In den meisten Fällen geschieht dies, wenn ein Nutzer gezielt JavaScript Code über ein Formular auf einer Website in die Anwendung schleust.
       Gelangt dieses Script an einen anderen Enduser, kann es dort beispielsweise ungehindert auf Cookies zugreifen, da der Browser des anderen Endusers nicht weiß,
       dass dem Script nicht zu vertrauen ist.
 
       Der Beste Weg XSS zu unterbinden ist, die Eingaben, die über ein Formular vom Nutzer an den Server gesendet werden über PHP zu validieren und notfalls Zeichen, die
       XSS andeuten, zu ersetzen. PHP stellt dafür die Methode htmlspecialchars() zur Verfügung. Sie konvertiert bestimmte Sonderzeichen in HTML-Code. Beispielsweise wird
-      das Zeichen \textless , welches notwendig ist um Javascript mittels \textless script \textgreater-Tag zu schreiben, durch "\&lt;" ersetzt.
+      das Zeichen \textless , welches notwendig ist um JavaScript mittels \textless script \textgreater-Tag zu schreiben, durch "\&lt;" ersetzt.
 
       \subsubsection*{SQL-Injections}
       Bei einer SQL-Injection hingegen injiziert ein Nutzer SQL-Statements in eine Anwendung, um somit Daten aus der Datenbank auszulesen, oder diese zu manipulieren.
