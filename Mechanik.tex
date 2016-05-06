@@ -32,7 +32,7 @@
 	    \begin{tabular}{ll}
 	    G1    & Kontrollierte Bewegung \\
 	    X, Y  & Koordinaten in horizontaler und vertikaler Richtung \\
-	    E     & Angabe der Menge des Filaments, dass in den Extruder geschoben werden muss \\
+	    E     & Angabe der Menge des Materials, dass in den Extruder geschoben werden muss \\
 	    F     & Geschwindigkeit, mit der das Material in den Extruder geschoben wird (mm/min) \\
 	    \end{tabular}%
 	  	\label{tab:befehle gcode}%
@@ -44,7 +44,7 @@
 		Wenn der Druckraum nach beziehungsweise während des Druckvorgangs warm ist, kühlt das Werkstück an jeder Stelle fast gleich ab.
 		Ist der Druckraum offen, kühlt das Werkstück außen schneller ab, kühles Material zieht sich zusammen, daher biegt sich das Material am Rand auf.
 
-		Manchmal ist es unumgeänglich, ein Teil so drucken zu lassen, dass es nicht komplett auf der Druckplatte aufliegt zum Beispiel ein Steg,
+		Manchmal ist es unumgänglich, ein Teil so drucken zu lassen, dass es nicht komplett auf der Druckplatte aufliegt zum Beispiel ein Steg,
 		der “in der Luft“ liegt oder eine Bohrung im Werkstück, die horizontal gedruckt werden muss.
 		In solchen Fällen, druckt der Drucker unter diesem Steg Stützmaterial. Basierend auf diesem Stützmaterial, wird dann die gewünschte Form gedruckt.
 		Das Stützmaterial ist so strukturiert, dass man es leicht entfernen kann, ohne Rückstände zu hinterlassen.
@@ -148,7 +148,7 @@
 
 	Konstruiert wurde die Halterung mit einem Winkel von 15° um Ungenauigkeiten des Druckers besser kompensieren zu können.
 
-	In der folgenden Abbildung kann man erkennen, dass manche Wände bei den Bohrungen zu dünn sind zum Drucken, es entstehen dadurch Löcher.
+	In der folgenden Abbildung (\ref{halterung_cupcake_fertig_hinweis}) kann man erkennen, dass manche Wände bei den Bohrungen zu dünn sind zum Drucken, es entstehen dadurch Löcher.
 	Dieses Problem könnte man nur lösen, wenn man die Schrauben weiter nach außen legen würde, jedoch ist das in diesem Fall nicht möglich, da die Ausnehmungen zu kurz sind.
 
 
@@ -167,18 +167,18 @@
 	\subsection{Technische Planung}
 
 	In dem gewählten Bausatz des Multicopters ist kein Rotorschutz vorhanden.
-	Da der Hexacopter direkt zu den Gästen fliegen wird, ist es umbedingt erforlderlich, den Kontakt mit den Propellern zu verhindern.
+	Da der Hexacopter direkt zu den Gästen fliegen wird, ist es unbedingt erforderlich, den Kontakt mit den Propellern zu verhindern.
 	Diese können durch die hohen Drehzahlen und die Kraft der Motoren erhebliche Verletzungen verursachen.
 	Es gibt diverse Vorrichtungen für Multicopter zu kaufen, die nur die Rotorblätter schützen, jedoch keine, die auch das Eingreifen einer Hand verhindern.
 
 	Der Rotor-, oder auch Propellerschutz genannt, soll wie ein Ring um die Rotorblätter liegen und auch auf der Ober,- und Unterseite Schutz vor Verletzungen bieten.
-	Zu beachten ist jedoch auch, dass sechs Schutzvorrichtungen benötigt werden, daher sollten diese so leicht wie möglich sein, um das maximale Abfluggewicht nicht zu überschreiten.
+	Zu beachten ist jedoch auch, dass sechs Schütze benötigt werden, daher sollten diese so leicht wie möglich sein, um das maximale Abfluggewicht nicht zu überschreiten.
 
 	\subsection{Umsetzung}
 
 	Wie geplant, umrandet der Ring das komplette Rotorblatt, im Falle eines Absturzes kann der Propeller nicht den Boden berühren und wird somit nicht beschädigt.
 	Auf der Ober,- und Unterseite ist ein Gitter vorgesehen, welches Verletzungen an Personen verhindert.
-	Das Gitter an der Oberseite ist etwas feiner gegliedert als an der Unterseite, da man den Cupcake von der oberen Centerplate entnehmen muss.
+	Das Gitter an der Oberseite ist etwas feiner gegliedert als das an der Unterseite, da man den Cupcake von der oberen Centerplate entnehmen muss.
 	An der unteren Hälfte des Ringes ist das Gitter nur gestreift konstruiert, da die Luftströmung nicht zu stark beeinflusst werden darf und die größere Verletzungsgefahr an der Oberseite besteht.
 	Die folgenden Abbildungen zeigen den konstruierten Propellerschutz, an dem Hexacopter montiert.
 
@@ -254,7 +254,7 @@ Besonders beim Verkleben der Teile ist viel Geduld nötig, da auch der Sekundenk
 Es war ebenso wichtig, den richtigen Untergrund zu wählen, eine Holzplatte eignete sich am besten, da keine Rückstände blieben.
 
 Die beiden Hälften wurden dann miteinander verschraubt, samt der Stütze.
-Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Centerplate und dem Arm des Hexacopters befestigt werden.
+Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Centerplate und dem Arm des Hexacopters befestigt werden (siehe Abbildung \ref{propellerschutz_gesamt_oben}).
 
 			\newpage
 
@@ -282,7 +282,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 			\end{figure}
 
 	Das Gewicht spielte, analog zu den anderen Konstruktionen, eine wichtige Rolle.
-	Materialien wie Stahl oder Aluminium wären selbst bei diesen kleinen Teil (51x46x10 mm) zu schwer geworden.
+	Materialien wie Stahl oder Aluminium wären selbst bei diesem kleinen Teil (51x46x10 mm) zu schwer geworden.
 	Um das zu verhindern wurde diese Haltevorrichtung, wie auch der Propellerschutz, in einem 3D- Drucker angefertigt.
 	Das Teil wiegt durch die Fertigungsmethode etwa 5.5 g, das entspricht etwa dem Gewicht einer 20-Cent-Münze.
 
@@ -332,16 +332,16 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Es ist einfacher die Beanspruchungen in Programmen wie Creo simulieren und auswerten zu lassen.
 	Die Ergebnisse der Simulation sind so genau, dass man heutzutage in der Industrie nur mehr sehr selten solche Arten von Analysen händisch vornimmt.
 
-	Die maximalen Belastbarkeiten sind für jeden Kunststoff anders, jede Firma verwendet andere Stoffe um bessere Leistungen erzielen zu können, je nach dem Anwendungsgebiet.
+	Die maximalen Belastbarkeiten sind für jeden Kunststoff anders, jede Firma verwendet andere Stoffe um bessere Konditionen erzielen zu können, je nach dem Anwendungsgebiet.
 	Wollte man die Berechnungen auf die Kommastelle genau vornehmen, müsste man einen Zug,- oder Biegeversuch für den jeweiligen Werkstoff machen,
 	um die tatsächlichen Daten zu ermitteln.
 
-	In diesen Versuchen wird meist ein Stab mit einer vordefinierten Fläche und Länge hergestellt und dann in eine Zugprüfmaschine eingespannt.
-	Die Zugprüfmaschine zieht den Stab langsam auseinander bis dieser reißt. Diese bestimmte Kraft und die Fläche des Stabes ergeben die maximale Streckspannung.
+	In diesen Versuchen wird meist ein Stab mit einem vordefinierten Querschnitt und Länge hergestellt und dann in eine Zugprüfmaschine eingespannt.
+	Die Zugprüfmaschine zieht den Stab langsam auseinander bis dieser reißt. Diese bestimmte Kraft und die Fläche des Stabes ergeben die maximale Zugspannung.
 	Diesen Versuch kann man analog dazu für die Biegung und Torsion machen, man erhält dadurch die maximale Bruch,- beziehungsweise Torsionsspannung.
 
 	Da sich die Werte der einzelnen Hersteller nur minimal voneinander unterscheiden,
-	wurden in diesem Fall die Daten aus einer Tabelle eines anderen Kunstoffherstellers genommen (siehe Abbildung \ref{werte_abs}).
+	wurden in diesem Fall die Daten aus einer Tabelle eines anderen Kunststoffherstellers genommen (siehe Abbildung \ref{werte_abs}).
 
 			\begin{figure}[H]
 			\begin{centering}
@@ -388,7 +388,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Ultraschallsensor wird durch eine Kraft ersetzt, diese kann man variieren, je nachdem wie sehr sich die Halterung belastet werden soll.
 	Nachdem alle Parameter definiert wurden, konnte die Simulation gestartet werden.
 
-	Es wurden zwei Simulationen durchgeführt. In der ersten wurde nur der Ultraschallsensor (8.5 g) als Belastung angenommen und im zweiten Fall  wurde die Halterung mit einer Last von 2 kg beansprucht.
+	Es wurden zwei Simulationen durchgeführt. In der ersten wurde nur der Ultraschallsensor (8.5 g/\ca 0.1N) als Belastung angenommen und im zweiten Fall  wurde die Halterung mit einer Last von 2 kg beansprucht.
 
 	Die Abbildung \ref{max_spannung_f0_1_r0_5} zeigt das Ergebnis der ersten Simulation mit einer Kraft von 0.1 N (0,01 g).
 
@@ -469,7 +469,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Abbildung \ref{max_spannung_f20_r1}, zeigt das Ergebnis mit der gleichen Kraft, aber einem Radius von 1 mm, also doppelt so groß wie in der ersten Simulation.
 	Man kann sehr gut erkennen, dass die Spannung von $40.2 N/mm^{2}$ auf $30.3 N/mm^{2}$ gesunken ist, also um fast das eineinhalbfache.
 
-	Dieses Vorkommen wird in der Mechanik als \textbf{Kerbwirkung} bezeichnet:
+	Dieser Effekt wird in der Mechanik als \textbf{Kerbwirkung} bezeichnet:
 
 			\begin{figure}[H]
 				\begin{centering}
@@ -514,7 +514,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Hexacopter soll dem Gast sein gewünschtes Dessert bringen, der Weg zu dem Gast wird über Farbcodes am Boden vorgegeben.
 	Um dem Farbcode folgen zu können, wird eine PIXY CMU cam5 verwendet (genaueres siehe Kapitel Sensoren).
 
-	Die Halterung soll so konstruiert werden, dass die Kamera während des Fluges nicht wackelt, damit keine ungenaue beziehungsweise falsche Messwerte entstehen.
+	Die Halterung soll so konstruiert werden, dass die Kamera während des Fluges nicht wackelt, damit keine ungenauen beziehungsweise falschen Messwerte entstehen.
 	Zu beachten ist, dass die PIXY Cam immer in die Flugrichtung ausgerichtet sein muss.
 	Der Flightcontroller gibt dem Hexacopter eine fixe Orientierung vor, würde die Kamera nicht in diese Richtung messen, würde es zu Fehlmessung kommen und den Multicopter falsch navigieren.
 
@@ -554,7 +554,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 
 	Der Flightcontroller wurde so eingebaut, dass ein Arm des Hexacopters zur Kontrolle in die Flugrichtung steht.
 	Die \textcolor{red}{Halterung} wurde genau in der Mitte der Strebe platziert, daher konnte eine Konstruktionslinie vom Mittelpunkt der Platte aus, gesetzt werden.
-	Der Winkel konnte gemessen werden, indem die zweite Konstruktionslinie entlang der Mitte des Arm gesetzt wurde.
+	Der Winkel konnte gemessen werden, indem die zweite Konstruktionslinie entlang der Mitte des Arms gesetzt wurde.
 	Die Schräge ist deshalb notwendig, da der Platz auf der Platine des Sensors so begrenzt ist, dass nur die Fläche der unteren Leiste aufliegen kann.
 
 			\newpage
@@ -612,8 +612,8 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Gefertigt wurden beide Teile in dem 3D- Drucker der Schule, da die Form der Gleitbuchsen händisch sehr aufwändig zu fertigen wäre, zudem wird sehr viel Gewicht durch diese Fertigungsmethode eingespart.
 	Zu beachten war beim Konstruieren wiederum, dass der Drucker grobe Toleranzen hat und diese miteingerechnet werden mussten.
 
-	Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter leicht auf und ab fliegen kann, ohne zu stark zu verkanten.
-	Die Phasen bei den Bohrungen oben und unten, lassen den Copter leichter auffädeln, da sich die Stangen leichter in die Bohrungen führen lassen.
+	Die Bohrungen wurden so groß dimensioniert, dass der Hexacopter einfach auf und ab fliegen kann, ohne zu stark zu verkanten.
+	Die Phasen bei den Bohrungen oben und unten, lassen den Copter leichter auffädeln, da sich die Stangen besser in die Bohrungen führen lassen.
 
 	\subsection{Herausforderungen und Lösungen}
 
@@ -621,7 +621,7 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Der Hexacopter hob zu Beginn etwas  schief ab, das kann man auch mit sehr großen Bohrungen nicht verhindern.
 	Es musste manuell mit der Fernsteuerung entgegen dieses Neigens gesteuert werden, damit der Multicopter abheben konnte.
 	Nach etwa 5 cm hatte sich der Copter so ausgeglichen, dass nicht mehr entgegen gesteuert werden musste.
-	Die Gleitbuchsen haben sich trotzdem sehr bewährt, da der Multicopter, auch wenn er kein Gas mehr gab, nur auf dem Landesgestell landete und so keine Teile beschädigt wurden.
+	Die Gleitbuchsen haben sich trotzdem sehr bewährt, da der Multicopter, auch wenn sich die Motoren nicht mehr drehten, nur auf dem Landesgestell landete und so keine Teile beschädigt wurden.
 
 			\newpage
 
@@ -634,24 +634,24 @@ Der gesamte Rotorschutz konnte dann mittels der vorgesehenen Schrauben an der Ce
 	Dieses Problem haben wir nicht nur durch die Jour fixes, sondern auch mit den KaTeCos (alle drei Wochen) gelöst.
 	Die KaTeCos waren besonders wichtig, da nicht nur der Projektverlauf im Detail besprochen, sondern auch die Teamfähigkeit gestärkt wurde.
 
-	\subsection{Arbeiten im allgemeinen}
+	\subsection{Arbeiten im Allgemeinen}
 
 	Die Vorgangsweise zur Umsetzung eines Teiles war meist die gleiche: Eine Idee, eine Konstruktion in Creo und die Fertigung im 3D-Drucker.
 	Im Laufe des Projektes hat sich herausgestellt, dass die Planung und die Anhaltspunkte zur Konstruktion am wichtigsten waren.
 	Das hat sich beim Entwickeln des Rotorschutzes gezeigt, die Planung wurde vernachlässigt und in Creo blind angefangen zu zeichnen.
 	Die Folge war, dass dieses Ziel ins Stocken kam und immer mehr Zeit auf sich genommen hat.
 	Nachdem der Rotorschutz nahezu aussichtslos schien, begann ich mich mit den Halterungen für die Sensoren zu beschäftigen.
-	Nach dem Abschluss haben sich neue Ideen zur Optimierung des Propellerschutzes ergeben, welche dann auch zur entgültigen Fertigstellung führten.
+	Nach dem Abschluss haben sich neue Ideen zur Optimierung des Propellerschutzes ergeben, welche dann auch zur endgültigen Fertigstellung führten.
 
 	\subsection{Arbeiten mit dem 3D- Drucker}
 
 	Der 3D- Drucker der Schule ist eine faszinierende Maschine, es kann fast jedes Teil präzise angefertigt werden, egal welche Form es hat.
 	Wir hatten das Glück diesen Drucker verwenden zu dürfen beziehungsweise wurden sogar von EVO-tech mit Druckmaterial unterstützt.
-	Es war besonders komfortabel die Halerungen drucken zu dürfen, da uns der Drucker eine Menge abgenommen hat.
+	Es war besonders komfortabel die Halterungen drucken zu dürfen, da uns der Drucker eine Menge abgenommen hat.
 	Das Klammersystem könnte nur sehr mühsam gefertigt werden, es müsste sogar eine andere Lösung gefunden werden.
 
 	Man muss sich an jede Maschine die man verwendet erst gewöhnen, man lernt wie man sie bedienen muss, mit all ihren Problemen.
-	Der Evolizer ist ein hoch entwickeltes Produkt, jedoch muss man auch hier die richtige Bedienung kennenlernen.
+	Der EVOlizer ist ein hoch entwickeltes Produkt, jedoch muss man auch hier die richtige Bedienung kennenlernen.
 	Es hat sich zum Beispiel herausgestellt, dass der Drucker erst eine gewisse Temperatur braucht, bis das Filament auf der Platte haftet, oder dass der Abstand zwischen der Platte und Düse sehr genau eingestellt gehört.
 	Durch solche Probleme lernt man, wie man mit der Maschine umgehen muss und wie man sie optimal bedient, diese Erfahrung kann im weiteren Berufsleben sehr hilfreich sein.
 

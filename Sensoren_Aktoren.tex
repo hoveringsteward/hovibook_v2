@@ -122,7 +122,7 @@ while(frame == 0) {
     Die weiteren Werte eines Objekts werden der Reihe nach in einer \gls{Struktur} abgespeichert, hier ist nichts Besonderes mehr zu beachten.
 
   \subsection{Herausforderungen und Lösungen}
-  Insbesondere das Beispielprogramm\cite{PIXY_Porting_Examplecode} für eine Bildauswertung stellte einige Herausforderungen dar. Hier sind unterschiedliche Codeschnippsel in einem
+  Insbesondere das Beispielprogramm\cite{PIXY_Porting_Examplecode} für eine Bildauswertung stellte einige Herausforderungen dar. Hier sind unterschiedliche Codeschnipsel in einem
   großen Beispiel zusammengefasst. Die große Ähnlichkeit verschiedener Funktionen erschweren die Lesbarkeit des Codes erheblich. So steht eine Funktion für die Erkennung eines
   neuen Bildes, diese zählt aber nur Bilder pro Sekunde, eine andere ist dann für die gesamte Auswertung und sucht dafür erneut nach einem Bild.
 
@@ -218,7 +218,7 @@ void SendDebugInfo(unsigned int debug_info) {
 
   Um dieses nach der Verwendung wieder einfach aus dem Code entfernen zu können wurde das Übermitteln dieser Information an die Definition der $DEBUG$-Variable geknüpft.
 
-  In der Übertragung war es wichtig auf die Auswertung des Computers zu achten, desshalb mussten ASCII-Zeichen übertragen werden.
+  In der Übertragung war es wichtig auf die Auswertung des Computers zu achten, deshalb mussten ASCII-Zeichen übertragen werden.
 
   Die erste Messung bestätigte die Erwartungen:
   \begin{figure}[H]
@@ -275,17 +275,17 @@ void SendDebugInfo(unsigned int debug_info) {
   Es gibt verschiedene Arten von Multicoptern\cite{GrundlagenMulticopter}.
 
   Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
-  Die bekannteste Art ist der Quadrocopter, welcher 4 Rotoren besitzt. Weiters gibt es Hexacopter mit 6 und Octocopter mit 8 Rotoren.
+  Die bekannteste Art ist der Quadrocopter, welcher vier Rotoren besitzt. Weiters gibt es Hexacopter mit sechs und Octocopter mit acht Rotoren.
 
   Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten\cite{NAZA_Konfig} von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. 
 
   \subsection{Konfiguration}
-  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren. \cite{GrundlagenMulticopter}
+  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren \cite{GrundlagenMulticopter}. 
   Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
-  Wie auf folgender Grafik\cite{NAZA_Konfig} ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Würden sich alle in die selbe Richtung drehen, würde sich der Multicopter um die eigene Hochachse drehen. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau Makierten Propeller oben, die roten unten. 
+  Wie auf folgender Grafik\cite{NAZA_Konfig} ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Würden sich alle in die selbe Richtung drehen, würde sich der Multicopter um die eigene Hochachse drehen. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau markierten Propeller oben, die roten unten. 
 
     \begin{figure}[H]
       \begin{centering}
@@ -314,24 +314,26 @@ void SendDebugInfo(unsigned int debug_info) {
 
   \subsection{Technische Planung}
   Autor: Lucas Ullrich\\
-  Der Hexacopter selbst vefügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
+
+  Der Hexacopter selbst verfügt über 6 Rotoren. Diese werden für die unterschiedlichen Flugrichtungen von dem Flightcontroller angesteuert.
   Der Flightcontroller liest die Daten an den einzelnen Steuerpins als Servo-Impulse ein. Die Daten werden dabei in einer Periode von $\SI{20}{\milli\second}$ gesendet.
   Die Information selbst liegt in den ersten $\SI{2}{\milli\second}$. Für den Impuls beträgt die Mittelstellung $\SI{1.5}{\milli\second}$, das Minimum $\SI{1}{\milli\second}$
   und das Maximum $\SI{2}{\milli\second}$. Das Signal folgt somit den Konventionen eines Servo-Impulses.
 
     \subsubsection{Steuerungsarten}
     Autor: Christina Bornberg\\
-    Der Flightcontroller DJI NAZA-M lite wird über die Befehle\cite{GrundlagenMulticopter} Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modei zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. 
+
+    Der Flightcontroller DJI NAZA-M lite wird über die Befehle\cite{GrundlagenMulticopter} Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modi zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. 
 
       \begin{itemize}
         \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
         Um diese auszuführen, werden bei der Beschleunigung nach links, die rechten Propeller stärker betrieben, umgekehrt drehen sich die auf der linken Seite befindlichen Propeller beim Flug nach rechts schneller. Durch die entstehende Neigung, fliegt der Hexacopter in die gewünschte Richtung.
         \item \textbf{E: Elevator} auch Nicken (engl. pitch) genannt, ist für die Vorwärts- und Rückwärtsbewegung zuständig.
-        Beim nach vorne und nach hinten fliegen, werden ebenfalls die rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen.
+        Beim nach vorne und nach hinten fliegen, werden ebenfalls die Rotoren schneller betrieben, die auf der jeweils gegenüberliegenden Seite liegen.
         \item \textbf{R: Rudder} auch Gieren (engl. yaw) genannt, ist für die Rotation an der Hochachse zuständig.
         Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
         \item \textbf{T: Throttle} reguliert die Höhe.
-        Bei gleichmäßiger Ansteuerung der 6 Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
+        Bei gleichmäßiger Ansteuerung der sechs Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
         \item \textbf{U: 2/3-position switch channel}\cite{positionswitch}ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. 
       \end{itemize}
 
@@ -344,4 +346,4 @@ void SendDebugInfo(unsigned int debug_info) {
     \end{figure}
 
   \subsection{Umsetzung}
-  Um den Hexacopter steuern zu können müssen die einzelnen Impulse von dem Mikrocontroller imitiert werden.
+  Um den Hexacopter steuern zu können müssen die einzelnen Impulse vom Mikrocontroller imitiert werden.

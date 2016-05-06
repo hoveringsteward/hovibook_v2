@@ -1,19 +1,13 @@
 % !TEX root = diplomarbeit.tex
 \chapter{Digitale Speisekarte}
 \renewcommand{\kapitelautor}{Autor: Katharina Joksch}
+Um das Kellnersystem so weit wie möglich zu automatisieren wurde eine digitale Speisekarte entwickelt. 
+Die Grundidee der digitalen Speisekarte ist es, dem Gast die Möglichkeit zu bieten, Speisen auf einem Tablet zu bestellen.
+Zusätzlich zu den herkömmlichen Funktionalitäten einer Speisekarte soll die digitale Speisekarte dem Hexacopter die Tischroute des Tisches, von welchem die Speise bestellt wurde, schicken. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Allgemeine technische Planung}
-  \subsection{Allgemein}
-  
-Um das Kellnersystem so weit wie möglich zu automatisieren entstand die Idee, eine digitale Speisekarte zu entwickeln. 
-Die Grundidee der digitalen Speisekarte ist es, dem Gast die Möglichkeit zu bieten, Speisen auf einem Tablet zu bestellen, welches sich auf jedem Tisch im Restaurant befinden soll.
-Sobald der Gast das Lokal betritt soll er sich bereits zum Tisch setzen und seine Wunschspeisen einfach auf dem Tablet auswählen können.
-Wie jede herkömmliche Speisekarte, soll auch die digitale Speisekarte dem Gast die genauen Speiseinformationen anzeigen.
-Außerdem soll die digitale Speisekarte dem Hexacopter die Tischroute des Tisches, von welchem die Speise bestellt wurde, schicken, sobald sie bereit ist ausgeliefert zu werden. 
-Dies soll dadurch bewerkstelligt werden, dass ein Administrator in einer Liste, in welcher ihm eine Übersicht von den bestellten Speisen geboten wird, neben der fertigen Speise auf einen "Ausliefern"-Button klickt.
-Mithilfe der digitalen Speisekarte soll somit das Kellnersystem nahezu vollkommen automatisiert werden.
-  
+
   \subsection{Zusammenspiel der Komponenten}
 
 Die Webapplikation baut, wie folgende Abbildung aufweist, auf mehreren Komponenten auf, um eine optimale Performance zu gewährleisten.\\ \\
@@ -22,7 +16,7 @@ Sie wurde mit dem Framework Symfony 2.7 entwickelt, welches in Model, View und C
 In der Model Schicht wurde mit dem Framework Doctrine gearbeitet um die Daten objektrelational behandeln zu können. Auf dieser Ebene wird mit der Datenbank, wofür MySQL gewählt wurde, kommuniziert.\\ \\
 Der Controller dient als Schnittstelle für Model und View. Er leitet die Daten zwischen diesen zwei Schichten hin und her. Auf dieser Ebene wurde in der Programmiersprache PHP programmiert.\\ \\
 Die View-Ebene dient dazu die Daten visuell darzustellen. Dadurch können die Speisekarte und der Adminbereich im Frontend aufgerufen werden. Da es einfacher ist Daten vom Controller mit einer Template Engine aufzurufen, wurde in dieser Schicht mit Twig gearbeitet. Um das Layout responsive darzustellen und somit auf jede Gerätegröße anzupassen, wurde mit "Bootstrap 4 alpha" gearbeitet. Mithilfe von Sass konnten die vordefinierten Bootstrapvariablen verändert und dadurch das Layout mit wenig Aufwand komplett an die eigenen Wünsche angepasst werden. 
-Um die dadurch entstandene Sass-Datei in den Twig beziehungsungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
+Um die dadurch entstandene Sass-Datei in den Twig beziehungsweise HTML-Dateien einbinden zu können wurde sie mithilfe des Task-Runners Gulp kompiliert.\\ \\
 Die Applikation kann über den Apache HTTP Server auf den Endgeräten aufgerufen werden. \\ \\
 Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sondern nur über die MySQL Datenbank miteinander. Das Java Programm, welches für die Datenübermittlung mit dem Hexacopter entwickelt wurde, wird im Kapitel "Kommunikation Applikation und Hexacopter" genauer erklärt.
 			\begin{figure}[H]
@@ -35,7 +29,7 @@ Die digitale Speisekarte und das Java Programm kommunizieren nicht direkt sonder
 			
   \subsection{PhpStorm}
     
-PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlightning übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben an. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
+PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische Firma JetBrains wurde 2000 gegründet und legt ihren Fokus auf die Entwicklung von IDEs. Davon kann in PhpStorm enorm profitiert werden, denn diese IDE punktet nicht nur durch ihre Geschwindigkeit, sondern auch durch die Möglichkeit sie nahezu komplett an die eigenen Programmierbedürfnisse anpassen zu können. Natürlich ermöglicht sie wie die meisten Entwicklungsumgebungen auch die Autovervollständigung des Codes, während der Eingabe von Befehlen. PhpStorm zeigt den Code dank Syntax-Highlighting übersichtlich an und stellt das Ordnerverzeichnis der Projekte strukturiert in einem Fenster daneben dar. Diese Eigenschaft unterstützt das Arbeiten mit Frameworks, weswegen diese IDE für die Entwicklung der digitalen Speisekarte verwendet wurde.
 
 			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,7 +39,7 @@ PhpStorm ist eine PHP Entwicklungsumgebung der Firma JetBrains. Die tschechische
 
     \subsubsection{Apache HTTP Server}
 
-Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebsystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit sie anschließend in Web-Browsern aufgerufen werden können.
+Der {Apache HTTP Server\cite{apachehttpserver}} ist eine freie Software, welche von der Apache Software Foundation entwickelt wurde. Der Apache Webserver kann mit den Betriebssystemen Linux, Unix, Windows, Mac OS X, Betware und OpenBSD arbeiten. Dieser Server ermöglicht es Webseiten als http-Services bereitzustellen, damit sie anschließend in Web-Browsern aufgerufen werden können.
 
     \subsubsection{MAMP und XAMPP}
 
@@ -57,7 +51,7 @@ MAMP besteht aus dem My Apache Webserver, dem Datenbanksystem MySQL und den PHP 
     \item \textbf{XAMPP}\\ 
 Das XAMPP-Paket besteht aus dem Apache HTTP Server, der Datenbank MariaDB, welche auf den Grundlagen der MySQL Datenbank beruht, und den Programmiersprachen PHP und Perl. Das "X" am Anfang der Bezeichnung des Pakets, steht für die vielen Betriebssysteme, welche damit arbeiten können. XAMPP ist kompatibel mit Windows, OS X, Linux und Solaris. Dieses Paket ist ebenfalls unter der "GNU"-Lizenz freigegeben.
   \end{itemize}  
-Sowohl MAMP als auch XAMPP bieten daher effiziente Pakete, welche beim Entwickeln von dynamischen Webseiten sehr zu empfehlen sind. Für die Erstellung der digitalen Speisekarte fiel die Entscheidung letztendlich auf MAMP, da nur auf den Betriebssystemen Windows und OS X entwickelt wurde. Außerdem ist das Interface dieses Pakets einfacher gehalten und dadurch übersichtlicher für den Anwender. Ein weiterer Vorteil von MAMP ist, dass auf dem Startverzeichnis unter den Einstellungen ein favorisierter Link gespeichert werden konnte, welcher daraufhin auf der Startseite aufgerufen werden kann. Diese Eigenschaft ermöglichte es die digitale Speisekarte schneller aufzurufen.
+Sowohl MAMP als auch XAMPP bieten daher effiziente Pakete, welche beim Entwickeln von dynamischen Webseiten sehr zu empfehlen sind. Für die Erstellung der digitalen Speisekarte fiel die Entscheidung letztendlich auf MAMP, da nur auf den Betriebssystemen Windows und OS X entwickelt wurde. Außerdem ist das Interface dieses Pakets einfacher gehalten und dadurch übersichtlicher für den Anwender. Ein weiterer Vorteil von MAMP ist, dass auf dem Startverzeichnis unter den Einstellungen ein favorisierter Link gespeichert werden konnte, welcher daraufhin auf der Startseite aufgerufen werden konnte. Diese Eigenschaft ermöglichte es die digitale Speisekarte schneller aufzurufen.
 
     \subsubsection{Doctrine}
 
@@ -81,7 +75,7 @@ Der Controller fungiert als Schnittstelle zwischen der Model- und der View-Ebene
 Um diese Funktionalitäten anhand eines Szenarios zu veranschaulichen, kann auch folgendes vorgestellt werden:
 Angenommen es soll ein Cupcake gebacken und im Schaufenster einer Konditorei hergezeigt werden. Dafür werden zuerst einmal Daten aus einem Rezeptbuch benötigt. Diese sind in der Model-Schicht zu finden.
 Nun müssen diese Informationen jedoch noch behandelt werden um den Cupcake auch wirklich visuell erschaffen zu können. Dafür wird ein Konditor benötigt, welcher den Controller symbolisiert. 
-Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in dem View, den Passanten zur Ansicht zur Verfügung.
+Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er sie anschließend in den Ofen gibt, und stellt den Cupcake nun in dem Schaufenster seiner Konditorei, also in der View-Ebene, den Passanten zur Ansicht zur Verfügung.
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_mvc}
@@ -92,7 +86,7 @@ Der Konditor mischt die Zutaten zusammen, behandelt sie entsprechend indem er si
 
     \subsubsection{ER-Modell}
 
-Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können. Ein ERM dient dazu die Verknüpfungen zwischen zwei relationalen Tabellen visuell darzustellen. Die Verbindung wird dadurch gewährleistet, dass die zwei Tabellen über Foreign Keys verbunden werden, welche meist auf den Primary Key, also die ID der Tabelle, verweisen. Bei der Verknüpfung gilt es zu entscheiden ob es sich um eine ManyToMany oder um eine ManyToOne beziehungsweise OneToMany handelt. Eine ManyToMany Verbindung wird dann benötigt, wenn eine Tabelle auf viele Tabelleneinträge einer anderen Tabelle verweist und diese ebenfalls auf mehrere Einträge verlinkt. Die ManyToOne und OneToMany Verbindungsvariante wird verwendet, wenn von einem einzigen Eintrag auf mehrere einer anderen Tabelle verwiesen werden soll.
+Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Relationship Modell angefertigt um zu visualisieren wie die Tabellenverbindungen am geeignetsten aufbereitet werden können. Ein ERM dient dazu die Verknüpfungen zwischen zwei relationalen Tabellen visuell darzustellen. Die Verbindung wird dadurch gewährleistet, dass die zwei Tabellen über Foreign Keys verbunden werden, welche meist auf den Primary Key, also die ID der Tabelle, verweisen. Bei der Verknüpfung gilt es zu entscheiden ob es sich um eine ManyToMany oder um eine ManyToOne beziehungsweise OneToMany Verbindung handelt. Eine ManyToMany Verbindung wird dann benötigt, wenn eine Tabelle auf viele Tabelleneinträge einer anderen Tabelle verweist und diese ebenfalls auf mehrere Einträge verlinkt. Die ManyToOne und OneToMany Verbindungsvariante wird verwendet, wenn von einem einzigen Eintrag auf mehrere einer anderen Tabelle verwiesen werden soll.
 			\begin{figure}[H]
 			\begin{centering}
 			\includegraphics[width = 1\textwidth]{Bilder/Jok_ERM}
@@ -101,20 +95,23 @@ Bevor die Datenbank mithilfe von Doctrine generiert wurde, wurde ein Entity Rela
 			\label{ERM der digitalen Speisekarte}
 			\end{figure}Bei der digitalen Speisekarte mussten drei Verbindungen zwischen den folgenden Tabellen erstellt werden:
 \begin{itemize}
-    \item \textbf{Speiseinträge und Kategorien}\\
+    \item \textbf{Speiseeinträge und Kategorien}\\
 Um den Kategorien viele Speiseeinträge zuzuweisen, musste eine ManyToOne Verknüpfung auf der Seite der Speisekarte und eine OneToMany bei den Kategorien erstellt werden. Dadurch konnte später gewährleistet werden, dass in der Speisekarte über das Menü im Header zwischen den verschiedenen Kategorien gewechselt werden kann um die ihnen zugewiesenen Speiseeinträge einsehen zu können.
     \item \textbf{Bestellungen und Speiseeinträge}\\
-Damit der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
+Damit sowohl der Administrator als auch der Gast die Möglichkeit haben zu überprüfen welche Speisen bereits bestellt wurden, war es notwendig eine ManyToOne Verbindung bei der Bestellungen-Tabelle und eine OneToMany bei der Speiseeintrag-Tabelle zu definieren. Hierbei kann ein Speiseeintrag öfters bestellt werden, weswegen die ManyToOne Verbindung auf der Seite der Bestellungen eingestellt wurde. 
 \pagebreak
     \item \textbf{Bestellungen und Tischdaten}\\ 
 Um dem Hexacopter die richtigen Tischdaten der Bestellung zukommen zu lassen, war es wichtig zwischen diesen zwei Tabellen eine Verbindung herzustellen. Da mehrere Bestellungseinträge auf dieselben Tischdaten verweisen können musste auf der Bestellungen Seite eine OneToMany und auf der Tischdaten Seite eine ManyToOne Verknüpfung erschaffen werden.
-  \end{itemize}  
+  \end{itemize} 
+Die Tabelle "Admindaten" enthält die Anmeldedaten des Administrators. In dieser Applikation gibt es nicht viele Benutzergruppen, sondern es wird lediglich in "Administrator" und "Nicht-Administrator" unterschieden.\\
+Um den aktuellen Status zwischen dem Server und dem Hexacopter überwachen zu können, gibt es die Tabelle "HCVerbindung". Es werden zwei wesentliche Kriterien bei der Statusänderung beachtet. Einerseits der Verbindungsstatus und andererseits ob sich der Hexacopter in der Basis befindet. Zusätzlich zu den Statusangaben enthält die Tabelle auch eine Spalte für Zeitstempel, damit überprüft werden kann, wann sich der Status zuletzt geändert hat.\\
+Für die beiden Tabellen "Admindaten" und "HCVerbindung" mussten keine Verknüpfungen zu einer anderen Tabelle erschaffen werden. 
 
   \subsection{Umsetzung}
 
     \subsubsection{Framework einrichten}
 
-Auf der {Webseite von Smyfony\cite{symfony}} wird eine große Dokumentation angeboten, welche Einsteigern dabei hilft sich damit zurechtzufinden. Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebsystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
+Auf der {Webseite von Smyfony\cite{symfony}} wird eine große Dokumentation angeboten, welche Einsteigern dabei hilft sich damit zurechtzufinden. Um mit Symfony arbeiten zu können wurde zuerst der Symfony-Installer integriert. Bei einem Gerät mit dem Betriebssystem Mac OS X wurde dies durch die Eingabe folgender Befehle in das Terminal bewerkstelligt:
 	\lstset{language = bash}
   	\begin{lstlisting}
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
@@ -125,7 +122,7 @@ Anschließend wurde ein Projekt angelegt. Dafür wurde in das Zielverzeichnis ge
   	\begin{lstlisting}
 symfony new PROJEKTNAME lts
   	\end{lstlisting}
-Der Befehl "lts" legt fest, dass die neueste Version von Symfony verwendet werden soll.
+Der Eingabebefehl "lts" steht dafür, dass es sich bei der Projektversion um eine "Long Term Support"-Version handelt. Das heißt, dass diese Version längere Zeit mit Sicherheitsaktualisierungen versorgt wird.
 
     \subsubsection{Seitenabrufbarkeit}
 
@@ -144,13 +141,13 @@ Um die Route der Seiten selbst bestimmen zu können, wurde über der Action-Funk
 */
   	\end{lstlisting}
 Solche Anmerkungen werden zwar in Form eines Kommentars geschrieben und haben dadurch keine Auswirkung auf den Quelltext, werden jedoch trotzdem beachtet und nicht wie herkömmliche Kommentare ignoriert.
-Damit die erstellte Seite anschließend mit dem Package MAMP im Browser aufgerufen werden konnte, musste einfach der folgende Link in der Adresszeile eingeben werden:\\
+Damit die erstellte Seite anschließend mit dem Paket MAMP im Browser aufgerufen werden konnte, musste einfach der folgende Link in der Adresszeile eingeben werden:\\
 http://IP-ADRESSE:PORT/PROJEKTNAME/web/ROUTE
 
     \subsubsection{Datenbankgenerierung}
 
 Für die Generierung der Datenbank wurde die Variante "Code First" verwendet, da diese die Möglichkeit bietet, im Nachhinein mit wenigen Handgriffen die Datenbank zu ändern.
-Um die Datenbankeinträge zu erstellen, wurde zu Beginn eine PHP-Datei erstellt in welcher die Tabellen als Klassen und die Tabellenzeilen als Objekte angelegt wurden. Die Variablen wurden allesamt mit dem Zugriffsmodifikator "protected" deklariert, damit nur Klassen, welche von dieser PHP-Datei erben, auf sie zugreifen können. Anschließend wurde im oberen Abschnitt der Datei ein USE-Statement eingefügt, welches definiert, dass die Abkürzung "ORM" in darauf folgender Verwendung auf die von Doctrine zur Verfügung gestellten Mappingfunktionen verlinkt wird.
+Um die Datenbankeinträge zu erstellen, wurde zu Beginn eine PHP-Datei erstellt in welcher die Tabellen als Klassen und die Tabellenzeilen als Objekte angelegt wurden. Die Variablen wurden allesamt mit dem Zugriffsmodifikator "protected" deklariert, damit nur Klassen, welche von dieser PHP-Datei erben, auf sie zugreifen können. Anschließend wurde im oberen Abschnitt der Datei ein USE-Statement eingefügt, welches definiert, dass die Abkürzung "ORM" in darauf folgender Verwendung auf die von Doctrine zur Verfügung gestellten Mappingfunktionen verlinkt.
 	
 	\lstset{language=php}
   	\begin{lstlisting}
@@ -206,13 +203,13 @@ Um die andere Seite der Verbindung zu generieren, wurde folgende Anmerkung verwe
 mappedBy="NAME_DER_AKTUELLEN_TABELLE")
 **/
   	\end{lstlisting}
-Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollectiob gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
+Hierbei mussten nur die Namen der Tabellen angegeben werden welche miteinander verbunden werden sollen. Damit die vielen Einträge, welche von der anderen Tabelle auf die aktuelle verweisen, in einer ArrayCollection gespeichert werden konnten, musste dies in einer Konstruktorfunktion angegeben werden.
 \\ \\
 Um im Anschluss im Controller auf die Daten zugreifen zu können, musste zu jedem Objekt eine Getter- und eine Setter- Methode erstellt werden, welche dazu verwendet werden konnten Datenbankinhalte zu bekommen und neue zu setzen. Diese können mit einem Rechtsklick über die Menüpunkte "Generate…" und "Getters and Setters…" automatisch erstellt werden.
 Damit der Code aus dieser PHP-Datei in der MySQL Datenbank der LAMP Distribution verwendet werden konnte, musste zuerst eine Datenbank über das phpMyAdmin-Interface erstellt werden. Darauf folgend musste in der "config.yml"-Datei, welche automatisch in der Symfony Dateistruktur vorliegt, angegeben werden auf welche Datenbank zugegriffen werden soll.
 Um MySQL als Datenbankmodell zu definieren, wurde es dem Treiber als Wert geliefert. Zusätzlich musste auch angegeben werden wo sich die Datenbank befindet und mit welchem Benutzerkonto auf die Datenbank zugegriffen werden kann.
-Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Resssource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert.
-Für den Datenbankhost musste die IP-Adresse des Servers angeben werden. Falls sich die Datenbank auf einem lokalen Server befindet, wie es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Prot "3306" angegeben. Dieser Wert konnte allerdings auch verändert werden, indem er in der jeweiligen LAMP-Distribution unter den Einstellungen anders definiert wurde. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten konnten über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermittelt werden. Der Geheimcode kann automatisch generiert werden.
+Alle Werte welche mit Anführungszeichen und Prozentzeichen versehen sind, wurden in der "parameter.yml"-Datei, welche als Ressource oben in der Konfigurationsdatei angegeben wurde um auf ihre Inhalte Zugriff zu erhalten, mit Werten deklariert.
+Für den Datenbankhost musste die IP-Adresse des Servers angeben werden. Falls sich die Datenbank auf einem lokalen Server befindet, wie es auch bei der digitalen Speisekarte der Fall ist, kann auch "localhost" stattdessen angegeben werden. Als Port der Datenbank wurde der bereits eingestellte Default-Port "3306" angegeben. Dieser Wert konnte allerdings auch verändert werden, indem er in der jeweiligen LAMP-Distribution unter den Einstellungen anders definiert wurde. Der Wert muss daraufhin allerdings auch bei der Parameterübergabe angepasst werden. Die Benutzerdaten konnten über den Menüpunkt Privileges beziehungsweise Benutzerkonten ermittelt werden. Der Geheimcode kann automatisch generiert werden.
 Mit diesen zwei Dateien wird der Zugriff auf die MySQL Datenbank geregelt.
 Anschließend konnte die Datenbank bereits über das Terminal in MySQL erstellt werden:
 	\lstset{language = bash}
@@ -230,7 +227,7 @@ Mit diesen Schritten wurde die Datenbank der digitalen Speisekarte erfolgreich m
 
 Damit im Controller auf die Einträge der Datenbank zugegriffen werden konnte, musste ein Repository erstellt werden.
 \\
-Mithilfe der Befehle "findAll()", "findAllByTABELLENSPALTE(WERT" und "findOneByTABELLENSPALTE(WERT)" konnten die benötigten Werte aufgerufen werden.
+Mithilfe der Befehle "findAll()", "findAllByTABELLENSPALTE(WERT)" und "findOneByTABELLENSPALTE(WERT)" konnten die benötigten Werte aufgerufen werden.
 Diese konnten anschließend einfach in der render()-Funktion, welche die auszugebende Seite generiert, in einem Array mitgegeben werden, damit sie im Nachhinein im Frontend angezeigt werden:
 	\lstset{language=php}
   	\begin{lstlisting}
@@ -254,7 +251,7 @@ $FORMULAR_BEZEICHNUNG = $this->createFormBuilder($REPOSITORY)
 	array('label' => 'BUTTON_BESCHRIFTUNG'))
     ->getForm();
   	\end{lstlisting}
-Dank der Funktion "createFormBuilder()" ist es möglich, das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der "add()" Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden, ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwort handelt. Die Funktion "getForm()" übergibt das Formular der Variable "FORMULAR\_BEZEICHNUNG".
+Dank der Funktion "createFormBuilder()" ist es möglich, das Formular in wenigen Schritten zu erstellen. Als Parameter wurde dieser Funktion ein Repository der Datenbanktabelle, welche mithilfe des Formulars verwaltet werden sollte, übergeben. Mit der "add()" Funktion wurden die einzelnen Formularelemente generiert. Hierbei musste angegeben werden, ob es sich bei dem Formularfeld um ein Textfeld, Dropdown-Menü oder ein Passwortfeld handelt. Die Funktion "getForm()" übergibt das Formular der Variable "FORMULAR\_BEZEICHNUNG".
 \\
 Mittels der Funktion "handleRequest()" konnte die Eingabe des Formulars behandelt werden. Um zu überprüfen, ob ein Formular korrekt behandelt und abgeschickt wurde, konnten in einer IF-Abfrage die Boolean Funktionen "isSubmitted()" und "isValid()" verwendet werden.
 Darin wurden die Inhalte des Formulars der jeweiligen Funktion entsprechend behandelt.
@@ -267,12 +264,11 @@ Mithilfe dieser Variante wurden der Speiseverwaltungsscreen, der Farbcodeverwalt
 
 \textbf{Zeitzonenerror}\\
 Für die Installation von Symfony wird die aktuelle Zeitzone benötigt, da Symfony eine eigene Konsole und auch einen eigenen Server zum Abruf der Webseite mit sich bringt.
-Aus diesem Grund muss in der "php.ini"-Datei der LAMP-Distribution eine Zeitzone eingestellt werden. In der Datei konnte einfach nach folgender Codezeile gesucht und die Zeitzone, in unserem Fall Europe/Vienna, angeben werden:
+Aus diesem Grund muss in der "php.ini"-Datei der LAMP-Distribution eine Zeitzone eingestellt werden. In der Datei konnte einfach nach folgender Codezeile gesucht und die Zeitzone, beispielsweise Europe/Vienna, angeben werden:
 	\lstset{language=java}
   	\begin{lstlisting}
 date.timezone = "ZEITZONE"
   	\end{lstlisting}
-\pagebreak
 \textbf{Symfony Cache}\\
 Symfony hat einen eigenen Cache, welcher gelegentlich gelöscht werden muss, damit es auf die aktuellen Einstellungen und Daten zugreifen kann.
 Dieses Problem kam erstmals beim Verbindungsaufbau zur Datenbank auf, da hierbei immer auf die veralteten Daten in der "config.yml"-Datei zugegriffen wurde.
@@ -281,7 +277,7 @@ Um Den Cache zu löschen musste folgender Befehl im Terminal eingeben werden:
   	\begin{lstlisting}
 php app/console cache:clear -e prod
   	\end{lstlisting}
-
+\pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Frontend}
 
@@ -332,19 +328,19 @@ Mit der Template Engine Twig können auch Schleifen generiert werden, welche es 
 {% endfor %}
 	\end{lstlisting}
   \end{itemize}  
-Außerdem kann mithilfe von Twig auf Pfade von Action Funktionen verwiesen und diesen Variablen mitgeschickt werden, welche anschließend im Controller verwaltet werden können.
+Außerdem können mithilfe von Twig auf Pfade von Action Funktionen verwiesen und diesen Variablen mitgeschickt werden, welche anschließend im Controller verwaltet werden können.
 
     \subsubsection{DOM}
 
-{DOM\cite{dom}} (Document Object Model) ist ein vom W3-Konsortium standardiesiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchieschen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes werden als Knoten beziehungsweise als "nodes" bezeichnet.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was sehr praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces, verwendet.
+{DOM\cite{dom}} (Document Object Model) ist ein vom W3-Konsortium standardisiertes Schema für Programmiersprachen, welches beschreibt, wie auf Elemente von XML- und HTML-Dateien zugegriffen werden kann. Solche Auszeichnungssprachen können mit einer hierarchischen Baumstruktur abgebildet werden. Die einzelnen Teile dieses Baumes werden als Knoten beziehungsweise als "nodes" bezeichnet.  Es gilt hierbei in Element-, Attribut- und Textknoten zu unterscheiden. DOM ermöglicht es auf diese Knoten zuzugreifen und ihre Inhalte zu verändern, was sehr praktisch für Webapplikationen sein kann. Diese Funktionalität wurde beispielsweise für das Feld, welches den Verbindungsstatus zwischen Server und Hexacopter anzeigt, auf dem Hauptscreen des Admininterfaces, verwendet.
 
     \subsubsection{Ajax}
 
-{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird. Daher wurde Ajax dazu verwendet, auf Pfade, welche mithilfe von Twig generiert wurden, zu verweisen. Außerdem ermöglichte es Ajax, dass die Daten der digitalen Speisekarte regelmäßig aktualisiert wurden und somit immer auf dem neuesten Stand angezeigt wurden.
+{Ajax\cite{ajax}} (Asynchronous JavaScript and XML) ermöglicht es, HTTP-Anfragen durchzuführen, während eine HTML-Seite dargestellt wird und dadurch nur einzelne Teile einer Webseite neu zu laden. Daher wurde Ajax als Hilfsmittel dazu verwendet, die Daten der digitalen Speisekarte auf dem neuesten Stand zu halten. Dies gelang indem damit mithilfe eines Timers regelmäßig auf einen JSON-Pfad verwiesen wurde, von welchem die aktuellen Daten geholt wurden.
 
     \subsubsection{Screenkonzept}
-Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angfertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
-Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln können. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
+Bevor das Layout programmiert werden konnte, musste ein Konzept dafür entstehen. Dafür wurden Mockups angefertigt, welche dazu dienten festzulegen wo sich Buttons und Felder befinden.
+Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen angezeigt werden, eine Kategorie auswählt. Falls er diese wieder wechseln wollte, hätte er mit einem "Zurück"-Button auf den Kategorienübersicht-Screen zurück wechseln müssen. Außerdem musste hierbei zuerst auf die jeweiligen Speiseeinträge geklickt werden bevor die genauen Informationen angezeigt wurden.
 \\
 \pagebreak
 
@@ -352,7 +348,7 @@ Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen an
 \textbf{Speisekarte}\\
 			\begin{figure}[H]
 			\begin{centering}
-			\includegraphics[width = 0.8\textwidth]{Bilder/Jok_alte_mockups}
+			\includegraphics[width = 1\textwidth]{Bilder/Jok_alte_mockups}
 			\par\end{centering}
 			\caption{alte Mockups - Speisekarte}
 			\label{alte Mockups - Speisekarte}
@@ -365,7 +361,7 @@ Ursprünglich war geplant, dass der Gast sich bevor ihm die einzelnen Speisen an
 			\par\end{centering}
 			\caption{alte Mockups - Admininterface}
 			\label{alte Mockups}
-			\end{figure}Während der Umsetzungsphase wurde jedoch realisiert, dass dieses Aufbauschema nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen. Das Konzept des Admininterfaces wurde im Laufe der Zeit ebenfalls etwas überarbeitet. Beispielsweise wurde eine Alert-Box auf dem Hauptscreen eingefügt, um den Verbindungsstatus zwischen dem Hexacopter und dem Server anzuzeigen. \\
+			\end{figure}Während der Umsetzungsphase wurde jedoch realisiert, dass dieses Aufbauschema nicht sehr anwenderfreundlich ist. Daher wurde ein neues Konzept entwickelt, welches dem Gast die Möglichkeit bietet im Header der digitalen Speisekarte jederzeit die Kategorie zu wechseln ohne den Screen verlassen zu müssen. Das Konzept des Admininterfaces wurde im Laufe der Zeit ebenfalls etwas überarbeitet. Beispielsweise wurde eine Alert-Box auf dem Hauptscreen eingefügt, um den Verbindungsstatus zwischen dem Hexacopter und dem Server anzuzeigen. \\
 
 \pagebreak
 
@@ -419,7 +415,7 @@ Oben im Header ermöglicht er es dem Admin wieder zurück zum Hauptscreen navigi
     \item \textbf{Tischdatenverwaltungsscreen}\\
 Der Tischdatenverwaltungsscreen bietet die Möglichkeit an die Tischroute der Tische zu verändern. Hierfür muss im Dropdownmenü eine Tischnummer ausgewählt werden, im Eingabefeld die neue Tischroute angegeben werden und anschließend auf den "Änderungen übernehmen"-Button geklickt werden.
     \item \textbf{Speise- und Kategorienverwaltungsscreen}\\
-Im Speise- und Kategorienverwaltungsscreen können neue Speiseinträge und Kategorien erstellt als auch alte gelöscht werden.      
+Im Speise- und Kategorienverwaltungsscreen können neue Speiseinträge und Kategorien erstellt wie auch alte gelöscht werden.      
 Hierfür muss der Admin das jeweilige Formular ausfüllen und anschließend auf den dazugehörigen Submit Button klicken.
   \end{itemize} 
   \subsection{Umsetzung}
@@ -432,16 +428,16 @@ Durch die Kombination von Bootstrap und Sass konnten die Bootstrap Style-Attribu
 \\ \\
 Für das Streaming Build System Gulp wurde eine Javascript-Datei generiert. In dieser wurde die Sass-Datei kompiliert und festgelegt, dass diese laufend beobachtet werden soll, sobald der Gulp-Befehl im Terminal eingegeben wird. Außerdem wurden die jQuery und Bootstrap Javascript-Dateien mithilfe von Gulp minimiert und miteinander verkettet, damit nur ein einziges File in den jeweiligen Screens eingebunden werden musste.
 Nachdem die dadurch generierte CSS-Datei, im Header der Template-Files aufgerufen wurde, konnten die Bootstrap Klassen verwendet werden, indem sie in den class-Attributen der jeweiligen Elemente deklariert wurden. 
-Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angwendet:
+Für den Aufbau der Screens wurden drei verschiedene Grundkonzepte angewendet:
 \begin{itemize}
     \item \textbf{Loginscreens und Tischnummernauswahl-Screen}\\  
 Für diese Screens wurde lediglich eine div-Box benötigt, welche sich in der Mitte des Screens befindet. Ihre Seitenränder grenzen an die des Bildschirms. Der Inhalt dieser Box besteht aus dem Anmelde- und Auswahlformular.
 	\item \textbf{Speisekarten und Einstellungsscreens}\\
-Bei diesen Screens wurde ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name der Herrsteller angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden. 
+Bei diesen Screens wird ein Header angezeigt, in welchem sowohl der Titel der Veranstaltung, für welche die Applikation benötigt wird, als auch der Name des Herstellers angegeben wird. Dieser befindet sich ganz oben auf dem Screen. Unter dem Titel befinden sich die Navigationsbuttons, welche auf andere Screens verlinken. Der Hauptinhalt wird von weiteren div-Boxen gebildet, in welchen sich die einzelnen Speiseeinträge und Einstellungsformulare befinden. 
     \item \textbf{Hauptscreen des Admininterfaces}\\ 
-Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen unter dem Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
+Der Hauptscreen enthält ebenfalls einen Header, mit nahezu demselben Schema wie bei der Speisekarte. Der einzige Unterschied liegt darin, dass sich die Navigationsbuttons bei diesem Screen links und rechts vom Titel in Form von Symbolen anstatt von Textelementen befinden. Die Bestellungen werden als Liste dargestellt. Unter dieser Liste wird der Verbindungsstatus vom Hexacopter zum Server in einer Alert-Box angezeigt.
   \end{itemize}
-Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
+Das Design der Screens ist dem des Blogs sehr ähnlich, da die Layouts aneinander angepasst wurden. Der Hintergrund besteht daher ebenfalls aus einem Tisch, der den Esstisch symbolisieren soll. Die Inhalte werden jeweils in leicht durchsichtigen weißen div-Boxen angezeigt. Dieses Layout ist absichtlich nicht sehr aufwendig gestaltet, damit es elegant und modern auf den Anwender wirkt.
 Um dem Gast die Speisen schmackhaft zu machen, werden sie anhand von Fotos visuell dargestellt.
 Das finale Layout der Screens sieht daher folgendermaßen aus:\\ 
 \\ 
@@ -521,7 +517,7 @@ Falls eine Relation zu einer anderen Datenbanktabelle besteht, wie zum Beispiel 
 Bei Werten, welche auf diese Art und Weise von der Datenbank geholt werden, wurde darauf geachtet, dass sie kompatibel für Textausgaben kodiert wurden. Dies wird am besten mit einer JSON-Kodierung bewerkstelligt.
 \\ \\
 Damit die Werte immer am aktuellsten Stand angezeigt werden, wurden im Controller Funktionen erstellt, welche aus den Datenbankinhalten JSON-Rückmeldungen erstellen.
-In den HTML-Dateien wird regelmäßig in Javascript mithilfe von Ajax auf die JSON-Funktionen zugegriffen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
+In den HTML-Dateien wird mit einem Timer in Javascript regelmäßig mithilfe von Ajax auf diese JSON-Rückmeldungen zugegriffen und deren Daten ausgelesen, wodurch die Inhalte der digitalen Speisekarte laufend aktualisiert werden.
 \\ \\
 Mit diesem Schema konnten alle Speisekarteninformationen in dem Frontend der Applikation angezeigt werden.
 
@@ -552,7 +548,7 @@ $kernel = newAppKernel('prod', true);
 Der Wert "prod" steht hierbei für "production environment", also für die Produktionsumgebung.
 \pagebreak
 \section{Testphase}
-Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-5 von einer externen Person getestet wurden.
+Für die Testphase wurden Testfälle erstellt, welche abgesehen von TC-4 von externen Personen getestet wurden.
 
 \begin{table}[H]
 \centering
@@ -585,5 +581,5 @@ Dadurch, dass wir uns im Projektteam zu Beginn der Diplomarbeit kaum kannten, f�
 Mein persönliches Fazit ist, dass ich dank dieser Diplomarbeit meinen Wissenshorizont um ein Vielfaches erweitert habe und auch, meine sozialen Kompetenzen davon profitiert haben. 
 
 \section{Ergebnisse}
-Sowohl die Screens der digitalen Speisekarte als auch die des Admininterfaces sind funktionstüchtig.
-Das Java Programm bietet ebenfalls wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können.
+Durch den Einsatz von neuesten Technologien ist sowohl die Umsetzung der digitalen Speisekarte als auch die Entwicklung des Admininterfaces gelungen. Beide Anwendungen sind, wie in den Hauptzielen und optionalen Zielen definiert, komplett funktionstüchtig. Darüber hinaus verfügen sie über ein paar Zusatzfunktionen, wie beispielsweise das Anzeigen des Verbindungsstatus mit dem Hexacopter auf dem Admininterface.\\ 
+Das Java Programm bietet wie im optionalen Ziel definiert, die Möglichkeit die Tischroute automatisch an den Hexacopter schicken zu können. Des Weiteren hat das Programm die Funktionalität die Statusänderungen regelmäßig in der Datenbank festzuhalten, damit der Status zwischen dem Server und dem Hexacopter überwacht werden kann.

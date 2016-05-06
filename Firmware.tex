@@ -17,17 +17,16 @@
   \end{figure}
 
   \subsection{Tischplan}
-  Das Konzept Tischplan beschreibt den Aufbau des Restaurants, also welche Komponenten benötigt werden und wo diese platziert sind.
-  Um eine vorgegeben Route fliegen zu können muss dem Multicopter ein Routenplan bereitgestellt werden, in welchem die einzelnen Markierungspunkte enthalten sind, die der Multicopter auf seinem Weg zum Tisch überfliegt.
+  Das Konzept Tischplan beschreibt den Aufbau des Restaurants, also welche Komponenten benötigt werden und wo diese platziert sind. Um eine vorgegeben Route fliegen zu können muss dem Multicopter ein Routenplan bereitgestellt werden, in welchem die einzelnen Markierungspunkte enthalten sind, die der Multicopter auf seinem Weg zum Tisch überfliegt.
 
   Für den Tischplan wird die symbolische Positionierung genutzt. Er besteht aus folgenden Komponenten:
 
   \subsection*{Küche}
   Die Küche beschreibt den Bereich, in dem der Kellner interagiert. Hier befindet sich die Base, eine Plattform, die mit einem Farbcode ausgestattet ist. Auf ihr steht der Hexacopter und wartet auf die Beladung des auszuliefernden Cupcakes und den Befehl, loszufliegen.
-  Das Admin Interface und der Server stehen ebenfalls in der Küche, über diese Komponenten bekommt der Hexacopter Befehle. Die Routen zu jedem Tisch sind im Admin Interface hinterlegt.
+  Das Admininterface und der Server stehen ebenfalls in der Küche, über diese Komponenten bekommt der Hexacopter Befehle. Die Routen zu jedem Tisch sind im Admininterface hinterlegt.
 
   \subsection*{Weg}
-  Der Weg besteht aus sich abwechselnden zweifarbigen Codes. Die Bereiche zwischen Tischen und Kreuzungen, werden als Wegabschnitt bezeichnet. Die Colorcodes müssen von jedem Restaurant eigenständig eingescannt und die Routen zum jeweiligen Tisch in das Admin Interface eingetragen werden.
+  Der Weg besteht aus sich abwechselnden zweifarbigen Codes. Die Bereiche zwischen Tischen und Kreuzungen, werden als Wegabschnitt bezeichnet. Die Colorcodes müssen von jedem Restaurant eigenständig eingescannt und die Routen zum jeweiligen Tisch in das Admininterface eingetragen werden.
 
   \subsection*{Tisch}
   Auf einem Tisch befindet sich, wie in der Küche, eine Plattform, die mit einem Farbcode versehen ist. Hier landet der Hexacopter, wartet 30 Sekunden lang und fliegt danach den Weg zurück zu seiner Base. In den 30 Sekunden soll der Cupcake entnommen werden. Weiters befindet sich ein iPad auf jedem Tisch. Durch dieses erhält jeder Tisch seine eigene ID und die dazugehörige Route. Bestellungen können somit einem Tisch zugewiesen werden.
@@ -63,7 +62,7 @@
     \subsection*{Frames}
     Ein Frame entsteht bei jeder Messung der Pixy CMUcam5. Der Frame hat eine Breite von 319 und eine Höhe von 199 Pixel. Die Koordinate (0/0) befindet sich in der linken oberen Ecke.
 
-    Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen im Frame. Die Differenz entsteht aus den unterschiedlichen Positionen des Objektes im alten und neuem Frame. Das Objekt soll in den Bereich zwischen X\_MIN und X\_MAX, beziehungsweise Y\_MIN und Y\_MAX gelangen.
+    Bild 1 beschreibt den alten Frame, Bild 2 den aktuellen. Die Position des Objektes, beschreibt die zentralen x und y Positionen im Frame. Die Differenz entsteht aus den unterschiedlichen Positionen des Objektes im alten und neuen Frame. Das Objekt soll in den Bereich zwischen X\_MIN und X\_MAX, beziehungsweise Y\_MIN und Y\_MAX gelangen.
 
               \begin{figure}[H]
       \begin{centering}
@@ -74,11 +73,11 @@
     \end{figure}
 
     \subsection*{Aileron}
-    Anhand des aktuell getrackte Colorcodes wird die seitliche Position korrigiert. Solange sich der Hexacopter nicht im angegeben Bereich befindet, wird die Fluggeschwindigkeit in die jeweilige Richtung erhöht.
+    Anhand des aktuell getrackten Colorcodes wird die seitliche Position korrigiert. Solange sich der Hexacopter nicht im angegeben Bereich befindet, wird die Fluggeschwindigkeit in die jeweilige Richtung erhöht.
 
     \subsection*{Elevator}
     Durch den getrackten Colorcode, wird die Vorwärts- beziehungsweise Rückwärtsbewegung eingestellt. Die Position des Markers soll sich, wie bei der Bewegung nach Links und Rechts, in einem vorgegebenen Bereich befinden.
-    Das Kamerasystem trackt den ersten Marker, bis er sich im richtigen Bereich befindet und der zweite Marker erkannt wird, dieser wird ebenfalls verfolgt, danach kommt der dritte. Diese Routine läuft, bis der letzte Colorcode erreicht ist. Im Idealfall muss die Rückwärtsbewegung während des Fluges gar nicht durchgeführt werden. Die Rückwärtsbewegung findet ihre Anwendung nur, wenn der Hexacopter beim letzten Farbcode angekommen ist und über sein Ziel hinausfliegt, oder, wenn kein nächster Farbcode gefunden wird. Welcher Marker der Zielmarker ist, kann durch die Größe des Arrays, in dem die Marker gespeichert werden, herausgefunden werden. Dieses wird mit den Daten, die im Admin-Interface hinterlegt sind und im Endeffekt vom Wlan-Modul empfangen werden, befüllt.
+    Das Kamerasystem trackt den ersten Marker, bis er sich im richtigen Bereich befindet und der zweite Marker erkannt wird, dieser wird ebenfalls verfolgt, danach kommt der dritte. Diese Routine läuft, bis der letzte Colorcode erreicht ist. Im Idealfall muss die Rückwärtsbewegung während des Fluges gar nicht durchgeführt werden. Die Rückwärtsbewegung findet ihre Anwendung nur, wenn der Hexacopter beim letzten Farbcode angekommen ist und über sein Ziel hinausfliegt, oder, wenn kein nächster Farbcode gefunden wird. Welcher Marker der Zielmarker ist, kann durch die Größe des Arrays, in dem die Marker gespeichert werden, herausgefunden werden. Dieses wird mit den Daten, die im Admininterface hinterlegt sind und im Endeffekt vom Wlan-Modul empfangen werden, befüllt.
 
     \subsection*{Rudder}
     Mithilfe der Rudder Funktion muss der Winkel auf die aktuelle Positionsmarkierung ausgerichtet werden. Dabei ist eine Ungenauigkeit von 5 Grad in beide Richtungen erlaubt.
@@ -101,7 +100,7 @@
     \item \textbf{Bilden des Zweierkomplements}\\
     \textbf{Beispiel:} 0111 1111 = 127 \\
     Die binäre Zahl wird invertiert (1000 0000) und mit 1 addiert. \\
-    Das Ergebins lautet: 1000 0001 = -127 \\
+    Das Ergebnis lautet: 1000 0001 = -127 \\
     \textbf{Beispiel:} 1001 1000 = -104 \\
     Die binäre Zahl wird invertiert (0110 0111) und mit 1 addiert. \\
     Das Ergebnis lautet: 0110 1000 = 104 \\
@@ -126,15 +125,16 @@
       \item \textbf{num} ist die ID des getrackten Colorcodes, er besteht aus einer zweistelligen Zahl.
       \item \textbf{pos\_x} ist die X-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
       \item \textbf{pos\_y} ist die Y-Position des Colorcodes. Der Wert bezieht sich auf das Zentrum des Objektes.
-      \item \textbf{height} ist die, vom Ultraschall übergebene Höhe.
+      \item \textbf{height} ist die, vom Ultraschallsensor übergebene, Höhe.
       \item \textbf{angle} ist die Rotation des Colorcodes. Da er zweifarbig ist, kann die PIXY CMUcam5 die Rotation des Objektes feststellen.
     \end{itemize}
 
     Zuerst wird die ID des Colorcodes verglichen, um herauszufinden, ob das Farbobjekt das selbe ist, wie im letzten Frame.
-    Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und in einer weiteren Strunktur gespeichert. Dieses wird bei den folgenden Funktionen verwendet, um anhand der Änderung zwischen zwei Frames zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
+    Sollte dies der Fall sein, werden die Koordinaten x und y und die Rotation mit den Werten der älteren Struktur verglichen und in einer weiteren Struktur gespeichert. Dieses wird bei den folgenden Funktionen verwendet, um anhand der Änderung zwischen zwei Frames zu überprüfen, ob der Hexacopter die richtige Geschwindigkeit hat.
 
     \subsubsection{Aileron, Elevator und Rudder anhand der Kameradaten}
     Autor: Lucas Ullrich \\
+
     Durch die PIXY CMUcam5 kann die Position des Hexacopters, relativ zu einem Colorcode, festgestellt werden. Gegebenenfalls werden anschließend die Flugparameter verändert.
 
     \begin{figure} [H]
@@ -150,10 +150,10 @@
     \subsubsection{Überprüfen von Aileron}
     Beim Vergleichen von Aileron wird die Veränderung an der x-Achse überprüft.
 
-    Durch diese Funktion soll der Hexacopter mithilfe der Pixy-Daten, den Colorcode in der Mitte des Frames plazieren. An der x-Achse sind Werte zwischen 150 und 170 optimal. Der übergebene Wert ist dabei der Mittelpunkt des Colorcodes.
+    Durch diese Funktion soll der Hexacopter mithilfe der Pixy-Daten, den Colorcode in der Mitte des Frames platzieren. An der x-Achse sind Werte zwischen 150 und 170 optimal. Der übergebene Wert ist dabei der Mittelpunkt des Colorcodes.
     Sollte die Pixycam keinen Wert in diesem Bereich erfassen, kann sie durch eine weitere Funktion namens ActAileron, welche die Änderungsrate an den Flightcontroller weitergibt, die Position an der x-Achse korrigieren.
     Um herauszufinden, ob der Mittelpunkt unter oder über dem optimalen Wert liegt, also der Hexacopter zu weit links oder rechts vom Objekt fliegt, gibt es für beide Fälle eine Abfrage.
-    Um den Aileron Wert entgültig zu setzen, müssen nach der Überprüfung, ob der übergebene Wert an der x-Achse 170 überschreitet beziehungsweise 150 unterschreitet, folgende Zustände kontrolliert werden.
+    Um den Aileron Wert endgültig zu setzen, müssen nach der Überprüfung, ob der übergebene Wert an der x-Achse 170 überschreitet beziehungsweise 150 unterschreitet, folgende Zustände kontrolliert werden.
     Zunächst muss der Hexacopter über die Pixycam herausfinden, ob er sich bereits in die richtige Richtung bewegt. Dafür werden die beiden Frames miteinander verglichen. Wenn der Wert zu hoch ist, muss der x-Wert im alten Frame größer als im neuen sein. Sollte er zu niedrig sein, muss der Wert im neuen Frame höher sein.
     Anderenfalls fliegt der Hexacopter auf die falsche Seite. Die Firmware reagiert darauf mit der Änderung der Pulszeit am Aileron-Pin.
     Bei der Bewegung in die richtige Richtung wird der Wert so lange in diese gesteuert, bis sich die Geschwindigkeit, gemessen in den veränderten Pixel zwischen zwei Frames, zwischen zwei konstanten Werten befindet.
@@ -188,7 +188,7 @@
     \subsubsection{Throttle anhand des Ultraschallsensors}
     Throttle reguliert die Höhe mithilfe eines Ultraschallsensors, ist also für die z-Achse zuständig.
 
-    Der Hexacopter steht zunächst auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokusiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
+    Der Hexacopter steht zunächst auf einer Landeplattform in seiner Base. Unter ihm ist ein Farbcode, den er so lange fokussiert, bis er den nächsten Farbcode trackt. Den zweiten Farbcode kann er erst scannen, wenn er hoch genug fliegt um an der Tischkante vorbei, den nächsten Farbcode zu scannen.
 
     Beim Starten fliegt er vertikal nach oben, bis er den zweiten Farbcode erkennt. Um beim Start nicht abzudriften, beschleunigt er, solange er sich unter einer Höhe von $\SI{50}{\centi\metre}$ befindet, mit einer hohen Änderungsrate. Ab dieser Höhe beschleunigt er mit einer geringeren Erhöhung, bis er die $\SI{80}{\centi\metre}$-Grenze erreicht hat. Für die Höhenregelung ist es wichtig eine maximale Geschwindigkeit einzustellen um den Hexacopter einfacher zu kontrollieren.
 
@@ -218,8 +218,9 @@
     \subsubsection{Speichern der alten Daten}
     Die alten Daten werden gespeichert, um die Differenzen von zwei Frames zu errechnen. Der Frame mit Index 0, ist der aktuelle Frame, der Frame mit dem Index 1, der alte. Bei jedem Durchlauf, werden die Werte aktualisiert.
 
-    \subsubsection{Ausgabe der Steuersignal}
+    \subsubsection{Ausgabe der Steuersignale}
     Autor: Lucas Ullrich\\
+
     Nachdem die Steuersignale berechnet und korrigiert wurden, müssen diese an den Hexacopter ausgegeben werden. Dies muss periodisch alle $\SI{20}{\milli\second}$ geschehen.
     Der Flightcontroller erkennt jeweils die einzelnen Impulse und steuert die Rotoren entsprechend an.
 
@@ -268,8 +269,8 @@ void SignalOut(void) {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Objekterkennung}
 Autor: Lucas Ullrich\\
-Die Objekterkennung ist für den Hexacopter notwendig um eine zuverlässige Positionierung zu ermöglichen. Dazu werden bestimmte Objekte im Raum erkannt und als Orientierung
-genutzt oder es muss ihnen ausgewichen werden beziehungsweise eine Kollision vermieden werden.
+
+Die Objekterkennung ist für den Hexacopter notwendig um eine zuverlässige Positionierung zu ermöglichen. Dazu werden bestimmte Objekte im Raum erkannt und als Orientierung genutzt oder es muss ihnen ausgewichen beziehungsweise eine Kollision vermieden werden.
 
   \subsection{Technische Planung}
   In der Planung war es wichtig einerseits die notwendige Rechenleistung gering zu halten, andererseits auch alle notwendigen Objekte erkennen zu können.
@@ -277,9 +278,9 @@ genutzt oder es muss ihnen ausgewichen werden beziehungsweise eine Kollision ver
   \subsection{Umsetzung}
   Für die Umsetzung standen mehrere Möglichkeiten zur Auswahl, darunter eine optische Abtastung des Raumes oder Bilderkennung.
 
-  Zwecks des geringeren Aufwands wird das bereits beschreibene Kameramodul PIXY CMUcam5 verwendet. \ref{PIXY_Headline}
+  Zwecks des geringeren Aufwands wird das bereits beschriebene Kameramodul PIXY CMUcam5 verwendet. \ref{PIXY_Headline}
 
-  Um auch Objekte die sich in der Flugbahn befinden erkennen zu können werden Ultraschallsensoren nach vorne ausgerichet. Befindet sich ein Objekt im Messbereich dieser
+  Um auch Objekte die sich in der Flugbahn befinden erkennen zu können werden Ultraschallsensoren nach vorne ausgerichtet. Befindet sich ein Objekt im Messbereich dieser
   kann angemessen darauf reagiert werden. So kann der Hexacopter entweder ausweichen oder Landen um eine Kollision zu vermeiden.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -383,4 +384,4 @@ Das Konzept Systemausfall beschreibt die Maßnahmen, wenn der Hexacopter seine A
 
 \subsection*{Was passiert nach einem Systemausfall?}
 Wenn der Hexacopter seinen Fehler selbst korrigieren kann, fliegt er seine Route weiter.
-Anderenfalls geht der Hexacopter, sobald er gelandet ist oder manuell gesteuert wurde, davon aus, beim nächsten Start in seiner Base zu stehen. Der Cupcake wird wieder in der Bestellliste angezeigt und muss erneut ausgeliefert werden. Je nach Fehler, wird ein Code über den Display ausgegeben, der bei der Fehlersuche helfen soll.
+Anderenfalls geht der Hexacopter, sobald er gelandet ist oder manuell gesteuert wurde, davon aus, beim nächsten Start in seiner Base zu stehen. Der Cupcake wird wieder in der Bestellliste angezeigt und muss erneut ausgeliefert werden. Je nach Fehler, wird ein Code über das Display ausgegeben, der bei der Fehlersuche helfen soll.
