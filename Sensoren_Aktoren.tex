@@ -255,7 +255,7 @@ void SendDebugInfo(unsigned int debug_info) {
     \begin{itemize}
    \item Das \textbf{Empfängermodul} des Multicopters kann von einem Sender Steuersignale empfangen und aufgrund der empfangenen Steuersignale Soll-Werte für die Motoren berechnen, um den Multicopter auf die entsprechende Geschwindigkeit in x, y oder z Richtung zu bringen.
    \item Der \textbf{Flightcontroller} ist der zentrale Regler und steuert die einzelnen Rotoren an.
-   \item Die \textbf{Multicopterhardware} besteht aus Rotoren, Motoren, einem Gestell und der Leistungselektronik. 
+   \item Die \textbf{Multicopterhardware} besteht aus Rotoren, Motoren, einem Gestell und der Leistungselektronik.
    \end{itemize}
 
 
@@ -277,15 +277,15 @@ void SendDebugInfo(unsigned int debug_info) {
   Je nachdem wie viele Rotoren in einer Ebene liegen, setzt sich der Name zusammen.
   Die bekannteste Art ist der Quadrocopter, welcher vier Rotoren besitzt. Weiters gibt es Hexacopter mit sechs und Octocopter mit acht Rotoren.
 
-  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten\cite{NAZA_Konfig} von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben. 
+  Der Flightcontroller DJI Naza-M lite unterstützt verschiedene Konfigurationsarten\cite{NAZA_Konfig} von Quadrocoptern und Hexacoptern. Hierzu zählen + und x Konfiguration für den Quadrocopter. Beim Hexacopter gibt es die Varianten +, x, reverse Y und Y. Diese werden im nächsten Abschnitt genauer beschrieben.
 
   \subsection{Konfiguration}
-  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren \cite{GrundlagenMulticopter}. 
+  Grundsätzlich gibt es 2 Arten einen Multicopter zu Konfigurieren \cite{GrundlagenMulticopter}.
   Einerseits die +- beziehungsweise I-Konfiguration, andererseits die x- beziehungsweise H-Konfiguration. Weiters gibt es die weniger verbreitete Y-Konfiguration. Dabei geht es um die Ausrichtung und die damit verbundene Fluglage.
 
   Für diese Diplomarbeit wurde die + Konfiguration für Hexacopter gewählt.
 
-  Wie auf folgender Grafik\cite{NAZA_Konfig} ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Würden sich alle in die selbe Richtung drehen, würde sich der Multicopter um die eigene Hochachse drehen. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau markierten Propeller oben, die roten unten. 
+  Wie auf folgender Grafik\cite{NAZA_Konfig} ersichtlich ist, gibt es nach links und nach rechts drehende Rotoren. Würden sich alle in die selbe Richtung drehen, würde sich der Multicopter um die eigene Hochachse drehen. Die rot gekennzeichneten Arme geben an, wo die Vorderseite des Multicopters ist. Bei der Y-Konfiguration sind die blau markierten Propeller oben, die roten unten.
 
     \begin{figure}[H]
       \begin{centering}
@@ -296,7 +296,7 @@ void SendDebugInfo(unsigned int debug_info) {
     \end{figure}
 
   \subsection{Mögliche Anwendungsgebiete}
-  Multicopter finden in vielen Bereichen Anwendung\cite{copterAnwendung}. 
+  Multicopter finden in vielen Bereichen Anwendung\cite{copterAnwendung}.
   \begin{itemize}
     \item Fotographie und Videos / Filmindustrie / Anfertigen von hoch aufgelösten Luftbildkarten
     \item Multicopter als Hobby / Kunstflug
@@ -323,7 +323,7 @@ void SendDebugInfo(unsigned int debug_info) {
     \subsubsection{Steuerungsarten}
     Autor: Christina Bornberg\\
 
-    Der Flightcontroller DJI NAZA-M lite wird über die Befehle\cite{GrundlagenMulticopter} Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modi zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle. 
+    Der Flightcontroller DJI NAZA-M lite wird über die Befehle\cite{GrundlagenMulticopter} Aileron, Elevator, Rudder und Throttle gesteuert. Zusätzlich gibt es den 2/3-position mode channel, der für das Umschalten mehrerer Modi zuständig ist. Handelsübliche Fernbedienungen verfügen über die selben Steuerbefehle.
 
       \begin{itemize}
         \item \textbf{A: Aileron} auch Rollen (engl. roll) genannt, ist für die Bewegung nach Links und Rechts zuständig.
@@ -334,7 +334,7 @@ void SendDebugInfo(unsigned int debug_info) {
         Um den Hexacopter um seine eigene Hochachse rotieren zu lassen, werden für eine Rotation nach rechts, die rechts-drehenden Rotoren schneller betrieben, bei der Rotation nach Links, die links-drehenden.
         \item \textbf{T: Throttle} reguliert die Höhe.
         Bei gleichmäßiger Ansteuerung der sechs Rotoren, kann man je nach Drehgeschwindigkeit die Höhe verändern. Der Hexacopter fliegt bei stärkerer Beschleunigung nach oben, ansonsten sinkt er. Dies wird auch als Uplift and Downfall bezeichnet.
-        \item \textbf{U: 2/3-position switch channel}\cite{positionswitch}ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt. 
+        \item \textbf{U: 2/3-position switch channel}\cite{positionswitch}ist zum Umschalten von zwei oder drei Steuermodi zuständig. Im Fall unserer Diplomarbeit wird zwischen autonomem und manuellem Flug gewechselt.
       \end{itemize}
 
     \begin{figure}[H]
