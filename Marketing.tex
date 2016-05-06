@@ -94,8 +94,8 @@ aber auch Marketing-Strategien und deren Anwendung erläutert.
   \subsection{Marketing-Strategie}
   Aus der SWOT-Analyse ging hervor, dass die Schwächen des Projekts großteils darin lagen, es nur schwer präsentieren zu können, da das Hauptziel das Entwickeln
   einer Konzeptstudie, keines fertigen Produktes ist. Außerdem ergaben Kostenabschätzungen, dass das Testen der Konzepte einen hohen finanziellen Aufwand mit sich bringen
-  würde. Aus diesen beiden Erkenntnissen entstand das Vorhaben, das Projekt sehr aktiv an die Öffentlichkeit zu bringen, um zum einen Fortschritte im Projekt
-  für Außenstehende als ersichtlich zu gestalten, und zum anderen dadurch in Kontakt mit potentiellen Sponsoren und Partnern zu geraten und folglich das Budget des Projekts
+  würde. Aus diesen beiden Erkenntnissen entstand das Vorhaben, das Projekt sehr aktiv an die Öffentlichkeit zu bringen. Es sollten zum einen Fortschritte im Projekt
+  für Außenstehende ersichtlich gestaltet werden und zum anderen Kontakt mit potentiellen Sponsoren und Partnern hergestellt werden, um folglich das Budget des Projekts
   zu decken. Diese Vorgehensweise fällt unter die Kategorie der WT-Strategie, auf Basis der SWOT-Analyse.
 
     \subsection*{Corporate Design}
@@ -122,10 +122,11 @@ aber auch Marketing-Strategien und deren Anwendung erläutert.
     Der Blog war die wichtigste Komponente für das Veröffentlichen von akuellen Informationen. Es wurde Wert darauf gelegt
     in regelmäßgen Abständen aktuelle Inhalte über den Projektverlauf zu veröffentlichen. Die Zielgruppe waren primär junge Techniker,
     die sich für Drohnen oder allgemein für Robotik interessierten. Alles zur Entwicklung des Blogs ist in Kapitel 3.3 angeführt.
+    Durch sämtliche folgende Punkte wurde versucht, die Zielgruppe auf den Blog aufmerksam zu machen.
 
     \subsection*{Wettbewerbe}
     Hovering Steward hat an einigen Wettbewerben teilgenommen, auf welche im Kapitel 3.2 näher eingegangen wird.
-    Folgende Vorteile waren eine Motivation, eine Bewerbung für diese einzuschicken:
+    Folgende Erwartungen waren eine Motivation, eine Bewerbung für diese einzuschicken:
 
     \begin{itemize}
       \item \textbf{Teamdynamik}
@@ -255,7 +256,7 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems, 
     \subsection*{Frameworks}
     Für die Entwicklung des Blogs erschien der Einsatz eines Frameworks als sehr hilfreich. Das Framework sollte komplexe Methoden wie
     Datenbankzugriffe oder Formularvalidierungen vereinfacht zur Verfügung stellen. Für bessere Übersicht während der Entwicklung war es außerdem
-    wichtig, dass das Framework auf dem MVC-Schema aufbaut. Dieses Schema wird in Kapitel 4.2.1 erklärt. Eine Recherche ergab folgende Frameworks als mögliche
+    wichtig, dass das Framework auf dem MVC-Schema(vgl. Kapitel 4.2.1) aufbaut. Dieses Schema wird in Kapitel 4.2.1 erklärt. Eine Recherche ergab folgende Frameworks als mögliche
     Optionen:
 
     \begin{itemize}
@@ -270,7 +271,7 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems, 
   \subsection{Umsetzung}
 
     \subsection*{Frontend}
-    Das Frontend des Blogs setzt sich aus den drei Technologien HTML, Javascript und CSS zusammen. Aus Gründen von Performance und SEO wurden außerdem
+    Das Frontend des Blogs setzt sich aus den drei Technologien HTML, Javascript und CSS zusammen. Aus Gründen von Performance und SEO(vgl. Kapitel 3.3.2) wurden außerdem
     die Javascript Bibliothek jQuery und das CSS Framework Bootstrap verwendet. Im Folgenden werden diese Technologien näher beschrieben und die daraus
     ersichtlichen Vorteile, die zu Verwendung in diesem Projekt geführt haben, erläutert.
 
@@ -279,7 +280,7 @@ auch allgemeine Überlegungen wie der Einsatz eines Content Management Systems, 
       Ein HTML-Dokument ist das Grundgerüst einer Website. Ein Webbrowser interpretiert
       HTML und visualisiert dadurch die Website. Die Syntax von HTML besteht aus sogenannten Tags, die, nach einem
       bestimmten Schema aufgebaut, die Struktur einer Website ergeben. Die aktuelle Version ist HTML 5. Diese unterstützt zum einen das responsive
-      Entwickeln einer Website, und verbessert zum anderen die SEO (vgl. Abschnitt SEO). Außerdem ist es möglich ohne der Verwendung des Adobe Flash Players Audio und Video einzubinden.
+      Entwickeln einer Website, und verbessert zum anderen die SEO. Außerdem ist es möglich ohne eines Plugins wie des Adobe Flash Players Audio und Video einzubinden.
 
       \subsubsection*{Javascript}
       {Javascript\cite{javascript}} ist eine webbasierende Skriptsprache. Sie ist objektorientiert, was bedeutet, dass modular programmiert werden kann und damit Funktionen oder Eigenschaften
@@ -328,7 +329,7 @@ var items = $("#navbar-list li");
       \subsubsection*{CSS}
       {CSS\cite{css}} steht für \textbf{C}ascading \textbf{S}tyle \textbf{S}heets. Wie das Wort "Style" bereits offenbart, wird sie für das visuelle Aufbereiten einer Website verwendet.
       Allgemein ist CSS eine Gestaltungssprache und wird in Kombination mit HTML-Dokumenten verwendet. In HTML werden dafür den Tags Klassen oder IDs
-      zugewiesen, über die CSS dann bestimmte Eigenschaften zuweisen kann. Dabei orientiert sich CSS nach dem sogenannten Box-Modell. In diesem werden HTML-Elemente
+      zugewiesen, über die CSS dann bestimmte Eigenschaften zuweisen kann. Dabei orientiert sich CSS an dem sogenannten Box-Modell. In diesem werden HTML-Elemente
       zwischen Inline-Elementen und Block-Elemente unterschieden. Inline-Elemente passen sich dem Fluss in der Struktur des Dokuments an, Block-Elemente hingegen
       werden für das Layout der Website verwendet. Von einfachen Formatierungen wie der Schriftgröße oder einer Hintergrundfarbe lassen sich mit CSS komplexe Animationen,
       ohne die Verwendung von Javascript durchführen. Letzteres ist jedoch erst seit der Version CSS3 möglich.
@@ -342,7 +343,7 @@ var items = $("#navbar-list li");
       Da das Framework einen sehr ähnlichen Umfang aufwies, fiel die Wahl jedoch auf Bootstrap, da damit bereits öfters gearbeitet wurde und somit weniger Zeitaufwand bedeutete.
 
     \subsection*{Backend}
-    Das Backend setzt sich ausschließlich aus dem Framework CodeIgniter zusammen, welches auf der serverseitigen Scriptsprache PHP basiert. Für die Datenspeicherung
+    Das Backend baut ausschließlich auf dem Framework CodeIgniter auf, welches auf der serverseitigen Scriptsprache PHP basiert. Für die Datenspeicherung
     wurde eine MySQL-Datenbank verwendet.
 
       \subsubsection*{Code}
@@ -352,7 +353,7 @@ var items = $("#navbar-list li");
         wird. Um PHP zu programmieren, wird allerdings ein Webserver mit einer PHP-Installation benötigt.
 
         \subsubsection*{Ruby}
-        {Ruby\cite{ruby}} ist eine gängie Alternative zu PHP. Neben dem Einsatz in der Webentwicklung wird diese Skriptsprache allerdings auch für allgemeinere Softwareentwicklungsgebiete verwendet.
+        {Ruby\cite{ruby}} ist eine Alternative zu PHP. Neben dem Einsatz in der Webentwicklung wird diese Skriptsprache allerdings auch für allgemeinere Softwareentwicklungsgebiete verwendet.
         Für die Webentwicklung stellt Ruby das Framework {"Ruby on Rails"\cite{rubyonrails}} zur Verfügung.
         Da Ruby jedoch noch keinen so hohen Bekanntheitsgrad wie PHP hat, gibt es weniger ausführlichere Dokumentationen, weswegen PHP als die sinnvollere Variante für das Backend des Blogs erschien.
         Außerdem ist die Überlegung, eine Website in Ruby zu entwickeln damit verbunden, einen geeigneten Webhoster zu finden, welcher über eine Ruby Installation auf dem Server verfügt.
@@ -372,7 +373,7 @@ var items = $("#navbar-list li");
         eine in PHP entwickelte Anwendung, die die Verwaltung der MySQL Datenbanken über eine grafische Oberfläche vereinfacht.
 
         \subsubsection*{MongoDB}
-        Anders als MySQL, ist {MongoDB\cite{mongodb}} eine NoSQL Datenbank. Der Unterschied liegt darin, dass die Datenbank nicht relational ist. Statt einem konkreten Schema von Tabellen,
+        Anders als MySQL, ist {MongoDB\cite{mongodb}} eine NoSQL Datenbank. Der Unterschied liegt darin, dass die Datenbank nicht relational ist. Statt eines konkreten Schemas von Tabellen,
         wird hier mit sogenannten Dokumenten und Sammlungen gearbeitet. Ein Dokument speichert Daten, nach dem "Key-Value" Prinzip, eine Sammlung enthält mehrere Dokumente.
         Den bedeutendsten Vorteil weist MongoDB in der dynamischen Gestaltung der Datenbank auf. Die Strukturen in Sammlungen können demnach unterschiedlich sein. Die
         Datenübermittlung erfolgt über {BSON\cite{bson}}, ein JSON ähnliches Format, welches im Vergleich zu diesem jedoch auch Datentypen unterstützt.
@@ -512,7 +513,7 @@ var items = $("#navbar-list li");
       String Ausdruck wird und damit ungefährlich ist.
 
     \subsection*{Responsive Design}
-    Für die responsive Gestaltung des Blogs wurde zwar das Framework Bootstrap herangezogen, da der Aufbau der Website jedoch aus eigener Hand
+    Für die responsive Gestaltung des Blogs wurde zwar das Framework Bootstrap, aufgrund des soliden Grid-Layouts, herangezogen, da der Aufbau der Website jedoch aus eigener Hand
     entstanden ist und kein Template verwendet wurde, musste für vollständige Kompatibilität auf mobilen Geräten manuell mit CSS gearbeitet werden.
     Mittels Media-Queries lassen sich CSS-Eigenschaften so definieren, dass sie ab gewissen Bildschirmgrößen aktiv werden. Für die Bildschirmbreiten 1200, 992, 767 und 480
     Pixel wurden verschiedene CSS-Eigenschaften definiert. Diese vier Größen sind von Bootstrap hergeleitet und teilen Geräte in die vier Typen Phones, Tablets,
