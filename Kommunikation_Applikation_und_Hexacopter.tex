@@ -94,7 +94,7 @@ Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host ver
     \item \textbf{reboot}\\
     Erzeugt einen Neustart bei dem die Standardeinstellungen geladen werden
   \end{itemize}
-  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mirkocontroller verbunden werden, die Verbindung kann über einzelne Pins kontrolliert
+  Nachdem das WLAN-Modul auf die nötigen Parameter eingestellt ist, kann es direkt mit dem Mikrocontroller verbunden werden, die Verbindung kann über einzelne Pins kontrolliert
   werden.
 
   \subsection{Herausforderungen und Lösungen}
@@ -111,7 +111,7 @@ Um das WLAN-Modul so einzustellen, dass es sich Pin-gesteuert mit einem Host ver
     \item \textbf{Associated}\\
     Mit einem Netzwerk verbunden
     \item \textbf{Open TCP connection}\\
-    Die Verbidnung zum Host herstellen
+    Die Verbindung zum Host herstellen
     \item \textbf{Connected}\\
     Die Verbindung zum Host ist hergestellt
   \end{itemize}
@@ -141,7 +141,7 @@ Mit dem WLAN-Modul wird hingegen auf direktem Weg kommuniziert.
 
       \subsubsection{Eclipse}
 
-Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Eclipse Foundation entwickelt. Das Programm kann verwendet werden, um in mehreren Programmiersprachen Software zu entwicklen. Besonders gut geeignet ist Eclipse für die Entwicklung von Java-Programmen, da es sowohl Auto-Completion ermöglicht als auch Syntax-Hervorhebung.
+Eclipse ist eine freie Entwicklungsumgebung für Programme und wurde von der Eclipse Foundation entwickelt. Das Programm kann verwendet werden, um in mehreren Programmiersprachen Software zu entwickeln. Besonders gut geeignet ist Eclipse für die Entwicklung von Java-Programmen, da es sowohl Auto-Completion ermöglicht als auch Syntax-Hervorhebung.
 
   \subsection{Umsetzung}
 Für die Umsetzung des Javaprogramms wurden drei verschiedene Klassen erstellt:\\ \\
@@ -181,7 +181,7 @@ Um in einer extra Datenbanktabelle den Verbindungsstatus zwischen dem Hexacopter
 Um die Verbindung mit dem Hexacopter zu managen wurde die "Komm Manager" Klasse programmiert.
 Damit diese Klasse die Funktionen der "SQL Reader"-Klasse verwenden kann, erbt sie von dieser. Dies wird ganz oben bei der Klassendefinierung mithilfe des Befehls "extends" gehandhabt.
 \\ \\
-Als globale Variable wird ein Hashset, welches die Teilnehmer beeinhaltet, erstellt.
+Als globale Variable wird ein Hashset, welches die Teilnehmer beinhaltet, erstellt.
 Anschließend wird ein Server Socket erstellt, welchem später ein geeigneter Port zugewiesen wird.
 \\ \\
 Mithilfe eines Timers wird alle zwei Sekunden überprüft ob ein Teilnehmer vorhanden ist. Wenn das der Fall ist, wird auf eine Methode verwiesen, in welcher die Verbindung hergestellt und daher auch die SQl-Readerfunktion, welche einen neuen Datenbankeintrag erstellt, aufgerufen wird. Diese SQL-Readerfunktion erneuert daraufhin den Verbindungsstatus.
